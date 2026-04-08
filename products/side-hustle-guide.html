@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Side Hustle Guide | Jedai Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-card: #111827;
+    --bg-card-alt: #0f1629;
+    --border: #1e293b;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --accent: #338dff;
+    --accent2: #00d4aa;
+    --accent3: #a855f7;
+    --white: #ffffff;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Cover Page */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 32px;
+    background: linear-gradient(180deg, #0a0e1a 0%, #0f1a2e 50%, #0a0e1a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(51,141,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-brand {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  .cover h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-subtitle {
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+
+  .cover-meta {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* Page Breaks */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Chapters */
+  .chapter {
+    padding: 80px 0 60px;
+  }
+
+  .chapter-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 40px 0 16px;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent2);
+    margin: 32px 0 12px;
+  }
+
+  p { margin-bottom: 18px; }
+
+  strong { color: var(--white); font-weight: 600; }
+
+  /* Cards */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+
+  .card-accent {
+    border-left: 3px solid var(--accent);
+  }
+
+  .card-green {
+    border-left: 3px solid var(--accent2);
+  }
+
+  .card-purple {
+    border-left: 3px solid var(--accent3);
+  }
+
+  .card-warning {
+    border-left: 3px solid var(--warning);
+    background: rgba(245,158,11,0.05);
+  }
+
+  .card h4 { margin-top: 0; }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 16px 0 24px 24px;
+  }
+
+  li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
+
+  li::marker {
+    color: var(--accent);
+  }
+
+  /* Pricing Table */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(180deg, rgba(51,141,255,0.08), var(--bg-card));
+  }
+
+  .pricing-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .pricing-price {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .pricing-price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+
+  .pricing-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pricing-card li {
+    font-size: 14px;
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+
+  .pricing-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  /* Email Scripts */
+  .email-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    font-size: 15px;
+  }
+
+  .email-block .subject {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .email-block p {
+    margin-bottom: 14px;
+    line-height: 1.7;
+  }
+
+  .email-block .placeholder {
+    color: var(--accent2);
+    font-weight: 600;
+  }
+
+  /* Audit Template */
+  .audit-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 16px 0;
+  }
+
+  .audit-section h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .checklist li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    font-size: 15px;
+  }
+
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+    font-size: 16px;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 32px 0;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-day {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Stats */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 24px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* Tool Stack Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--border);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .cost-free { color: var(--accent2); font-weight: 600; }
+  .cost-paid { color: var(--warning); font-weight: 600; }
+
+  /* Divider */
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  /* Callout */
+  .callout {
+    background: linear-gradient(135deg, rgba(51,141,255,0.08), rgba(0,212,170,0.05));
+    border: 1px solid rgba(51,141,255,0.2);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    font-size: 15px;
+  }
+
+  .callout-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 60px 32px;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  .footer-brand {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .footer p {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* TOC */
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .toc-list li:last-child { border-bottom: none; }
+
+  .toc-number {
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 14px;
+    min-width: 36px;
+  }
+
+  .toc-title {
+    flex: 1;
+    font-weight: 500;
+    color: var(--white);
+    font-size: 16px;
+  }
+
+  /* Highlight box */
+  .highlight {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #0a0e1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page-break { page-break-before: always; }
+    .cover { min-height: auto; padding: 120px 32px; }
+  }
+
+  @media (max-width: 640px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+    .container { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER PAGE -->
+<!-- ============================================================ -->
+<div class="cover">
+  <div class="cover-brand">JEDAI FLOW</div>
+  <h1>The AI <span>Side Hustle</span> Guide</h1>
+  <p class="cover-subtitle">The complete playbook for building a profitable AI automation business selling to local businesses &mdash; no coding required.</p>
+  <p class="cover-meta">JEDAIFLOW.COM &nbsp;&bull;&nbsp; 2026 EDITION</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Contents</div>
+    <h2>What's Inside</h2>
+    <ul class="toc-list">
+      <li><span class="toc-number">00</span><span class="toc-title">Introduction: The $100B Opportunity</span></li>
+      <li><span class="toc-number">01</span><span class="toc-title">Skills You Already Have (Or Can Learn in a Weekend)</span></li>
+      <li><span class="toc-number">02</span><span class="toc-title">Picking Your Niche</span></li>
+      <li><span class="toc-number">03</span><span class="toc-title">Your Service Menu &amp; Pricing</span></li>
+      <li><span class="toc-number">04</span><span class="toc-title">Finding Your First Client</span></li>
+      <li><span class="toc-number">05</span><span class="toc-title">The Free AI Audit</span></li>
+      <li><span class="toc-number">06</span><span class="toc-title">Delivering the Work</span></li>
+      <li><span class="toc-number">07</span><span class="toc-title">Scaling to $10K/Month</span></li>
+      <li><span class="toc-number">08</span><span class="toc-title">Tools of the Trade</span></li>
+      <li><span class="toc-number">++</span><span class="toc-title">Bonus: 30-Day Launch Plan</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Introduction</div>
+    <h2>The $100B Opportunity</h2>
+
+    <p>Right now, there are 33.2 million small businesses in the United States. The vast majority of them &mdash; over 90% &mdash; have heard of AI. They know it's important. They know their competitors are starting to use it. And they have <strong>no idea where to start</strong>.</p>
+
+    <p>That gap between awareness and implementation is where your business lives.</p>
+
+    <p>The global AI market is projected to exceed $300 billion by 2027. But here's what matters to you specifically: the market for <strong>AI automation services for small and mid-size businesses</strong> is estimated at over $100 billion and growing at 35% year-over-year. Most of that money isn't going to massive consulting firms. It's going to nimble operators &mdash; freelancers, small agencies, and solo consultants &mdash; who can speak the language of a local business owner and deliver real results.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-number">33.2M</div>
+        <div class="stat-label">Small businesses in the US</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">91%</div>
+        <div class="stat-label">Aware of AI, but haven't adopted</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">$100B+</div>
+        <div class="stat-label">SMB AI services market</div>
+      </div>
+    </div>
+
+    <h3>Why Local Businesses Are Desperate for This</h3>
+
+    <p>Talk to any small business owner for five minutes and you'll hear the same pain points:</p>
+
+    <ul>
+      <li><strong>"I spend two hours a day answering the same questions."</strong> &mdash; Dental office manager</li>
+      <li><strong>"We get leads from our website but nobody follows up fast enough."</strong> &mdash; Real estate team lead</li>
+      <li><strong>"I know I should be asking for reviews, but we just forget."</strong> &mdash; Med spa owner</li>
+      <li><strong>"Every time we onboard a new client, something gets missed."</strong> &mdash; Law firm partner</li>
+      <li><strong>"I'm paying someone $20/hour to copy-paste data between spreadsheets."</strong> &mdash; HVAC company owner</li>
+    </ul>
+
+    <p>Every single one of these problems can be solved with a Make.com scenario and a few connected tools. And every single one of these business owners would <strong>gladly pay $500-3,000 per month</strong> to make the problem go away &mdash; especially if you show them the math.</p>
+
+    <div class="callout">
+      <div class="callout-icon">&#x1f4a1;</div>
+      <p><strong>The math that closes deals:</strong> A med spa that loses 30% of incoming leads because follow-up takes more than 5 minutes is leaving roughly $8,000-15,000 per month on the table. Your $1,500/month service pays for itself many times over. When you frame your price against <em>their lost revenue</em>, the conversation changes entirely.</p>
+    </div>
+
+    <h3>Why You &mdash; and Why Now</h3>
+
+    <p>You don't need an engineering degree. You don't need venture capital. You don't need to build software from scratch. The tools that exist today &mdash; Make.com, Zapier, ChatGPT, Claude &mdash; have turned what used to require a team of developers into something a single motivated person can learn in a weekend and sell the following Monday.</p>
+
+    <p>The window is open <em>right now</em> because:</p>
+
+    <ol>
+      <li><strong>Demand massively exceeds supply.</strong> There aren't enough people who can translate AI capability into real business workflows. Most "AI consultants" are selling vaporware. You'll sell results.</li>
+      <li><strong>The tools just got good enough.</strong> Make.com's visual interface, GPT-4 and Claude's reliability, and plug-and-play integrations mean you can build production-grade automations with no code.</li>
+      <li><strong>Enterprise firms don't want these clients.</strong> Accenture and McKinsey aren't going after a 4-location dental practice. That leaves the entire local business market wide open for operators like you.</li>
+      <li><strong>Recurring revenue model.</strong> Unlike web design (one-and-done), automations need maintenance, optimization, and expansion. You're building a book of monthly retainers, not chasing one-off projects.</li>
+    </ol>
+
+    <p>This guide is the playbook. I'm going to show you exactly what to sell, who to sell it to, how to deliver it, and how to scale it. Every template, script, and strategy in here has been tested in the real world.</p>
+
+    <p>Let's get to work.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 1 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 1</div>
+    <h2>Skills You Already Have (Or Can Learn in a Weekend)</h2>
+
+    <p>The biggest lie in the AI services space is that you need to be technical. You don't. The skills that actually close deals and deliver results are <strong>communication, curiosity, and the ability to follow a tutorial</strong>. If you can set up a Shopify store or figure out how to use Canva, you can do this.</p>
+
+    <p>Here's the actual skill stack you need, and how long each takes to learn:</p>
+
+    <h3>Make.com (4-8 hours to learn the basics)</h3>
+
+    <p>Make.com (formerly Integromat) is a visual automation platform. You connect apps together by dragging and dropping modules on a canvas. No code. When something happens in App A (a new form submission, an email, a calendar booking), Make.com automatically triggers actions in App B, C, and D.</p>
+
+    <p><strong>What to learn first:</strong></p>
+    <ul>
+      <li>How to create a scenario (Make.com's word for an automation workflow)</li>
+      <li>How to connect common apps: Google Sheets, Gmail, Slack, CRM tools</li>
+      <li>How to use routers (if X, do this; if Y, do that)</li>
+      <li>How to use the HTTP module to connect to AI APIs like OpenAI and Anthropic</li>
+      <li>How to set up error handling so automations don't silently break</li>
+    </ul>
+
+    <div class="card card-green">
+      <h4>Weekend Learning Plan for Make.com</h4>
+      <p><strong>Saturday morning (2 hrs):</strong> Create a free account. Complete Make.com's official "Getting Started" tutorials. Build your first scenario: "When I get an email with a specific subject line, save the attachment to Google Drive and send me a Slack notification."</p>
+      <p><strong>Saturday afternoon (2 hrs):</strong> Build a lead follow-up scenario: "When a new row appears in a Google Sheet, wait 2 minutes, then send a personalized email via Gmail." Add a router: if the lead source is "website," send Email Template A; if it's "referral," send Template B.</p>
+      <p><strong>Sunday (3-4 hrs):</strong> Connect the OpenAI module to generate personalized email content dynamically. Build a review request automation that sends an SMS (via Twilio) 24 hours after a service appointment. Set up error notifications so you get a Slack message if anything fails.</p>
+      <p style="margin-bottom:0"><strong>By Sunday night,</strong> you'll have built three real automations that you can demo to potential clients.</p>
+    </div>
+
+    <h3>ChatGPT &amp; Claude for Content (1-2 hours)</h3>
+
+    <p>You'll use AI language models constantly in this business. Not as a gimmick to sell &mdash; as a tool you use daily to:</p>
+
+    <ul>
+      <li><strong>Write email sequences</strong> for client automations (follow-ups, onboarding emails, review requests)</li>
+      <li><strong>Generate personalized outreach</strong> for your own prospecting</li>
+      <li><strong>Draft SOPs and documentation</strong> for clients so they understand what you built</li>
+      <li><strong>Analyze a business's online presence</strong> during free audits (paste their website copy and ask Claude to identify automation opportunities)</li>
+      <li><strong>Troubleshoot Make.com scenarios</strong> &mdash; describe the error, get a fix</li>
+    </ul>
+
+    <p>The skill here isn't "prompt engineering." It's knowing <strong>when to use AI and what to ask for</strong>. You'll develop this naturally as you do the work.</p>
+
+    <h3>Basic Email Marketing (1 hour)</h3>
+
+    <p>Many of the automations you'll build for clients involve email. You should understand the basics:</p>
+
+    <ul>
+      <li>What open rates and click rates mean and what's "good" (20%+ open rate, 2%+ click rate)</li>
+      <li>Why personalization matters (using a first name in a subject line can increase open rates by 26%)</li>
+      <li>The concept of sequences &mdash; a series of emails triggered by an action, spaced out over days</li>
+      <li>How to avoid spam filters (don't use all caps, limit exclamation marks, include an unsubscribe link)</li>
+    </ul>
+
+    <h3>Basic CRM Concepts (30 minutes)</h3>
+
+    <p>Many clients will use a CRM &mdash; or need you to set one up. You don't need to master any specific CRM. You need to understand the concept: <strong>leads come in, they move through stages, actions happen at each stage.</strong> That's it. Whether the client uses HubSpot, GoHighLevel, or a Google Sheet, the logic is the same.</p>
+
+    <h3>Screen Recording with Loom (15 minutes)</h3>
+
+    <p>Loom will become your secret weapon for both sales and delivery. A 3-minute Loom video walking a prospect through their automation opportunities is worth more than any proposal document. Learn how to record your screen, your face, and speak clearly. That's the whole skill.</p>
+
+    <div class="card card-warning">
+      <h4>What You Don't Need</h4>
+      <ul>
+        <li>You don't need to know Python, JavaScript, or any programming language</li>
+        <li>You don't need a degree in anything &mdash; computer science, marketing, or otherwise</li>
+        <li>You don't need prior freelancing or agency experience</li>
+        <li>You don't need to understand machine learning, neural networks, or model training</li>
+        <li>You don't need a fancy website to start (though one helps later)</li>
+      </ul>
+      <p style="margin-bottom:0">You need to be able to learn tools, understand business problems, and communicate clearly. That's the bar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 2 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 2</div>
+    <h2>Picking Your Niche</h2>
+
+    <p>The fastest way to go from zero to revenue is to pick a niche and go deep. When you specialize, three things happen: your marketing gets sharper, your delivery gets faster (because you're building the same types of automations repeatedly), and your referrals compound (businesses talk to other businesses in their industry).</p>
+
+    <p>Here are the top five niches for AI automation services, ranked by a combination of willingness to pay, pain intensity, and ease of delivery.</p>
+
+    <h3>1. Med Spas &amp; Aesthetic Clinics</h3>
+
+    <div class="card card-accent">
+      <p><strong>Why they're ideal:</strong> High customer lifetime value ($2,000-10,000+), appointment-based model, heavy reliance on reviews and reputation, typically 2-15 locations. They make enough money to pay for automation without blinking, and they have real operational pain.</p>
+      <p><strong>Key automations they need:</strong></p>
+      <ul>
+        <li>Lead follow-up within 60 seconds of form fill (this alone can increase conversion by 30-50%)</li>
+        <li>Automated review requests after appointments via text</li>
+        <li>Appointment reminders and no-show follow-ups</li>
+        <li>New patient onboarding sequences (intake forms, what to expect, pre-appointment prep)</li>
+        <li>Reactivation campaigns for patients who haven't booked in 90+ days</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Typical deal size:</strong> $1,500-3,500/month retainer</p>
+    </div>
+
+    <h3>2. Real Estate Teams &amp; Brokerages</h3>
+
+    <div class="card card-accent">
+      <p><strong>Why they're ideal:</strong> Extremely lead-dependent, notoriously bad at follow-up, commission-driven (so ROI is easy to prove). A single deal they close because of your automation could be worth $10,000-30,000 in commission.</p>
+      <p><strong>Key automations:</strong></p>
+      <ul>
+        <li>Instant lead response from Zillow, Realtor.com, and website forms</li>
+        <li>Long-term nurture sequences (drip campaigns over 6-18 months for cold leads)</li>
+        <li>Open house follow-up automation</li>
+        <li>Transaction coordination workflows (checklists, deadline reminders, document collection)</li>
+        <li>Client anniversary and check-in automations for referral generation</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Typical deal size:</strong> $1,000-2,500/month retainer</p>
+    </div>
+
+    <h3>3. Law Firms (especially PI, Family, Immigration)</h3>
+
+    <div class="card card-accent">
+      <p><strong>Why they're ideal:</strong> High case values ($5K-500K+), intake process is critical and often broken, willing to pay premium prices, slow to adopt tech (meaning less competition for you).</p>
+      <p><strong>Key automations:</strong></p>
+      <ul>
+        <li>Lead intake and qualification (auto-respond, qualify based on case type, route to correct attorney)</li>
+        <li>Client onboarding workflows (engagement letter, document collection, fee agreement)</li>
+        <li>Case status update automations (so paralegals stop fielding "where's my case?" calls)</li>
+        <li>Review request automations post-resolution</li>
+        <li>Referral partner nurture campaigns</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Typical deal size:</strong> $2,000-5,000/month retainer</p>
+    </div>
+
+    <h3>4. Home Services (HVAC, Plumbing, Roofing, Landscaping)</h3>
+
+    <div class="card card-accent">
+      <p><strong>Why they're ideal:</strong> Volume-based businesses, heavily review-dependent, seasonal demand spikes they need to capitalize on, owner-operators who are too busy to manage admin work.</p>
+      <p><strong>Key automations:</strong></p>
+      <ul>
+        <li>Speed-to-lead: instant response when someone fills out a quote request</li>
+        <li>Estimate follow-ups (most home service companies send an estimate and never follow up)</li>
+        <li>Automated review requests after job completion</li>
+        <li>Seasonal reactivation campaigns ("Time for your annual AC tune-up")</li>
+        <li>Technician dispatch notifications and job completion tracking</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Typical deal size:</strong> $800-2,000/month retainer</p>
+    </div>
+
+    <h3>5. Restaurants &amp; Hospitality</h3>
+
+    <div class="card card-accent">
+      <p><strong>Why they're ideal:</strong> Thin margins make efficiency critical, high volume of customer interactions, reputation management is life or death, and most restaurant groups own multiple locations.</p>
+      <p><strong>Key automations:</strong></p>
+      <ul>
+        <li>Review monitoring and auto-response (AI-generated replies to Google and Yelp reviews)</li>
+        <li>Reservation confirmation and reminder sequences</li>
+        <li>Post-visit feedback collection and issue escalation</li>
+        <li>Employee onboarding and training document distribution</li>
+        <li>Catering inquiry follow-up and proposal automation</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Typical deal size:</strong> $500-1,500/month retainer</p>
+    </div>
+
+    <h3>Specialist vs. Generalist: The Decision</h3>
+
+    <p>My recommendation: <strong>start as a specialist, expand later.</strong></p>
+
+    <p>Pick one niche. Build your first 3-5 clients in that niche. Develop your case studies, templates, and repeatable processes. Once you have a system, you can expand to adjacent niches or go broader.</p>
+
+    <p>The reason is simple: when you email a med spa owner and say "I help med spas automate their lead follow-up and review generation," that's a different conversation than "I help businesses with AI." The first one gets replies. The second one gets deleted.</p>
+
+    <div class="callout">
+      <p><strong>How to choose your niche:</strong> Pick the industry where you have the most personal connection, experience, or interest. Used to work at a dental office? Start there. Your uncle owns a plumbing company? Start there. Have zero connections? Start with med spas or real estate &mdash; they have the highest pain and the most willingness to pay.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 3 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 3</div>
+    <h2>Your Service Menu &amp; Pricing</h2>
+
+    <p>Here's what to actually sell. These are the four core service packages I recommend starting with. Each one solves a specific, painful problem that business owners immediately understand.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-price">$300-500 <span>/month</span></div>
+        <div class="pricing-desc">Review &amp; Reputation Automation</div>
+        <ul>
+          <li>Automated review request via SMS after service</li>
+          <li>AI-generated review responses (Google, Yelp)</li>
+          <li>Negative review alert to owner</li>
+          <li>Monthly reputation report</li>
+          <li>Setup: $500 one-time</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-name">Growth</div>
+        <div class="pricing-price">$500-1,500 <span>/month</span></div>
+        <div class="pricing-desc">Lead Follow-Up Automation</div>
+        <ul>
+          <li>Instant lead response (under 60 sec)</li>
+          <li>Multi-channel follow-up (email + SMS)</li>
+          <li>AI-personalized messaging</li>
+          <li>Lead scoring and routing</li>
+          <li>CRM integration</li>
+          <li>Setup: $750-1,000 one-time</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-name">Professional</div>
+        <div class="pricing-price">$1,000-2,000 <span>setup</span></div>
+        <div class="pricing-desc">Onboarding Workflow</div>
+        <ul>
+          <li>New client welcome sequence</li>
+          <li>Document collection automation</li>
+          <li>Internal task assignment</li>
+          <li>Progress tracking dashboard</li>
+          <li>Optional retainer: $300-500/mo</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-name">Enterprise</div>
+        <div class="pricing-price">$2,000-5,000 <span>/month</span></div>
+        <div class="pricing-desc">Full Automation Suite</div>
+        <ul>
+          <li>Everything in Growth + Starter</li>
+          <li>Client onboarding workflows</li>
+          <li>Internal operations automation</li>
+          <li>Custom AI chatbot/assistant</li>
+          <li>Dedicated Slack channel</li>
+          <li>Monthly strategy calls</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>How to Price with Confidence</h3>
+
+    <p>Pricing is the number one thing new automation consultants get wrong. They charge too little because they feel like imposters. Here's the framework that fixes that:</p>
+
+    <div class="card card-green">
+      <h4>The 10x Rule</h4>
+      <p>Your service should deliver at least 10x the value of what you charge. If you charge $1,000/month for lead follow-up automation and that automation helps the client close just 2 extra leads per month at an average deal value of $5,000, that's $10,000 in additional revenue for $1,000. <strong>That's a 10:1 return.</strong></p>
+      <p style="margin-bottom:0">When you present pricing this way &mdash; anchored to the client's revenue impact, not your hours &mdash; objections evaporate.</p>
+    </div>
+
+    <h4>What It Actually Costs You to Deliver</h4>
+
+    <p>Here's a transparent breakdown of your costs per client. Understanding this helps you price profitably:</p>
+
+    <table>
+      <tr><th>Item</th><th>Monthly Cost</th></tr>
+      <tr><td>Make.com operations (per client avg.)</td><td>$5-30</td></tr>
+      <tr><td>OpenAI/Claude API usage (per client avg.)</td><td>$3-20</td></tr>
+      <tr><td>Twilio SMS costs (per client avg.)</td><td>$10-40</td></tr>
+      <tr><td>Your time: maintenance &amp; monitoring</td><td>2-4 hrs/month</td></tr>
+      <tr><td><strong>Total hard cost per client</strong></td><td><strong>$18-90 + your time</strong></td></tr>
+    </table>
+
+    <p>If you charge $1,000/month and spend $50 in tool costs and 3 hours of your time, your effective hourly rate is over <strong>$300/hour</strong>. And as you build templates and refine your processes, your delivery time drops while your prices stay the same.</p>
+
+    <h3>Packaging Tiers: The Psychology</h3>
+
+    <p>Always present three options. This is a well-documented psychological principle called the <strong>decoy effect</strong>. Most clients pick the middle option. So make the middle option the one you actually want them to buy.</p>
+
+    <p>When you walk into a pitch meeting:</p>
+    <ol>
+      <li>Present the Starter package as "where most businesses begin"</li>
+      <li>Present the Growth package as "what I'd recommend based on what we discussed" (this is your target)</li>
+      <li>Present the Enterprise package as "for businesses that want the full transformation"</li>
+    </ol>
+
+    <p>If the prospect was thinking $500/month, seeing a $5,000/month option makes $1,500/month feel reasonable. If they pick the Starter, great &mdash; you have a client. Upsell them in 60 days when they see the review automation working.</p>
+
+    <h4>When to Offer Setup Fees vs. Monthly Only</h4>
+
+    <ul>
+      <li><strong>Charge setup fees</strong> for project-based work (onboarding workflows, one-time buildouts) and when you need cash flow early on.</li>
+      <li><strong>Waive setup fees</strong> when you want to reduce friction and the client is committing to a 3+ month retainer. This accelerates close rates.</li>
+      <li><strong>Never discount monthly pricing.</strong> If they push back on price, add more value (an extra automation, a monthly call) rather than dropping your rate. Once you drop your price for one client, it's hard to charge full price to the next.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 4 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 4</div>
+    <h2>Finding Your First Client</h2>
+
+    <p>This is where most people stall. They learn the tools, build some demo scenarios, set up a website... and then never actually reach out to anyone. This chapter eliminates that problem by giving you the exact scripts, strategies, and systems to land your first paying client within 30 days.</p>
+
+    <h3>Strategy 1: Cold Email (Highest Volume)</h3>
+
+    <p>Cold email works. Not the spray-and-pray "Dear Business Owner" garbage. Targeted, personalized, value-first emails that show you've done your homework. Here are three scripts you can use today. Customize them for your niche.</p>
+
+    <div class="email-block">
+      <div class="subject">EMAIL SCRIPT #1 &mdash; The Observation Email</div>
+      <p><strong>Subject:</strong> Quick question about <span class="placeholder">[Business Name]</span>'s follow-up process</p>
+      <p>Hi <span class="placeholder">[First Name]</span>,</p>
+      <p>I was looking at <span class="placeholder">[Business Name]</span>'s website and noticed you're running Google Ads to a contact form. Nice setup.</p>
+      <p>Quick question &mdash; when someone fills out that form at 9pm on a Tuesday, how fast does your team get back to them? In most <span class="placeholder">[industry]</span> businesses I've worked with, it's usually 4-12 hours. The problem is that 78% of customers buy from the first business that responds.</p>
+      <p>I've been helping <span class="placeholder">[industry]</span> businesses set up instant AI-powered follow-up so every lead gets a personalized response within 60 seconds &mdash; text and email &mdash; 24/7. No extra staff needed.</p>
+      <p>Would a quick 10-minute call be worth it to see if this could work for <span class="placeholder">[Business Name]</span>?</p>
+      <p style="margin-bottom:0">Best,<br><span class="placeholder">[Your Name]</span></p>
+    </div>
+
+    <div class="email-block">
+      <div class="subject">EMAIL SCRIPT #2 &mdash; The Review Gap Email</div>
+      <p><strong>Subject:</strong> <span class="placeholder">[Business Name]</span> vs. <span class="placeholder">[Competitor Name]</span> on Google</p>
+      <p>Hi <span class="placeholder">[First Name]</span>,</p>
+      <p>I was researching <span class="placeholder">[industry]</span> businesses in <span class="placeholder">[City]</span> and noticed something interesting. <span class="placeholder">[Business Name]</span> has <span class="placeholder">[X]</span> Google reviews with a <span class="placeholder">[X.X]</span> average. <span class="placeholder">[Competitor Name]</span> down the street has <span class="placeholder">[Y]</span> reviews.</p>
+      <p>The gap isn't about service quality &mdash; it's about systems. They likely have an automated process that texts every customer after their appointment asking for a review. It takes 30 seconds for the customer and zero effort from staff.</p>
+      <p>I set up these exact systems for <span class="placeholder">[industry]</span> businesses. Most see a 40-60% increase in monthly reviews within 60 days.</p>
+      <p>Would it be worth 10 minutes to show you how it works?</p>
+      <p style="margin-bottom:0">Best,<br><span class="placeholder">[Your Name]</span></p>
+    </div>
+
+    <div class="email-block">
+      <div class="subject">EMAIL SCRIPT #3 &mdash; The Free Audit Offer</div>
+      <p><strong>Subject:</strong> I built something for <span class="placeholder">[Business Name]</span> (no strings)</p>
+      <p>Hi <span class="placeholder">[First Name]</span>,</p>
+      <p>I specialize in AI automation for <span class="placeholder">[industry]</span> businesses, and I just did a quick audit of <span class="placeholder">[Business Name]</span>'s online presence and operations. Found 3 areas where automation could save your team 10-15 hours/week and potentially add <span class="placeholder">[$X,000]</span>/month in revenue.</p>
+      <p>I put together a short walkthrough video (5 min) showing exactly what I found and how I'd fix it. No pitch, no obligation &mdash; just genuine insights you can use whether you work with me or not.</p>
+      <p>Want me to send it over?</p>
+      <p style="margin-bottom:0">Best,<br><span class="placeholder">[Your Name]</span></p>
+    </div>
+
+    <div class="card card-green">
+      <h4>Cold Email Numbers to Know</h4>
+      <ul>
+        <li><strong>Expect a 3-8% reply rate</strong> on well-targeted, personalized cold emails</li>
+        <li><strong>Send 20-30 emails per day</strong> (more than that and you risk spam filters)</li>
+        <li><strong>Always send a follow-up.</strong> 80% of sales happen after the 5th touchpoint. Send 3 follow-ups, spaced 3-4 days apart.</li>
+        <li><strong>Best send times:</strong> Tuesday through Thursday, 8-10am local time for the recipient</li>
+        <li><strong>Finding emails:</strong> Use Apollo.io (free tier gives 50 credits/month), Hunter.io, or just check the business's website contact page</li>
+      </ul>
+    </div>
+
+    <h3>Strategy 2: LinkedIn Outreach</h3>
+
+    <p>LinkedIn is powerful because business owners see you as a professional peer, not a cold caller. Here's the play:</p>
+
+    <ol>
+      <li><strong>Optimize your profile.</strong> Headline should say what you do for whom: "I help [industry] businesses automate their lead follow-up and save 15+ hours/week." Not "AI Enthusiast | Entrepreneur | Lifelong Learner."</li>
+      <li><strong>Post 3-5x per week.</strong> Share automation wins, tips, before/after stories. Doesn't need to be viral. Consistency builds credibility.</li>
+      <li><strong>Send connection requests</strong> to business owners in your target niche with a short note: "Hi [Name], I work with [industry] businesses on AI automation. Thought it'd be good to connect." No pitch. Just connect.</li>
+      <li><strong>After they accept,</strong> send a value-first message: share a relevant tip, article, or insight. Then, on the third message, offer a free audit.</li>
+    </ol>
+
+    <h3>Strategy 3: Local Networking &amp; Referrals</h3>
+
+    <ul>
+      <li><strong>BNI or local chamber of commerce</strong> &mdash; show up, give a 60-second pitch, collect cards. These groups are full of business owners who need exactly what you offer.</li>
+      <li><strong>Partner with adjacent service providers.</strong> Web designers, marketing agencies, and bookkeepers all serve the same clients. Offer them a referral fee (10-15% of first 3 months) for introductions.</li>
+      <li><strong>Offer to speak</strong> at local business events about "3 Ways AI Can Save Your Business 10 Hours a Week." Position yourself as the expert. Collect business cards. Follow up with audit offers.</li>
+    </ul>
+
+    <h3>Strategy 4: The Loom Video Approach (Highest Conversion)</h3>
+
+    <p>This is the most effective strategy in this entire guide. Here's how it works:</p>
+
+    <ol>
+      <li>Pick a business. Spend 15 minutes researching their website, Google reviews, and social media.</li>
+      <li>Open Loom. Record a 3-5 minute video where you share your screen and walk through 2-3 specific automation opportunities you've identified for their business. Be specific: "I see you're using this contact form. Right now when someone fills it out, it probably goes to an email inbox. Here's what I'd build instead..."</li>
+      <li>Send the Loom link via email (use Script #3 above) or LinkedIn DM.</li>
+      <li>The video does all the selling for you. It shows you understand their business, it demonstrates your expertise, and it creates reciprocity &mdash; you gave them something valuable for free. Most recipients feel compelled to at least take a call.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Expected conversion rates:</strong> A personalized Loom video converts at roughly 30-50% to a booked call. Compare that to 3-8% for cold email alone. If you send 5 Loom videos a week, you should book 2-3 calls. Do that for 3 weeks and you'll close your first client.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 5 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 5</div>
+    <h2>The Free AI Audit</h2>
+
+    <p>The free audit is your foot in the door. It's not a gimmick &mdash; it's a genuine service that delivers value upfront and naturally leads to a paid engagement. Here's the exact process, script, and template.</p>
+
+    <h3>Before the Call: Prep Work (15-20 minutes)</h3>
+
+    <p>Do this research before you get on any audit call. It's what separates you from every other person pitching "AI services."</p>
+
+    <ul>
+      <li><strong>Visit their website.</strong> Note their contact forms, booking system, chat widget (or lack of one), and lead capture methods.</li>
+      <li><strong>Check their Google Business Profile.</strong> How many reviews? What's the average rating? How fast do they respond to reviews? Are there unanswered negative reviews?</li>
+      <li><strong>Look at their social media.</strong> Are they active? Do they respond to DMs and comments? Is there a link to book or inquire?</li>
+      <li><strong>Call their business as a mystery shopper.</strong> Ask about a service. How long does it take to get a callback? What's the experience like? (This alone reveals enormous automation opportunities.)</li>
+      <li><strong>Check competitors.</strong> Find 2-3 competitors with better reviews, faster response times, or more sophisticated follow-up. You'll reference these in the audit.</li>
+    </ul>
+
+    <h3>The Audit Call Script (30-45 minutes)</h3>
+
+    <div class="card card-accent">
+      <h4>Part 1: Discovery (10-15 min)</h4>
+      <p>Start by asking questions. Do not pitch. Your goal is to understand their pain before you present solutions.</p>
+      <ul>
+        <li>"Walk me through what happens when a new lead comes in. Someone fills out your website form &mdash; then what?"</li>
+        <li>"How long does it typically take your team to follow up with a new inquiry?"</li>
+        <li>"What does your review generation process look like right now? Do you have a system for asking happy customers to leave reviews?"</li>
+        <li>"When you bring on a new client, what does the onboarding process look like? Is any of that automated?"</li>
+        <li>"What's the most repetitive task your team does every day? The thing you wish you could just make go away?"</li>
+        <li>"Roughly how many leads do you get per month? What percentage would you say actually convert to customers?"</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Take detailed notes.</strong> You'll reference their exact words when you present findings.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h4>Part 2: Present Findings (10-15 min)</h4>
+      <p>Now share what you found. Use specific numbers whenever possible.</p>
+      <p>"Based on what you've told me and my research, I've identified three key areas where automation could make a significant impact:"</p>
+      <ol>
+        <li><strong>Lead Response Time.</strong> "You mentioned leads sometimes wait 4-6 hours for a response. Research shows that responding within 5 minutes makes you 21x more likely to qualify a lead. I'd set up an instant response system that texts and emails every lead within 60 seconds, 24/7."</li>
+        <li><strong>Review Generation.</strong> "You have [X] reviews. [Competitor] has [Y]. The gap isn't about service &mdash; it's about systems. I'd build an automated flow that texts every customer 2 hours after their appointment with a direct link to leave a Google review."</li>
+        <li><strong>Onboarding/Operations.</strong> "You mentioned your team spends roughly [X] hours per week on [specific task]. That's [X x 52] hours per year of repetitive work that can be fully automated."</li>
+      </ol>
+    </div>
+
+    <div class="card card-accent">
+      <h4>Part 3: The Close (5-10 min)</h4>
+      <p>"Here's what I'd recommend as a starting point. Based on everything we discussed, the lead follow-up automation alone would likely have the biggest impact on your revenue. Here's what that looks like..."</p>
+      <p>Present your Growth package. Walk through exactly what's included. Tie every feature back to a problem they mentioned. Then:</p>
+      <p><strong>"I have availability to start on this next week. The setup takes about 5-7 business days, and you'd start seeing results immediately. Want to move forward?"</strong></p>
+      <p>If they need to think about it: "Totally understand. I'll send you a summary of everything we discussed today along with a proposal. Can I follow up on Thursday?"</p>
+      <p style="margin-bottom:0"><strong>Always set a specific follow-up date.</strong> "I'll follow up sometime" means it never happens.</p>
+    </div>
+
+    <h3>The Audit Report Template</h3>
+
+    <p>After the call, send a clean summary document. Here's the template:</p>
+
+    <div class="audit-section">
+      <h5>AI Automation Audit &mdash; <span style="color:var(--text-muted)">[Business Name]</span></h5>
+      <p style="font-size:14px;color:var(--text-muted)">Prepared by [Your Name] | [Date] | jedaiflow.com</p>
+    </div>
+
+    <div class="audit-section">
+      <h5>Current State Assessment</h5>
+      <ul class="checklist">
+        <li>Average lead response time: _____ (industry benchmark: under 5 min)</li>
+        <li>Google reviews: _____ (top competitor: _____)</li>
+        <li>Lead-to-customer conversion rate: _____%</li>
+        <li>Hours spent weekly on manual/repetitive tasks: _____</li>
+        <li>Current tech stack: _____</li>
+        <li>Current automation tools in use: _____</li>
+      </ul>
+    </div>
+
+    <div class="audit-section">
+      <h5>Opportunity #1: Lead Follow-Up Automation</h5>
+      <ul class="checklist">
+        <li>Problem: Leads wait [X hours] for first contact</li>
+        <li>Impact: Estimated [X] lost leads/month = $[X] in lost revenue</li>
+        <li>Solution: Instant AI-powered text + email response within 60 seconds</li>
+        <li>Expected result: 25-40% increase in lead conversion rate</li>
+        <li>Implementation time: 5-7 business days</li>
+      </ul>
+    </div>
+
+    <div class="audit-section">
+      <h5>Opportunity #2: Review Generation System</h5>
+      <ul class="checklist">
+        <li>Problem: Only [X] reviews vs competitor's [Y] reviews</li>
+        <li>Impact: Lower search ranking, less social proof, losing clicks to competitors</li>
+        <li>Solution: Automated post-service text with direct Google review link</li>
+        <li>Expected result: 40-60% increase in monthly new reviews</li>
+        <li>Implementation time: 2-3 business days</li>
+      </ul>
+    </div>
+
+    <div class="audit-section">
+      <h5>Opportunity #3: [Custom Based on Discovery]</h5>
+      <ul class="checklist">
+        <li>Problem: _____</li>
+        <li>Impact: _____</li>
+        <li>Solution: _____</li>
+        <li>Expected result: _____</li>
+        <li>Implementation time: _____</li>
+      </ul>
+    </div>
+
+    <div class="audit-section">
+      <h5>Recommended Package &amp; Investment</h5>
+      <ul class="checklist">
+        <li>Package: [Growth / Enterprise / Custom]</li>
+        <li>Monthly retainer: $[X]/month</li>
+        <li>One-time setup fee: $[X] (waived with 3-month commitment)</li>
+        <li>Expected ROI: [X]:1 based on [specific calculation]</li>
+        <li>Start date: Available [date]</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <p><strong>Pro tip:</strong> Send this audit report as a PDF within 2 hours of the call. Speed signals professionalism and keeps the momentum going. Use the Loom recording of the call (with their permission) as a companion to the written document.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 6 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 6</div>
+    <h2>Delivering the Work</h2>
+
+    <p>You've closed the deal. Now you need to deliver. This is where trust is built or broken. A clean, professional delivery process is what turns a one-month client into a twelve-month retainer and a referral source.</p>
+
+    <h3>Project Timeline: What to Expect</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day">Day 1</div>
+        <div class="timeline-title">Kickoff &amp; Access Collection</div>
+        <div class="timeline-desc">Send the client a kickoff questionnaire (use a Typeform or Google Form) to collect all access credentials, logins, and brand assets. Schedule a 30-minute kickoff call to align on priorities, timeline, and communication preferences. Set them up on a shared Slack channel or email thread dedicated to the project.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Days 2-3</div>
+        <div class="timeline-title">Build Phase 1 &mdash; Core Automation</div>
+        <div class="timeline-desc">Build the primary automation scenario in Make.com. For lead follow-up, this means: connect their form/CRM as the trigger, build the instant response email and SMS, set up the follow-up sequence (Day 1, Day 3, Day 7), configure lead routing and notifications, and build the error handling.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 4</div>
+        <div class="timeline-title">Internal Testing</div>
+        <div class="timeline-desc">Run the entire automation end-to-end with test data. Submit test forms, verify emails are sent, check SMS delivery, confirm CRM entries are created, test edge cases (what if a required field is blank? what if the phone number is invalid?). Fix everything before the client sees it.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 5</div>
+        <div class="timeline-title">Client Review &amp; Testing</div>
+        <div class="timeline-desc">Walk the client through the automation on a Loom video or live call. Let them submit a test lead and watch the entire flow happen in real time. Get feedback on messaging, timing, and tone. Make requested adjustments.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Days 6-7</div>
+        <div class="timeline-title">Go Live &amp; Monitor</div>
+        <div class="timeline-desc">Switch the automation to live mode. Monitor closely for the first 48 hours. Check every execution in Make.com's log. Fix any issues immediately. Send the client a "we're live" message with a summary of what's running.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 14</div>
+        <div class="timeline-title">Two-Week Check-In</div>
+        <div class="timeline-desc">Schedule a 15-minute call to review early results. Share metrics: how many leads were auto-responded to, response times, any issues caught. This is also when you plant the seed for the next automation: "Based on what I'm seeing, the review automation would be a great next step."</div>
+      </div>
+    </div>
+
+    <h3>Setting Up Make.com for Clients: Best Practices</h3>
+
+    <div class="card card-accent">
+      <h4>Account Structure</h4>
+      <ul>
+        <li><strong>Use your own Make.com account</strong> (not the client's) for all scenarios. This keeps you in control, makes maintenance easier, and ensures the client can't accidentally break something. Bill the Make.com costs as part of your retainer.</li>
+        <li><strong>Create a separate folder in Make.com</strong> for each client to keep things organized.</li>
+        <li><strong>Name scenarios clearly:</strong> "[Client Name] - Lead Follow-Up - Main" not "Scenario 47."</li>
+        <li><strong>Set up error notifications</strong> for every scenario. Route them to your Slack or email so you catch issues before the client does.</li>
+      </ul>
+    </div>
+
+    <div class="card card-accent">
+      <h4>Testing Checklist</h4>
+      <p>Before going live with any automation, test every single one of these:</p>
+      <ul>
+        <li>Happy path (everything works as expected)</li>
+        <li>Missing data (what if a field is blank?)</li>
+        <li>Invalid data (wrong email format, wrong phone format)</li>
+        <li>Duplicate entries (same lead submits twice)</li>
+        <li>Timing (are delays working correctly? is the 2-hour wait actually 2 hours?)</li>
+        <li>Error handling (if an API call fails, does the error handler catch it and notify you?)</li>
+        <li>Volume (if 10 leads come in at once, does everything process correctly?)</li>
+        <li>Reply handling (if a lead replies to the automated email, where does it go?)</li>
+      </ul>
+    </div>
+
+    <h3>Training the Client</h3>
+
+    <p>Once the automation is live, the client needs to understand two things: (1) what the automation does and (2) what they need to do (which should be almost nothing).</p>
+
+    <p>Create a short Loom walkthrough (5-8 minutes) that covers:</p>
+    <ul>
+      <li>What triggers the automation and what happens at each step</li>
+      <li>Where they can see leads/data (their CRM, a Google Sheet, etc.)</li>
+      <li>What to do if something seems off (message you in Slack, not try to fix it)</li>
+      <li>How to pause the automation if needed (though they should contact you first)</li>
+    </ul>
+
+    <h3>Documentation Template</h3>
+
+    <p>For every client, create a simple one-page document (Google Doc or Notion page) that includes:</p>
+
+    <div class="card card-green">
+      <h4>Client Automation Documentation</h4>
+      <p><strong>Client:</strong> [Business Name]</p>
+      <p><strong>Active Automations:</strong></p>
+      <ol>
+        <li>[Automation Name] &mdash; [What it does] &mdash; [Trigger] &mdash; [Status: Active]</li>
+        <li>[Automation Name] &mdash; [What it does] &mdash; [Trigger] &mdash; [Status: Active]</li>
+      </ol>
+      <p><strong>Connected Tools:</strong> [List all integrated platforms]</p>
+      <p><strong>Key Contacts:</strong> [Who to reach for access issues]</p>
+      <p><strong>Monthly Report:</strong> Sent on [date] via [email/Slack]</p>
+      <p style="margin-bottom:0"><strong>Support:</strong> Message [your Slack channel] or email [your email]</p>
+    </div>
+
+    <p>This documentation protects you if there's ever a question about what was set up, and it makes onboarding a subcontractor later much easier.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 7 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 7</div>
+    <h2>Scaling to $10K/Month</h2>
+
+    <p>$10,000 per month in recurring revenue is the first real milestone. It's the point where this stops being a side hustle and becomes a business. Here's the math and the strategy to get there.</p>
+
+    <h3>The Math</h3>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-number">7-10</div>
+        <div class="stat-label">Clients needed</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">$1,000</div>
+        <div class="stat-label">Avg. monthly retainer</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">15-25</div>
+        <div class="stat-label">Hrs/week to manage</div>
+      </div>
+    </div>
+
+    <p>With an average retainer of $1,000-1,500/month, you need 7-10 clients. At 2-4 hours per client per month in maintenance, that's 14-40 hours per month &mdash; very manageable. Your job shifts from building to maintaining, optimizing, and selling.</p>
+
+    <h3>Lever 1: The Retainer Model</h3>
+
+    <p>Every client should be on a monthly retainer. Here's why it works for both of you:</p>
+
+    <ul>
+      <li><strong>For you:</strong> Predictable recurring revenue, ability to plan and invest, compounding income (every new client adds to your total, not replaces last month's revenue).</li>
+      <li><strong>For the client:</strong> Ongoing maintenance and monitoring, priority support, continuous optimization, and the flexibility to add small automation tweaks without a new project scope every time.</li>
+    </ul>
+
+    <p>Structure your retainers to include:</p>
+    <ol>
+      <li>24/7 monitoring and error resolution</li>
+      <li>Monthly performance report with key metrics</li>
+      <li>Up to [X] hours of optimization or new automation work per month</li>
+      <li>A monthly or quarterly strategy call</li>
+    </ol>
+
+    <h3>Lever 2: Upselling Existing Clients</h3>
+
+    <p>Your easiest sale is always to an existing client who already trusts you. The upsell path is predictable:</p>
+
+    <div class="card card-green">
+      <h4>The Natural Upsell Sequence</h4>
+      <p><strong>Month 1:</strong> Lead follow-up automation &mdash; $1,000/month</p>
+      <p><strong>Month 3:</strong> "Your follow-up is converting great. Want to add review automation? It's another $400/month." &mdash; Client is now $1,400/month</p>
+      <p><strong>Month 5:</strong> "I noticed your onboarding still takes 3 hours per new client. I can automate 80% of that for a one-time $1,500 setup." &mdash; Plus you bump the retainer to $1,600 to maintain it.</p>
+      <p style="margin-bottom:0"><strong>Month 8:</strong> "Let me build you a custom AI chatbot for your website that handles the 20 most common questions. $2,000 setup, adds $500/month to the retainer." &mdash; Client is now $2,100/month.</p>
+    </div>
+
+    <p>A client who started at $1,000/month is now paying $2,100/month &mdash; and they're happy because every addition solved a real problem and delivered measurable ROI.</p>
+
+    <h3>Lever 3: Referral Systems</h3>
+
+    <p>Happy clients refer. But they refer <strong>more</strong> when you make it easy and incentivize it. Two approaches:</p>
+
+    <h4>The Simple Ask</h4>
+    <p>At every quarterly call, ask: "Who else do you know in [industry/city] who might benefit from what we've set up for you?" Most business owners know 2-3 peers. An introduction from a satisfied client is the warmest lead you'll ever get.</p>
+
+    <h4>The Formal Referral Program</h4>
+    <p>Offer existing clients a credit for referrals: "For every business you refer that becomes a client, I'll credit one month of your retainer." For a $1,000/month client, that's a $1,000 incentive to make an introduction. And your acquisition cost is zero &mdash; you're just giving a discount on revenue you already have.</p>
+
+    <h3>Lever 4: Hiring Subcontractors</h3>
+
+    <p>Once you hit 6-7 clients, you'll start feeling the time squeeze. This is when you bring on your first subcontractor. Don't hire an employee &mdash; hire a freelancer on a per-project or per-hour basis.</p>
+
+    <ul>
+      <li><strong>Where to find them:</strong> Upwork, Make.com's community forums, or X/Twitter (search "Make.com freelancer" or "automation consultant")</li>
+      <li><strong>What to delegate first:</strong> The actual build work in Make.com. You handle sales, client communication, strategy, and QA. They handle the technical implementation.</li>
+      <li><strong>What to pay:</strong> $25-50/hour for a competent Make.com builder. A typical client buildout takes 8-15 hours, so you're paying $200-750 for work you're charging $750-2,000 in setup fees for.</li>
+      <li><strong>How to manage them:</strong> Create detailed build specs using Notion or Google Docs. Include the exact scenario map, trigger, modules, and expected outputs. Record a Loom walkthrough of what you want built. Review their work before it goes to the client.</li>
+    </ul>
+
+    <h3>Lever 5: Productizing Your Services</h3>
+
+    <p>Once you've built the same lead follow-up automation for your 5th med spa, you don't need to build it from scratch each time. Create template scenarios in Make.com that you clone and customize for each new client. This drops your delivery time from 15 hours to 3-5 hours and dramatically increases your margins.</p>
+
+    <p>Productized services look like this:</p>
+
+    <table>
+      <tr><th>Product</th><th>Price</th><th>Delivery Time</th><th>Your Time</th></tr>
+      <tr><td>Med Spa Lead Follow-Up Package</td><td>$1,500/mo + $750 setup</td><td>5 days</td><td>4-5 hrs</td></tr>
+      <tr><td>Real Estate Nurture System</td><td>$1,200/mo + $1,000 setup</td><td>7 days</td><td>5-6 hrs</td></tr>
+      <tr><td>Review Generation Engine</td><td>$400/mo + $500 setup</td><td>3 days</td><td>2-3 hrs</td></tr>
+      <tr><td>Client Onboarding Workflow</td><td>$1,500 one-time</td><td>7 days</td><td>6-8 hrs</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>The $10K/month milestone is realistic within 3-6 months</strong> if you're doing consistent outreach. The math: close 2 new clients per month at an average of $1,200/month retainer. By month 6, you have 10-12 clients, with some upsells pushing total MRR past $10K. The key variable is your sales activity. Everything else scales naturally.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 8 -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Chapter 8</div>
+    <h2>Tools of the Trade</h2>
+
+    <p>Here's the complete tool stack you need to run this business, from day one through $10K/month and beyond. I've included what each tool does, what it costs, and whether you need it immediately or can add it later.</p>
+
+    <h3>Essential Tools (Day 1)</h3>
+
+    <table>
+      <tr><th>Tool</th><th>Purpose</th><th>Cost</th></tr>
+      <tr><td><strong>Make.com</strong></td><td>Core automation platform. Where you build all client workflows.</td><td class="cost-paid">Free tier to start, then $9-29/mo (Core/Pro plan as you grow)</td></tr>
+      <tr><td><strong>Google Workspace</strong></td><td>Email (yourname@yourdomain.com), Docs, Sheets, Drive. Professional email is non-negotiable for cold outreach.</td><td class="cost-paid">$7.20/mo</td></tr>
+      <tr><td><strong>Loom</strong></td><td>Screen recording for sales outreach, client training, and async communication. Your highest-ROI prospecting tool.</td><td class="cost-free">Free tier (25 videos), then $15/mo for unlimited</td></tr>
+      <tr><td><strong>Calendly</strong></td><td>Scheduling link for discovery calls and audits. Eliminates back-and-forth.</td><td class="cost-free">Free tier works fine</td></tr>
+      <tr><td><strong>Stripe</strong></td><td>Payment processing for setup fees and monthly retainers. Set up recurring invoices in 2 minutes.</td><td class="cost-paid">2.9% + 30 cents per transaction</td></tr>
+    </table>
+
+    <p><strong>Total Day 1 cost: ~$16/month</strong> (Make.com free tier + Google Workspace + free tiers for everything else)</p>
+
+    <h3>Growth Tools (Month 2-3)</h3>
+
+    <table>
+      <tr><th>Tool</th><th>Purpose</th><th>Cost</th></tr>
+      <tr><td><strong>Notion</strong></td><td>Client project management, internal wiki, documentation, SOPs. Create a template for each client that tracks their automations, access credentials (use a password manager for actual passwords), and monthly reports.</td><td class="cost-free">Free for personal use</td></tr>
+      <tr><td><strong>Slack</strong></td><td>Client communication for higher-tier clients. Create a shared channel for each Enterprise client. Also use for your own team communication once you hire subcontractors.</td><td class="cost-free">Free tier is enough initially</td></tr>
+      <tr><td><strong>Apollo.io</strong></td><td>Finding prospect email addresses and building targeted outreach lists. The free tier gives you 50 email credits per month.</td><td class="cost-free">Free to start, $49/mo for more credits</td></tr>
+      <tr><td><strong>Twilio</strong></td><td>SMS sending for client automations (review requests, lead follow-ups). Pay per message.</td><td class="cost-paid">~$0.0079 per SMS sent</td></tr>
+      <tr><td><strong>OpenAI / Anthropic API</strong></td><td>AI text generation within automations (personalized emails, review responses, chatbot replies). Connected to Make.com via HTTP modules.</td><td class="cost-paid">Pay per use, typically $3-20/mo per client</td></tr>
+    </table>
+
+    <h3>Optional Power Tools (Month 4+)</h3>
+
+    <table>
+      <tr><th>Tool</th><th>Purpose</th><th>Cost</th></tr>
+      <tr><td><strong>GoHighLevel</strong></td><td>All-in-one CRM and marketing platform popular with agencies. Can replace several tools. Great if you want to white-label a CRM to clients.</td><td class="cost-paid">$97-297/mo</td></tr>
+      <tr><td><strong>Instantly.ai</strong></td><td>Cold email platform with built-in warm-up. Better deliverability than sending from Gmail for high-volume outreach.</td><td class="cost-paid">$37/mo</td></tr>
+      <tr><td><strong>Canva Pro</strong></td><td>Creating professional proposals, audit reports, and social media content.</td><td class="cost-paid">$15/mo</td></tr>
+      <tr><td><strong>Metricool or Buffer</strong></td><td>Scheduling LinkedIn content so you stay consistent with your posting.</td><td class="cost-free">Free tiers available</td></tr>
+    </table>
+
+    <h3>Total Monthly Tool Cost at Scale</h3>
+
+    <div class="card card-green">
+      <h4>Running 10 Clients at $10K/month MRR</h4>
+      <table>
+        <tr><td>Make.com (Pro plan)</td><td>$29/mo</td></tr>
+        <tr><td>Google Workspace</td><td>$7.20/mo</td></tr>
+        <tr><td>Loom (Business)</td><td>$15/mo</td></tr>
+        <tr><td>Stripe fees (on $10K)</td><td>~$320/mo</td></tr>
+        <tr><td>Twilio (all clients)</td><td>~$50-80/mo</td></tr>
+        <tr><td>AI API costs (all clients)</td><td>~$50-150/mo</td></tr>
+        <tr><td>Apollo.io (starter)</td><td>$49/mo</td></tr>
+        <tr><td>Notion, Slack, Calendly</td><td>$0 (free tiers)</td></tr>
+        <tr><td><strong>Total overhead</strong></td><td><strong>~$520-650/mo</strong></td></tr>
+        <tr><td><strong>Profit margin</strong></td><td><strong>93-95%</strong></td></tr>
+      </table>
+      <p style="margin-bottom:0">That's an overhead of roughly 5-7% of revenue. The margins in this business are exceptional because the tools are cheap and your expertise is the product.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- BONUS: 30-DAY LAUNCH PLAN -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter">
+    <div class="chapter-label">Bonus</div>
+    <h2>30-Day Launch Plan</h2>
+    <p>Here's your day-by-day action plan to go from reading this guide to having your first paying client. No fluff. Just the work.</p>
+
+    <h3>Week 1: Foundation</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day">Day 1</div>
+        <div class="timeline-title">Choose Your Niche</div>
+        <div class="timeline-desc">Re-read Chapter 2. Pick one niche. Write down: "I help [industry] businesses automate [primary pain point]." This is your positioning statement. Everything else flows from this.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 2</div>
+        <div class="timeline-title">Set Up Your Tools</div>
+        <div class="timeline-desc">Create accounts on Make.com, Google Workspace (get a professional email), Loom, Calendly, and Stripe. Total time: 1-2 hours. Total cost: under $20.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 3-4</div>
+        <div class="timeline-title">Learn Make.com</div>
+        <div class="timeline-desc">Follow the Weekend Learning Plan from Chapter 1. Build 3 demo automations: instant lead response, review request via SMS, and a multi-step email sequence. These become your demo portfolio.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 5</div>
+        <div class="timeline-title">Build Your Prospect List</div>
+        <div class="timeline-desc">Use Google Maps and Apollo.io to find 50 businesses in your niche within your metro area. Get the owner or manager's name and email. Put them in a Google Sheet with columns: Business Name, Contact Name, Email, Phone, Website, Google Reviews, Notes.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 6</div>
+        <div class="timeline-title">Set Up LinkedIn</div>
+        <div class="timeline-desc">Rewrite your LinkedIn headline and summary. Connect with 25 business owners in your niche. Post your first piece of content: "3 things [industry] businesses can automate today that take zero technical skill." This establishes credibility from day one.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 7</div>
+        <div class="timeline-title">Practice Your Pitch</div>
+        <div class="timeline-desc">Record yourself doing a mock audit call. Use the script from Chapter 5. Watch it back. Cringe. Record it again. Keep the second one. You're now more prepared than 95% of people trying to sell AI services.</div>
+      </div>
+    </div>
+
+    <h3>Week 2: Outreach Begins</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day">Day 8-9</div>
+        <div class="timeline-title">Send First Batch of Cold Emails</div>
+        <div class="timeline-desc">Send 20 personalized emails using Script #1 or #2 from Chapter 4. Spend 3-5 minutes personalizing each one. Track opens and replies in your Google Sheet.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 10</div>
+        <div class="timeline-title">Record 5 Loom Videos</div>
+        <div class="timeline-desc">Pick your 5 best prospects. Do 15 minutes of research on each, then record a 3-5 minute Loom walking through their specific automation opportunities. Send using Script #3.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 11-12</div>
+        <div class="timeline-title">Follow Up + Send More</div>
+        <div class="timeline-desc">Follow up with anyone who opened but didn't reply (use a simple "Just bumping this up &mdash; worth a quick look?" follow-up). Send 20 more cold emails to new prospects. Record 3 more Loom videos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 13</div>
+        <div class="timeline-title">LinkedIn Engagement Day</div>
+        <div class="timeline-desc">Comment thoughtfully on 20 posts from business owners in your niche. Send 10 connection requests with personalized notes. Post your second piece of content (a short case study, even if hypothetical: "Here's what an automated lead follow-up looks like for a [niche] business").</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 14</div>
+        <div class="timeline-title">Assess &amp; Adjust</div>
+        <div class="timeline-desc">Review your metrics. How many emails sent? Open rate? Reply rate? Calls booked? If your open rate is below 30%, rewrite your subject lines. If opens are good but replies are low, revise the email body. If you've booked a call, prepare your audit using the Chapter 5 framework.</div>
+      </div>
+    </div>
+
+    <h3>Week 3: Audit Calls &amp; Closing</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day">Day 15-16</div>
+        <div class="timeline-title">Conduct Your First Audit Calls</div>
+        <div class="timeline-desc">Use the full audit script from Chapter 5. Take detailed notes. Send the audit report within 2 hours. If you haven't booked any calls yet, double your outreach volume this week: 30 emails/day + 5 Loom videos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 17</div>
+        <div class="timeline-title">Send Proposals</div>
+        <div class="timeline-desc">For any audit that went well, send a clean proposal within 24 hours. Include the audit findings, recommended package, pricing, timeline, and a clear "next steps" section with a link to your Calendly for a follow-up call.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 18-19</div>
+        <div class="timeline-title">Follow Up Aggressively</div>
+        <div class="timeline-desc">Follow up on every outstanding proposal and every email that got a positive reply but didn't convert to a call. The fortune is in the follow-up. Most deals close between the 3rd and 7th touchpoint.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 20-21</div>
+        <div class="timeline-title">Continue Outreach + Content</div>
+        <div class="timeline-desc">Don't stop outreach just because you have deals in the pipeline. Send 20 more emails, 5 more Loom videos, post on LinkedIn, and engage in your niche communities. Momentum compounds.</div>
+      </div>
+    </div>
+
+    <h3>Week 4: Close &amp; Deliver</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day">Day 22-23</div>
+        <div class="timeline-title">Close Your First Client</div>
+        <div class="timeline-desc">By now, if you've been consistent, you should have 1-3 serious prospects. Close the deal. Send a Stripe invoice for the setup fee. Send the kickoff questionnaire. Celebrate &mdash; briefly &mdash; then get to work.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 24-28</div>
+        <div class="timeline-title">Build &amp; Deliver</div>
+        <div class="timeline-desc">Follow the delivery timeline from Chapter 6. Build the automation, test it rigorously, walk the client through it, go live. This is where you earn the retainer and the referral.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 29</div>
+        <div class="timeline-title">Document Everything</div>
+        <div class="timeline-desc">Create the client documentation. Record a Loom training video. Set up your monitoring and error alerts. Create your first monthly report template.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-day">Day 30</div>
+        <div class="timeline-title">Plan Month 2</div>
+        <div class="timeline-desc">Review what worked and what didn't. Set a goal for month 2 (recommended: 2 more clients). Refine your outreach templates based on what got the best responses. You're in business.</div>
+      </div>
+    </div>
+
+    <div class="card card-green" style="margin-top: 40px;">
+      <h4>30-Day Benchmarks</h4>
+      <table>
+        <tr><th>Metric</th><th>Target</th></tr>
+        <tr><td>Cold emails sent</td><td>100-150</td></tr>
+        <tr><td>Loom videos recorded</td><td>15-25</td></tr>
+        <tr><td>LinkedIn connections added</td><td>50-100</td></tr>
+        <tr><td>Audit calls completed</td><td>3-8</td></tr>
+        <tr><td>Proposals sent</td><td>2-5</td></tr>
+        <tr><td>Clients closed</td><td>1-2</td></tr>
+        <tr><td>Monthly recurring revenue</td><td>$500-3,000</td></tr>
+      </table>
+      <p style="margin-bottom:0">These are conservative numbers. If you're aggressive with outreach and your niche is well-chosen, you can exceed these. The people who fail at this aren't the ones who lack skill &mdash; they're the ones who stop reaching out after 20 emails with no replies. The game rewards persistence.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CLOSING -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div class="chapter" style="text-align: center; padding: 80px 0;">
+    <div class="chapter-label">Final Word</div>
+    <h2>Go Build Something</h2>
+    <p style="max-width: 600px; margin: 0 auto 32px; font-size: 18px; color: var(--text-muted);">You now have the exact playbook that most people charge thousands of dollars for in coaching programs. The strategies, scripts, templates, and timelines are all here. The only variable left is execution.</p>
+    <p style="max-width: 600px; margin: 0 auto 32px; font-size: 18px; color: var(--text-muted);">The businesses in your city are waiting. They're leaving money on the table every day because they don't have someone like you to show them what's possible. Be that person.</p>
+    <p style="max-width: 600px; margin: 0 auto 48px; font-size: 18px; color: var(--text);">Start today. Not tomorrow. Today.</p>
+    <p style="font-size: 14px; color: var(--text-dim);">Need help implementing? Want done-for-you automation services?</p>
+    <p><a href="https://jedaiflow.com" style="color: var(--accent); font-weight: 700; font-size: 18px; text-decoration: none;">jedaiflow.com</a></p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<div class="footer">
+  <div class="footer-brand">JEDAI FLOW</div>
+  <p>AI Automation for Modern Business</p>
+  <p style="margin-top: 8px;"><a href="https://jedaiflow.com">jedaiflow.com</a></p>
+  <p style="margin-top: 24px; font-size: 12px; color: var(--text-dim);">&copy; 2026 Jedai Flow. All rights reserved. This guide is for personal use only. Do not redistribute.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,3324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Automation Blueprint Pack | Jedai Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #111827;
+    --bg-card: #151c2e;
+    --bg-card-alt: #1a2238;
+    --text-primary: #f0f2f5;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent-blue: #338dff;
+    --accent-green: #00d4aa;
+    --accent-purple: #8b5cf6;
+    --accent-orange: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-pink: #ec4899;
+    --border-color: #1e293b;
+    --border-accent: #2d3a52;
+  }
+
+  @media print {
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-card: #f1f3f5;
+      --bg-card-alt: #e9ecef;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --border-color: #d1d5db;
+      --border-accent: #9ca3af;
+    }
+    body { font-size: 11pt; }
+    .blueprint-section { page-break-before: always; }
+    .blueprint-section:first-of-type { page-break-before: auto; }
+    .cover-page { page-break-after: always; }
+    .toc-page { page-break-after: always; }
+    .no-print { display: none !important; }
+    pre, .diagram-box { page-break-inside: avoid; }
+    .step-card { page-break-inside: avoid; }
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── Cover Page ── */
+  .cover-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    background: linear-gradient(180deg, #0a0e1a 0%, #111827 50%, #0a0e1a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-page::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(51,141,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-brand {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 40px;
+  }
+  .cover-title {
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #338dff 50%, #00d4aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-subtitle {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 50px;
+    max-width: 600px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent-green);
+  }
+  .cover-meta-item .label {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .cover-footer {
+    margin-top: 60px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .cover-footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+
+  /* ── TOC ── */
+  .toc-page {
+    padding: 80px 0;
+  }
+  .toc-page h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: var(--text-primary);
+  }
+  .toc-list {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+  .toc-list li {
+    counter-increment: toc-counter;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: background 0.2s;
+  }
+  .toc-list li:hover { background: var(--bg-card); }
+  .toc-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent-blue);
+    flex-shrink: 0;
+  }
+  .toc-content { flex: 1; }
+  .toc-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .toc-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ── Blueprint Sections ── */
+  .blueprint-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .bp-header {
+    margin-bottom: 48px;
+  }
+  .bp-number {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+  }
+  .bp-title {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+  .bp-description {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 750px;
+    line-height: 1.8;
+  }
+
+  /* Info Grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .info-card.full-width {
+    grid-column: 1 / -1;
+  }
+  .info-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+  }
+  .info-card p, .info-card li {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .info-card ul li {
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .info-card ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: 700;
+  }
+
+  /* Diagram */
+  .diagram-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 48px;
+    overflow-x: auto;
+  }
+  .diagram-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-purple);
+    margin-bottom: 16px;
+  }
+  .diagram-box pre {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--accent-green);
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  /* Steps */
+  .steps-section {
+    margin-bottom: 48px;
+  }
+  .steps-section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: var(--text-primary);
+  }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 28px 28px 28px 80px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .step-num {
+    position: absolute;
+    left: 24px;
+    top: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+  }
+  .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+  .step-body {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .step-body code {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--accent-green);
+  }
+  .step-body pre {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+  }
+
+  /* ROI Box */
+  .roi-box {
+    background: linear-gradient(135deg, rgba(51,141,255,0.08), rgba(0,212,170,0.08));
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+  .roi-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 16px;
+  }
+  .roi-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .roi-box li {
+    padding: 6px 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    padding-left: 24px;
+    position: relative;
+  }
+  .roi-box li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  /* Pro Tips */
+  .pro-tips {
+    background: var(--bg-card-alt);
+    border-left: 4px solid var(--accent-purple);
+    border-radius: 0 12px 12px 0;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .pro-tips h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-purple);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .pro-tips ul {
+    list-style: none;
+    padding: 0;
+  }
+  .pro-tips li {
+    padding: 6px 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+  }
+  .pro-tips li::before {
+    content: '*';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+    font-weight: 700;
+  }
+
+  /* Variations */
+  .variations {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .variations h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-orange);
+    margin-bottom: 14px;
+  }
+  .variations ul {
+    list-style: none;
+    padding: 0;
+  }
+  .variations li {
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .variations li:last-child { border-bottom: none; }
+  .variations li strong { color: var(--text-primary); }
+
+  /* Sub-section headings */
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Footer */
+  .doc-footer {
+    text-align: center;
+    padding: 80px 40px;
+    border-top: 1px solid var(--border-color);
+  }
+  .doc-footer p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .doc-footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .container { padding: 0 20px; }
+    .cover-title { font-size: 32px; }
+    .bp-title { font-size: 26px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .step-card { padding-left: 70px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     COVER PAGE
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="cover-page">
+  <div class="cover-brand">JEDAI FLOW</div>
+  <h1 class="cover-title">The AI Automation<br>Blueprint Pack</h1>
+  <p class="cover-subtitle">10 ready-to-implement automation workflows that save 20+ hours per week. Complete with step-by-step setup instructions, email templates, and flow diagrams.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="number">10</div>
+      <div class="label">Blueprints</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="number">80+</div>
+      <div class="label">Steps Detailed</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="number">20+</div>
+      <div class="label">Hours Saved / Week</div>
+    </div>
+  </div>
+  <div class="cover-badge">Implementable. Not Theoretical.</div>
+  <div class="cover-footer">
+    <p>Created by <a href="https://jedaiflow.com">jedaiflow.com</a></p>
+    <p style="margin-top:8px;">Version 1.0 &mdash; April 2026</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     TABLE OF CONTENTS
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="toc-page">
+  <div class="container">
+    <h2>Table of Contents</h2>
+    <ol class="toc-list">
+      <li>
+        <div class="toc-num">01</div>
+        <div class="toc-content">
+          <div class="toc-title">Lead Capture &rarr; Instant Follow-Up</div>
+          <div class="toc-desc">Respond to every lead within 60 seconds automatically</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">02</div>
+        <div class="toc-content">
+          <div class="toc-title">Appointment Reminder System</div>
+          <div class="toc-desc">SMS + email reminders with no-show detection and rebooking</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">03</div>
+        <div class="toc-content">
+          <div class="toc-title">Review Request Pipeline</div>
+          <div class="toc-desc">Automated multi-channel review collection after service delivery</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">04</div>
+        <div class="toc-content">
+          <div class="toc-title">Client Onboarding Workflow</div>
+          <div class="toc-desc">Zero-touch client setup from signature to project kickoff</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">05</div>
+        <div class="toc-content">
+          <div class="toc-title">Invoice &amp; Payment Follow-Up</div>
+          <div class="toc-desc">Escalating payment reminders on autopilot</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">06</div>
+        <div class="toc-content">
+          <div class="toc-title">Social Media Content Recycler</div>
+          <div class="toc-desc">AI-powered evergreen content repurposing across platforms</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">07</div>
+        <div class="toc-content">
+          <div class="toc-title">Weekly Business Report Generator</div>
+          <div class="toc-desc">Automated Monday morning executive dashboard via email</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">08</div>
+        <div class="toc-content">
+          <div class="toc-title">Customer Support Auto-Triage</div>
+          <div class="toc-desc">AI-categorized support tickets with smart routing and escalation</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">09</div>
+        <div class="toc-content">
+          <div class="toc-title">Lead Scoring &amp; Qualification</div>
+          <div class="toc-desc">AI-driven lead analysis with instant hot-lead routing</div>
+        </div>
+      </li>
+      <li>
+        <div class="toc-num">10</div>
+        <div class="toc-content">
+          <div class="toc-title">Testimonial Collector &amp; Publisher</div>
+          <div class="toc-desc">Detect, format, and auto-publish social proof</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 01: LEAD CAPTURE → INSTANT FOLLOW-UP
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 01</div>
+      <h2 class="bp-title">Lead Capture &rarr; Instant Follow-Up</h2>
+      <p class="bp-description">Every minute you delay responding to a new lead, your chances of converting drop by 10%. This automation captures form submissions from any source, sends a personalized email within 60 seconds, creates a CRM contact, and kicks off a multi-day nurture sequence &mdash; all without you lifting a finger.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Any business that receives leads through website forms, landing pages, or ad campaigns. Especially valuable for service businesses, agencies, consultants, real estate agents, and home service providers where speed-to-lead directly impacts close rates.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation platform)</li>
+          <li>Webhook / Typeform / Gravity Forms / any form tool</li>
+          <li>Gmail or SMTP email service</li>
+          <li>HubSpot CRM (free tier works) or Airtable</li>
+          <li>OpenAI API (for personalization)</li>
+          <li>Google Sheets (logging &amp; backup)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Beginner &mdash; 45 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$0&ndash;$29/mo (Make free plan covers ~100 leads/mo; Gmail is free; HubSpot CRM free tier; OpenAI ~$0.01/lead)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +------------------+      +-------------------+      +------------------+
+  |   FORM SUBMIT    |      |   WEBHOOK CATCH   |      |   OpenAI API     |
+  |  (Website form,  |----->|   (Make.com        |----->| Generate         |
+  |   landing page)  |      |    Webhook module) |      | personalized     |
+  +------------------+      +-------------------+      | email body       |
+                                                        +--------+---------+
+                                                                 |
+                            +------------------------------------+
+                            |
+                            v
+  +------------------+      +-------------------+      +------------------+
+  |   LOG TO         |<-----|   SEND EMAIL       |<-----|  FORMAT EMAIL    |
+  |   GOOGLE SHEETS  |      |   (Gmail module)  |      |  (HTML template) |
+  +------------------+      +-------------------+      +------------------+
+                            |
+                            v
+  +------------------+      +-------------------+      +------------------+
+  |   SCHEDULE       |<-----|   CREATE CONTACT   |      |                  |
+  |   FOLLOW-UP      |      |   (HubSpot CRM)   |      |   DONE: Lead     |
+  |   SEQUENCE       |      +-------------------+      |   responded to   |
+  |   (3-email drip) |                                  |   in &lt;60 sec     |
+  +------------------+                                  +------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Create the Make.com Scenario</div>
+        <div class="step-body">
+          <p>Log in to <strong>Make.com</strong> and click <strong>"Create a new scenario"</strong>. Name it <code>Lead Capture - Instant Follow-Up</code>.</p>
+          <p>Click the <strong>"+"</strong> button and search for <strong>"Webhooks"</strong>. Select the module <strong>"Webhooks &gt; Custom webhook"</strong>. Click <strong>"Add"</strong> to create a new webhook. Name it <code>Lead Form Webhook</code>. Copy the URL that Make generates &mdash; it will look like:</p>
+<pre>https://hook.make.com/abc123xyz789...</pre>
+          <p>Keep this URL &mdash; you will paste it into your form builder in Step 2.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Connect Your Form to the Webhook</div>
+        <div class="step-body">
+          <p><strong>Option A &mdash; Typeform:</strong> Go to your Typeform &rarr; Connect &rarr; Webhooks &rarr; paste the Make.com webhook URL. Enable it.</p>
+          <p><strong>Option B &mdash; WordPress (Gravity Forms):</strong> Install the "Gravity Forms Webhooks" add-on. Go to your form &rarr; Settings &rarr; Webhooks &rarr; Add new. Paste the Make URL. Set Request Method to <code>POST</code> and Request Format to <code>JSON</code>. Map fields:</p>
+<pre>name        &rarr;  {Name (Field ID 1):1}
+email       &rarr;  {Email (Field ID 2):2}
+phone       &rarr;  {Phone (Field ID 3):3}
+business    &rarr;  {Business Name (Field ID 4):4}
+message     &rarr;  {Message (Field ID 5):5}</pre>
+          <p><strong>Option C &mdash; Raw HTML form:</strong> Point your form's <code>action</code> attribute to the Make webhook URL with <code>method="POST"</code>.</p>
+          <p>After connecting, submit a test entry so Make can detect the data structure. Go back to Make and click <strong>"Re-determine data structure"</strong> on the Webhook module, then submit your test. You should see the fields populate.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Add the OpenAI Module for Personalization</div>
+        <div class="step-body">
+          <p>Add a new module after the Webhook: search for <strong>"OpenAI"</strong> and select <strong>"OpenAI &gt; Create a Chat Completion"</strong>.</p>
+          <p>Connect your OpenAI account (you will need an API key from <code>platform.openai.com</code>).</p>
+          <p>Configure the module:</p>
+          <ul>
+            <li><strong>Model:</strong> <code>gpt-4o-mini</code> (fast and cheap)</li>
+            <li><strong>System Message:</strong></li>
+          </ul>
+<pre>You are a friendly business development assistant for a professional
+services company. Write a short, warm, personalized email response to
+a new lead. Use their name and reference their business/message if
+provided. Keep it under 150 words. Be helpful, not salesy. End with
+a clear call-to-action to book a quick call. Do not include a subject
+line. Write only the email body in plain text.</pre>
+          <ul>
+            <li><strong>User Message:</strong></li>
+          </ul>
+<pre>New lead details:
+Name: {{1.name}}
+Email: {{1.email}}
+Business: {{1.business}}
+Their message: {{1.message}}
+
+Write a personalized follow-up email for this lead.</pre>
+          <p>Set <strong>Max Tokens</strong> to <code>300</code> and <strong>Temperature</strong> to <code>0.7</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Send the Personalized Email</div>
+        <div class="step-body">
+          <p>Add the next module: <strong>"Gmail &gt; Send an Email"</strong> (or <strong>"Email &gt; Send an Email"</strong> if using SMTP).</p>
+          <p>Connect your Gmail account via OAuth. Configure:</p>
+          <ul>
+            <li><strong>To:</strong> <code>{{1.email}}</code></li>
+            <li><strong>From:</strong> Your business email</li>
+            <li><strong>Subject:</strong></li>
+          </ul>
+<pre>Thanks for reaching out, {{1.name}}!</pre>
+          <ul>
+            <li><strong>Content (HTML):</strong></li>
+          </ul>
+<pre>&lt;div style="font-family: Arial, sans-serif; max-width: 600px; line-height: 1.6;"&gt;
+  &lt;p&gt;Hi {{1.name}},&lt;/p&gt;
+
+  &lt;p&gt;{{3.choices[].message.content}}&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href="https://calendly.com/YOUR-LINK/30min"
+       style="display:inline-block; background:#338dff; color:#fff;
+              padding:12px 28px; border-radius:6px; text-decoration:none;
+              font-weight:bold;"&gt;
+    Book a Free 15-Min Call
+  &lt;/a&gt;&lt;/p&gt;
+
+  &lt;p style="color:#666; font-size:13px;"&gt;
+    If the button doesn't work, copy this link:
+    https://calendly.com/YOUR-LINK/30min
+  &lt;/p&gt;
+
+  &lt;p&gt;Looking forward to chatting,&lt;br&gt;
+  [Your Name]&lt;br&gt;
+  [Your Company]&lt;br&gt;
+  [Your Phone]&lt;/p&gt;
+&lt;/div&gt;</pre>
+          <p>Replace <code>YOUR-LINK</code> with your actual Calendly (or Cal.com) scheduling link.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Create the CRM Contact</div>
+        <div class="step-body">
+          <p>Add the next module: <strong>"HubSpot CRM &gt; Create a Contact"</strong>.</p>
+          <p>Connect your HubSpot account. Map the fields:</p>
+<pre>Email          &rarr;  {{1.email}}
+First Name     &rarr;  {{1.name}}
+Phone Number   &rarr;  {{1.phone}}
+Company        &rarr;  {{1.business}}
+Lead Source     &rarr;  "Website Form"
+Lead Status     &rarr;  "New"
+Notes           &rarr;  "Auto-captured: {{1.message}}"</pre>
+          <p><strong>If using Airtable instead:</strong> Use the <strong>"Airtable &gt; Create a Record"</strong> module. Create a table called "Leads" with columns: Name, Email, Phone, Business, Message, Date Captured, Status. Map the same fields.</p>
+          <p>Enable <strong>"Map"</strong> toggle and add error handling: right-click the module &rarr; Add error handler &rarr; <strong>"Ignore"</strong> (in case the contact already exists).</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Log to Google Sheets (Backup &amp; Tracking)</div>
+        <div class="step-body">
+          <p>Add: <strong>"Google Sheets &gt; Add a Row"</strong>.</p>
+          <p>Create a Google Sheet called <code>Lead Tracker</code> with columns: Date, Name, Email, Phone, Business, Message, Email Sent (Y/N), CRM Added (Y/N).</p>
+          <p>Map:</p>
+<pre>Date       &rarr;  {{formatDate(now; "YYYY-MM-DD HH:mm:ss")}}
+Name       &rarr;  {{1.name}}
+Email      &rarr;  {{1.email}}
+Phone      &rarr;  {{1.phone}}
+Business   &rarr;  {{1.business}}
+Message    &rarr;  {{1.message}}
+Email Sent &rarr;  "Yes"
+CRM Added  &rarr;  "Yes"</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-title">Schedule the Follow-Up Sequence</div>
+        <div class="step-body">
+          <p>Create a <strong>second Make.com scenario</strong> named <code>Lead Nurture Sequence</code>. Set the trigger to <strong>"Schedule &gt; Every day at 9:00 AM"</strong>.</p>
+          <p>Add <strong>"Google Sheets &gt; Search Rows"</strong> &mdash; filter for leads where the "Date" column is exactly 2 days ago and "Email Sent Count" is less than 2.</p>
+          <p>For each matching row, send Follow-Up Email #2:</p>
+<pre>Subject: Quick question, {{name}}
+
+Hi {{name}},
+
+I wanted to follow up on your inquiry from a couple of days ago.
+I know things get busy, so I just wanted to make sure you saw
+my last message.
+
+If you're still interested in [service], I'd love to hop on a
+quick 15-minute call to see if we're a good fit.
+
+Here's my calendar link: [Calendly URL]
+
+No pressure at all — just want to make sure I'm not leaving
+you hanging!
+
+Best,
+[Your Name]</pre>
+          <p>Add a second iterator for leads 5 days old with fewer than 3 emails sent. Send Follow-Up #3:</p>
+<pre>Subject: Last check-in from [Company Name]
+
+Hi {{name}},
+
+This is my last follow-up — I don't want to be a bother!
+
+If now isn't the right time, totally understood. But if you'd
+like to explore how we can help {{business}} with [service],
+my calendar is always open:
+
+[Calendly URL]
+
+Wishing you all the best either way.
+
+[Your Name]</pre>
+          <p>After each email, update the Google Sheet row: increment the "Email Sent Count" column and set "Last Follow-Up Date".</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">8</div>
+        <div class="step-title">Activate and Test</div>
+        <div class="step-body">
+          <p>Turn on both scenarios. Submit a test form entry using a personal email address. Verify:</p>
+          <ul>
+            <li>Email arrives within 60 seconds</li>
+            <li>Email is personalized (references your name/business)</li>
+            <li>CRM contact was created with correct fields</li>
+            <li>Google Sheet row was added</li>
+            <li>Calendly link works in the email</li>
+          </ul>
+          <p>Test the nurture sequence by manually changing a test row's date to 2 days ago, then running the second scenario manually.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Response time:</strong> From hours/days to under 60 seconds</li>
+        <li><strong>Lead conversion lift:</strong> 30-50% improvement (Harvard Business Review found leads contacted within 5 min are 100x more likely to convert)</li>
+        <li><strong>Time saved:</strong> 3-5 hours/week on manual email responses</li>
+        <li><strong>Zero leads falling through the cracks</strong> &mdash; every inquiry gets a response, even at 2 AM</li>
+        <li><strong>ROI example:</strong> If you get 50 leads/month and close 10% more due to faster response = 5 extra clients. At $500/client = $2,500/month from a $29/month tool</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Set up a <strong>Slack notification</strong> module after the email send so you know a lead came in and can follow up personally if it looks hot.</li>
+        <li>Use the OpenAI prompt to detect language &mdash; add "If the lead's message is in Spanish, write the email in Spanish" to serve bilingual markets.</li>
+        <li>Add a <strong>Router</strong> module after the webhook to send leads from different forms to different email templates (e.g., "pricing inquiry" vs. "general contact").</li>
+        <li>Set the Make scenario scheduling to <strong>"Immediately"</strong> (not every 15 minutes) so the webhook fires instantly.</li>
+        <li>Test your email deliverability &mdash; send to a Gmail, Outlook, and Yahoo address to make sure it doesn't land in spam.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>SMS First Response:</strong> Replace or supplement the email with a Twilio SMS module for even faster engagement. Text: "Hi {{name}}, thanks for reaching out! I'll send you more details by email shortly. &mdash; [Your Name]"</li>
+        <li><strong>AI Chatbot Handoff:</strong> Instead of email, trigger a chatbot (ManyChat / Intercom) conversation to qualify the lead in real time.</li>
+        <li><strong>Facebook Lead Ads Version:</strong> Replace the Webhook trigger with <strong>"Facebook Lead Ads &gt; Watch New Leads"</strong> module to capture leads directly from Facebook/Instagram ads.</li>
+        <li><strong>Multi-Location Routing:</strong> Add a Router module that checks the lead's zip code and routes to the appropriate local office/salesperson.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 02: APPOINTMENT REMINDER SYSTEM
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 02</div>
+      <h2 class="bp-title">Appointment Reminder System</h2>
+      <p class="bp-description">No-shows cost service businesses an average of $200 per missed appointment. This automation monitors your calendar, sends an SMS reminder 24 hours before, an email reminder 1 hour before, detects no-shows, and automatically sends a rebooking offer &mdash; recovering revenue you would have lost.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Medical offices, dental practices, salons, spas, consultants, coaches, tutors, home service providers, auto shops &mdash; any business where clients book appointments and no-shows hurt the bottom line.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Google Calendar (or Calendly)</li>
+          <li>Twilio (SMS sending)</li>
+          <li>Gmail or SendGrid (email)</li>
+          <li>Google Sheets (no-show tracking)</li>
+          <li>Airtable or HubSpot (optional CRM)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Beginner-Intermediate &mdash; 60 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>~$20/mo (Twilio SMS ~$0.0079/msg; Make.com free/paid; Gmail free)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+
+  | GOOGLE CALENDAR   |
+  | "Watch Events"    |
+  | (runs every 15m)  |
+  +---------+---------+
+            |
+            v
+  +---------+---------+      +-------------------+
+  | FILTER: Event is  |      | TWILIO: Send SMS  |
+  | 24 hours from now |----->| "Hi {{name}},     |
+  | (date comparison) |      |  reminder about    |
+  +-------------------+      |  your appt         |
+                              |  tomorrow at       |
+                              |  {{time}}..."      |
+                              +---------+----------+
+                                        |
+  +-------------------+                 |
+  | SLEEP / DELAY     |<----------------+
+  | Wait until 1 hour |
+  | before appointment|
+  +---------+---------+
+            |
+            v
+  +---------+---------+
+  | GMAIL: Send email |
+  | "Your appt is in  |
+  |  1 hour" + map    |
+  |  link + prep info |
+  +---------+---------+
+            |
+            v
+  +---------+---------+      +-------------------+     +------------------+
+  | WAIT UNTIL        |      | CHECK: Was event  |     | IF NO-SHOW:      |
+  | 30 min after      |----->| marked complete   |---->| Send rebooking   |
+  | appointment time  |      | in Google Sheet?  |     | SMS + email      |
+  +-------------------+      +-------------------+     +------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Create the 24-Hour Reminder Scenario</div>
+        <div class="step-body">
+          <p>In Make.com, create a new scenario: <code>Appointment Reminders - 24hr SMS</code>.</p>
+          <p>Add trigger: <strong>"Google Calendar &gt; Watch Events"</strong>. Connect your Google account and select your appointment calendar. Set <strong>"Watch"</strong> to <code>Updated and newly created events</code>. Set the schedule to run <strong>every 15 minutes</strong>.</p>
+          <p>Add a <strong>"Filter"</strong> after the trigger with this condition:</p>
+<pre>Condition: Event Start Date/Time
+Operator:  "is after"
+Value:     {{addHours(now; 23)}}
+
+AND
+
+Condition: Event Start Date/Time
+Operator:  "is before"
+Value:     {{addHours(now; 25)}}</pre>
+          <p>This ensures we only catch events happening 23-25 hours from now (a 2-hour window, checked every 15 min, so nothing gets missed).</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Set Up Twilio SMS</div>
+        <div class="step-body">
+          <p>Sign up at <strong>twilio.com</strong>. Get a phone number (~$1/mo). Note your <strong>Account SID</strong> and <strong>Auth Token</strong> from the dashboard.</p>
+          <p>In Make.com, add module: <strong>"Twilio &gt; Send an SMS"</strong>. Connect using your Account SID and Auth Token.</p>
+          <p>Configure:</p>
+<pre>From:  Your Twilio number (+1XXXXXXXXXX)
+To:    {{parsePhoneFromDescription(1.description)}}
+Body:</pre>
+<pre>Hi {{1.summary.split(" - ")[0]}}! This is a friendly
+reminder from [Your Business] about your appointment
+tomorrow, {{formatDate(1.start.dateTime; "dddd, MMMM D")}}
+at {{formatDate(1.start.dateTime; "h:mm A")}}.
+
+Location: {{1.location}}
+
+Need to reschedule? Reply RESCHEDULE or call us at
+(XXX) XXX-XXXX.
+
+See you soon!</pre>
+          <p><strong>Extracting the phone number:</strong> Store the client's phone in the Google Calendar event description field in the format <code>Phone: +15551234567</code>. Use a Text Parser &gt; Match Pattern module with regex <code>Phone:\s*(\+?\d[\d\-\s]{9,})</code> to extract it.</p>
+          <p>Alternatively, if you use Calendly, the phone is captured as a form field. Use the <strong>"Calendly &gt; Watch Events"</strong> trigger instead, which includes attendee phone directly.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Create the 1-Hour Email Reminder Scenario</div>
+        <div class="step-body">
+          <p>Create a <strong>separate scenario</strong>: <code>Appointment Reminders - 1hr Email</code>. This keeps the logic clean and lets each run on its own schedule.</p>
+          <p>Trigger: <strong>"Google Calendar &gt; Watch Events"</strong> (same calendar, runs every 15 min).</p>
+          <p>Filter: Event starts between 45 minutes and 75 minutes from now.</p>
+          <p>Add <strong>"Gmail &gt; Send an Email"</strong>:</p>
+<pre>To:      {{attendee email from calendar event}}
+Subject: Your appointment is in 1 hour &mdash; here's what you need to know
+
+Body:
+
+Hi {{name}},
+
+Just a quick heads up &mdash; your appointment is coming up soon!
+
+DETAILS:
+  Date: {{formatDate(1.start.dateTime; "dddd, MMMM D, YYYY")}}
+  Time: {{formatDate(1.start.dateTime; "h:mm A")}}
+  Location: {{1.location}}
+
+GETTING HERE:
+  Google Maps link: https://maps.google.com/?q={{urlEncode(1.location)}}
+
+WHAT TO BRING:
+  - [Customize per your business, e.g., "Photo ID",
+     "Completed intake form", "Insurance card"]
+
+If you need to reschedule, please call us at (XXX) XXX-XXXX
+as soon as possible.
+
+See you shortly!
+[Your Business Name]</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Set Up the Attendance Tracker</div>
+        <div class="step-body">
+          <p>Create a Google Sheet called <code>Appointment Tracker</code> with columns:</p>
+<pre>A: Event ID
+B: Client Name
+C: Client Email
+D: Client Phone
+E: Appointment Date/Time
+F: 24hr SMS Sent (checkbox)
+G: 1hr Email Sent (checkbox)
+H: Status (Attended / No-Show / Rescheduled)
+I: Rebooking Sent</pre>
+          <p>In both reminder scenarios, after sending the SMS/email, add <strong>"Google Sheets &gt; Add a Row"</strong> (for the 24hr scenario) or <strong>"Google Sheets &gt; Update a Row"</strong> (for the 1hr scenario, searching by Event ID) to log that the reminder was sent.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Build the No-Show Detection Scenario</div>
+        <div class="step-body">
+          <p>Create scenario: <code>No-Show Detection &amp; Rebooking</code>. Schedule to run <strong>every hour</strong>.</p>
+          <p>Trigger: <strong>"Google Sheets &gt; Search Rows"</strong> in your Appointment Tracker. Filter for:</p>
+<pre>Column E (Appointment Date/Time): is before {{addMinutes(now; -30)}}
+Column H (Status): is empty</pre>
+          <p>This finds appointments that ended 30+ minutes ago with no status recorded (meaning the staff hasn't marked them as attended).</p>
+          <p>Add a <strong>"Router"</strong> with two paths:</p>
+          <p><strong>Path 1 &mdash; Send Rebooking SMS:</strong></p>
+<pre>Hi {{name}}, we missed you at your appointment today!
+No worries &mdash; life happens. Would you like to rebook?
+
+Book a new time here: [Calendly/Booking Link]
+
+Or reply to this text and we'll get you sorted.
+
+&mdash; [Your Business]</pre>
+          <p><strong>Path 2 &mdash; Send Rebooking Email:</strong></p>
+<pre>Subject: We missed you today &mdash; let's reschedule!
+
+Hi {{name}},
+
+It looks like we weren't able to connect for your
+appointment today at {{time}}. No worries at all &mdash;
+we'd love to get you rescheduled.
+
+Click below to grab a new time that works for you:
+
+[BOOK NEW APPOINTMENT BUTTON &rarr; Calendly link]
+
+If something came up or you have any questions,
+just reply to this email and we'll help you out.
+
+Looking forward to seeing you soon,
+[Your Business Name]</pre>
+          <p>After both sends, update the Google Sheet row: set column H to <code>No-Show</code> and column I to <code>Yes</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Mark Attendance (The Manual Step)</div>
+        <div class="step-body">
+          <p>After each appointment, someone on your team needs to mark the Status column as <strong>"Attended"</strong> in the Google Sheet. This prevents the no-show sequence from triggering for people who actually showed up.</p>
+          <p><strong>To make this easier:</strong> Create a Google Form with just two fields &mdash; Client Name (dropdown from your sheet) and Status (Attended/No-Show). Share this as a bookmark on staff phones. Takes 5 seconds after each appointment.</p>
+          <p>Alternatively, if you use a POS system or practice management software that tracks check-ins, connect that instead (e.g., Acuity Scheduling marks "completed" automatically).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>No-show rate reduction:</strong> 30-50% fewer no-shows (industry average drops from 23% to under 10% with reminders)</li>
+        <li><strong>Revenue recovered:</strong> If you have 100 appointments/month and reduce no-shows by 15, at $150/appointment = $2,250/month recovered</li>
+        <li><strong>Rebooking rate:</strong> 40-60% of no-shows will rebook when sent an automatic offer within 30 minutes</li>
+        <li><strong>Time saved:</strong> 2-4 hours/week of manual reminder calls</li>
+        <li><strong>Client satisfaction:</strong> Clients appreciate reminders &mdash; they view it as great customer service, not spam</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Add a <strong>confirmation request</strong> to the 24hr SMS: "Reply C to confirm or R to reschedule." Use Twilio's incoming webhook to catch replies and update the sheet automatically.</li>
+        <li>For <strong>recurring appointments</strong> (e.g., weekly therapy sessions), add logic to skip the reminder if the client has attended the last 4 sessions in a row &mdash; they know the drill.</li>
+        <li>Send a <strong>post-appointment thank-you SMS</strong> 2 hours after marked as Attended: "Thanks for coming in today, {{name}}! If you have a moment, we'd love a quick review: [Google Review Link]" (ties into Blueprint #3).</li>
+        <li>Track your no-show rate monthly in the Google Sheet using a simple formula: <code>=COUNTIF(H:H,"No-Show")/COUNTA(H:H)</code></li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>WhatsApp Reminders:</strong> Replace Twilio SMS with <strong>Twilio WhatsApp API</strong> for markets where WhatsApp is preferred. The template approval process takes 24-48 hours, but open rates are 98%.</li>
+        <li><strong>Voice Call Reminder:</strong> Use <strong>Twilio Voice &gt; Make a Call</strong> module with a text-to-speech message for clients who prefer calls over texts (common with older demographics).</li>
+        <li><strong>Deposit Collection:</strong> When a no-show is detected, trigger a Stripe module to charge a no-show fee if the client agreed to a deposit policy. Send a receipt email automatically.</li>
+        <li><strong>Waitlist Filling:</strong> When a cancellation is detected (event deleted from calendar), automatically text the next person on your waitlist offering the newly open slot.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 03: REVIEW REQUEST PIPELINE
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 03</div>
+      <h2 class="bp-title">Review Request Pipeline</h2>
+      <p class="bp-description">91% of consumers read online reviews before making a purchase decision. This automation waits for the perfect moment after service completion, then sends a perfectly timed review request via email. If no response comes, a follow-up SMS nudges them 48 hours later. Every positive review compounds your online reputation.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Local businesses, home service companies (plumbing, HVAC, landscaping), restaurants, auto shops, medical/dental offices, salons, agencies &mdash; anyone who relies on Google reviews, Yelp, or industry-specific review platforms for new business.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Google Sheets or Airtable (service log)</li>
+          <li>Gmail or SendGrid (email)</li>
+          <li>Twilio (SMS follow-up)</li>
+          <li>Google Business Profile (review link)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Beginner &mdash; 40 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$0&ndash;$20/mo (Gmail free; Twilio ~$0.01/SMS; Make free tier)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+     +-------------------+     +-------------------+
+  | SERVICE COMPLETED |     | GOOGLE SHEETS:    |     | DELAY MODULE:     |
+  | (Row added to     |---->| "Watch New Rows"  |---->| Wait 2 hours      |
+  |  completion log)  |     | in "Completed     |     | (let client get   |
+  +-------------------+     |  Services" sheet) |     |  home/settle in)  |
+                            +-------------------+     +---------+---------+
+                                                                |
+                                                                v
+                            +-------------------+     +---------+---------+
+                            | LOG: Mark "Review |<----| GMAIL: Send       |
+                            |  Request Sent"    |     | review request    |
+                            |  in sheet         |     | email with direct |
+                            +-------------------+     | Google Review     |
+                                                      | link              |
+                                                      +-------------------+
+                                                                |
+              +-------------------+     +-----------+           |
+              | TWILIO: Send SMS  |<----| FILTER:   |<----------+
+              | "How was your     |     | 48 hours  |
+              |  experience?      |     | passed &  |
+              |  Leave a review!" |     | no review |
+              +-------------------+     | detected  |
+                                        +-----------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Get Your Google Review Link</div>
+        <div class="step-body">
+          <p>Go to <strong>Google Business Profile</strong> &rarr; Home &rarr; "Get more reviews" &rarr; copy the review link. It looks like:</p>
+<pre>https://g.page/r/YOUR-PLACE-ID/review</pre>
+          <p>Or construct it manually: go to Google Maps, find your business, click "Write a review," and copy that URL. Shorten it using <strong>bit.ly</strong> for SMS (character limits matter).</p>
+          <p>For <strong>Yelp</strong>: <code>https://www.yelp.com/writeareview/biz/YOUR-BIZ-ID</code></p>
+          <p>For <strong>Facebook</strong>: <code>https://www.facebook.com/YOUR-PAGE/reviews</code></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Create the Service Completion Sheet</div>
+        <div class="step-body">
+          <p>Create a Google Sheet called <code>Completed Services</code>:</p>
+<pre>A: Completion Date
+B: Client Name
+C: Client Email
+D: Client Phone
+E: Service Performed
+F: Technician/Staff Name
+G: Review Request Sent (email)
+H: Review Request Sent (SMS)
+I: Review Received (Y/N)
+J: Review Rating
+K: Notes</pre>
+          <p>Your team adds a row after each completed job/appointment. This is the trigger for the automation.</p>
+          <p><strong>Tip:</strong> Create a simple Google Form that staff can fill from their phone: Client Name, Email, Phone, Service. The form auto-populates the sheet.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Build the Email Review Request Scenario</div>
+        <div class="step-body">
+          <p>In Make.com, create scenario: <code>Review Request - Email</code>.</p>
+          <p>Trigger: <strong>"Google Sheets &gt; Watch New Rows"</strong> in your Completed Services sheet. Set to check every 15 minutes.</p>
+          <p>Add module: <strong>"Sleep"</strong> &mdash; set to <code>7200</code> seconds (2 hours). This delay ensures the client has had time to experience the results of your service.</p>
+          <p>Add module: <strong>"Gmail &gt; Send an Email"</strong>:</p>
+<pre>To:      {{2.Client Email}}
+Subject: How did we do, {{2.Client Name}}?
+
+&lt;div style="font-family: Arial, sans-serif; max-width: 600px;
+            margin: 0 auto; padding: 20px;"&gt;
+
+  &lt;h2 style="color: #333;"&gt;Thanks for choosing [Your Business]!&lt;/h2&gt;
+
+  &lt;p&gt;Hi {{2.Client Name}},&lt;/p&gt;
+
+  &lt;p&gt;We hope you're happy with your {{2.Service Performed}} today!
+     {{2.Technician/Staff Name}} mentioned everything went great.&lt;/p&gt;
+
+  &lt;p&gt;If you have 30 seconds, we'd really appreciate a quick
+     Google review. It helps other people in the community
+     find us, and it means the world to our small team.&lt;/p&gt;
+
+  &lt;p style="text-align: center; margin: 30px 0;"&gt;
+    &lt;a href="[YOUR GOOGLE REVIEW LINK]"
+       style="display:inline-block; background:#338dff;
+              color:#fff; padding:14px 36px; border-radius:8px;
+              text-decoration:none; font-weight:bold;
+              font-size:16px;"&gt;
+      Leave a Quick Review &amp;rarr;
+    &lt;/a&gt;
+  &lt;/p&gt;
+
+  &lt;p style="color: #666; font-size: 13px;"&gt;
+    It only takes 30 seconds and you'd be helping us out
+    tremendously. Thank you!
+  &lt;/p&gt;
+
+  &lt;p&gt;Warm regards,&lt;br&gt;
+  [Your Name]&lt;br&gt;
+  [Your Business]&lt;/p&gt;
+
+&lt;/div&gt;</pre>
+          <p>Add <strong>"Google Sheets &gt; Update a Row"</strong>: search by row number, set column G to <code>Yes</code> and note the send timestamp.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Build the SMS Follow-Up Scenario</div>
+        <div class="step-body">
+          <p>Create a second scenario: <code>Review Request - SMS Follow-Up</code>. Schedule it to run <strong>once daily at 10:00 AM</strong> (polite texting hours).</p>
+          <p>Trigger: <strong>"Google Sheets &gt; Search Rows"</strong> with filters:</p>
+<pre>Column A (Completion Date): is before {{addDays(now; -2)}}
+Column G (Email Sent):      equals "Yes"
+Column H (SMS Sent):        is empty
+Column I (Review Received): is empty</pre>
+          <p>This finds clients who were emailed 2+ days ago but haven't left a review.</p>
+          <p>Add <strong>"Twilio &gt; Send an SMS"</strong>:</p>
+<pre>Hi {{name}}! This is [Your Name] from [Business].
+We'd love to hear how your {{service}} went!
+
+If you have 30 seconds, a Google review would
+mean the world to us: [SHORT REVIEW LINK]
+
+Thank you!</pre>
+          <p>Update the row: set column H to <code>Yes</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Track Review Responses (Optional but Recommended)</div>
+        <div class="step-body">
+          <p>To close the loop, periodically check for new reviews. Create scenario: <code>Review Monitor</code> running daily.</p>
+          <p>Use the <strong>"HTTP &gt; Make a Request"</strong> module to call the Google Places API:</p>
+<pre>GET https://maps.googleapis.com/maps/api/place/details/json
+    ?place_id=YOUR_PLACE_ID
+    &fields=reviews
+    &key=YOUR_GOOGLE_API_KEY</pre>
+          <p>Parse the response with a JSON module. Compare new reviews against your sheet to match names. Update column I to <code>Yes</code> and column J with the rating.</p>
+          <p>This tells you your review request conversion rate and which clients responded.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Review request conversion:</strong> 10-20% of asked clients will leave a review (vs. 1-2% without asking)</li>
+        <li><strong>Monthly review growth:</strong> If you serve 100 clients/month, expect 10-20 new reviews per month</li>
+        <li><strong>SEO impact:</strong> More reviews = higher Google Maps ranking = more organic leads (estimated 15-25% increase in map pack visibility over 6 months)</li>
+        <li><strong>Trust factor:</strong> Businesses with 50+ reviews convert 30% more website visitors into leads</li>
+        <li><strong>Time saved:</strong> 3-5 hours/week of manual review asking</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Add a <strong>sentiment gate</strong>: Before sending the review link, first send a "How did we do? Rate 1-5" message. If they reply 4-5, send the public review link. If 1-3, route to a private feedback form instead. This prevents negative public reviews.</li>
+        <li>Personalize with the <strong>technician/staff name</strong>: "Mike mentioned he enjoyed working with you today!" People are more likely to leave a review when it feels personal.</li>
+        <li><strong>Rotate platforms:</strong> Send 70% of requests to Google, 20% to Yelp, 10% to Facebook to build presence everywhere. Use a Router module with random number generation.</li>
+        <li>Don't send review requests on <strong>weekends or after 8 PM</strong>. Use the Sleep module to delay until the next business day if needed.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>QR Code Version:</strong> Generate a QR code (using a QR code API) that links to your review page. Email it so clients can scan from their phone while the experience is fresh.</li>
+        <li><strong>Video Testimonial Request:</strong> For premium services, send a link to a Loom or VideoAsk page requesting a 30-second video testimonial instead of a text review.</li>
+        <li><strong>Incentivized Follow-Up:</strong> "Thanks for your review! As a thank you, here's 10% off your next visit." (Note: You cannot incentivize the review itself, but you can thank them after.)</li>
+        <li><strong>Team Leaderboard:</strong> Track which staff member generates the most reviews. Gamify it with a monthly reward.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 04: CLIENT ONBOARDING WORKFLOW
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 04</div>
+      <h2 class="bp-title">Client Onboarding Workflow</h2>
+      <p class="bp-description">First impressions are everything. The moment a client signs, your onboarding should feel seamless and professional. This automation handles welcome emails, intake forms, calendar booking, project setup, and team notifications &mdash; all triggered from a single event. Your new client feels taken care of, and you didn't lift a finger.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Agencies, consultants, freelancers, coaches, SaaS companies, law firms, accounting firms &mdash; any business that onboards clients into a service or project with multiple setup steps.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Stripe or HubSpot (deal closed trigger)</li>
+          <li>Gmail or SendGrid (email)</li>
+          <li>Typeform or Tally (intake form)</li>
+          <li>Calendly or Cal.com (booking)</li>
+          <li>Asana, Trello, or ClickUp (project mgmt)</li>
+          <li>Slack (team notifications)</li>
+          <li>Google Drive (folder creation)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Intermediate &mdash; 90 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$0&ndash;$29/mo (all tools have free tiers; Make Pro recommended for multiple scenarios)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+
+  | NEW CLIENT SIGNED |
+  | (Stripe payment   |
+  |  or HubSpot deal  |
+  |  moved to "Won")  |
+  +---------+---------+
+            |
+            v
+  +---------+---------+     +---------+---------+     +---------+---------+
+  | GMAIL: Send       |     | GOOGLE DRIVE:     |     | SLACK: Notify     |
+  | welcome email     |     | Create client     |     | #new-clients      |
+  | with intake form  |     | folder from       |     | channel           |
+  | + booking link    |     | template           |     |                   |
+  +---------+---------+     +-------------------+     +-------------------+
+            |
+            |  (When intake form is submitted...)
+            v
+  +---------+---------+     +---------+---------+     +---------+---------+
+  | TYPEFORM RESPONSE |     | ASANA: Create     |     | GMAIL: Send       |
+  | captured via      |---->| project from      |---->| "You're all set!" |
+  | webhook           |     | template + assign |     | email with next   |
+  +-------------------+     | tasks             |     | steps              |
+                            +-------------------+     +-------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Set Up the Trigger</div>
+        <div class="step-body">
+          <p><strong>Option A &mdash; Stripe (if client pays to start):</strong> In Make.com, add trigger <strong>"Stripe &gt; Watch Events"</strong>. Set Event Type to <code>checkout.session.completed</code>. This fires when a client completes a Stripe Checkout payment.</p>
+          <p><strong>Option B &mdash; HubSpot (if using CRM deals):</strong> Add trigger <strong>"HubSpot CRM &gt; Watch Deals"</strong>. Set the filter to <code>Deal Stage = Closed Won</code>. Pull the associated contact's name, email, phone, and company from the deal.</p>
+          <p><strong>Option C &mdash; Manual trigger via Google Sheets:</strong> Add a row to an "Onboarding Queue" sheet. Use <strong>"Google Sheets &gt; Watch New Rows"</strong> as trigger. Columns: Client Name, Email, Phone, Company, Package/Service, Start Date.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Send the Welcome Email</div>
+        <div class="step-body">
+          <p>Add <strong>"Gmail &gt; Send an Email"</strong>:</p>
+<pre>To:      {{client_email}}
+Subject: Welcome to [Your Company]! Let's get started.
+
+&lt;div style="font-family: Arial, sans-serif; max-width: 600px;
+            margin: 0 auto; padding: 20px;"&gt;
+
+  &lt;h1 style="color: #338dff;"&gt;Welcome aboard, {{client_name}}!&lt;/h1&gt;
+
+  &lt;p&gt;We're thrilled to be working with you. Here's what
+     happens next:&lt;/p&gt;
+
+  &lt;h3&gt;Step 1: Complete Your Intake Form (5 minutes)&lt;/h3&gt;
+  &lt;p&gt;This helps us understand your business, goals, and
+     preferences so we can hit the ground running.&lt;/p&gt;
+  &lt;p&gt;&lt;a href="[TYPEFORM_LINK]?name={{urlEncode(client_name)}}&amp;email={{urlEncode(client_email)}}"
+       style="display:inline-block; background:#338dff;
+              color:#fff; padding:12px 28px; border-radius:6px;
+              text-decoration:none; font-weight:bold;"&gt;
+    Complete Intake Form &amp;rarr;
+  &lt;/a&gt;&lt;/p&gt;
+
+  &lt;h3&gt;Step 2: Book Your Kickoff Call&lt;/h3&gt;
+  &lt;p&gt;Let's align on strategy and timeline. Pick a time
+     that works for you:&lt;/p&gt;
+  &lt;p&gt;&lt;a href="[CALENDLY_LINK]?name={{urlEncode(client_name)}}&amp;email={{urlEncode(client_email)}}"
+       style="display:inline-block; background:#00d4aa;
+              color:#fff; padding:12px 28px; border-radius:6px;
+              text-decoration:none; font-weight:bold;"&gt;
+    Book Kickoff Call &amp;rarr;
+  &lt;/a&gt;&lt;/p&gt;
+
+  &lt;h3&gt;What to Expect&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Within 24 hours: We'll review your intake form&lt;/li&gt;
+    &lt;li&gt;Kickoff call: We'll align on goals and timeline&lt;/li&gt;
+    &lt;li&gt;Within 1 week: First deliverables/updates&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Questions? Reply to this email anytime.&lt;/p&gt;
+
+  &lt;p&gt;Excited to get started!&lt;br&gt;
+  [Your Name]&lt;br&gt;
+  [Your Company]&lt;/p&gt;
+
+&lt;/div&gt;</pre>
+          <p>The <code>?name=&amp;email=</code> URL parameters pre-fill the Typeform and Calendly fields so the client doesn't have to re-enter info.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Create the Client Folder in Google Drive</div>
+        <div class="step-body">
+          <p>Add module: <strong>"Google Drive &gt; Create a Folder"</strong>.</p>
+<pre>Parent Folder:  "Clients" (create this root folder first)
+Folder Name:    {{client_company}} - {{formatDate(now; "YYYY-MM")}}</pre>
+          <p>Then add <strong>three more "Create a Folder"</strong> modules to create subfolders inside the client folder:</p>
+<pre>Subfolder 1: "01 - Contracts &amp; Invoices"
+Subfolder 2: "02 - Assets &amp; Deliverables"
+Subfolder 3: "03 - Reports &amp; Analytics"</pre>
+          <p><strong>Optional:</strong> Use <strong>"Google Drive &gt; Copy a File"</strong> to copy a template SOW (Statement of Work) document into the Contracts subfolder, pre-filled with the client's name.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Notify Your Team via Slack</div>
+        <div class="step-body">
+          <p>Add module: <strong>"Slack &gt; Create a Message"</strong>.</p>
+<pre>Channel:  #new-clients
+Message:</pre>
+<pre>:tada: *New Client Signed!*
+
+*Client:* {{client_name}} ({{client_company}})
+*Package:* {{package_name}}
+*Start Date:* {{formatDate(now; "MMMM D, YYYY")}}
+*Email:* {{client_email}}
+*Phone:* {{client_phone}}
+
+*Client Folder:* {{google_drive_folder_link}}
+
+Welcome email sent. Intake form and kickoff call links delivered.
+Waiting on client to complete onboarding steps.</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Process the Intake Form Response</div>
+        <div class="step-body">
+          <p>Create a <strong>second scenario</strong>: <code>Client Onboarding - Intake Processing</code>.</p>
+          <p>Trigger: <strong>"Typeform &gt; Watch Responses"</strong> connected to your intake form.</p>
+          <p>Your Typeform intake form should collect:</p>
+          <ul>
+            <li>Business name, website URL, industry</li>
+            <li>Current pain points (multi-select)</li>
+            <li>Goals for working with you (open text)</li>
+            <li>Preferred communication method</li>
+            <li>Brand assets (logo upload, brand colors)</li>
+            <li>Login credentials / access (if applicable)</li>
+            <li>Timeline expectations</li>
+          </ul>
+          <p>After the form is submitted, add module: <strong>"Asana &gt; Create a Project"</strong> (or ClickUp/Trello equivalent):</p>
+<pre>Workspace:   Your workspace
+Team:        Your team
+Name:        {{client_company}} - {{package_name}}
+Template:    "Client Onboarding Template"
+             (create this template in Asana first with
+              your standard task list)
+Due Date:    {{addDays(now; 30)}}</pre>
+          <p>The template should include pre-built tasks like:</p>
+<pre>[ ] Review intake form responses
+[ ] Set up client accounts/access
+[ ] Create initial strategy document
+[ ] Schedule kickoff call
+[ ] Deliver first milestone
+[ ] Week 1 check-in
+[ ] Week 2 progress report
+[ ] Month 1 review</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Send the "You're All Set" Confirmation</div>
+        <div class="step-body">
+          <p>After the project is created, add <strong>"Gmail &gt; Send an Email"</strong>:</p>
+<pre>Subject: You're all set, {{client_name}}! Here's your project dashboard.
+
+Hi {{client_name}},
+
+Thank you for completing the intake form! We've reviewed
+your information and everything looks great.
+
+Here's what we've set up for you:
+
+YOUR PROJECT DASHBOARD:
+{{asana_project_link}}
+
+YOUR FILE FOLDER:
+{{google_drive_folder_link}}
+
+NEXT STEPS:
+1. We'll review your intake responses in detail
+2. Your kickoff call is [booked/pending booking]
+3. You'll receive your first update within [X days]
+
+If you haven't booked your kickoff call yet, grab a
+time here: [CALENDLY LINK]
+
+We're excited to get to work!
+
+[Your Name]</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-title">Add a Nudge for Incomplete Onboarding</div>
+        <div class="step-body">
+          <p>Create a third scenario: <code>Onboarding Nudge</code>. Run daily at 10 AM.</p>
+          <p>Check your Google Sheet for clients where the welcome email was sent 48+ hours ago but the intake form column is still empty. Send a gentle reminder:</p>
+<pre>Subject: Quick reminder: Your intake form is waiting!
+
+Hi {{name}},
+
+Just a friendly nudge — we're ready to get started on
+your project, but we need your completed intake form first.
+
+It only takes about 5 minutes:
+[INTAKE FORM LINK]
+
+Once that's in, we'll have everything we need to kick
+things off!
+
+[Your Name]</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Onboarding time reduced:</strong> From 3-5 days (manual) to under 24 hours (automated)</li>
+        <li><strong>Client satisfaction:</strong> 95%+ of clients report feeling "well taken care of" when onboarding is immediate and structured</li>
+        <li><strong>Time saved:</strong> 2-4 hours per new client (15-20+ hours/month if you sign 5-10 clients)</li>
+        <li><strong>Fewer dropped clients:</strong> Structured onboarding reduces early churn by 25-40%</li>
+        <li><strong>Professional perception:</strong> Instant, organized onboarding signals that you are a well-run operation</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Record a <strong>short Loom welcome video</strong> (2-3 minutes) and embed it in the welcome email. Personal touch at scale.</li>
+        <li>Use <strong>Typeform's hidden fields</strong> to pass the client name and email through the URL so they don't have to re-type it.</li>
+        <li>Create a <strong>client portal</strong> in Notion or Google Sites with all their links (project board, files, calendar) in one place. Send the portal link in the confirmation email.</li>
+        <li>Add a <strong>7-day check-in email</strong> that asks "How's everything going so far? Anything we can improve?" &mdash; catches issues before they become complaints.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>E-commerce Version:</strong> Replace intake form with a product questionnaire. Replace Asana project with a Shopify order fulfillment workflow.</li>
+        <li><strong>SaaS Onboarding:</strong> Trigger from Stripe subscription. Create user account via API. Send product walkthrough sequence (drip emails over 7 days). Track feature adoption.</li>
+        <li><strong>Team Scaling:</strong> When the Slack notification fires, also auto-assign a project manager based on a round-robin system (use a Make variable that cycles through team members).</li>
+        <li><strong>Contract Signing:</strong> Add DocuSign or PandaDoc as the first step. Trigger the onboarding when the contract is fully signed.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 05: INVOICE & PAYMENT FOLLOW-UP
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 05</div>
+      <h2 class="bp-title">Invoice &amp; Payment Follow-Up</h2>
+      <p class="bp-description">Chasing payments is awkward and time-consuming. This automation creates an escalating reminder sequence: a friendly nudge at 3 days, a firm reminder at 7 days, a final notice at 14 days, and a flag for manual follow-up if still unpaid. No more money left on the table because you forgot to follow up.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Freelancers, agencies, contractors, consultants, any B2B service provider who invoices clients. Especially useful if you have 10+ outstanding invoices at any time and payments often slip past due dates.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>QuickBooks, Xero, FreshBooks, or Stripe (invoicing)</li>
+          <li>Gmail or SendGrid (email)</li>
+          <li>Google Sheets (tracking)</li>
+          <li>Slack (internal notifications)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Beginner-Intermediate &mdash; 60 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$0&ndash;$16/mo (Make free tier, Gmail free, your existing invoicing tool)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+     +-------------------+
+  | INVOICE CREATED   |     | LOG TO GOOGLE     |
+  | (QuickBooks /     |---->| SHEETS: Invoice   |
+  |  Stripe / manual) |     | #, client, amount,|
+  +-------------------+     | due date, status  |
+                            +---------+---------+
+                                      |
+  DAILY CHECK (runs every morning at 9 AM):
+                                      |
+            +-------------------------+-------------------------+
+            |                         |                         |
+            v                         v                         v
+  +---------+---------+     +---------+---------+     +---------+---------+
+  | 3 DAYS OVERDUE    |     | 7 DAYS OVERDUE    |     | 14 DAYS OVERDUE   |
+  | Friendly reminder |     | Firm reminder     |     | Final notice      |
+  | email             |     | email             |     | email             |
+  +---------+---------+     +---------+---------+     +---------+---------+
+            |                         |                         |
+            v                         v                         v
+  +---------+---------+     +---------+---------+     +---------+---------+
+  | UPDATE SHEET:     |     | UPDATE SHEET:     |     | SLACK: Flag for   |
+  | "Reminder 1 Sent" |     | "Reminder 2 Sent" |     | manual follow-up  |
+  +-------------------+     +-------------------+     | + UPDATE SHEET     |
+                                                      +-------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Create the Invoice Tracking Sheet</div>
+        <div class="step-body">
+          <p>Create a Google Sheet called <code>Invoice Tracker</code>:</p>
+<pre>A: Invoice Number
+B: Client Name
+C: Client Email
+D: Amount
+E: Invoice Date
+F: Due Date
+G: Status (Unpaid / Paid / Overdue)
+H: Reminder 1 Sent (date)
+I: Reminder 2 Sent (date)
+J: Final Notice Sent (date)
+K: Flagged for Manual Follow-Up
+L: Payment Date
+M: Notes</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Auto-Log New Invoices</div>
+        <div class="step-body">
+          <p>Create scenario: <code>Invoice Logger</code>.</p>
+          <p><strong>If using QuickBooks:</strong> Trigger: <strong>"QuickBooks Online &gt; Watch Invoices"</strong> (set to new invoices). Map Invoice Number, Customer Name, Customer Email, Total Amount, Due Date to your Google Sheet.</p>
+          <p><strong>If using Stripe:</strong> Trigger: <strong>"Stripe &gt; Watch Events"</strong> with event type <code>invoice.sent</code>. Map: <code>invoice.number</code>, <code>customer_email</code>, <code>amount_due / 100</code> (Stripe stores in cents), <code>due_date</code>.</p>
+          <p><strong>If manual invoicing:</strong> Simply add the row to Google Sheets yourself when you send an invoice. The follow-up automation works regardless of how the row gets there.</p>
+          <p>Set column G to <code>Unpaid</code> for all new entries.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Build the Payment Check + Reminder Scenario</div>
+        <div class="step-body">
+          <p>Create scenario: <code>Invoice Follow-Up Engine</code>. Schedule: <strong>Every day at 9:00 AM</strong>.</p>
+          <p>Module 1: <strong>"Google Sheets &gt; Search Rows"</strong> &mdash; Filter: Column G equals <code>Unpaid</code>.</p>
+          <p>Module 2: <strong>"Router"</strong> with three paths based on how overdue the invoice is.</p>
+          <p><strong>Path 1 &mdash; 3 Days Overdue (Friendly Reminder):</strong></p>
+          <p>Filter: Due Date is 3+ days ago AND column H (Reminder 1) is empty.</p>
+<pre>Subject: Friendly reminder: Invoice #{{invoice_number}} is due
+
+Hi {{client_name}},
+
+Hope you're doing well! Just a quick reminder that
+invoice #{{invoice_number}} for ${{amount}} was due on
+{{due_date}}.
+
+If you've already sent payment, please disregard this
+message — it may have crossed paths!
+
+If not, you can view and pay your invoice here:
+[INVOICE LINK or PAYMENT LINK]
+
+Let me know if you have any questions.
+
+Best,
+[Your Name]
+[Your Company]</pre>
+          <p>After sending, update column H with today's date.</p>
+
+          <p><strong>Path 2 &mdash; 7 Days Overdue (Firm Reminder):</strong></p>
+          <p>Filter: Due Date is 7+ days ago AND column H is NOT empty AND column I is empty.</p>
+<pre>Subject: Payment overdue: Invoice #{{invoice_number}} — ${{amount}}
+
+Hi {{client_name}},
+
+I wanted to follow up regarding invoice #{{invoice_number}}
+for ${{amount}}, which was due on {{due_date}} — now
+{{days_overdue}} days ago.
+
+I understand things can slip through the cracks, but I'd
+appreciate if you could take a moment to process this
+payment at your earliest convenience.
+
+Pay now: [INVOICE/PAYMENT LINK]
+
+If there's an issue with the invoice or you need to
+discuss payment arrangements, please let me know and
+we can work something out.
+
+Thank you,
+[Your Name]</pre>
+
+          <p><strong>Path 3 &mdash; 14 Days Overdue (Final Notice):</strong></p>
+          <p>Filter: Due Date is 14+ days ago AND column I is NOT empty AND column J is empty.</p>
+<pre>Subject: FINAL NOTICE: Invoice #{{invoice_number}} — ${{amount}} overdue
+
+Hi {{client_name}},
+
+This is a final reminder regarding invoice
+#{{invoice_number}} for ${{amount}}, originally due on
+{{due_date}}.
+
+This invoice is now {{days_overdue}} days past due.
+Please process payment within the next 48 hours to
+avoid any disruption to our services.
+
+Pay now: [INVOICE/PAYMENT LINK]
+
+If there are circumstances preventing payment, please
+reach out to me directly so we can discuss options.
+
+Regards,
+[Your Name]
+[Your Company]</pre>
+          <p>After sending the final notice, also add a <strong>"Slack &gt; Create a Message"</strong> module:</p>
+<pre>Channel: #accounts-receivable (or #general)
+
+:rotating_light: *Invoice Requires Manual Follow-Up*
+
+*Client:* {{client_name}}
+*Invoice:* #{{invoice_number}}
+*Amount:* ${{amount}}
+*Days Overdue:* {{days_overdue}}
+*Reminders Sent:* 3 (friendly, firm, final)
+
+All automated reminders have been sent. This needs
+a personal phone call or meeting to resolve.</pre>
+          <p>Update column K to <code>Yes</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Auto-Detect Payments</div>
+        <div class="step-body">
+          <p>Create scenario: <code>Payment Detector</code>. Schedule: every 30 minutes.</p>
+          <p><strong>If using Stripe:</strong> Trigger: <strong>"Stripe &gt; Watch Events"</strong> with event type <code>invoice.paid</code>. When payment is detected, search your Google Sheet for that invoice number and update: Column G to <code>Paid</code>, Column L to today's date.</p>
+          <p><strong>If using QuickBooks:</strong> Use <strong>"QuickBooks Online &gt; Watch Payments"</strong> trigger. Match the payment to the invoice in your sheet.</p>
+          <p>This stops the reminder sequence automatically &mdash; the daily check only processes rows where Status = "Unpaid".</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Send a Payment Confirmation (Nice Touch)</div>
+        <div class="step-body">
+          <p>In the Payment Detector scenario, after marking the invoice as Paid, add a thank-you email:</p>
+<pre>Subject: Payment received — thank you, {{client_name}}!
+
+Hi {{client_name}},
+
+Just confirming we've received your payment of ${{amount}}
+for invoice #{{invoice_number}}. Thank you!
+
+Your receipt is attached / available here: [LINK]
+
+As always, if you need anything, don't hesitate to reach out.
+
+Best,
+[Your Name]</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Average payment speed improvement:</strong> Clients pay 8-12 days faster with automated reminders</li>
+        <li><strong>Overdue invoice reduction:</strong> 60-80% of overdue invoices are paid after the first automated reminder</li>
+        <li><strong>Cash flow improvement:</strong> If you have $50K in annual receivables, reducing DSO (days sales outstanding) by 10 days = ~$1,400 in freed cash flow</li>
+        <li><strong>Time saved:</strong> 2-5 hours/month of awkward follow-up emails</li>
+        <li><strong>Relationship preserved:</strong> Automated reminders feel less personal/confrontational than a phone call about money</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Add a <strong>"days overdue" counter</strong> to each email using the formula: <code>{{floor((toDate(now) - toDate(due_date)) / 86400000)}}</code></li>
+        <li>Include a <strong>direct payment link</strong> (Stripe Payment Link, PayPal.me, or QuickBooks pay link) in every email. Reduce friction to pay.</li>
+        <li>For high-value invoices ($5K+), add a <strong>personal video message</strong> (Loom) to the firm reminder. "Hey {{name}}, just checking in on this..."</li>
+        <li>Track your <strong>DSO (Days Sales Outstanding)</strong> monthly: average time from invoice to payment. This automation should measurably reduce it.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>Late Fee Application:</strong> After 14 days, use the Stripe or QuickBooks API to add a late fee line item to the invoice automatically (check your contract terms first).</li>
+        <li><strong>Payment Plan Offer:</strong> At the 7-day mark, offer a split payment option: "Would it help to split this into two payments? Reply and we'll set that up."</li>
+        <li><strong>SMS Escalation:</strong> At the final notice stage, add a Twilio SMS in addition to email for higher urgency.</li>
+        <li><strong>Accounts Receivable Dashboard:</strong> Create a Google Data Studio report that pulls from your Invoice Tracker sheet, showing total outstanding, aging buckets (0-30, 30-60, 60-90 days), and collection rate.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 06: SOCIAL MEDIA CONTENT RECYCLER
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 06</div>
+      <h2 class="bp-title">Social Media Content Recycler</h2>
+      <p class="bp-description">Your best content deserves more than one shot. This automation pulls your top-performing social media posts each month, uses AI to rewrite them with fresh angles, schedules them across all your platforms, and tracks what performs best the second time around. Evergreen content on autopilot.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Solopreneurs, agencies, content creators, coaches, SaaS companies &mdash; anyone producing social media content who wants to maximize ROI from every piece of content without creating from scratch every day.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Airtable (content database)</li>
+          <li>OpenAI API (content rewriting)</li>
+          <li>Buffer or Hootsuite or Later (scheduling)</li>
+          <li>Facebook/Instagram Graph API or LinkedIn API</li>
+          <li>Google Sheets (performance tracking)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Intermediate &mdash; 90 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$15&ndash;$45/mo (Airtable free; Buffer $15/mo; OpenAI ~$2/mo; Make Pro)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+     +-------------------+     +-------------------+
+  | MONTHLY TRIGGER   |     | AIRTABLE: Pull    |     | FILTER: Top 10    |
+  | (1st of month     |---->| all posts from    |---->| posts by           |
+  |  at 9 AM)         |     | last 90 days      |     | engagement rate   |
+  +-------------------+     +-------------------+     +---------+---------+
+                                                                |
+                                                                v
+  +-------------------+     +-------------------+     +---------+---------+
+  | BUFFER: Schedule  |<----| FORMAT: Create    |<----| OPENAI: Rewrite   |
+  | across platforms  |     | platform-specific |     | each post with    |
+  | (spread over      |     | versions (Twitter |     | fresh angle,      |
+  |  next 30 days)    |     |  vs LinkedIn vs   |     | different hook    |
+  +-------------------+     |  Instagram)       |     +-------------------+
+                            +-------------------+
+                                      |
+                                      v
+                            +-------------------+
+                            | AIRTABLE: Mark    |
+                            | as "Recycled" +   |
+                            | log new versions  |
+                            +-------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Build Your Content Database in Airtable</div>
+        <div class="step-body">
+          <p>Create an Airtable base called <code>Content Library</code> with a table called <code>Posts</code>:</p>
+<pre>Fields:
+- Post ID (Auto Number)
+- Original Text (Long Text)
+- Platform (Single Select: LinkedIn, Twitter/X, Instagram, Facebook)
+- Post Date (Date)
+- Likes (Number)
+- Comments (Number)
+- Shares (Number)
+- Engagement Rate (Formula: (Likes + Comments*2 + Shares*3) / 1)
+- Topic Tags (Multiple Select: tips, case-study, motivational, educational, promotional)
+- Evergreen (Checkbox: is this content timeless?)
+- Times Recycled (Number, default 0)
+- Last Recycled Date (Date)
+- Status (Single Select: Active, Recycled, Retired)</pre>
+          <p>Start populating this with your existing content. You can do this manually or set up a separate automation that logs new posts automatically (see Variation below).</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Create the Monthly Recycler Scenario</div>
+        <div class="step-body">
+          <p>In Make.com, create scenario: <code>Content Recycler - Monthly</code>.</p>
+          <p>Trigger: <strong>"Schedule"</strong> &mdash; set to run on the <strong>1st of every month at 9:00 AM</strong>.</p>
+          <p>Module 2: <strong>"Airtable &gt; Search Records"</strong> in your Posts table.</p>
+<pre>Filter formula:
+AND(
+  {Evergreen} = 1,
+  {Post Date} &lt; DATEADD(TODAY(), -60, 'days'),
+  OR({Times Recycled} = 0, {Last Recycled Date} &lt; DATEADD(TODAY(), -90, 'days')),
+  {Status} != 'Retired'
+)
+Sort: Engagement Rate (descending)
+Max Records: 10</pre>
+          <p>This pulls your top 10 evergreen posts that haven't been recycled in the last 90 days.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Rewrite with AI</div>
+        <div class="step-body">
+          <p>Add an <strong>"Iterator"</strong> module to loop through the 10 posts.</p>
+          <p>Inside the loop, add <strong>"OpenAI &gt; Create a Chat Completion"</strong>:</p>
+<pre>Model: gpt-4o-mini
+Temperature: 0.8
+
+System Prompt:
+You are a social media content strategist. You take
+high-performing posts and rewrite them with a completely
+fresh angle while keeping the core message. You create
+3 versions:
+
+1. LINKEDIN version (professional tone, 150-200 words,
+   use line breaks for readability, end with a question
+   to drive comments)
+2. TWITTER/X version (punchy, under 280 characters,
+   use a hook in the first line)
+3. INSTAGRAM CAPTION version (conversational, use emojis
+   sparingly, include a CTA, 100-150 words, suggest
+   5 relevant hashtags)
+
+Format your response as JSON:
+{
+  "linkedin": "...",
+  "twitter": "...",
+  "instagram": "..."
+}
+
+User Prompt:
+Original post that performed well:
+"""
+{{iterator.Original Text}}
+"""
+
+Original platform: {{iterator.Platform}}
+Topic: {{iterator.Topic Tags}}
+
+Rewrite this with a fresh angle. Keep the core insight
+but use a different hook, new examples, or a different
+storytelling approach. Do NOT copy the original — make
+it feel like a brand new post.</pre>
+          <p>Add a <strong>"JSON &gt; Parse JSON"</strong> module to extract the three versions from the response.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Schedule to Buffer</div>
+        <div class="step-body">
+          <p>After parsing the JSON, add a <strong>"Router"</strong> with three paths &mdash; one for each platform.</p>
+          <p><strong>Path 1 &mdash; LinkedIn:</strong> Add <strong>"Buffer &gt; Create a Post"</strong>. Select your LinkedIn profile. Set text to <code>{{json.linkedin}}</code>. Set scheduled time using a formula that spreads posts evenly across the month:</p>
+<pre>Scheduled Time: {{addDays(now; (iterator.bundleOrder * 3))}}
+(This posts every 3 days)</pre>
+          <p><strong>Path 2 &mdash; Twitter/X:</strong> Same module, select Twitter profile, use <code>{{json.twitter}}</code>.</p>
+          <p><strong>Path 3 &mdash; Instagram:</strong> Same module, select Instagram profile, use <code>{{json.instagram}}</code>.</p>
+          <p><strong>Alternative to Buffer:</strong> Use the <strong>"HTTP &gt; Make a Request"</strong> module with the LinkedIn/Twitter APIs directly if you prefer not to use a scheduling tool.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Update the Database</div>
+        <div class="step-body">
+          <p>After scheduling, add <strong>"Airtable &gt; Update a Record"</strong>:</p>
+<pre>Record ID: {{iterator.id}}
+Fields to update:
+  Times Recycled:    {{iterator.Times Recycled + 1}}
+  Last Recycled Date: {{now}}
+  Status:            "Recycled"</pre>
+          <p>Also create a new record in a second table called <code>Recycled Posts</code> that logs the original post ID, all three rewritten versions, and the scheduled dates. This gives you a complete audit trail.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Track Performance (End of Month)</div>
+        <div class="step-body">
+          <p>Create a second scenario: <code>Content Performance Tracker</code>. Run on the 28th of each month.</p>
+          <p>Use the Buffer API or platform APIs to pull engagement metrics for all posts published that month. Compare recycled post performance against original performance in a Google Sheet summary.</p>
+          <p>Key metrics to track: engagement rate, impressions, link clicks, follower growth attribution.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Content output multiplied:</strong> 10 original posts become 30+ platform-specific posts per month</li>
+        <li><strong>Time saved:</strong> 8-12 hours/month of content creation</li>
+        <li><strong>Engagement maintained:</strong> Recycled content typically achieves 60-80% of original engagement (audiences rarely see every post the first time)</li>
+        <li><strong>Consistency:</strong> Never run out of content &mdash; your queue is always full</li>
+        <li><strong>Compounding reach:</strong> More posts = more impressions = faster audience growth</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li><strong>Retire posts</strong> after 3 recycles. Even evergreen content gets stale. Set a filter: if Times Recycled >= 3, change Status to "Retired".</li>
+        <li>Add a <strong>human review step</strong>: Instead of posting directly to Buffer, send the rewritten posts to a Slack channel for approval. Add a "thumbs up" reaction to approve, and a second Make scenario watches for that reaction to schedule the post.</li>
+        <li>Use <strong>different posting times</strong> per platform: LinkedIn at 8 AM Tue/Thu, Twitter at 12 PM daily, Instagram at 6 PM Mon/Wed/Fri.</li>
+        <li><strong>Seasonal awareness:</strong> Add a "Season" tag to posts so you can recycle summer content in summer, holiday content in Q4, etc.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>Auto-Log New Posts:</strong> Add a scenario that uses the Facebook/LinkedIn/Twitter APIs to pull your recent posts weekly and automatically add them to the Airtable content library with engagement metrics.</li>
+        <li><strong>Blog-to-Social:</strong> Instead of recycling social posts, pull your top blog posts (via RSS) and have AI extract 5 social media posts from each one.</li>
+        <li><strong>Client Version:</strong> Run this for clients &mdash; each client has their own Airtable base, their own Buffer profiles, and their own monthly recycler scenario. Charge $500-$1,000/month per client for "done-for-you social media management."</li>
+        <li><strong>AI Image Generation:</strong> Add a DALL-E or Midjourney module to generate fresh images for recycled Instagram posts.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 07: WEEKLY BUSINESS REPORT GENERATOR
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 07</div>
+      <h2 class="bp-title">Weekly Business Report Generator</h2>
+      <p class="bp-description">Every Monday at 8 AM, you receive a beautifully formatted email with your key business metrics: leads generated, appointments booked, revenue collected, emails sent, tasks completed, and AI-generated insights about trends and action items. No dashboards to check, no data to pull. Just open your inbox.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Business owners, managers, executives, solopreneurs &mdash; anyone who wants a weekly pulse on their business without logging into 5 different tools. Especially valuable for owners who manage teams remotely.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>HubSpot or Airtable (CRM data)</li>
+          <li>Google Calendar (appointments)</li>
+          <li>Gmail (email metrics + report delivery)</li>
+          <li>Stripe or QuickBooks (revenue data)</li>
+          <li>OpenAI API (insights generation)</li>
+          <li>Google Sheets (data aggregation)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Intermediate-Advanced &mdash; 2 hours to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$16&ndash;$29/mo (Make Pro for multiple modules; OpenAI ~$0.50/week; other tools free tier)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+
+  | SCHEDULE TRIGGER  |
+  | Monday 7:30 AM    |
+  +---------+---------+
+            |
+            +----------+----------+----------+----------+
+            |          |          |          |          |
+            v          v          v          v          v
+  +--------+--+ +-----+------+ +-+--------+ +-+------+ +-+--------+
+  | HUBSPOT:  | | GOOGLE     | | STRIPE:  | | GMAIL: | | ASANA:   |
+  | Get new   | | CALENDAR:  | | Get week | | Count  | | Get      |
+  | leads     | | Get week's | | revenue  | | sent   | | completed|
+  | this week | | events     | | + invoices| | emails| | tasks    |
+  +---------+-+ +-----+------+ +-+--------+ +-+------+ +-+--------+
+            |          |          |          |          |
+            +----------+----------+----------+----------+
+                                  |
+                                  v
+                       +----------+----------+
+                       | AGGREGATE DATA      |
+                       | in a Set Variable    |
+                       | module               |
+                       +----------+----------+
+                                  |
+                                  v
+                       +----------+----------+
+                       | OPENAI: Analyze     |
+                       | data + generate     |
+                       | insights            |
+                       +----------+----------+
+                                  |
+                                  v
+                       +----------+----------+     +------------------+
+                       | FORMAT: Build HTML  |     | LOG TO GOOGLE    |
+                       | email report        |---->| SHEETS (archive) |
+                       +----------+----------+     +------------------+
+                                  |
+                                  v
+                       +----------+----------+
+                       | GMAIL: Send report  |
+                       | to owner @ 8:00 AM  |
+                       +---------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Set Up the Schedule Trigger</div>
+        <div class="step-body">
+          <p>Create scenario: <code>Weekly Business Report</code>.</p>
+          <p>Trigger: <strong>"Schedule"</strong> &rarr; Run once per week, <strong>Monday at 7:30 AM</strong> (your timezone). We trigger at 7:30 to give the data modules time to run before the email sends at ~8:00.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Pull Data from Each Source</div>
+        <div class="step-body">
+          <p>Add the following modules in <strong>parallel</strong> (use a Router or sequential, both work):</p>
+          <h4>CRM Data (HubSpot)</h4>
+          <p>Module: <strong>"HubSpot CRM &gt; Search Contacts"</strong></p>
+<pre>Filter: createdate >= {{formatDate(addDays(now; -7); "YYYY-MM-DD")}}
+This returns all contacts created in the last 7 days.
+Use an Aggregator module to count the results: {{length(array)}}</pre>
+          <p>Also pull deals: <strong>"HubSpot CRM &gt; Search Deals"</strong> with filter on <code>closedate</code> in the last 7 days and <code>dealstage = closedwon</code>. Sum the <code>amount</code> field.</p>
+
+          <h4>Calendar Data</h4>
+          <p>Module: <strong>"Google Calendar &gt; List Events"</strong></p>
+<pre>Calendar: Your main calendar
+Time Min: {{formatDate(addDays(now; -7); "YYYY-MM-DD")}}T00:00:00Z
+Time Max: {{formatDate(now; "YYYY-MM-DD")}}T23:59:59Z</pre>
+          <p>Use an Aggregator to count total events. Optionally categorize: client meetings, internal meetings, sales calls.</p>
+
+          <h4>Revenue Data (Stripe)</h4>
+          <p>Module: <strong>"Stripe &gt; List Balance Transactions"</strong></p>
+<pre>Created: after {{formatDate(addDays(now; -7); "X")}}
+Type: charge
+Use an Aggregator: sum all amounts (divide by 100 for dollars)</pre>
+
+          <h4>Email Activity</h4>
+          <p>Module: <strong>"Gmail &gt; Search Emails"</strong></p>
+<pre>Query: in:sent after:{{formatDate(addDays(now; -7); "YYYY/MM/DD")}}
+Use an Aggregator: count results = emails sent this week</pre>
+          <p>Also count received: <code>in:inbox after:{{date}}</code></p>
+
+          <h4>Task Data (Asana/ClickUp)</h4>
+          <p>Module: <strong>"Asana &gt; Search Tasks"</strong></p>
+<pre>Filter: completed_since={{formatDate(addDays(now; -7); "YYYY-MM-DD")}}
+Count completed tasks and list any overdue tasks.</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Generate AI Insights</div>
+        <div class="step-body">
+          <p>Add <strong>"Tools &gt; Set Multiple Variables"</strong> to consolidate all data into one summary string, then feed it to OpenAI.</p>
+          <p>Module: <strong>"OpenAI &gt; Create a Chat Completion"</strong>:</p>
+<pre>Model: gpt-4o-mini
+Temperature: 0.6
+
+System Prompt:
+You are a business analyst assistant. You receive weekly
+business data and provide concise, actionable insights.
+Format your response in 3 sections:
+
+1. KEY HIGHLIGHTS (2-3 bullet points of what went well)
+2. AREAS TO WATCH (2-3 bullet points of potential concerns)
+3. RECOMMENDED ACTIONS (2-3 specific things to do this week)
+
+Be specific and data-driven. Reference the actual numbers.
+Keep the total response under 200 words.
+
+User Prompt:
+Here is this week's business data ({{formatDate(addDays(now;-7);"MMM D")}} - {{formatDate(now;"MMM D, YYYY")}}):
+
+NEW LEADS: {{leads_count}} (last week: {{prev_leads_count}})
+DEALS CLOSED: {{deals_count}} worth ${{deals_value}}
+APPOINTMENTS: {{calendar_count}}
+REVENUE COLLECTED: ${{revenue}}
+EMAILS SENT: {{emails_sent}}
+EMAILS RECEIVED: {{emails_received}}
+TASKS COMPLETED: {{tasks_completed}}
+OVERDUE TASKS: {{overdue_tasks}}
+
+Provide your analysis.</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Build and Send the HTML Report Email</div>
+        <div class="step-body">
+          <p>Add <strong>"Gmail &gt; Send an Email"</strong> with HTML body. Here is the complete email template:</p>
+<pre>Subject: Weekly Report: {{formatDate(addDays(now;-7);"MMM D")}} - {{formatDate(now;"MMM D, YYYY")}}
+
+&lt;div style="font-family:Arial,sans-serif; max-width:650px;
+            margin:0 auto; background:#f8f9fa; padding:30px;"&gt;
+
+  &lt;div style="background:#0a0e1a; color:#fff; padding:24px;
+              border-radius:12px 12px 0 0; text-align:center;"&gt;
+    &lt;h1 style="margin:0; font-size:22px;"&gt;WEEKLY BUSINESS REPORT&lt;/h1&gt;
+    &lt;p style="color:#9ca3af; margin:8px 0 0;"&gt;
+      {{formatDate(addDays(now;-7);"MMM D")}} &amp;mdash;
+      {{formatDate(now;"MMM D, YYYY")}}
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div style="background:#fff; padding:24px; border:1px solid #e5e7eb;"&gt;
+
+    &lt;h2 style="color:#338dff; font-size:16px; margin-top:0;"&gt;
+      KEY METRICS
+    &lt;/h2&gt;
+
+    &lt;table style="width:100%; border-collapse:collapse;"&gt;
+      &lt;tr&gt;
+        &lt;td style="padding:12px; border-bottom:1px solid #eee;"&gt;
+          &lt;strong&gt;New Leads&lt;/strong&gt;
+        &lt;/td&gt;
+        &lt;td style="padding:12px; text-align:right; border-bottom:1px solid #eee;
+                    font-size:24px; font-weight:bold; color:#338dff;"&gt;
+          {{leads_count}}
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- Repeat for each metric: Deals Closed, Revenue,
+           Appointments, Emails Sent, Tasks Completed --&gt;
+    &lt;/table&gt;
+
+    &lt;h2 style="color:#00d4aa; font-size:16px; margin-top:24px;"&gt;
+      AI INSIGHTS
+    &lt;/h2&gt;
+    &lt;div style="background:#f0fdf4; padding:16px; border-radius:8px;
+                border-left:4px solid #00d4aa;"&gt;
+      {{openai_insights}}
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div style="text-align:center; padding:16px; color:#9ca3af;
+              font-size:12px;"&gt;
+    Generated by Jedai Flow Automation
+  &lt;/div&gt;
+
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Archive to Google Sheets</div>
+        <div class="step-body">
+          <p>Add <strong>"Google Sheets &gt; Add a Row"</strong> to a <code>Weekly Reports Archive</code> sheet. Log: Week Ending Date, Leads, Deals, Revenue, Appointments, Emails, Tasks. Over time, this creates a trend dataset you can chart.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Time saved:</strong> 1-2 hours/week of manual data pulling and analysis</li>
+        <li><strong>Better decisions:</strong> Consistent weekly visibility into business health catches problems early (e.g., lead flow dropping)</li>
+        <li><strong>Accountability:</strong> Seeing the numbers every Monday morning creates natural urgency and focus</li>
+        <li><strong>Trend visibility:</strong> After 8-12 weeks of archived data, you can spot seasonal patterns and plan accordingly</li>
+        <li><strong>Team alignment:</strong> Forward the report to your team &mdash; everyone starts the week on the same page</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Add <strong>week-over-week comparisons</strong>: Pull last week's data from the archive sheet and include "up/down X%" arrows next to each metric.</li>
+        <li>Include a <strong>"Top 3 Priorities This Week"</strong> section pulled from your Asana/ClickUp tasks due this week.</li>
+        <li>Create a <strong>Slack version</strong> that posts a summary to #general at 8 AM Monday for your team, while the detailed email goes to you.</li>
+        <li>Add <strong>Google Analytics</strong> data (website visitors, top pages) using the HTTP module with the GA4 API for a complete picture.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>Daily Snapshot:</strong> Run a simpler version daily with just leads + revenue. Keep the full report weekly.</li>
+        <li><strong>Client Reporting:</strong> Build a version for each client. Pull their specific data and send a branded report every Friday. Charge $200-$500/month per client for "automated reporting."</li>
+        <li><strong>Dashboard Version:</strong> Instead of email, push the data to a Notion database or Google Data Studio dashboard that updates automatically.</li>
+        <li><strong>Voice Briefing:</strong> Feed the report text into ElevenLabs TTS API to generate an audio briefing you can listen to during your commute.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 08: CUSTOMER SUPPORT AUTO-TRIAGE
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 08</div>
+      <h2 class="bp-title">Customer Support Auto-Triage</h2>
+      <p class="bp-description">When a support request comes in, AI instantly reads it, categorizes the urgency (critical / high / medium / low), routes it to the right team member, sends the customer an acknowledgment with an estimated response time, and escalates if nobody responds within 2 hours. Your customers feel heard immediately, and nothing falls through the cracks.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Any business handling 10+ support requests per week. SaaS companies, e-commerce stores, agencies, service businesses. Especially valuable when different team members handle different types of requests (billing vs. technical vs. general).</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Gmail or a support form (intake)</li>
+          <li>OpenAI API (AI categorization)</li>
+          <li>Slack (team routing + escalation)</li>
+          <li>Airtable or Google Sheets (ticket tracking)</li>
+          <li>Gmail or SendGrid (auto-response)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Intermediate &mdash; 75 minutes to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$16&ndash;$29/mo (Make Pro; OpenAI ~$3/mo for 500 tickets; other tools free tier)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+     +-------------------+     +-------------------+
+  | INCOMING REQUEST  |     | OPENAI: Analyze   |     | AIRTABLE: Create  |
+  | (Email to support |---->| urgency, category,|---->| ticket record     |
+  |  or form submit)  |     | suggested response|     | with AI metadata  |
+  +-------------------+     +-------------------+     +---------+---------+
+                                                                |
+                            +-----------------------------------+
+                            |
+                            v
+  +-------------------+     +-------------------+     +-------------------+
+  | GMAIL: Send auto  |     | ROUTER: Based on  |     | SLACK: Route to   |
+  | acknowledgment    |<----|  AI category       |---->| correct channel   |
+  | "We received your |     |                   |     | #billing or       |
+  |  request, ETA..." |     +-------------------+     | #technical or     |
+  +-------------------+                               | #general          |
+                                                      +---------+---------+
+                                                                |
+                                                                v
+                                                      +---------+---------+
+                                                      | DELAY: 2 hours   |
+                                                      | then check if    |
+                                                      | ticket status    |
+                                                      | changed          |
+                                                      +---------+---------+
+                                                                |
+                                                                v
+                                                      +---------+---------+
+                                                      | IF NO RESPONSE:  |
+                                                      | Escalate to      |
+                                                      | manager via      |
+                                                      | Slack DM         |
+                                                      +-------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Set Up the Intake Trigger</div>
+        <div class="step-body">
+          <p><strong>Option A &mdash; Email-based:</strong> Create a dedicated support email (support@yourdomain.com). In Make.com, trigger: <strong>"Gmail &gt; Watch Emails"</strong> with label filter for "Inbox" on this account. This catches every incoming email.</p>
+          <p><strong>Option B &mdash; Form-based:</strong> Create a support form (Typeform, Tally, or your website). Use a Webhook trigger to catch submissions.</p>
+          <p>For email, the key data is: <code>from_email</code>, <code>from_name</code>, <code>subject</code>, <code>body_text</code>, <code>date</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">AI Analysis with OpenAI</div>
+        <div class="step-body">
+          <p>Add <strong>"OpenAI &gt; Create a Chat Completion"</strong>:</p>
+<pre>Model: gpt-4o-mini
+Temperature: 0.3 (low for consistent categorization)
+
+System Prompt:
+You are a customer support triage AI. Analyze the
+incoming support request and respond with a JSON object:
+
+{
+  "urgency": "critical|high|medium|low",
+  "category": "billing|technical|general|feature_request|complaint",
+  "summary": "One-line summary of the issue",
+  "suggested_response": "A polite, helpful response
+    the support team can use as a starting point",
+  "estimated_resolution": "Estimated time to resolve
+    (e.g., '1 hour', '24 hours', '2-3 business days')",
+  "route_to": "Name of team/person based on category"
+}
+
+Urgency guidelines:
+- CRITICAL: Service is down, data loss, security issue,
+  payment failed for active subscription
+- HIGH: Feature broken but workaround exists, urgent
+  deadline mentioned, angry/frustrated tone
+- MEDIUM: General question, how-to request, minor bug
+- LOW: Feature request, general feedback, FYI messages
+
+User Prompt:
+From: {{from_name}} ({{from_email}})
+Subject: {{subject}}
+Message:
+{{body_text}}</pre>
+          <p>Add <strong>"JSON &gt; Parse JSON"</strong> to extract the structured response.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Create the Ticket Record</div>
+        <div class="step-body">
+          <p>Add <strong>"Airtable &gt; Create a Record"</strong> in a <code>Support Tickets</code> table:</p>
+<pre>Fields:
+  Ticket ID:       Auto-generated (TICK-{{formatDate(now;"YYMMDDHHmmss")}})
+  Customer Name:   {{from_name}}
+  Customer Email:  {{from_email}}
+  Subject:         {{subject}}
+  Message:         {{body_text}}
+  Urgency:         {{json.urgency}}
+  Category:        {{json.category}}
+  AI Summary:      {{json.summary}}
+  Suggested Response: {{json.suggested_response}}
+  Status:          "Open"
+  Assigned To:     {{json.route_to}}
+  Created At:      {{now}}
+  Resolved At:     (empty)
+  Response Time:   (empty - calculated when resolved)</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Send the Auto-Acknowledgment</div>
+        <div class="step-body">
+          <p>Add <strong>"Gmail &gt; Send an Email"</strong>:</p>
+<pre>To:      {{from_email}}
+Subject: Re: {{subject}} [Ticket #{{ticket_id}}]
+
+Hi {{from_name}},
+
+Thank you for reaching out! We've received your message
+and a member of our team is already looking into it.
+
+YOUR TICKET: #{{ticket_id}}
+ESTIMATED RESPONSE TIME: {{json.estimated_resolution}}
+
+Here's what to expect:
+- A team member will respond within {{json.estimated_resolution}}
+- You'll receive updates via email
+- If this is urgent, call us at (XXX) XXX-XXXX
+
+In the meantime, you might find our FAQ helpful:
+[FAQ LINK]
+
+We appreciate your patience!
+
+Best,
+[Your Company] Support Team</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Route to the Right Slack Channel</div>
+        <div class="step-body">
+          <p>Add a <strong>"Router"</strong> with paths based on <code>{{json.category}}</code>:</p>
+          <p><strong>Path: Billing</strong> (filter: category = "billing") &rarr; <strong>"Slack &gt; Create a Message"</strong> in <code>#support-billing</code></p>
+          <p><strong>Path: Technical</strong> (filter: category = "technical") &rarr; Slack in <code>#support-technical</code></p>
+          <p><strong>Path: All others</strong> (fallback) &rarr; Slack in <code>#support-general</code></p>
+          <p>Slack message format:</p>
+<pre>:ticket: *New Support Ticket*  [{{json.urgency | uppercase}}]
+
+*Ticket:* #{{ticket_id}}
+*From:* {{from_name}} ({{from_email}})
+*Subject:* {{subject}}
+*Category:* {{json.category}}
+
+*AI Summary:* {{json.summary}}
+
+*Customer's Message:*
+> {{body_text | truncate(500)}}
+
+*Suggested Response:*
+{{json.suggested_response}}
+
+:point_right: React with :eyes: when you're handling this.
+:point_right: React with :white_check_mark: when resolved.</pre>
+          <p>For <strong>CRITICAL</strong> urgency tickets, also add a Slack DM to the team lead/manager.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Build the Escalation Scenario</div>
+        <div class="step-body">
+          <p>Create a separate scenario: <code>Support Ticket Escalation</code>. Run every 30 minutes.</p>
+          <p>Module: <strong>"Airtable &gt; Search Records"</strong> &mdash; filter:</p>
+<pre>Status = "Open"
+Created At &lt; {{addHours(now; -2)}}
+Urgency IN ["critical", "high"]</pre>
+          <p>For each unresolved ticket, send a Slack DM to the manager:</p>
+<pre>:rotating_light: *ESCALATION: Ticket #{{ticket_id}} unresolved for 2+ hours*
+
+Customer: {{customer_name}}
+Urgency: {{urgency}}
+Summary: {{ai_summary}}
+
+This ticket needs immediate attention.
+Original channel: #support-{{category}}</pre>
+          <p>Also update the Airtable record to set Status = "Escalated".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Response time:</strong> Instant acknowledgment (vs. average 12-hour response in small businesses)</li>
+        <li><strong>Routing accuracy:</strong> 90%+ of tickets go to the right person on the first try (AI categorization)</li>
+        <li><strong>Resolution time:</strong> 30-40% faster with AI-suggested responses giving agents a head start</li>
+        <li><strong>Customer satisfaction:</strong> Immediate acknowledgment + estimated timeline = dramatically happier customers</li>
+        <li><strong>Zero missed tickets:</strong> Escalation ensures every ticket gets attention within 2 hours</li>
+        <li><strong>Time saved:</strong> 5-10 hours/week on ticket triage, routing, and follow-up</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Train the AI with <strong>examples from your actual tickets</strong> by adding 3-5 example categorizations in the system prompt. This dramatically improves accuracy.</li>
+        <li>Add a <strong>CSAT survey</strong> when a ticket is resolved: "How would you rate your experience? 1-5" &mdash; track over time to measure team performance.</li>
+        <li>Use Slack's <strong>emoji reactions</strong> as status updates: :eyes: = "looking at it", :hourglass: = "working on it", :white_check_mark: = "resolved". Build a Make scenario that watches for reaction events and updates Airtable accordingly.</li>
+        <li>For critical tickets, add a <strong>Twilio SMS</strong> to the team lead's phone in addition to Slack.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>Full Auto-Response:</strong> For common questions (password reset, billing inquiry, shipping status), have the AI check a knowledge base and respond fully automatically. Only create a ticket for questions AI can't answer.</li>
+        <li><strong>Multi-Channel Intake:</strong> Add Intercom, Facebook Messenger, and Twitter DM as additional intake sources. All funnel into the same Airtable ticket system.</li>
+        <li><strong>SLA Tracking:</strong> Define SLA targets per urgency (Critical: 1hr, High: 4hr, Medium: 24hr, Low: 48hr). Track compliance rate and alert when SLAs are at risk of being breached.</li>
+        <li><strong>Sentiment Analysis:</strong> Add a sentiment score to the AI output. Track trends &mdash; if average sentiment drops, it may indicate a product issue.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 09: LEAD SCORING & QUALIFICATION
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 09</div>
+      <h2 class="bp-title">Lead Scoring &amp; Qualification</h2>
+      <p class="bp-description">Not all leads are created equal. This automation uses AI to analyze every new lead's business size, industry, engagement level, and fit with your ideal customer profile, then assigns a score from 1 to 100. Hot leads (80+) get routed to your sales team immediately via phone alert. Warm leads enter a nurture sequence. Cold leads get a different path entirely. Stop wasting time on bad-fit leads and focus on the ones most likely to close.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>B2B service businesses, agencies, SaaS companies, consultants, and any business where lead quality varies significantly and sales time is limited. Especially useful when you receive 20+ leads per week and can't personally evaluate each one.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Webhook or CRM trigger (lead intake)</li>
+          <li>OpenAI API (lead analysis)</li>
+          <li>Clearbit or Apollo.io (company enrichment, optional)</li>
+          <li>HubSpot CRM or Airtable (lead storage)</li>
+          <li>Slack + Twilio (hot lead alerts)</li>
+          <li>Gmail (nurture sequences)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Intermediate-Advanced &mdash; 2 hours to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$29&ndash;$60/mo (Make Pro; OpenAI ~$5/mo; Clearbit/Apollo optional $0-99/mo)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+     +-------------------+     +-------------------+
+  | NEW LEAD ENTERS   |     | ENRICHMENT:       |     | OPENAI: Score     |
+  | (Form, ad, CRM)   |---->| Clearbit/Apollo   |---->| lead 1-100 based  |
+  |                   |     | lookup company    |     | on all data       |
+  +-------------------+     | size, industry,   |     | points            |
+                            | revenue, etc.     |     +---------+---------+
+                            +-------------------+               |
+                                                                v
+                                                      +---------+---------+
+                                                      | ROUTER: Score     |
+                                                      | based routing     |
+                                                      +---------+---------+
+                                    _____________________|_____|_____
+                                   |                     |           |
+                                   v                     v           v
+                          +--------+------+     +--------+--+ +-----+--------+
+                          | SCORE 80-100  |     | SCORE     | | SCORE 0-39   |
+                          | HOT LEAD      |     | 40-79     | | COLD LEAD    |
+                          |               |     | WARM LEAD | |              |
+                          | > Slack alert |     |           | | > Add to     |
+                          | > SMS to      |     | > Email   | |   low-touch  |
+                          |   sales rep   |     |   nurture | |   newsletter |
+                          | > CRM: High   |     |   drip    | | > CRM: Low   |
+                          |   priority    |     | > CRM:    | |   priority   |
+                          +---------------+     |   Medium  | +--------------+
+                                                +-----------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Define Your Ideal Customer Profile (ICP)</div>
+        <div class="step-body">
+          <p>Before building, write down your scoring criteria. This is the most important step. Example for a B2B agency:</p>
+<pre>IDEAL CUSTOMER PROFILE:
+- Industry: Professional services, e-commerce, healthcare,
+  real estate (20 points)
+- Company Size: 10-200 employees (20 points)
+- Revenue: $500K - $20M annual (20 points)
+- Decision Maker: Owner, CEO, VP, Director (15 points)
+- Engagement: Visited pricing page, downloaded resource,
+  attended webinar (15 points)
+- Budget Mentioned: Yes (10 points)
+- Timeline: Within 30 days (10 points)
+
+DISQUALIFIERS (score = 0):
+- Student/job seeker
+- Competitor
+- Outside service area
+- Requesting something you don't offer</pre>
+          <p>Customize this for YOUR business. The AI will use these criteria to score leads.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Set Up Lead Enrichment (Optional but Powerful)</div>
+        <div class="step-body">
+          <p>After the lead enters (webhook, form, or CRM trigger), add company enrichment to get more data for scoring.</p>
+          <p><strong>Using Clearbit (now part of HubSpot):</strong> Add <strong>"HTTP &gt; Make a Request"</strong>:</p>
+<pre>URL: https://company.clearbit.com/v2/companies/find
+Method: GET
+Query String: domain={{extractDomain(lead_email)}}
+Headers: Authorization: Bearer YOUR_CLEARBIT_API_KEY</pre>
+          <p>This returns: company name, industry, employee count, estimated revenue, location, tech stack, social profiles.</p>
+          <p><strong>Using Apollo.io:</strong> Similar API call to <code>https://api.apollo.io/v1/people/match</code> with the lead's email.</p>
+          <p><strong>Free alternative:</strong> Skip enrichment and rely solely on form data + AI analysis. The AI can still infer a lot from the company name and email domain.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">AI Lead Scoring</div>
+        <div class="step-body">
+          <p>Add <strong>"OpenAI &gt; Create a Chat Completion"</strong>:</p>
+<pre>Model: gpt-4o
+Temperature: 0.3
+
+System Prompt:
+You are a lead qualification AI for [YOUR COMPANY],
+a [YOUR SERVICE] company. Score incoming leads from
+1-100 based on how well they match our Ideal Customer
+Profile.
+
+SCORING CRITERIA:
+[PASTE YOUR ICP FROM STEP 1]
+
+SCORING RULES:
+- Add points for each matching criterion
+- Subtract 10 points for each mismatch
+- Score 0 for disqualified leads
+- Be conservative — only score 80+ if multiple strong
+  signals are present
+- Consider the email domain: @gmail/@yahoo = smaller
+  business, @company.com = likely established
+
+Return a JSON object:
+{
+  "score": 85,
+  "tier": "hot|warm|cold|disqualified",
+  "reasoning": "Brief explanation of scoring",
+  "company_size_estimate": "small|medium|large",
+  "industry_match": true/false,
+  "recommended_action": "What should sales do next",
+  "personalized_angle": "How to approach this specific lead"
+}
+
+User Prompt:
+NEW LEAD:
+Name: {{lead_name}}
+Email: {{lead_email}}
+Phone: {{lead_phone}}
+Company: {{lead_company}}
+Message/Inquiry: {{lead_message}}
+
+ENRICHMENT DATA (if available):
+Industry: {{clearbit.industry}}
+Employees: {{clearbit.employees}}
+Revenue: {{clearbit.estimatedAnnualRevenue}}
+Location: {{clearbit.location}}
+Tech Stack: {{clearbit.tech}}</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Route Based on Score</div>
+        <div class="step-body">
+          <p>Add a <strong>"JSON &gt; Parse JSON"</strong> module, then a <strong>"Router"</strong> with three paths:</p>
+          <p><strong>Path 1 &mdash; HOT LEAD (Score 80-100):</strong></p>
+          <ul>
+            <li><strong>Slack:</strong> Post to #hot-leads with full details and the AI's recommended approach</li>
+            <li><strong>Twilio SMS:</strong> Text your sales rep: "HOT LEAD: {{name}} from {{company}} (Score: {{score}}). {{personalized_angle}}. Call within 5 minutes!"</li>
+            <li><strong>HubSpot:</strong> Create/update contact with Lead Status = "Hot", Lead Score = {{score}}, Priority = "High"</li>
+            <li><strong>Gmail:</strong> Send the instant follow-up email (tie into Blueprint #1)</li>
+          </ul>
+          <p><strong>Path 2 &mdash; WARM LEAD (Score 40-79):</strong></p>
+          <ul>
+            <li><strong>HubSpot:</strong> Create contact, Lead Status = "Warm", enroll in a 5-email nurture sequence</li>
+            <li><strong>Gmail:</strong> Send a personalized but lower-urgency response within 24 hours</li>
+            <li><strong>Slack:</strong> Post to #leads (informational, no urgency)</li>
+          </ul>
+          <p><strong>Path 3 &mdash; COLD LEAD (Score 0-39):</strong></p>
+          <ul>
+            <li><strong>HubSpot:</strong> Create contact, Lead Status = "Cold", add to newsletter list</li>
+            <li><strong>Gmail:</strong> Send a generic "thanks for your interest" email with helpful resources</li>
+            <li>No sales follow-up unless they engage further</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Build the Warm Lead Nurture Sequence</div>
+        <div class="step-body">
+          <p>For warm leads (score 40-79), create a 5-email drip sequence spaced over 14 days:</p>
+<pre>Day 1:  "Thanks for reaching out" + helpful resource
+        (blog post, guide, case study)
+Day 3:  Social proof email (testimonial, case study
+        with results)
+Day 7:  Value-add email (tip or insight related to
+        their industry/pain point)
+Day 10: Soft CTA email ("Here's what working with us
+        looks like" + process overview)
+Day 14: Direct CTA ("Ready to explore this further?
+        Book a call: [LINK]")</pre>
+          <p>Build this as a separate Make scenario triggered by a schedule that checks for warm leads at each stage. Use a "Nurture Stage" column in your CRM/sheet to track progress.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Track and Refine Scoring Accuracy</div>
+        <div class="step-body">
+          <p>Create a <code>Lead Scoring Accuracy</code> Google Sheet. For each scored lead, track: AI Score, Tier, Outcome (Closed/Lost/Unresponsive), Revenue if closed.</p>
+          <p>Monthly, review the data: Are high-scored leads actually closing? Are low-scored leads sometimes converting? Adjust your ICP criteria and AI prompt based on real results.</p>
+          <p>Target: 80%+ accuracy within 2-3 months of refinement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Sales efficiency:</strong> 2-3x improvement by focusing on pre-qualified leads only</li>
+        <li><strong>Hot lead response time:</strong> Under 5 minutes (SMS alert to sales rep)</li>
+        <li><strong>Conversion rate improvement:</strong> 20-40% higher close rate on qualified leads vs. unscored leads</li>
+        <li><strong>Time saved:</strong> 5-10 hours/week of manual lead evaluation</li>
+        <li><strong>Revenue impact:</strong> If scoring helps you close 2 extra deals/month at $2K each = $4K/month additional revenue</li>
+        <li><strong>No leads forgotten:</strong> Every lead gets appropriate follow-up, even cold ones (newsletter)</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Add <strong>behavioral scoring</strong>: Track if the lead opens your emails (using SendGrid tracking), clicks links, visits your pricing page (using a tracking pixel). Add 5-10 points per engagement action and re-score weekly.</li>
+        <li>Create a <strong>"score override"</strong> in your CRM: If a sales rep manually marks a cold lead as hot (e.g., after a great phone call), the system should respect the override and route accordingly.</li>
+        <li>Use <strong>gpt-4o</strong> (not mini) for scoring. The improved reasoning is worth the extra $0.05/lead for more accurate qualification.</li>
+        <li>Feed <strong>historical data</strong> to the AI: "In the past, our best clients have been [X]. Our worst-fit leads were [Y]." This dramatically improves scoring accuracy.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>Account-Based Scoring:</strong> Instead of individual leads, score entire companies. If multiple leads come from the same company, aggregate their score and flag it as a high-value target account.</li>
+        <li><strong>Re-Scoring Engine:</strong> Run a weekly scenario that re-scores all warm leads based on their engagement over the past 7 days. Promote warm leads to hot (or demote to cold) based on activity.</li>
+        <li><strong>Competitor Detection:</strong> Add a check using the email domain: if the domain belongs to a known competitor, flag the lead as a "Competitor" and route to a different workflow (or exclude entirely).</li>
+        <li><strong>Integration with Ads:</strong> Feed lead score data back into Facebook/Google Ads as conversion values. This trains the ad algorithm to find more leads like your highest-scored ones.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     BLUEPRINT 10: TESTIMONIAL COLLECTOR & PUBLISHER
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="blueprint-section">
+  <div class="container">
+    <div class="bp-header">
+      <div class="bp-number">Blueprint 10</div>
+      <h2 class="bp-title">Testimonial Collector &amp; Publisher</h2>
+      <p class="bp-description">A great review should work harder than just sitting on Google. This automation detects new positive reviews, uses AI to format them into social media posts, generates branded image graphics, queues them for your approval, and auto-publishes when you give the thumbs up. Your best social proof, turned into content, on autopilot.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-label">Use Case / Who It's For</div>
+        <p>Any business that receives reviews or testimonials and wants to leverage them as social media content. Service businesses, restaurants, e-commerce, SaaS, agencies, coaches. Especially powerful if you already have 50+ reviews sitting unused.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Tools Needed</div>
+        <ul>
+          <li>Make.com (Core automation)</li>
+          <li>Google Places API (review detection)</li>
+          <li>OpenAI API (content formatting)</li>
+          <li>Canva API or Placid.app (image generation)</li>
+          <li>Airtable (approval queue)</li>
+          <li>Slack (approval notifications)</li>
+          <li>Buffer or Meta Business Suite (publishing)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Difficulty</div>
+        <p>Intermediate-Advanced &mdash; 2 hours to build</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Estimated Cost</div>
+        <p>$29&ndash;$50/mo (Make Pro; Placid $29/mo or Canva Pro $13/mo; Buffer $15/mo; other tools free)</p>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-box-label">Trigger &rarr; Action Flow</div>
+<pre>
+  +-------------------+     +-------------------+     +-------------------+
+  | DAILY CHECK:      |     | FILTER: New       |     | OPENAI: Format    |
+  | Google Places API |---->| reviews since     |---->| review into       |
+  | fetch latest      |     | last check +      |     | social media      |
+  | reviews           |     | rating >= 4 stars |     | post copy         |
+  +-------------------+     +-------------------+     +---------+---------+
+                                                                |
+                                                                v
+  +-------------------+     +-------------------+     +---------+---------+
+  | SLACK: Send for   |<----| AIRTABLE: Add to  |<----| PLACID/CANVA:    |
+  | approval with     |     | approval queue    |     | Generate branded  |
+  | preview           |     | (status: pending) |     | testimonial       |
+  +-------------------+     +-------------------+     | image             |
+            |                                         +-------------------+
+            v
+  +---------+---------+
+  | ON APPROVAL:      |
+  | (Slack reaction   |
+  |  or Airtable      |
+  |  status change)   |
+  +---------+---------+
+            |
+            v
+  +---------+---------+     +-------------------+
+  | BUFFER: Publish   |     | AIRTABLE: Mark    |
+  | to Instagram,     |---->| as "Published"    |
+  | Facebook, LinkedIn|     | with date         |
+  +-------------------+     +-------------------+
+</pre>
+    </div>
+
+    <div class="steps-section">
+      <h3 class="steps-section-title">Step-by-Step Setup Instructions</h3>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Set Up Review Detection</div>
+        <div class="step-body">
+          <p>Create scenario: <code>Testimonial Collector</code>. Schedule: <strong>Daily at 10 AM</strong>.</p>
+          <p>Module: <strong>"HTTP &gt; Make a Request"</strong> to the Google Places API:</p>
+<pre>URL: https://maps.googleapis.com/maps/api/place/details/json
+Method: GET
+Query String:
+  place_id: YOUR_GOOGLE_PLACE_ID
+  fields: reviews
+  key: YOUR_GOOGLE_MAPS_API_KEY</pre>
+          <p>To find your Place ID: Go to <a href="https://developers.google.com/maps/documentation/places/web-service/place-id" style="color:#338dff;">Google's Place ID Finder</a> and search your business.</p>
+          <p>Add <strong>"JSON &gt; Parse JSON"</strong> to extract the reviews array.</p>
+          <p>Add an <strong>"Iterator"</strong> to loop through each review.</p>
+          <p>Add a <strong>"Filter"</strong>:</p>
+<pre>Condition 1: rating >= 4
+Condition 2: time > {{last_check_timestamp}}
+(Store the last check timestamp in a Make data store
+ or Google Sheet cell that you update after each run)</pre>
+          <p><strong>Alternative sources for reviews:</strong></p>
+          <ul>
+            <li><strong>Yelp:</strong> Use the Yelp Fusion API (<code>/businesses/{id}/reviews</code>)</li>
+            <li><strong>Form-submitted testimonials:</strong> Use a Typeform/Tally "Testimonial" form as a webhook trigger</li>
+            <li><strong>Email-submitted:</strong> Watch for emails with subject containing "testimonial" or "review"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">AI Content Formatting</div>
+        <div class="step-body">
+          <p>Add <strong>"OpenAI &gt; Create a Chat Completion"</strong>:</p>
+<pre>Model: gpt-4o-mini
+Temperature: 0.7
+
+System Prompt:
+You are a social media content specialist. You take
+customer reviews/testimonials and format them into
+engaging social media posts. Create 3 versions:
+
+1. INSTAGRAM POST: Use the review as a quote graphic
+   caption. Add context, a brief intro, and relevant
+   hashtags. 100-150 words. Include emojis sparingly.
+
+2. LINKEDIN POST: Professional tone. Frame the
+   testimonial within a narrative about delivering
+   results. 150-200 words. End with a CTA.
+
+3. FACEBOOK POST: Conversational, community-focused.
+   Thank the reviewer by name. Celebrate the win.
+   100-130 words.
+
+Also provide:
+4. QUOTE EXCERPT: The most powerful 1-2 sentences
+   from the review, perfect for a graphic.
+5. IMAGE HEADLINE: A 3-5 word headline to overlay
+   on the testimonial graphic (e.g., "Real Results
+   That Matter")
+
+Return as JSON:
+{
+  "instagram": "...",
+  "linkedin": "...",
+  "facebook": "...",
+  "quote_excerpt": "...",
+  "image_headline": "..."
+}
+
+User Prompt:
+REVIEW TO FORMAT:
+Author: {{review.author_name}}
+Rating: {{review.rating}}/5 stars
+Review Text: {{review.text}}
+
+Our business: [YOUR COMPANY] - [YOUR SERVICE]</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Generate the Branded Image</div>
+        <div class="step-body">
+          <p><strong>Using Placid.app (recommended):</strong></p>
+          <p>First, create a template in Placid with your brand colors, logo, and a testimonial layout. Your template should have dynamic fields for: quote text, author name, star rating, headline.</p>
+          <p>In Make.com, add <strong>"HTTP &gt; Make a Request"</strong>:</p>
+<pre>URL: https://api.placid.app/api/rest/images
+Method: POST
+Headers:
+  Authorization: Bearer YOUR_PLACID_TOKEN
+  Content-Type: application/json
+Body:
+{
+  "template_uuid": "YOUR_TEMPLATE_ID",
+  "layers": {
+    "quote": {"text": "{{json.quote_excerpt}}"},
+    "author": {"text": "- {{review.author_name}}"},
+    "stars": {"text": "{{review.rating}} stars"},
+    "headline": {"text": "{{json.image_headline}}"},
+    "logo": {"image": "https://yoursite.com/logo.png"}
+  }
+}</pre>
+          <p>Placid returns an image URL that you can use in the social post.</p>
+          <p><strong>Free alternative (Canva):</strong> Use the Canva Connect API or manually create images using templates. Less automated but works at lower volume.</p>
+          <p><strong>Simplest alternative:</strong> Skip image generation entirely. Just post the text with your logo as the image. Many businesses do this successfully.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Add to Approval Queue</div>
+        <div class="step-body">
+          <p>Add <strong>"Airtable &gt; Create a Record"</strong> in a <code>Testimonial Queue</code> table:</p>
+<pre>Fields:
+  Review Author:     {{review.author_name}}
+  Review Text:       {{review.text}}
+  Rating:            {{review.rating}}
+  Instagram Copy:    {{json.instagram}}
+  LinkedIn Copy:     {{json.linkedin}}
+  Facebook Copy:     {{json.facebook}}
+  Quote Excerpt:     {{json.quote_excerpt}}
+  Image URL:         {{placid_image_url}}
+  Status:            "Pending Approval"
+  Detected Date:     {{now}}
+  Published Date:    (empty)
+  Source:            "Google Reviews"</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Send for Approval via Slack</div>
+        <div class="step-body">
+          <p>Add <strong>"Slack &gt; Create a Message"</strong> in #content-approval:</p>
+<pre>:star: *New Testimonial Ready for Publishing*
+
+*From:* {{review.author_name}} ({{review.rating}} stars)
+*Review:* "{{review.text}}"
+
+*Generated Posts:*
+
+:camera: *Instagram:*
+{{json.instagram}}
+
+:briefcase: *LinkedIn:*
+{{json.linkedin}}
+
+:blue_book: *Facebook:*
+{{json.facebook}}
+
+:frame_with_picture: *Image:* {{placid_image_url}}
+
+React :white_check_mark: to approve and schedule all posts
+React :pencil2: to edit in Airtable first
+React :x: to skip this testimonial</pre>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">Build the Publishing Scenario</div>
+        <div class="step-body">
+          <p>Create scenario: <code>Testimonial Publisher</code>. This can be triggered two ways:</p>
+          <p><strong>Option A &mdash; Slack Reaction Trigger:</strong> Use <strong>"Slack &gt; Watch Reactions"</strong> and filter for :white_check_mark: on messages in #content-approval. When detected, search Airtable for the matching testimonial and update status to "Approved."</p>
+          <p><strong>Option B &mdash; Airtable Status Change (simpler):</strong> Schedule a scenario every 15 minutes that searches for records where Status = "Approved" and Published Date is empty.</p>
+          <p>For each approved testimonial, use a Router to post to each platform:</p>
+          <p><strong>Instagram:</strong> <strong>"Buffer &gt; Create a Post"</strong> &rarr; select Instagram profile, paste Instagram copy, attach image URL.</p>
+          <p><strong>LinkedIn:</strong> <strong>"Buffer &gt; Create a Post"</strong> &rarr; select LinkedIn profile, paste LinkedIn copy.</p>
+          <p><strong>Facebook:</strong> <strong>"Buffer &gt; Create a Post"</strong> &rarr; select Facebook page, paste Facebook copy, attach image.</p>
+          <p>After all posts are scheduled, update Airtable: Status = "Published", Published Date = today.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">7</div>
+        <div class="step-title">Track Performance</div>
+        <div class="step-body">
+          <p>Create a monthly scenario that pulls engagement metrics from Buffer (or directly from platform APIs) for all published testimonial posts. Store in Airtable: Likes, Comments, Shares, Impressions per post.</p>
+          <p>This tells you which testimonials resonate most with your audience and what type of reviews make the best social content.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>Expected Results &amp; ROI</h3>
+      <ul>
+        <li><strong>Content generated:</strong> 8-15 social media posts per month from testimonials alone (across 3 platforms)</li>
+        <li><strong>Time saved:</strong> 4-6 hours/month of content creation, design, and posting</li>
+        <li><strong>Engagement:</strong> Testimonial posts typically get 2-3x higher engagement than standard marketing content</li>
+        <li><strong>Social proof flywheel:</strong> More visible testimonials attract more reviews, which generate more content</li>
+        <li><strong>Brand trust:</strong> Consistent testimonial sharing builds credibility and trust with your audience over time</li>
+        <li><strong>Zero testimonials wasted:</strong> Every great review becomes a marketing asset</li>
+      </ul>
+    </div>
+
+    <div class="pro-tips">
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Create <strong>3-4 different image templates</strong> in Placid and randomly rotate between them. This keeps your feed visually diverse.</li>
+        <li>Add a <strong>"Thank the Reviewer"</strong> step: When a great review is detected, automatically reply on Google ("Thank you so much, {{name}}! We loved working with you...") using the Google Business Profile API.</li>
+        <li>Build a <strong>"Wall of Love"</strong> page on your website that automatically updates with new testimonials from your Airtable database. Use Airtable's API to pull approved testimonials into a simple HTML page.</li>
+        <li>For <strong>video testimonials</strong>: When you receive a particularly great written review, trigger an email asking the client if they'd record a 30-second video version. Route video submissions through a separate approval flow.</li>
+      </ul>
+    </div>
+
+    <div class="variations">
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>Email Signature Testimonials:</strong> Rotate a testimonial quote in your team's email signatures weekly. Pull from the approved queue and update via Google Workspace API.</li>
+        <li><strong>Case Study Generator:</strong> When a review mentions specific results (e.g., "doubled our leads"), flag it for a deeper case study. Send the client a structured interview form to flesh out the full story.</li>
+        <li><strong>Industry-Specific Campaigns:</strong> Tag testimonials by industry. When targeting a specific industry (e.g., running ads for dentists), automatically pull and post testimonials from other dental clients.</li>
+        <li><strong>Multi-Language:</strong> Use the OpenAI module to translate testimonial posts into Spanish (or other languages) for multilingual markets. Schedule the translated versions on Spanish-language social profiles.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="doc-footer">
+  <div style="margin-bottom:30px;">
+    <div style="font-size:14px; font-weight:700; letter-spacing:4px; color:var(--accent-blue); text-transform:uppercase;">JEDAI FLOW</div>
+  </div>
+  <p style="font-size:18px; font-weight:600; color:var(--text-primary); margin-bottom:16px;">Ready to implement these automations?</p>
+  <p>We build these systems for businesses every day. If you want them set up<br>professionally and customized to your exact workflow, let's talk.</p>
+  <p style="margin-top:24px;">
+    <a href="https://jedaiflow.com" style="display:inline-block; background:var(--accent-blue); color:#fff; padding:14px 36px; border-radius:8px; text-decoration:none; font-weight:700; font-size:15px;">Book a Free Strategy Call &rarr;</a>
+  </p>
+  <p style="margin-top:40px; font-size:12px; color:var(--text-muted);">
+    &copy; 2026 Jedai Flow. All rights reserved.<br>
+    This document is for the exclusive use of the purchaser. Do not redistribute.<br>
+    <a href="https://jedaiflow.com">jedaiflow.com</a>
+  </p>
+</div>
+
+</body>
+</html>

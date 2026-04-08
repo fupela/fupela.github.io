@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Automation Mastery Guide | Jedai Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1a2035;
+    --bg-code: #0d1117;
+    --text-primary: #f0f2f5;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent-blue: #338dff;
+    --accent-teal: #00d4aa;
+    --accent-purple: #8b5cf6;
+    --accent-orange: #f59e0b;
+    --accent-red: #ef4444;
+    --border: #1e293b;
+    --border-light: #2d3a50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  .page-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 32px;
+  }
+
+  /* Cover Page */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 32px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 40% 50%, rgba(51,141,255,0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at 65% 60%, rgba(0,212,170,0.08) 0%, transparent 50%);
+    animation: coverGlow 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes coverGlow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-3%, 2%); }
+  }
+
+  .cover-content { position: relative; z-index: 1; }
+
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 40px;
+    padding: 10px 24px;
+    border: 1px solid rgba(51,141,255,0.3);
+    border-radius: 50px;
+  }
+
+  .brand-mark svg { width: 20px; height: 20px; }
+
+  .cover h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff 0%, #338dff 50%, #00d4aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover .subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cover-meta span { display: flex; align-items: center; gap: 6px; }
+
+  .edition-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 32px;
+  }
+
+  /* TOC */
+  .toc {
+    page-break-after: always;
+    padding: 60px 0;
+  }
+
+  .toc h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: var(--text-primary);
+  }
+
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.2s;
+  }
+
+  .toc-item:hover { color: var(--accent-blue); }
+  .toc-item .chapter-num { color: var(--accent-teal); font-weight: 700; margin-right: 12px; font-size: 14px; }
+  .toc-item .chapter-title { font-weight: 500; }
+  .toc-item .dots { flex: 1; border-bottom: 1px dotted var(--border-light); margin: 0 12px; min-width: 40px; }
+
+  /* Chapter Styling */
+  .chapter {
+    page-break-before: always;
+    padding: 60px 0 40px;
+  }
+
+  .chapter-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .chapter-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 12px;
+  }
+
+  .chapter-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .chapter-header .chapter-desc {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 680px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 48px 0 20px;
+    color: var(--text-primary);
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 14px;
+    color: var(--accent-blue);
+  }
+
+  p { margin-bottom: 16px; color: var(--text-secondary); }
+
+  strong { color: var(--text-primary); font-weight: 600; }
+
+  ul, ol {
+    margin: 16px 0 24px 24px;
+    color: var(--text-secondary);
+  }
+
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--accent-teal); }
+
+  /* Code Blocks */
+  pre {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    overflow-x: auto;
+    margin: 20px 0 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #e6edf3;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+  }
+
+  p code, li code {
+    background: var(--bg-tertiary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: var(--accent-teal);
+  }
+
+  .code-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  /* Info Boxes */
+  .info-box {
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-left: 4px solid;
+  }
+
+  .info-box.tip {
+    background: rgba(0,212,170,0.06);
+    border-color: var(--accent-teal);
+  }
+
+  .info-box.warning {
+    background: rgba(245,158,11,0.06);
+    border-color: var(--accent-orange);
+  }
+
+  .info-box.critical {
+    background: rgba(239,68,68,0.06);
+    border-color: var(--accent-red);
+  }
+
+  .info-box.pro {
+    background: rgba(139,92,246,0.06);
+    border-color: var(--accent-purple);
+  }
+
+  .info-box .box-title {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .info-box.tip .box-title { color: var(--accent-teal); }
+  .info-box.warning .box-title { color: var(--accent-orange); }
+  .info-box.critical .box-title { color: var(--accent-red); }
+  .info-box.pro .box-title { color: var(--accent-purple); }
+  .info-box p:last-child { margin-bottom: 0; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 28px;
+    font-size: 14px;
+  }
+
+  th {
+    background: var(--bg-tertiary);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-light);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  tr:hover td { background: rgba(51,141,255,0.03); }
+
+  /* Prompt Template Box */
+  .prompt-template {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    margin: 24px 0;
+    overflow: hidden;
+  }
+
+  .prompt-template .pt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prompt-template .pt-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent-purple);
+  }
+
+  .prompt-template .pt-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(139,92,246,0.15);
+    color: var(--accent-purple);
+    font-weight: 600;
+  }
+
+  .prompt-template .pt-body {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .prompt-template .pt-body .var {
+    color: var(--accent-teal);
+    font-weight: 600;
+  }
+
+  /* Diagram / Flow */
+  .flow-diagram {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    margin: 24px 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--text-secondary);
+  }
+
+  .flow-diagram .node {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 6px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .flow-diagram .arrow { color: var(--accent-teal); margin: 0 8px; }
+  .flow-diagram .node.trigger { border-color: var(--accent-teal); color: var(--accent-teal); }
+  .flow-diagram .node.action { border-color: var(--accent-blue); color: var(--accent-blue); }
+  .flow-diagram .node.ai { border-color: var(--accent-purple); color: var(--accent-purple); }
+  .flow-diagram .node.error { border-color: var(--accent-red); color: var(--accent-red); }
+
+  /* Separator */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    margin: 48px 0;
+  }
+
+  /* Footer */
+  .guide-footer {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+    page-break-before: always;
+  }
+
+  .guide-footer .brand { font-size: 18px; font-weight: 800; color: var(--accent-blue); letter-spacing: 3px; }
+  .guide-footer p { font-size: 14px; color: var(--text-muted); margin-top: 12px; }
+
+  /* Print Styles */
+  @media print {
+    body { background: #0a0e1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page-container { padding: 20px; }
+    .cover { min-height: auto; padding: 80px 20px; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    .chapter { page-break-before: always; }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .page-container { padding: 24px 18px; }
+    .cover h1 { font-size: 32px; }
+    .chapter-header h2 { font-size: 28px; }
+    pre { padding: 16px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER PAGE -->
+<!-- ============================================================ -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="brand-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      JEDAI FLOW
+    </div>
+    <h1>The AI Automation Mastery Guide</h1>
+    <p class="subtitle">The definitive technical reference for building intelligent, scalable automation systems that run your business on autopilot.</p>
+    <div class="edition-badge">Advanced Edition - 2026</div>
+    <div class="cover-meta">
+      <span>11 Chapters</span>
+      <span>50+ Pages</span>
+      <span>20 Production Prompts</span>
+      <span>Real Code Examples</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+<div class="page-container">
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a class="toc-item" href="#intro"><span><span class="chapter-num">00</span><span class="chapter-title">Introduction: Beyond Basic Automation</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch1"><span><span class="chapter-num">01</span><span class="chapter-title">Multi-Step Workflow Architecture</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch2"><span><span class="chapter-num">02</span><span class="chapter-title">AI-Powered Automations</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch3"><span><span class="chapter-num">03</span><span class="chapter-title">Database-Driven Automations</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch4"><span><span class="chapter-num">04</span><span class="chapter-title">API Integrations Deep Dive</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch5"><span><span class="chapter-num">05</span><span class="chapter-title">Advanced Communication Flows</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch6"><span><span class="chapter-num">06</span><span class="chapter-title">Error Handling &amp; Monitoring</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch7"><span><span class="chapter-num">07</span><span class="chapter-title">White-Label &amp; Client Management</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch8"><span><span class="chapter-num">08</span><span class="chapter-title">Scaling Infrastructure</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#ch9"><span><span class="chapter-num">09</span><span class="chapter-title">Building AI Agents</span></span><span class="dots"></span></a>
+  <a class="toc-item" href="#bonus"><span><span class="chapter-num">++</span><span class="chapter-title">Bonus: Advanced Prompt Library (20 Prompts)</span></span><span class="dots"></span></a>
+</div>
+
+<!-- ============================================================ -->
+<!-- INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="chapter" id="intro">
+  <div class="chapter-header">
+    <div class="chapter-label">Introduction</div>
+    <h2>Beyond Basic Automation</h2>
+    <p class="chapter-desc">Why most automations fail, and the architectural mindset that separates amateur workflows from production-grade systems.</p>
+  </div>
+
+  <h3>The Automation Maturity Model</h3>
+  <p>Most businesses that adopt automation tools like Make.com, Zapier, or n8n plateau at Level 1 -- simple trigger-action pairs. "When a form is submitted, send an email." These are useful, but they capture perhaps 5% of the value automation can deliver.</p>
+
+  <p>This guide is for practitioners who want to operate at <strong>Levels 3 through 5</strong> -- where automations become intelligent systems that handle edge cases, recover from failures, make decisions, and scale across clients.</p>
+
+  <table>
+    <thead>
+      <tr><th>Level</th><th>Description</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1 - Reactive</strong></td><td>Single trigger, single action</td><td>Form submit &rarr; email notification</td></tr>
+      <tr><td><strong>2 - Sequential</strong></td><td>Multi-step linear workflows</td><td>Form &rarr; CRM &rarr; email &rarr; Slack</td></tr>
+      <tr><td><strong>3 - Conditional</strong></td><td>Branching logic, routers, filters</td><td>Lead score &gt; 80 &rarr; sales call; else &rarr; nurture drip</td></tr>
+      <tr><td><strong>4 - Intelligent</strong></td><td>AI-powered decision making, database state</td><td>AI qualifies lead, checks CRM history, routes to best rep</td></tr>
+      <tr><td><strong>5 - Autonomous</strong></td><td>Self-healing agents, multi-scenario orchestration</td><td>AI agent handles entire customer lifecycle autonomously</td></tr>
+    </tbody>
+  </table>
+
+  <h3>The Three Pillars of Production Automation</h3>
+  <p>Every system you build in this guide rests on three pillars:</p>
+  <ol>
+    <li><strong>Reliability</strong> -- Your automation must handle failures gracefully. If an API is down, the system retries or queues. If input data is malformed, it routes to error handling rather than silently failing. Production automations run 24/7 without you watching.</li>
+    <li><strong>Observability</strong> -- You must know what every automation is doing. Logging, alerting, execution tracking. When a client asks "did my lead follow-up go out?", you need a definitive answer in seconds.</li>
+    <li><strong>Scalability</strong> -- A workflow that works for 10 leads/day must work for 10,000. This means understanding operations limits, batch processing, scheduling, and cost management.</li>
+  </ol>
+
+  <h3>How to Use This Guide</h3>
+  <p>Each chapter is self-contained but builds on prior concepts. The code examples use <strong>Make.com</strong> as the primary platform (with notes on n8n equivalents where relevant), <strong>Airtable</strong> for database patterns, and the <strong>OpenAI / Anthropic APIs</strong> for AI integration.</p>
+
+  <p>Every JSON payload and prompt template in this guide is <strong>production-tested</strong>. Copy them, modify the variables for your use case, and deploy.</p>
+
+  <div class="info-box pro">
+    <div class="box-title">Who This Guide Is For</div>
+    <p>Automation consultants, agency owners, and technical implementers who already understand the basics of Make.com (or equivalent). You should be comfortable with JSON, understand HTTP methods, and have built at least a few multi-step workflows. This guide will take you from competent to expert.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 1: MULTI-STEP WORKFLOW ARCHITECTURE -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch1">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 01</div>
+    <h2>Multi-Step Workflow Architecture</h2>
+    <p class="chapter-desc">Designing complex workflows with branching logic, error handling, retry mechanisms, and parallel processing patterns.</p>
+  </div>
+
+  <h3>The Router Pattern</h3>
+  <p>Routers are the backbone of conditional logic in Make.com. A router takes a single input and sends it down multiple paths based on filter conditions. The key insight most people miss: <strong>router paths execute in order, and the first matching path wins by default</strong> -- unless you enable "Run all matching routes."</p>
+
+  <div class="flow-diagram">
+    <span class="node trigger">Webhook Trigger</span>
+    <span class="arrow">&rarr;</span>
+    <span class="node">Router</span>
+    <br><br>
+    <span style="margin-left: 40px;">Route 1 (score &ge; 80):</span>
+    <span class="arrow">&rarr;</span>
+    <span class="node action">Create Deal in CRM</span>
+    <span class="arrow">&rarr;</span>
+    <span class="node action">Notify Sales Rep</span>
+    <br>
+    <span style="margin-left: 40px;">Route 2 (score 40-79):</span>
+    <span class="arrow">&rarr;</span>
+    <span class="node ai">AI Nurture Email</span>
+    <span class="arrow">&rarr;</span>
+    <span class="node action">Add to Drip</span>
+    <br>
+    <span style="margin-left: 40px;">Route 3 (fallback):</span>
+    <span class="arrow">&rarr;</span>
+    <span class="node">Log to Sheet</span>
+  </div>
+
+  <h4>Router Configuration in Make.com Blueprint</h4>
+  <p>Here is how a router with filters looks in blueprint JSON. Understanding this structure lets you clone and modify scenarios programmatically:</p>
+
+<pre><span class="code-label">Make.com Router Blueprint Fragment</span>
+{
+  "id": 4,
+  "module": "builtin:BasicRouter",
+  "version": 1,
+  "mapper": null,
+  "routes": [
+    {
+      "flow": [
+        {
+          "id": 5,
+          "module": "hubspot:CreateDeal",
+          "version": 3,
+          "mapper": {
+            "dealname": "{{1.name}} - Inbound Lead",
+            "pipeline": "default",
+            "dealstage": "qualifiedtobuy",
+            "amount": "{{1.estimated_value}}"
+          }
+        }
+      ],
+      "filter": {
+        "name": "High Score Lead",
+        "conditions": [[{
+          "a": "{{2.lead_score}}",
+          "b": "80",
+          "o": "number:greaterThanOrEqual"
+        }]]
+      }
+    },
+    {
+      "flow": [
+        {
+          "id": 6,
+          "module": "openai:CreateCompletion",
+          "version": 1,
+          "mapper": {
+            "model": "gpt-4o",
+            "messages": [
+              {
+                "role": "system",
+                "content": "Write a personalized nurture email..."
+              },
+              {
+                "role": "user",
+                "content": "Lead: {{1.name}}, Industry: {{1.industry}}"
+              }
+            ]
+          }
+        }
+      ],
+      "filter": {
+        "name": "Medium Score Lead",
+        "conditions": [[
+          { "a": "{{2.lead_score}}", "b": "40", "o": "number:greaterThanOrEqual" },
+          { "a": "{{2.lead_score}}", "b": "80", "o": "number:lessThan" }
+        ]]
+      }
+    }
+  ]
+}</pre>
+
+  <h3>The Iterator Pattern</h3>
+  <p>Iterators process arrays one item at a time. They are essential when an API returns a list (e.g., 50 contacts from a CRM query) and you need to perform actions on each item.</p>
+
+  <p><strong>When to use iterators:</strong></p>
+  <ul>
+    <li>Processing CSV rows from a file upload</li>
+    <li>Looping through API response arrays</li>
+    <li>Sending individualized messages to a list of contacts</li>
+    <li>Creating multiple records from a single webhook payload</li>
+  </ul>
+
+  <div class="info-box warning">
+    <div class="box-title">Operations Warning</div>
+    <p>Each iteration counts as one operation in Make.com. If you iterate over 200 items and each loop has 3 modules, that is 600 operations per execution. For large datasets, use the <strong>Array Aggregator</strong> to batch records and make a single bulk API call instead.</p>
+  </div>
+
+  <h3>The Aggregator Pattern</h3>
+  <p>Aggregators collect outputs from iterators (or any sequence of modules) and combine them into a single array or value. This is how you turn many individual results back into one payload.</p>
+
+  <h4>Common Aggregator Use Cases</h4>
+  <table>
+    <thead><tr><th>Pattern</th><th>Use Case</th><th>Aggregator Type</th></tr></thead>
+    <tbody>
+      <tr><td>Collect & Send</td><td>Gather all processed emails, send as digest</td><td>Array Aggregator</td></tr>
+      <tr><td>Compute Totals</td><td>Sum invoice amounts from line items</td><td>Numeric Aggregator</td></tr>
+      <tr><td>Build Report</td><td>Combine API responses into single document</td><td>Text Aggregator</td></tr>
+      <tr><td>Batch Insert</td><td>Collect records, insert into Airtable in bulk</td><td>Array Aggregator</td></tr>
+    </tbody>
+  </table>
+
+<pre><span class="code-label">Array Aggregator Blueprint Configuration</span>
+{
+  "id": 12,
+  "module": "builtin:BasicAggregator",
+  "version": 1,
+  "mapper": {
+    "targetStructure": [
+      { "name": "email", "type": "text" },
+      { "name": "status", "type": "text" },
+      { "name": "processed_at", "type": "date" }
+    ]
+  },
+  "metadata": {
+    "source": [8],
+    "expect": [
+      { "name": "email", "type": "text", "value": "{{8.contact_email}}" },
+      { "name": "status", "type": "text", "value": "{{8.result_status}}" },
+      { "name": "processed_at", "type": "date", "value": "{{now}}" }
+    ]
+  }
+}</pre>
+
+  <h3>Parallel Processing with Multiple Routes</h3>
+  <p>When you need to perform independent actions simultaneously (e.g., create a CRM contact AND send a Slack notification AND log to a spreadsheet), use a router with <strong>no filters</strong> on each route. All routes execute in parallel.</p>
+
+  <p>This is significantly faster than sequential execution and uses the same number of operations. A 5-module parallel scenario completes in the time of the slowest single path, rather than the sum of all paths.</p>
+
+  <h3>Retry Mechanism Blueprint</h3>
+  <p>Make.com's built-in retry only works at the scenario level. For module-level retries, you need a custom pattern using the <strong>Repeater</strong> module combined with error handling:</p>
+
+<pre><span class="code-label">Custom Retry Pattern</span>
+Repeater (max 3 iterations)
+  &rarr; HTTP Make a Request (API call)
+  &rarr; Router
+      Route 1 (success): Break out of loop
+      Route 2 (failure):
+        &rarr; Sleep (exponential: iteration * 2 seconds)
+        &rarr; Continue to next iteration
+
+Error Handler on HTTP module:
+  &rarr; Resume directive (swallow error, let repeater retry)
+  &rarr; Set variable: last_error = {{error.message}}</pre>
+
+  <div class="info-box tip">
+    <div class="box-title">Architecture Principle</div>
+    <p>Design every scenario as if you are building a pipeline in software engineering. Data flows in, gets transformed, gets routed, gets stored. Each module should have a single responsibility. If a module is doing two things, split it into two modules. This makes debugging and modification dramatically easier.</p>
+  </div>
+
+  <h3>Scenario Composition: The Microservices Approach</h3>
+  <p>Instead of building one massive 30-module scenario, build multiple small scenarios that communicate via webhooks. This gives you:</p>
+  <ul>
+    <li><strong>Independent error handling</strong> -- one failure does not cascade</li>
+    <li><strong>Reusable components</strong> -- your "send formatted Slack alert" scenario can be called from anywhere</li>
+    <li><strong>Easier debugging</strong> -- isolate problems to a specific scenario</li>
+    <li><strong>Independent scheduling</strong> -- different throughput needs per component</li>
+  </ul>
+
+<pre><span class="code-label">Inter-Scenario Communication via Webhook</span>
+// Scenario A: Lead Intake
+{
+  "url": "https://hook.us1.make.com/your-processing-webhook",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Internal-Auth": "{{env.INTERNAL_WEBHOOK_SECRET}}"
+  },
+  "body": {
+    "lead_id": "{{3.id}}",
+    "source": "website_form",
+    "qualified": true,
+    "score": "{{5.calculated_score}}",
+    "timestamp": "{{now}}"
+  }
+}</pre>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 2: AI-POWERED AUTOMATIONS -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch2">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 02</div>
+    <h2>AI-Powered Automations</h2>
+    <p class="chapter-desc">Integrating LLMs into production workflows: prompt engineering, structured outputs, chain-of-thought decisions, and real API implementations.</p>
+  </div>
+
+  <h3>Choosing Your AI Provider</h3>
+  <table>
+    <thead><tr><th>Provider</th><th>Best For</th><th>Cost (per 1M tokens)</th><th>Make.com Module</th></tr></thead>
+    <tbody>
+      <tr><td><strong>OpenAI GPT-4o</strong></td><td>General tasks, function calling</td><td>~$2.50 in / $10 out</td><td>Native module</td></tr>
+      <tr><td><strong>OpenAI GPT-4o-mini</strong></td><td>High volume, simple tasks</td><td>~$0.15 in / $0.60 out</td><td>Native module</td></tr>
+      <tr><td><strong>Anthropic Claude</strong></td><td>Long context, nuanced writing</td><td>~$3 in / $15 out</td><td>HTTP module</td></tr>
+      <tr><td><strong>Google Gemini</strong></td><td>Multimodal, large docs</td><td>Varies by tier</td><td>HTTP module</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Structured Outputs: The Key to Reliable AI Automation</h3>
+  <p>The single most important concept for AI in automation: <strong>you must get structured, parseable output</strong>. Free-form text is useless in a pipeline. You need JSON that downstream modules can consume.</p>
+
+  <h4>OpenAI Structured Output API Call</h4>
+<pre><span class="code-label">HTTP Module Configuration for Structured Output</span>
+POST https://api.openai.com/v1/chat/completions
+
+Headers:
+  Authorization: Bearer {{env.OPENAI_API_KEY}}
+  Content-Type: application/json
+
+Body:
+{
+  "model": "gpt-4o",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "lead_qualification",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "qualified": { "type": "boolean" },
+          "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "reasoning": { "type": "string" },
+          "recommended_action": {
+            "type": "string",
+            "enum": ["schedule_call", "send_nurture", "disqualify", "request_info"]
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["high", "medium", "low"]
+          }
+        },
+        "required": ["qualified", "score", "reasoning", "recommended_action", "priority"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a lead qualification specialist for a B2B SaaS company. Analyze the lead information and determine qualification status. Consider: company size, budget signals, timeline urgency, decision-maker status, and fit with our ICP (companies with 50-500 employees in tech, healthcare, or finance)."
+    },
+    {
+      "role": "user",
+      "content": "Lead Information:\nName: {{1.name}}\nCompany: {{1.company}}\nTitle: {{1.job_title}}\nEmployees: {{1.company_size}}\nIndustry: {{1.industry}}\nMessage: {{1.message}}\nSource: {{1.utm_source}}"
+    }
+  ]
+}</pre>
+
+  <h4>Anthropic Claude API Call</h4>
+<pre><span class="code-label">Claude API for Complex Content Generation</span>
+POST https://api.anthropic.com/v1/messages
+
+Headers:
+  x-api-key: {{env.ANTHROPIC_API_KEY}}
+  anthropic-version: 2023-06-01
+  Content-Type: application/json
+
+Body:
+{
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 2048,
+  "system": "You are a professional copywriter. Always respond with valid JSON matching the exact schema requested. Never include markdown formatting or code fences in your response.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write 3 follow-up email variants for this lead. Return JSON:\n{\"emails\": [{\"subject\": \"...\", \"body\": \"...\", \"tone\": \"formal|casual|urgent\", \"cta\": \"...\"}]}\n\nLead context: {{1.name}} from {{1.company}}, interested in {{1.service}}, last contacted {{1.last_contact_date}}."
+    }
+  ]
+}</pre>
+
+  <h3>Chain-of-Thought for Complex Decisions</h3>
+  <p>For decisions that require multi-factor analysis, use chain-of-thought prompting. This dramatically improves accuracy for tasks like proposal pricing, support ticket routing, and lead scoring.</p>
+
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt Template</span>
+      <span class="pt-tag">Chain of Thought</span>
+    </div>
+    <div class="pt-body">You are analyzing a customer support ticket to determine priority and routing.
+
+Think through this step by step:
+
+1. URGENCY: Is the customer's business currently impacted? Are they losing revenue?
+2. COMPLEXITY: Can a junior rep handle this, or does it need a specialist?
+3. SENTIMENT: How frustrated is the customer? Are they at churn risk?
+4. HISTORY: Consider their account value and past interaction history.
+
+Ticket: <span class="var">{{ticket.subject}}</span>
+Message: <span class="var">{{ticket.body}}</span>
+Account Value: <span class="var">{{ticket.account_mrr}}</span>/mo
+Previous Tickets (last 30d): <span class="var">{{ticket.recent_count}}</span>
+Customer Since: <span class="var">{{ticket.customer_since}}</span>
+
+After your analysis, output ONLY this JSON:
+{
+  "priority": "P1|P2|P3|P4",
+  "department": "billing|technical|account_management|general",
+  "estimated_complexity": "simple|moderate|complex",
+  "churn_risk": "high|medium|low",
+  "suggested_response_template": "string",
+  "reasoning": "string"
+}</div>
+  </div>
+
+  <h3>AI for Lead Qualification Pipeline</h3>
+  <p>Here is a complete Make.com scenario design for AI-powered lead qualification:</p>
+
+  <div class="flow-diagram">
+    <span class="node trigger">Webhook: New Form Submission</span><br><br>
+    <span class="arrow">&darr;</span><br>
+    <span class="node action">HTTP: Enrich via Clearbit/Apollo API</span><br><br>
+    <span class="arrow">&darr;</span><br>
+    <span class="node ai">OpenAI: Qualify Lead (structured output)</span><br><br>
+    <span class="arrow">&darr;</span><br>
+    <span class="node">Router (by recommended_action)</span><br><br>
+    <span style="margin-left:20px;">schedule_call:</span> <span class="node action">Calendly: Create Link</span> <span class="arrow">&rarr;</span> <span class="node action">Email: Send Booking Link</span><br>
+    <span style="margin-left:20px;">send_nurture:</span> <span class="node ai">Claude: Generate Nurture Email</span> <span class="arrow">&rarr;</span> <span class="node action">Mailgun: Send</span><br>
+    <span style="margin-left:20px;">request_info:</span> <span class="node action">Email: Send Questionnaire</span><br>
+    <span style="margin-left:20px;">all routes:</span> <span class="node action">Airtable: Log Result</span>
+  </div>
+
+  <h3>Content Generation at Scale</h3>
+  <p>For generating content across multiple channels, use a <strong>content multiplication pattern</strong>: generate one core piece of content with AI, then use additional AI calls to adapt it for each channel.</p>
+
+<pre><span class="code-label">Content Multiplication Workflow</span>
+// Step 1: Generate core content from source material
+POST /v1/chat/completions
+{
+  "model": "gpt-4o",
+  "messages": [{
+    "role": "user",
+    "content": "Create a detailed content brief from this blog post: {{source_text}}. Include: key points (5), target audience, primary CTA, tone guidelines, statistics to reference."
+  }]
+}
+
+// Step 2: Fan out to multiple adaptation calls (parallel routes)
+// Route A: LinkedIn post (professional, 1300 char max)
+// Route B: Email newsletter (conversational, 200 words)
+// Route C: Twitter/X thread (5 tweets, hooks + value)
+// Route D: Instagram caption (emotional, with hashtags)
+// Route E: Blog summary (SEO-optimized, with meta description)</pre>
+
+  <div class="info-box tip">
+    <div class="box-title">Cost Optimization</div>
+    <p>Use <strong>GPT-4o-mini</strong> for high-volume, simpler tasks (email classification, sentiment analysis, data extraction). Reserve <strong>GPT-4o or Claude</strong> for tasks requiring nuance (proposal writing, complex qualification, customer-facing content). A typical agency can reduce AI costs by 60-70% with intelligent model routing.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 3: DATABASE-DRIVEN AUTOMATIONS -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch3">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 03</div>
+    <h2>Database-Driven Automations</h2>
+    <p class="chapter-desc">Using Airtable, Notion, and Make.com data stores as the backbone of stateful automation systems.</p>
+  </div>
+
+  <h3>Why You Need a Database Layer</h3>
+  <p>Stateless automations (trigger &rarr; action) are limited. The moment you need to answer "Has this lead been contacted before?" or "What step of the sequence is this contact on?", you need state. A database layer gives your automations memory.</p>
+
+  <h3>Airtable as an Automation Database</h3>
+  <p>Airtable excels as an automation database because it provides a UI for non-technical team members while offering a robust API for your automations. Here is a production schema for a lead management system:</p>
+
+  <h4>Lead Automation Database Schema</h4>
+  <table>
+    <thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>lead_id</td><td>Auto Number</td><td>Unique identifier</td></tr>
+      <tr><td>email</td><td>Email</td><td>Primary contact, dedup key</td></tr>
+      <tr><td>full_name</td><td>Single Line</td><td>Contact name</td></tr>
+      <tr><td>company</td><td>Single Line</td><td>Company name</td></tr>
+      <tr><td>source</td><td>Single Select</td><td>website, referral, cold_outreach, ad</td></tr>
+      <tr><td>status</td><td>Single Select</td><td>new, contacted, qualified, nurturing, closed_won, closed_lost</td></tr>
+      <tr><td>sequence_step</td><td>Number</td><td>Current step in outreach sequence (1-7)</td></tr>
+      <tr><td>last_contacted</td><td>Date</td><td>Last outreach date</td></tr>
+      <tr><td>next_action_date</td><td>Date</td><td>When next automation should fire</td></tr>
+      <tr><td>ai_score</td><td>Number</td><td>AI-generated qualification score</td></tr>
+      <tr><td>ai_summary</td><td>Long Text</td><td>AI-generated lead summary</td></tr>
+      <tr><td>engagement_data</td><td>Long Text (JSON)</td><td>Email opens, clicks, replies</td></tr>
+      <tr><td>assigned_rep</td><td>Linked Record</td><td>Link to Team Members table</td></tr>
+      <tr><td>automation_log</td><td>Long Text</td><td>Append-only log of automation actions</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Deduplication Pattern</h4>
+<pre><span class="code-label">Make.com: Check for Existing Lead Before Creating</span>
+Module 1: Airtable - Search Records
+  Base: Lead Management
+  Table: Leads
+  Formula: {email} = "{{1.email}}"
+  Limit: 1
+
+Module 2: Router
+  Route 1 (existing lead found - array length > 0):
+    &rarr; Airtable - Update Record (update status, append to log)
+  Route 2 (no match - array length = 0):
+    &rarr; Airtable - Create Record (new lead entry)</pre>
+
+  <h3>Make.com Data Stores</h3>
+  <p>Data stores are Make.com's built-in key-value database. They are faster than external API calls and ideal for:</p>
+  <ul>
+    <li><strong>Configuration storage</strong> -- API keys, template IDs, client settings</li>
+    <li><strong>Rate limiting counters</strong> -- track API calls per hour</li>
+    <li><strong>Deduplication caches</strong> -- store processed webhook IDs to prevent double-processing</li>
+    <li><strong>State machines</strong> -- track where a multi-step process currently stands</li>
+  </ul>
+
+<pre><span class="code-label">Data Store Structure: Webhook Dedup Cache</span>
+Data Structure:
+{
+  "key": "string (webhook event ID)",
+  "value": {
+    "processed_at": "datetime",
+    "scenario_execution_id": "string",
+    "result_status": "string"
+  }
+}
+
+// Usage in scenario:
+Module 1: Data Store - Search (key = {{webhook.event_id}})
+Module 2: Router
+  Route 1 (record exists): Stop execution (already processed)
+  Route 2 (no record):
+    &rarr; Process the webhook
+    &rarr; Data Store - Add/Replace (store the event ID)</pre>
+
+  <h3>State Machine Pattern</h3>
+  <p>For complex multi-step processes (like onboarding flows or approval chains), implement a state machine in your database:</p>
+
+<pre><span class="code-label">State Machine: Client Onboarding</span>
+States: intake &rarr; contract_sent &rarr; contract_signed &rarr; payment_received
+        &rarr; setup_in_progress &rarr; active
+
+// Each state has:
+{
+  "client_id": "cli_12345",
+  "current_state": "contract_sent",
+  "state_history": [
+    {"state": "intake", "entered_at": "2026-04-01T10:00:00Z", "trigger": "form_submission"},
+    {"state": "contract_sent", "entered_at": "2026-04-01T10:05:00Z", "trigger": "automation"}
+  ],
+  "next_action": "check_contract_status",
+  "next_action_date": "2026-04-04T10:00:00Z",
+  "timeout_action": "send_reminder"
+}
+
+// Scheduled scenario runs every hour:
+// 1. Query: WHERE next_action_date <= NOW() AND current_state != "active"
+// 2. For each result, execute the next_action
+// 3. Transition to next state or execute timeout_action</pre>
+
+  <div class="info-box tip">
+    <div class="box-title">Lookup Tables</div>
+    <p>Create a dedicated "Config" table in Airtable with key-value pairs for values that change per client or environment: API endpoints, email templates, Slack channel IDs, timezone offsets. Your automations query this table at runtime rather than hardcoding values. This makes white-labeling trivial.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 4: API INTEGRATIONS DEEP DIVE -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch4">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 04</div>
+    <h2>API Integrations Deep Dive</h2>
+    <p class="chapter-desc">Working with REST APIs, authentication patterns, JSON parsing, pagination, rate limiting, and webhook security.</p>
+  </div>
+
+  <h3>Authentication Patterns</h3>
+  <p>Every API integration starts with authentication. Here are the four patterns you will encounter:</p>
+
+  <h4>1. API Key Authentication</h4>
+<pre><span class="code-label">Header-Based API Key</span>
+GET https://api.example.com/v1/contacts
+Headers:
+  X-API-Key: {{env.SERVICE_API_KEY}}
+  Accept: application/json
+
+// Some APIs use query parameter instead:
+GET https://api.example.com/v1/contacts?api_key={{env.SERVICE_API_KEY}}</pre>
+
+  <h4>2. Bearer Token (OAuth 2.0 Access Token)</h4>
+<pre><span class="code-label">Bearer Token Authentication</span>
+GET https://api.example.com/v1/contacts
+Headers:
+  Authorization: Bearer {{connection.access_token}}
+  Accept: application/json</pre>
+
+  <h4>3. OAuth 2.0 Full Flow</h4>
+  <p>For services like Google, Microsoft, and Salesforce, you need the full OAuth dance. Make.com handles this through its Connection system, but when building custom integrations:</p>
+
+<pre><span class="code-label">OAuth 2.0 Token Refresh Pattern</span>
+// Step 1: Check if token is expired
+// Store tokens in Data Store with expiry timestamp
+Module 1: Data Store - Get Record (key: "oauth_tokens_{{client_id}}")
+
+Module 2: Router
+  Route 1 (token expired: expires_at < now):
+    Module 3: HTTP POST https://oauth.provider.com/token
+      Body (x-www-form-urlencoded):
+        grant_type=refresh_token
+        refresh_token={{data_store.refresh_token}}
+        client_id={{env.OAUTH_CLIENT_ID}}
+        client_secret={{env.OAUTH_CLIENT_SECRET}}
+
+    Module 4: Data Store - Update Record
+      {
+        "access_token": "{{3.access_token}}",
+        "refresh_token": "{{3.refresh_token}}",
+        "expires_at": "{{addSeconds(now; 3.expires_in)}}"
+      }
+
+  Route 2 (token valid):
+    Continue with existing access_token</pre>
+
+  <h4>4. HMAC Signature Verification (Webhook Security)</h4>
+<pre><span class="code-label">Verify Webhook Signature</span>
+// Many services sign webhook payloads (Stripe, Shopify, GitHub)
+// In Make.com, use a custom function or HTTP module to verify:
+
+// Stripe signature verification pattern:
+Module 1: Webhook received (raw body available)
+Module 2: Set Variable
+  expected_sig = HMAC-SHA256(
+    timestamp + "." + raw_body,
+    {{env.STRIPE_WEBHOOK_SECRET}}
+  )
+Module 3: Router
+  Route 1 (signature matches): Process webhook
+  Route 2 (mismatch): Log security alert, stop execution</pre>
+
+  <h3>Parsing Complex JSON Responses</h3>
+  <p>Real API responses are nested and complex. Here is how to navigate them in Make.com:</p>
+
+<pre><span class="code-label">Navigating Nested JSON in Make.com</span>
+// API Response:
+{
+  "data": {
+    "contacts": [
+      {
+        "id": "c_123",
+        "properties": {
+          "name": { "first": "John", "last": "Smith" },
+          "emails": [
+            { "type": "work", "value": "john@company.com", "primary": true }
+          ],
+          "custom_fields": {
+            "lead_score": 85,
+            "lifecycle_stage": "opportunity"
+          }
+        }
+      }
+    ],
+    "pagination": {
+      "next_cursor": "eyJpZCI6MTAwfQ==",
+      "has_more": true
+    }
+  }
+}
+
+// Make.com mapping expressions:
+First Name:    {{body.data.contacts[].properties.name.first}}
+Primary Email: {{body.data.contacts[].properties.emails[1].value}}
+Lead Score:    {{body.data.contacts[].properties.custom_fields.lead_score}}
+Has More:      {{body.data.pagination.has_more}}
+Next Cursor:   {{body.data.pagination.next_cursor}}</pre>
+
+  <h3>Handling Pagination</h3>
+  <p>Most APIs return results in pages. Here is the universal pagination pattern:</p>
+
+<pre><span class="code-label">Cursor-Based Pagination Loop</span>
+// Scenario Structure:
+Module 1: Set Variable (cursor = "", all_results = [])
+
+Module 2: Repeater (max iterations: 50)
+  Module 3: HTTP GET {{api_url}}?cursor={{cursor}}&limit=100
+  Module 4: Array Aggregator (append results to all_results)
+  Module 5: Set Variable (cursor = {{3.pagination.next_cursor}})
+  Module 6: Router
+    Route 1 (has_more = false): Break
+    Route 2 (has_more = true): Continue loop
+
+// For offset-based pagination:
+GET {{api_url}}?offset={{iteration * 100}}&limit=100
+// Stop when response array length < limit</pre>
+
+  <h3>Rate Limiting Strategies</h3>
+  <table>
+    <thead><tr><th>Strategy</th><th>Implementation</th><th>Best For</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sleep Between Calls</strong></td><td>Add Sleep module (1-2s) after each API call</td><td>Simple loops, low volume</td></tr>
+      <tr><td><strong>Batch + Schedule</strong></td><td>Process 100 records per scheduled run, every 5 min</td><td>Large datasets</td></tr>
+      <tr><td><strong>Token Bucket (Data Store)</strong></td><td>Track calls in data store, check before each call</td><td>Shared rate limits across scenarios</td></tr>
+      <tr><td><strong>Retry on 429</strong></td><td>Check response code, sleep for Retry-After header value</td><td>Burst traffic</td></tr>
+    </tbody>
+  </table>
+
+<pre><span class="code-label">Rate Limit Handler Pattern</span>
+Module: HTTP Request
+Error Handler:
+  Filter: Status Code = 429
+  Module: Sleep (duration = {{ifempty(error.headers.retry-after; 5)}} seconds)
+  Module: HTTP Request (retry the same call)
+  Directive: Rollback (retry the module that failed)</pre>
+
+  <div class="info-box warning">
+    <div class="box-title">Common API Pitfalls</div>
+    <p><strong>1. Not handling empty responses.</strong> Always check if the response body has the expected structure before accessing nested properties. Use <code>ifempty()</code> and <code>if()</code> functions.<br><br>
+    <strong>2. Ignoring HTTP status codes.</strong> A 200 response can still contain an error in the body. Always parse and validate.<br><br>
+    <strong>3. Storing secrets in scenario data.</strong> Use environment variables or connection credentials. Never put API keys directly in module configurations.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 5: ADVANCED COMMUNICATION FLOWS -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch5">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 05</div>
+    <h2>Advanced Communication Flows</h2>
+    <p class="chapter-desc">Multi-channel outreach sequences with conditional logic, engagement tracking, A/B testing, and personalization at scale.</p>
+  </div>
+
+  <h3>Multi-Channel Sequence Architecture</h3>
+  <p>The most effective outreach sequences combine multiple channels in a carefully timed sequence. Each step is conditional on the engagement (or lack thereof) from the previous step.</p>
+
+  <div class="flow-diagram">
+    <strong>7-Day Multi-Channel Sequence</strong><br><br>
+    <span class="node trigger">Day 0</span> <span class="arrow">&rarr;</span> <span class="node action">Personalized Email #1</span><br><br>
+    <span class="arrow">&darr;</span> <em style="color: var(--text-muted); font-size: 12px;">Wait 2 days. Check: opened?</em><br><br>
+    <span class="node trigger">Day 2</span> <span class="arrow">&rarr;</span>
+    <span style="color: var(--accent-teal);">If opened, no reply:</span> <span class="node action">SMS Follow-up</span><br>
+    <span style="margin-left: 120px; color: var(--accent-orange);">If not opened:</span> <span class="node action">Email #2 (new subject line)</span><br><br>
+    <span class="node trigger">Day 4</span> <span class="arrow">&rarr;</span> <span class="node action">Ringless Voicemail Drop</span><br><br>
+    <span class="node trigger">Day 5</span> <span class="arrow">&rarr;</span> <span class="node ai">AI-Generated LinkedIn Message</span><br><br>
+    <span class="node trigger">Day 7</span> <span class="arrow">&rarr;</span>
+    <span style="color: var(--accent-teal);">If any engagement:</span> <span class="node action">Phone Call Task for Rep</span><br>
+    <span style="margin-left: 120px; color: var(--accent-orange);">If no engagement:</span> <span class="node action">Direct Mail Trigger (Lob API)</span>
+  </div>
+
+  <h4>Sequence State Management</h4>
+<pre><span class="code-label">Airtable Record: Sequence Tracking</span>
+{
+  "lead_id": "lead_4521",
+  "sequence_id": "seq_multi_7day",
+  "current_step": 3,
+  "started_at": "2026-04-01T09:00:00Z",
+  "steps_completed": [
+    {
+      "step": 1,
+      "channel": "email",
+      "sent_at": "2026-04-01T09:00:00Z",
+      "engagement": {"opened": true, "opened_at": "2026-04-01T14:22:00Z", "clicked": false, "replied": false}
+    },
+    {
+      "step": 2,
+      "channel": "sms",
+      "sent_at": "2026-04-03T10:00:00Z",
+      "engagement": {"delivered": true, "replied": false}
+    },
+    {
+      "step": 3,
+      "channel": "voicemail",
+      "sent_at": "2026-04-05T11:00:00Z",
+      "engagement": {"delivered": true, "callback": false}
+    }
+  ],
+  "next_step": 4,
+  "next_step_date": "2026-04-06T09:00:00Z",
+  "overall_engaged": true,
+  "paused": false,
+  "pause_reason": null
+}
+
+// Scheduled scenario (runs every hour):
+// 1. Query: next_step_date <= NOW() AND paused = false AND status = "active"
+// 2. For each lead: look up sequence definition, execute current step
+// 3. Update record with new step data</pre>
+
+  <h3>A/B Testing Within Automations</h3>
+  <p>Test everything: subject lines, send times, channels, AI prompt variations. Here is a pattern for automated A/B testing:</p>
+
+<pre><span class="code-label">A/B Test Assignment Module</span>
+// At the start of your sequence, assign a variant:
+Module: Set Variable
+  variant = {{if(mod(lead_id; 2) = 0; "A"; "B")}}
+
+// For more than 2 variants:
+  variant = {{switch(mod(lead_id; 3); 0; "A"; 1; "B"; 2; "C")}}
+
+// Route based on variant:
+Router:
+  Route A: Subject "Quick question about {{company}}"
+  Route B: Subject "{{name}}, saw your post about {{topic}}"
+
+// Log variant assignment for analysis:
+Airtable: Update Record
+  ab_variant: "{{variant}}"
+  ab_test_id: "subjectline_test_042026"</pre>
+
+  <h3>Personalization at Scale</h3>
+  <p>True personalization goes beyond <code>{{first_name}}</code>. Use AI to generate genuinely personalized content based on real data:</p>
+
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt Template</span>
+      <span class="pt-tag">Personalized Outreach</span>
+    </div>
+    <div class="pt-body">Write a cold outreach email (3-4 sentences max) to <span class="var">{{name}}</span>, <span class="var">{{title}}</span> at <span class="var">{{company}}</span>.
+
+Context about their company (from LinkedIn/website scrape):
+<span class="var">{{company_context}}</span>
+
+Their recent activity/post:
+<span class="var">{{recent_activity}}</span>
+
+Our service: AI-powered automation for <span class="var">{{their_industry}}</span> businesses.
+Specific pain point to address: <span class="var">{{identified_pain_point}}</span>
+
+Rules:
+- Reference their specific situation, not generic benefits
+- No "I hope this email finds you well" or similar filler
+- End with a specific, low-commitment CTA
+- Tone: confident peer, not salesy
+- Under 100 words total</div>
+  </div>
+
+  <h4>Voicemail Drop via API</h4>
+<pre><span class="code-label">Slybroadcast API Integration</span>
+POST https://api.slybroadcast.com/v1/campaigns
+Headers:
+  Authorization: Bearer {{env.SLYBROADCAST_API_KEY}}
+Body:
+{
+  "audio_id": "vm_template_{{variant}}",
+  "phone_numbers": ["{{lead.phone}}"],
+  "caller_id": "{{env.BUSINESS_PHONE}}",
+  "schedule": "immediate",
+  "campaign_name": "Sequence {{lead.sequence_id}} Step {{lead.current_step}}"
+}</pre>
+
+  <h4>Direct Mail via Lob API</h4>
+<pre><span class="code-label">Lob Postcard API Integration</span>
+POST https://api.lob.com/v1/postcards
+Headers:
+  Authorization: Basic {{base64(env.LOB_API_KEY + ":")}}
+Body:
+{
+  "to": {
+    "name": "{{lead.name}}",
+    "address_line1": "{{lead.address_line1}}",
+    "address_city": "{{lead.city}}",
+    "address_state": "{{lead.state}}",
+    "address_zip": "{{lead.zip}}"
+  },
+  "from": {
+    "name": "Jedai Flow",
+    "address_line1": "...",
+    "address_city": "Pearland",
+    "address_state": "TX",
+    "address_zip": "77584"
+  },
+  "front": "tmpl_front_{{campaign_id}}",
+  "back": "tmpl_back_{{campaign_id}}",
+  "merge_variables": {
+    "name": "{{lead.first_name}}",
+    "company": "{{lead.company}}",
+    "custom_line": "{{ai_generated_personalization}}"
+  }
+}</pre>
+
+  <div class="info-box critical">
+    <div class="box-title">Compliance Reminder</div>
+    <p><strong>SMS:</strong> Always get opt-in consent. Include opt-out instructions. Follow TCPA regulations.<br>
+    <strong>Email:</strong> Include unsubscribe links. Honor opt-outs within 10 business days (CAN-SPAM). Check GDPR if contacting EU leads.<br>
+    <strong>Voicemail:</strong> Verify state-level regulations. Some states restrict ringless voicemail for commercial purposes.<br>
+    <strong>Build compliance checks into your automation</strong> -- query opt-out lists before every send.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 6: ERROR HANDLING & MONITORING -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch6">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 06</div>
+    <h2>Error Handling &amp; Monitoring</h2>
+    <p class="chapter-desc">Building bulletproof automations with error routes, alerting, dead letter queues, retry strategies, and comprehensive logging.</p>
+  </div>
+
+  <h3>The Error Handling Hierarchy</h3>
+  <p>Every module in Make.com can have an error handler attached. Error handlers use <strong>directives</strong> to control what happens next:</p>
+
+  <table>
+    <thead><tr><th>Directive</th><th>Behavior</th><th>When to Use</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Resume</strong></td><td>Swallow the error, continue with default/empty output</td><td>Non-critical modules (logging, notifications)</td></tr>
+      <tr><td><strong>Rollback</strong></td><td>Retry the failed module</td><td>Transient failures (API timeouts, rate limits)</td></tr>
+      <tr><td><strong>Commit</strong></td><td>Accept the error, stop execution cleanly</td><td>When partial completion is acceptable</td></tr>
+      <tr><td><strong>Break</strong></td><td>Move execution to incomplete queue for manual retry</td><td>Critical failures needing human review</td></tr>
+      <tr><td><strong>Ignore</strong></td><td>Same as Resume but does not log the error</td><td>Expected errors (404 on optional lookup)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Error Route Pattern</h3>
+<pre><span class="code-label">Complete Error Handling Scenario Design</span>
+Main Flow:
+  Webhook &rarr; Process Data &rarr; API Call &rarr; Update CRM &rarr; Send Email
+
+Error Route (attached to API Call module):
+  &rarr; Set Variable: error_context = {
+      "module": "API Call",
+      "error_message": "{{error.message}}",
+      "error_code": "{{error.statusCode}}",
+      "input_data": "{{JSON.stringify(3.input)}}",
+      "execution_id": "{{executionId}}",
+      "timestamp": "{{now}}"
+    }
+  &rarr; Router:
+      Route 1 (status 429 - rate limited):
+        &rarr; Sleep ({{error.headers.retry-after}} seconds)
+        &rarr; Rollback directive (retry)
+      Route 2 (status 401 - auth failed):
+        &rarr; Slack Alert: "AUTH FAILURE: {{scenario.name}}"
+        &rarr; Break directive (queue for review)
+      Route 3 (status 5xx - server error):
+        &rarr; Data Store: Add to dead letter queue
+        &rarr; Slack Alert: "SERVER ERROR: retrying in 5 min"
+        &rarr; Break directive
+      Route 4 (all other errors):
+        &rarr; Airtable: Log error
+        &rarr; Email alert to admin
+        &rarr; Commit directive (stop gracefully)</pre>
+
+  <h3>Dead Letter Queue Pattern</h3>
+  <p>When an automation fails and cannot be retried immediately, the failed payload goes to a "dead letter queue" (DLQ) for later processing:</p>
+
+<pre><span class="code-label">Dead Letter Queue: Data Store Structure</span>
+{
+  "key": "dlq_{{executionId}}_{{moduleId}}",
+  "value": {
+    "scenario_id": 12345,
+    "scenario_name": "Lead Processing Pipeline",
+    "failed_module": "HTTP - Create HubSpot Contact",
+    "error_message": "503 Service Unavailable",
+    "error_code": 503,
+    "input_payload": { /* full input to the failed module */ },
+    "retry_count": 0,
+    "max_retries": 3,
+    "created_at": "2026-04-08T14:30:00Z",
+    "next_retry_at": "2026-04-08T14:45:00Z",
+    "status": "pending"
+  }
+}
+
+// Separate "DLQ Processor" scenario (scheduled every 15 min):
+// 1. Query data store: status = "pending" AND next_retry_at <= NOW()
+// 2. Iterate over results
+// 3. Attempt to reprocess each payload
+// 4. On success: update status to "resolved", delete from DLQ
+// 5. On failure: increment retry_count, set next_retry_at (exponential backoff)
+// 6. If retry_count >= max_retries: update status to "failed", alert human</pre>
+
+  <h3>Slack Alerting System</h3>
+<pre><span class="code-label">Structured Slack Alert Message</span>
+POST https://slack.com/api/chat.postMessage
+Headers:
+  Authorization: Bearer {{env.SLACK_BOT_TOKEN}}
+Body:
+{
+  "channel": "#automation-alerts",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {"type": "plain_text", "text": "Automation Alert: {{severity}}"}
+    },
+    {
+      "type": "section",
+      "fields": [
+        {"type": "mrkdwn", "text": "*Scenario:*\n{{scenario.name}}"},
+        {"type": "mrkdwn", "text": "*Module:*\n{{failed_module}}"},
+        {"type": "mrkdwn", "text": "*Error:*\n{{error.message}}"},
+        {"type": "mrkdwn", "text": "*Time:*\n{{formatDate(now; \"MMM D, h:mm A\")}}"}
+      ]
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Execution ID:* `{{executionId}}`\n<https://us1.make.com/{{org_id}}/scenarios/{{scenario.id}}/logs/{{executionId}}|View in Make.com>"
+      }
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {"type": "plain_text", "text": "Retry Now"},
+          "url": "{{retry_webhook_url}}?execution_id={{executionId}}"
+        }
+      ]
+    }
+  ]
+}</pre>
+
+  <h3>Execution Logging Pattern</h3>
+  <p>Log every automation run to a dedicated table. This is essential for client reporting and debugging:</p>
+
+<pre><span class="code-label">Airtable: Automation Execution Log</span>
+// First module in every scenario (after trigger):
+Airtable - Create Record (Execution Log table):
+{
+  "execution_id": "{{executionId}}",
+  "scenario_name": "Lead Processing Pipeline",
+  "trigger_type": "webhook",
+  "input_summary": "Lead: {{1.email}} from {{1.source}}",
+  "started_at": "{{now}}",
+  "status": "running"
+}
+
+// Last module in every scenario (before end):
+Airtable - Update Record:
+{
+  "status": "completed",
+  "completed_at": "{{now}}",
+  "output_summary": "Created contact, sent welcome email",
+  "operations_used": "{{scenario.operations}}"
+}
+
+// In error handler:
+Airtable - Update Record:
+{
+  "status": "failed",
+  "completed_at": "{{now}}",
+  "error_details": "{{error.message}} at module {{error.moduleName}}"
+}</pre>
+
+  <div class="info-box tip">
+    <div class="box-title">Monitoring Dashboard</div>
+    <p>Build a simple Airtable Interface or Google Looker Studio dashboard from your execution log. Track: success rate per scenario, average execution time, operations consumed per day, error frequency by type. Review this weekly to catch degrading performance before it becomes a crisis.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 7: WHITE-LABEL & CLIENT MANAGEMENT -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch7">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 07</div>
+    <h2>White-Label &amp; Client Management</h2>
+    <p class="chapter-desc">Running automations for multiple clients: organization structure, workspace separation, reporting dashboards, and SLA management.</p>
+  </div>
+
+  <h3>Organization Architecture</h3>
+  <p>When managing automations for multiple clients, structure is everything. There are two approaches:</p>
+
+  <h4>Approach 1: Separate Workspaces (Recommended)</h4>
+  <p>Each client gets their own Make.com team/workspace. This provides complete isolation -- a misconfigured scenario for Client A cannot affect Client B.</p>
+  <ul>
+    <li>Each workspace has its own connections, data stores, and scenarios</li>
+    <li>Client can be given viewer access to their workspace</li>
+    <li>Billing can be tracked per-workspace</li>
+    <li>Migrating a client to self-management is straightforward</li>
+  </ul>
+
+  <h4>Approach 2: Shared Workspace with Client Tags</h4>
+  <p>All clients in one workspace, with scenarios and folders organized by client. Use a configuration data store to route data per client.</p>
+
+<pre><span class="code-label">Multi-Tenant Configuration Data Store</span>
+{
+  "key": "client_acme_corp",
+  "value": {
+    "client_id": "acme",
+    "client_name": "Acme Corporation",
+    "crm_api_key": "{{encrypted}}",
+    "crm_type": "hubspot",
+    "email_provider": "mailgun",
+    "email_domain": "mail.acmecorp.com",
+    "slack_webhook": "https://hooks.slack.com/...",
+    "branding": {
+      "company_name": "Acme Corporation",
+      "primary_color": "#ff6b00",
+      "logo_url": "https://..."
+    },
+    "settings": {
+      "timezone": "America/Chicago",
+      "working_hours": {"start": "08:00", "end": "18:00"},
+      "max_emails_per_day": 200,
+      "ai_model": "gpt-4o-mini",
+      "lead_score_threshold": 70
+    }
+  }
+}
+
+// At the start of every scenario:
+// 1. Identify the client (from webhook data, trigger source, etc.)
+// 2. Load client config from data store
+// 3. Use config values throughout the scenario</pre>
+
+  <h3>Client Reporting Dashboard</h3>
+  <p>Every client should receive a regular report. Automate the creation of these reports:</p>
+
+<pre><span class="code-label">Weekly Client Report Automation</span>
+// Scheduled: Every Monday at 8 AM
+
+Module 1: Data Store - List (all active clients)
+Module 2: Iterator (for each client)
+  Module 3: Airtable - Search Records
+    Formula: AND(
+      {client_id} = "{{client.id}}",
+      {created_at} >= "{{addDays(now; -7)}}",
+      {type} = "execution_log"
+    )
+  Module 4: Aggregator (compute stats)
+    - total_executions
+    - successful_executions
+    - failed_executions
+    - total_operations_used
+    - unique_scenarios_run
+  Module 5: OpenAI - Generate Report Summary
+    "Summarize these automation metrics for a non-technical client..."
+  Module 6: Email - Send Report
+    To: {{client.report_email}}
+    Subject: "Weekly Automation Report - {{formatDate(now; 'MMM D')}}"
+    Body: HTML template with metrics + AI summary</pre>
+
+  <h3>SLA Management</h3>
+  <table>
+    <thead><tr><th>SLA Metric</th><th>Target</th><th>How to Track</th></tr></thead>
+    <tbody>
+      <tr><td>Uptime</td><td>99.5%</td><td>Execution log: (successful / total) * 100</td></tr>
+      <tr><td>Response Time</td><td>&lt; 5 min for triggers</td><td>Timestamp diff: trigger received vs. first action</td></tr>
+      <tr><td>Error Resolution</td><td>&lt; 4 hours</td><td>Time from error alert to status = "resolved" in DLQ</td></tr>
+      <tr><td>Monthly Operations</td><td>Within plan limits</td><td>Sum operations from execution log</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box pro">
+    <div class="box-title">Client Onboarding Template</div>
+    <p>Create a standard onboarding automation that: (1) Creates the client workspace/folder, (2) Deploys your base scenario templates via the Make.com API, (3) Sets up the configuration data store with client info, (4) Creates the client's Airtable base from a template, (5) Sends the welcome email with dashboard access. This turns a 2-hour manual process into a 5-minute automation.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 8: SCALING INFRASTRUCTURE -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch8">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 08</div>
+    <h2>Scaling Infrastructure</h2>
+    <p class="chapter-desc">Operations optimization, scheduling strategies, microservice decomposition, and cost management for growing automation systems.</p>
+  </div>
+
+  <h3>Understanding Operations Economics</h3>
+  <p>Make.com charges by operations. Every module execution is one operation. Understanding this is critical to profitability.</p>
+
+  <table>
+    <thead><tr><th>Plan</th><th>Operations/mo</th><th>Price</th><th>Cost per 1K ops</th></tr></thead>
+    <tbody>
+      <tr><td>Free</td><td>1,000</td><td>$0</td><td>$0</td></tr>
+      <tr><td>Core</td><td>10,000</td><td>$10.59/mo</td><td>$1.06</td></tr>
+      <tr><td>Pro</td><td>10,000</td><td>$18.82/mo</td><td>$1.88</td></tr>
+      <tr><td>Teams</td><td>10,000</td><td>$34.12/mo</td><td>$3.41</td></tr>
+      <tr><td>Enterprise</td><td>Custom</td><td>Custom</td><td>Negotiable</td></tr>
+    </tbody>
+  </table>
+
+  <p><em>Additional operations: approximately $3.50 per 1,000 on Pro plans. Prices as of early 2026.</em></p>
+
+  <h3>Operations Optimization Techniques</h3>
+
+  <h4>1. Filter Early, Process Less</h4>
+  <p>Place filters as close to the trigger as possible. If only 20% of webhook events need processing, a filter after module 1 saves you from running modules 2-10 on the other 80%.</p>
+
+  <h4>2. Batch Instead of Iterate</h4>
+<pre><span class="code-label">Before: Iterate Pattern (500 operations)</span>
+Trigger (1 op) &rarr; Get 100 Records (1 op) &rarr; Iterator (100 items)
+  For each: Update CRM (1 op) + Send Email (1 op) + Log (1 op)
+  = 100 x 3 = 300 ops + overhead
+Total: ~400-500 operations
+
+<span class="code-label">After: Batch Pattern (5 operations)</span>
+Trigger (1 op) &rarr; Get 100 Records (1 op) &rarr; Array Aggregator (1 op)
+  &rarr; HTTP Bulk API Call (1 op) &rarr; Log Summary (1 op)
+Total: 5 operations</pre>
+
+  <h4>3. Consolidate Data Lookups</h4>
+  <p>Instead of making 5 separate API calls to gather data, use tools that support batch queries or build a composite lookup scenario.</p>
+
+  <h4>4. Use Scheduled Polling Instead of Instant Triggers</h4>
+  <p>Instant triggers (webhooks) fire individually per event. A scheduled scenario that polls every 5 minutes and processes all new records in batch uses fewer operations for high-volume sources.</p>
+
+  <h3>Breaking Monoliths into Microservices</h3>
+<pre><span class="code-label">Before: Monolith Scenario (30+ modules)</span>
+Webhook &rarr; Validate &rarr; Enrich &rarr; Score &rarr; Route &rarr; CRM &rarr; Email
+&rarr; SMS &rarr; Slack &rarr; Log &rarr; Report &rarr; ... (30 modules)
+
+Problems:
+- Single point of failure
+- Cannot update one part without risking the whole
+- Operations limit hit on one scenario
+- Debugging is a nightmare
+
+<span class="code-label">After: Microservice Scenarios</span>
+Scenario 1: Lead Intake (Webhook &rarr; Validate &rarr; Queue to Scenario 2)
+Scenario 2: Lead Enrichment (Process &rarr; Enrich via APIs &rarr; Queue to S3)
+Scenario 3: Lead Scoring (AI Score &rarr; Update DB &rarr; Queue to S4)
+Scenario 4: Lead Routing (Check score &rarr; Assign rep &rarr; Trigger S5/S6)
+Scenario 5: Communications (Send email/SMS based on queue)
+Scenario 6: Logging & Reporting (Centralized execution log)
+
+Benefits:
+- Each scenario is simple and testable
+- Independent error handling and retry
+- Can scale scenarios independently
+- Easy to modify one without touching others</pre>
+
+  <h3>Scheduling Strategies</h3>
+  <table>
+    <thead><tr><th>Pattern</th><th>Schedule</th><th>Use Case</th></tr></thead>
+    <tbody>
+      <tr><td>Real-time</td><td>Webhook (instant)</td><td>Form submissions, payment events</td></tr>
+      <tr><td>Near real-time</td><td>Every 1-5 minutes</td><td>CRM sync, inbox monitoring</td></tr>
+      <tr><td>Batch processing</td><td>Every 15-60 minutes</td><td>Bulk data processing, report generation</td></tr>
+      <tr><td>Daily digest</td><td>Once per day</td><td>Summary reports, cleanup tasks</td></tr>
+      <tr><td>Business hours only</td><td>Every 5 min, 8 AM-6 PM weekdays</td><td>Outreach sequences (respect recipients)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box tip">
+    <div class="box-title">Cost Management Formula</div>
+    <p>For client pricing, use this formula: <strong>(estimated monthly operations / 1000) x $3.50 x 2.5 markup = monthly automation fee</strong>. The 2.5x markup covers your time for maintenance, monitoring, and optimization. A client using 50K operations/month costs you ~$175 in Make.com fees; charge $437/month minimum. Layer AI API costs on top (typically $20-100/month per client).</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 9: BUILDING AI AGENTS -->
+<!-- ============================================================ -->
+<div class="chapter" id="ch9">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 09</div>
+    <h2>Building AI Agents</h2>
+    <p class="chapter-desc">Creating autonomous AI agents that handle entire workflows using tool-calling, function definitions, memory, and multi-turn reasoning.</p>
+  </div>
+
+  <h3>What Makes an Agent Different from a Prompt</h3>
+  <p>A prompt is a single AI call. An agent is an <strong>AI that can take actions</strong>. The difference is tool-calling: you give the AI a set of functions it can invoke, and it decides which ones to use based on the situation.</p>
+
+  <p>This is the most powerful pattern in modern automation. Instead of writing complex branching logic yourself, you describe the tools and let the AI orchestrate.</p>
+
+  <h3>Agent Architecture</h3>
+  <div class="flow-diagram">
+    <span class="node trigger">Incoming Request</span><br><br>
+    <span class="arrow">&darr;</span><br>
+    <span class="node ai">AI Agent (with tools + memory)</span><br><br>
+    <span class="arrow">&darr;</span> <em style="color: var(--text-muted);">Agent decides which tool to call</em><br><br>
+    <span class="node action">Tool: Search CRM</span> &nbsp;
+    <span class="node action">Tool: Send Email</span> &nbsp;
+    <span class="node action">Tool: Schedule Meeting</span> &nbsp;
+    <span class="node action">Tool: Check Calendar</span><br><br>
+    <span class="arrow">&darr;</span> <em style="color: var(--text-muted);">Tool result returned to agent</em><br><br>
+    <span class="node ai">Agent processes result, may call more tools</span><br><br>
+    <span class="arrow">&darr;</span><br>
+    <span class="node">Final Response / Action Taken</span>
+  </div>
+
+  <h3>Customer Support Agent: Complete Implementation</h3>
+<pre><span class="code-label">OpenAI Function Calling: Support Agent</span>
+POST https://api.openai.com/v1/chat/completions
+{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a customer support agent for {{company_name}}. You have access to tools to look up customer information, check order status, process refunds, and escalate to human agents. Always be helpful and professional. If you cannot resolve an issue, escalate. Never make promises about timelines you cannot verify with tools."
+    },
+    {
+      "role": "user",
+      "content": "{{customer_message}}"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "lookup_customer",
+        "description": "Look up customer information by email or customer ID",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string", "description": "Customer email address" },
+            "customer_id": { "type": "string", "description": "Customer ID" }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "check_order_status",
+        "description": "Check the status of a specific order",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": { "type": "string" }
+          },
+          "required": ["order_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "process_refund",
+        "description": "Initiate a refund for an order. Only use when customer explicitly requests refund and order is eligible.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": { "type": "string" },
+            "amount": { "type": "number", "description": "Refund amount in dollars" },
+            "reason": { "type": "string" }
+          },
+          "required": ["order_id", "amount", "reason"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "escalate_to_human",
+        "description": "Transfer the conversation to a human agent",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "department": { "type": "string", "enum": ["billing", "technical", "management"] },
+            "priority": { "type": "string", "enum": ["normal", "urgent"] },
+            "summary": { "type": "string", "description": "Brief summary for the human agent" }
+          },
+          "required": ["department", "priority", "summary"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "send_email",
+        "description": "Send a follow-up email to the customer",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "to": { "type": "string" },
+            "subject": { "type": "string" },
+            "body": { "type": "string" }
+          },
+          "required": ["to", "subject", "body"]
+        }
+      }
+    }
+  ],
+  "tool_choice": "auto"
+}</pre>
+
+  <h4>Handling Tool Calls in Make.com</h4>
+<pre><span class="code-label">Agent Loop Pattern in Make.com</span>
+Module 1: Receive customer message (webhook/email/chat)
+Module 2: Load conversation history from data store
+Module 3: OpenAI - Create Chat Completion (with tools)
+Module 4: Router
+  Route 1 (response has tool_calls):
+    &rarr; Iterator over tool_calls array
+    &rarr; Router (by function name):
+        "lookup_customer": &rarr; Airtable Search &rarr; Return result
+        "check_order_status": &rarr; Shopify API &rarr; Return result
+        "process_refund": &rarr; Stripe Refund API &rarr; Return result
+        "escalate_to_human": &rarr; Create Zendesk ticket &rarr; Return result
+        "send_email": &rarr; Mailgun API &rarr; Return result
+    &rarr; Aggregator: Collect all tool results
+    &rarr; OpenAI - Create Chat Completion (with tool results appended)
+    &rarr; Loop back to Module 4 (agent may call more tools)
+
+  Route 2 (response is final text, no tool_calls):
+    &rarr; Send response to customer
+    &rarr; Save conversation to data store</pre>
+
+  <h3>Sales Qualification Agent</h3>
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Agent System Prompt</span>
+      <span class="pt-tag">Sales Qualification</span>
+    </div>
+    <div class="pt-body">You are a sales qualification agent for <span class="var">{{company_name}}</span>. Your job is to engage with inbound leads, gather qualifying information, and determine next steps.
+
+QUALIFICATION CRITERIA (BANT):
+- Budget: Can they afford our services? ($2K-10K/month range)
+- Authority: Are they a decision-maker or influencer?
+- Need: Do they have a clear pain point we solve?
+- Timeline: Are they looking to implement within 90 days?
+
+YOUR TOOLS:
+- search_crm: Check if this lead exists in our CRM
+- enrich_company: Get company info (size, industry, funding)
+- check_calendar: See available slots for discovery calls
+- book_meeting: Schedule a discovery call
+- add_to_nurture: Add to email nurture sequence
+- update_crm: Update lead record with qualification data
+
+RULES:
+1. Be conversational and helpful, not interrogative
+2. Gather info naturally across 2-3 message exchanges
+3. If qualified (3+ BANT criteria met): book a meeting
+4. If partially qualified: add to nurture with specific notes
+5. If unqualified: politely redirect to self-serve resources
+6. Always update CRM with everything you learn</div>
+  </div>
+
+  <h3>Agent Memory: Conversation Persistence</h3>
+<pre><span class="code-label">Conversation Memory Data Store Structure</span>
+{
+  "key": "conv_{{customer_id}}",
+  "value": {
+    "customer_id": "cust_789",
+    "messages": [
+      {"role": "user", "content": "I need help with my order", "timestamp": "..."},
+      {"role": "assistant", "content": "I'd be happy to help...", "timestamp": "..."},
+      {"role": "user", "content": "Order #12345 hasn't arrived", "timestamp": "..."}
+    ],
+    "context": {
+      "customer_name": "Sarah Johnson",
+      "account_tier": "premium",
+      "open_issues": ["order_12345_delayed"],
+      "sentiment_trend": "frustrated",
+      "total_interactions": 3
+    },
+    "last_updated": "2026-04-08T10:30:00Z",
+    "ttl": "2026-04-15T10:30:00Z"
+  }
+}
+
+// Memory management:
+// - Load last 10 messages as context (token budget)
+// - Summarize older messages with AI: "Previous context: Customer has been
+//   waiting 5 days for order #12345. Previously offered tracking update."
+// - Set TTL to auto-expire stale conversations
+// - Store key extracted facts in "context" for quick loading</pre>
+
+  <h3>Scheduling Agent Example</h3>
+<pre><span class="code-label">Tool Definitions for Scheduling Agent</span>
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_available_slots",
+        "description": "Get available meeting slots for a specific date range and team member",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "team_member": { "type": "string", "description": "Name or email of team member" },
+            "start_date": { "type": "string", "format": "date" },
+            "end_date": { "type": "string", "format": "date" },
+            "duration_minutes": { "type": "integer", "enum": [15, 30, 60] },
+            "timezone": { "type": "string", "description": "IANA timezone" }
+          },
+          "required": ["team_member", "start_date", "end_date", "duration_minutes"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "book_meeting",
+        "description": "Book a meeting on the calendar",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "start_time": { "type": "string", "format": "date-time" },
+            "duration_minutes": { "type": "integer" },
+            "attendees": { "type": "array", "items": { "type": "string" } },
+            "description": { "type": "string" },
+            "video_link": { "type": "boolean", "description": "Auto-generate Zoom link" }
+          },
+          "required": ["title", "start_time", "duration_minutes", "attendees"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "reschedule_meeting",
+        "description": "Reschedule an existing meeting",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "meeting_id": { "type": "string" },
+            "new_start_time": { "type": "string", "format": "date-time" },
+            "notify_attendees": { "type": "boolean" },
+            "reason": { "type": "string" }
+          },
+          "required": ["meeting_id", "new_start_time"]
+        }
+      }
+    }
+  ]
+}</pre>
+
+  <div class="info-box critical">
+    <div class="box-title">Agent Safety: Guard Rails</div>
+    <p><strong>Always implement guard rails for autonomous agents:</strong><br><br>
+    1. <strong>Spending limits:</strong> Cap refund amounts, require human approval above thresholds<br>
+    2. <strong>Action logging:</strong> Every tool call must be logged with full input/output<br>
+    3. <strong>Confirmation for destructive actions:</strong> Deletions, refunds, cancellations should require confirmation<br>
+    4. <strong>Human escalation paths:</strong> The agent must always be able to hand off to a human<br>
+    5. <strong>Rate limits:</strong> Cap the number of tool calls per conversation (prevent infinite loops)<br>
+    6. <strong>Content filtering:</strong> Check agent responses before sending to customers</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- BONUS: ADVANCED PROMPT LIBRARY -->
+<!-- ============================================================ -->
+<div class="chapter" id="bonus">
+  <div class="chapter-header">
+    <div class="chapter-label">Bonus Chapter</div>
+    <h2>Advanced Prompt Library</h2>
+    <p class="chapter-desc">20 production-ready prompts for automation workflows. Copy, customize the variables, and deploy.</p>
+  </div>
+
+  <p>Each prompt below is designed for use in Make.com's OpenAI/HTTP modules. Variables in <code style="color: var(--accent-teal);">{{brackets}}</code> should be mapped to data from previous modules in your scenario.</p>
+
+  <!-- PROMPT 1 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 01: Lead Qualification</span>
+      <span class="pt-tag">Sales</span>
+    </div>
+    <div class="pt-body">Analyze this lead and return a JSON qualification assessment.
+
+Lead Data:
+- Name: <span class="var">{{name}}</span>
+- Company: <span class="var">{{company}}</span> (Industry: <span class="var">{{industry}}</span>, Size: <span class="var">{{employees}}</span> employees)
+- Title: <span class="var">{{job_title}}</span>
+- Message: <span class="var">{{form_message}}</span>
+- Source: <span class="var">{{utm_source}}</span> / <span class="var">{{utm_campaign}}</span>
+
+Our ICP: <span class="var">{{ideal_customer_profile}}</span>
+Our Services: <span class="var">{{services_offered}}</span>
+
+Return ONLY valid JSON:
+{
+  "score": 0-100,
+  "qualified": true/false,
+  "icp_fit": "strong|moderate|weak|none",
+  "decision_maker": true/false,
+  "budget_signal": "high|medium|low|unknown",
+  "urgency": "immediate|short_term|exploring|unknown",
+  "recommended_action": "book_call|send_case_study|nurture_sequence|disqualify",
+  "personalized_subject_line": "string for follow-up email",
+  "key_talking_points": ["point 1", "point 2", "point 3"],
+  "reasoning": "2-3 sentence explanation"
+}</div>
+  </div>
+
+  <!-- PROMPT 2 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 02: Email Rewriting</span>
+      <span class="pt-tag">Communications</span>
+    </div>
+    <div class="pt-body">Rewrite this email to be more professional, concise, and action-oriented.
+
+Original email:
+<span class="var">{{original_email}}</span>
+
+Context: This is a <span class="var">{{email_type}}</span> email to <span class="var">{{recipient_role}}</span>.
+Desired tone: <span class="var">{{tone}}</span>
+Maximum length: <span class="var">{{max_words}}</span> words
+Must include CTA: <span class="var">{{call_to_action}}</span>
+
+Return JSON:
+{
+  "subject": "improved subject line",
+  "body": "rewritten email body (plain text)",
+  "body_html": "rewritten email body (HTML formatted)",
+  "changes_made": ["list of key changes"],
+  "readability_score": "easy|moderate|advanced"
+}</div>
+  </div>
+
+  <!-- PROMPT 3 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 03: Review Response Generator</span>
+      <span class="pt-tag">Reputation</span>
+    </div>
+    <div class="pt-body">Generate a response to this customer review.
+
+Platform: <span class="var">{{platform}}</span> (Google/Yelp/Facebook)
+Rating: <span class="var">{{star_rating}}</span>/5 stars
+Review text: <span class="var">{{review_text}}</span>
+Customer name: <span class="var">{{customer_name}}</span>
+Business name: <span class="var">{{business_name}}</span>
+
+Guidelines:
+- For 4-5 stars: Thank them specifically, reinforce what they loved, invite them back
+- For 3 stars: Acknowledge feedback, address specific concerns, offer to improve
+- For 1-2 stars: Empathize, apologize without being defensive, take conversation offline
+- Always be genuine, never generic
+- Include the customer's name
+- Keep under 100 words
+- Never offer discounts/freebies publicly (invites exploitation)
+
+Return JSON:
+{
+  "response": "the review response text",
+  "sentiment": "positive|neutral|negative",
+  "issues_identified": ["list of issues if any"],
+  "follow_up_needed": true/false,
+  "internal_action": "none|contact_customer|investigate|urgent_flag"
+}</div>
+  </div>
+
+  <!-- PROMPT 4 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 04: Meeting Summary</span>
+      <span class="pt-tag">Productivity</span>
+    </div>
+    <div class="pt-body">Analyze this meeting transcript and produce a structured summary.
+
+Transcript:
+<span class="var">{{transcript_text}}</span>
+
+Meeting type: <span class="var">{{meeting_type}}</span>
+Attendees: <span class="var">{{attendees_list}}</span>
+
+Return JSON:
+{
+  "title": "descriptive meeting title",
+  "duration_discussed": "estimated duration from content",
+  "summary": "3-5 sentence executive summary",
+  "key_decisions": [
+    {"decision": "what was decided", "owner": "who owns it", "deadline": "if mentioned"}
+  ],
+  "action_items": [
+    {"task": "specific task", "assignee": "person responsible", "due_date": "if mentioned", "priority": "high|medium|low"}
+  ],
+  "open_questions": ["unresolved items that need follow-up"],
+  "next_meeting": "date/topic if discussed",
+  "sentiment": "productive|neutral|contentious",
+  "follow_up_email_draft": "brief email summarizing outcomes for attendees"
+}</div>
+  </div>
+
+  <!-- PROMPT 5 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 05: Proposal Drafting</span>
+      <span class="pt-tag">Sales</span>
+    </div>
+    <div class="pt-body">Draft a project proposal based on the discovery call notes.
+
+Client: <span class="var">{{client_name}}</span> (<span class="var">{{client_company}}</span>)
+Industry: <span class="var">{{industry}}</span>
+Discovery notes: <span class="var">{{discovery_notes}}</span>
+Pain points identified: <span class="var">{{pain_points}}</span>
+Budget range discussed: <span class="var">{{budget_range}}</span>
+Timeline: <span class="var">{{desired_timeline}}</span>
+Our relevant services: <span class="var">{{applicable_services}}</span>
+
+Return JSON:
+{
+  "proposal_title": "string",
+  "executive_summary": "2-3 paragraphs addressing their specific situation",
+  "proposed_solution": {
+    "phases": [
+      {
+        "name": "Phase name",
+        "duration": "X weeks",
+        "deliverables": ["list"],
+        "description": "what we do and why"
+      }
+    ]
+  },
+  "investment": {
+    "setup_fee": "amount or range",
+    "monthly_fee": "amount or range",
+    "justification": "ROI-focused explanation"
+  },
+  "timeline": "overall project timeline",
+  "next_steps": ["ordered list of immediate next steps"],
+  "why_us": "2-3 sentences on unique value proposition"
+}</div>
+  </div>
+
+  <!-- PROMPT 6 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 06: Data Extraction from Unstructured Text</span>
+      <span class="pt-tag">Data Processing</span>
+    </div>
+    <div class="pt-body">Extract structured data from this unstructured text.
+
+Source text:
+<span class="var">{{raw_text}}</span>
+
+Source type: <span class="var">{{source_type}}</span> (email/form/chat/document)
+
+Extract and return JSON:
+{
+  "people": [{"name": "...", "role": "...", "email": "...", "phone": "..."}],
+  "companies": [{"name": "...", "industry": "...", "size": "..."}],
+  "dates": [{"date": "YYYY-MM-DD", "context": "what the date refers to"}],
+  "monetary_values": [{"amount": 0, "currency": "USD", "context": "..."}],
+  "addresses": [{"full": "...", "city": "...", "state": "...", "zip": "..."}],
+  "action_items": ["extracted tasks or requests"],
+  "key_topics": ["main subjects discussed"],
+  "sentiment": "positive|neutral|negative",
+  "urgency": "high|medium|low",
+  "language": "detected language"
+}
+
+Rules: If a field cannot be determined, use null. Never fabricate data.</div>
+  </div>
+
+  <!-- PROMPT 7 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 07: Sentiment Analysis with Context</span>
+      <span class="pt-tag">Analytics</span>
+    </div>
+    <div class="pt-body">Perform deep sentiment analysis on this customer communication.
+
+Message: <span class="var">{{message_text}}</span>
+Channel: <span class="var">{{channel}}</span>
+Customer tier: <span class="var">{{customer_tier}}</span>
+Previous interactions (last 30 days): <span class="var">{{interaction_count}}</span>
+
+Return JSON:
+{
+  "overall_sentiment": "very_positive|positive|neutral|negative|very_negative",
+  "confidence": 0.0-1.0,
+  "emotions_detected": ["frustration", "satisfaction", "confusion", "urgency", "anger", "gratitude"],
+  "churn_risk": "high|medium|low",
+  "churn_signals": ["specific phrases or patterns indicating churn risk"],
+  "topic_sentiments": [
+    {"topic": "product quality", "sentiment": "positive", "evidence": "quote from text"}
+  ],
+  "recommended_response_tone": "empathetic|professional|enthusiastic|apologetic|urgent",
+  "escalation_needed": true/false,
+  "escalation_reason": "string or null"
+}</div>
+  </div>
+
+  <!-- PROMPT 8 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 08: Content Repurposing</span>
+      <span class="pt-tag">Marketing</span>
+    </div>
+    <div class="pt-body">Repurpose this content for multiple platforms.
+
+Original content:
+<span class="var">{{source_content}}</span>
+
+Content type: <span class="var">{{content_type}}</span>
+Brand voice: <span class="var">{{brand_voice_description}}</span>
+Target audience: <span class="var">{{target_audience}}</span>
+
+Return JSON:
+{
+  "linkedin_post": {
+    "text": "1300 chars max, professional tone, hook + value + CTA",
+    "hashtags": ["relevant", "hashtags"]
+  },
+  "twitter_thread": [
+    "Tweet 1: Hook (280 chars)",
+    "Tweet 2: Key insight",
+    "Tweet 3: Supporting point",
+    "Tweet 4: CTA"
+  ],
+  "email_newsletter": {
+    "subject": "compelling subject line",
+    "preview_text": "80 chars",
+    "body": "200-300 words, conversational"
+  },
+  "instagram_caption": {
+    "text": "engaging caption with line breaks",
+    "hashtags": ["up to 15 relevant hashtags"]
+  },
+  "blog_meta": {
+    "seo_title": "60 chars max",
+    "meta_description": "155 chars max",
+    "slug": "url-friendly-slug"
+  }
+}</div>
+  </div>
+
+  <!-- PROMPT 9 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 09: Support Ticket Classification</span>
+      <span class="pt-tag">Support</span>
+    </div>
+    <div class="pt-body">Classify this support ticket for routing and prioritization.
+
+Subject: <span class="var">{{ticket_subject}}</span>
+Body: <span class="var">{{ticket_body}}</span>
+Customer email: <span class="var">{{customer_email}}</span>
+Account MRR: $<span class="var">{{account_mrr}}</span>
+Open tickets: <span class="var">{{open_ticket_count}}</span>
+
+Return JSON:
+{
+  "category": "billing|technical|feature_request|bug_report|account|general",
+  "subcategory": "more specific classification",
+  "priority": "P1_critical|P2_high|P3_medium|P4_low",
+  "department": "engineering|billing|success|sales",
+  "estimated_complexity": "simple|moderate|complex",
+  "auto_response_appropriate": true/false,
+  "suggested_auto_response": "response text if appropriate, null otherwise",
+  "tags": ["relevant", "tags", "for", "tracking"],
+  "similar_known_issue": "description of known issue if match found, null otherwise"
+}</div>
+  </div>
+
+  <!-- PROMPT 10 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 10: Invoice Data Extraction</span>
+      <span class="pt-tag">Finance</span>
+    </div>
+    <div class="pt-body">Extract invoice data from this text/OCR output.
+
+Raw text:
+<span class="var">{{invoice_text}}</span>
+
+Return JSON:
+{
+  "vendor_name": "string",
+  "vendor_address": "string",
+  "invoice_number": "string",
+  "invoice_date": "YYYY-MM-DD",
+  "due_date": "YYYY-MM-DD",
+  "line_items": [
+    {"description": "...", "quantity": 0, "unit_price": 0.00, "total": 0.00}
+  ],
+  "subtotal": 0.00,
+  "tax_amount": 0.00,
+  "tax_rate": "percentage or null",
+  "total_amount": 0.00,
+  "currency": "USD",
+  "payment_terms": "Net 30, etc.",
+  "po_number": "string or null",
+  "confidence": "high|medium|low"
+}</div>
+  </div>
+
+  <!-- PROMPT 11 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 11: Competitive Intel Summarizer</span>
+      <span class="pt-tag">Strategy</span>
+    </div>
+    <div class="pt-body">Analyze this competitive intelligence data and produce an actionable summary.
+
+Competitor: <span class="var">{{competitor_name}}</span>
+Data source: <span class="var">{{source_type}}</span>
+Raw data:
+<span class="var">{{scraped_content}}</span>
+
+Our positioning: <span class="var">{{our_positioning}}</span>
+
+Return JSON:
+{
+  "competitor_summary": "2-3 sentence overview of competitor's current state",
+  "recent_changes": ["new features, pricing changes, hires, etc."],
+  "strengths_vs_us": ["where they are stronger"],
+  "weaknesses_vs_us": ["where we have advantage"],
+  "pricing_intel": {"model": "...", "range": "...", "changes": "..."},
+  "threat_level": "high|medium|low",
+  "recommended_actions": ["specific things we should do in response"],
+  "talking_points": ["points for sales team when asked about this competitor"]
+}</div>
+  </div>
+
+  <!-- PROMPT 12 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 12: Blog Post to FAQ Generator</span>
+      <span class="pt-tag">Content</span>
+    </div>
+    <div class="pt-body">Generate FAQ entries from this blog post / knowledge base article.
+
+Content:
+<span class="var">{{article_content}}</span>
+
+Target audience: <span class="var">{{audience}}</span>
+
+Return JSON:
+{
+  "faqs": [
+    {
+      "question": "natural question a customer would ask",
+      "answer": "concise, helpful answer (2-3 sentences)",
+      "category": "topic category",
+      "schema_markup": "FAQ schema JSON-LD for this Q&A pair"
+    }
+  ],
+  "suggested_related_topics": ["topics not covered that customers might ask about"]
+}</div>
+  </div>
+
+  <!-- PROMPT 13 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 13: Cold Email Personalization</span>
+      <span class="pt-tag">Outreach</span>
+    </div>
+    <div class="pt-body">Write a personalized cold email first line and P.S. based on research.
+
+Recipient: <span class="var">{{name}}</span>, <span class="var">{{title}}</span> at <span class="var">{{company}}</span>
+LinkedIn headline: <span class="var">{{linkedin_headline}}</span>
+Recent post/activity: <span class="var">{{recent_activity}}</span>
+Company news: <span class="var">{{company_news}}</span>
+Mutual connections: <span class="var">{{mutual_connections}}</span>
+
+Return JSON:
+{
+  "opening_line": "personalized, reference-specific first line (1 sentence)",
+  "ps_line": "personal touch P.S. line",
+  "connection_angle": "why they should care (1 sentence)",
+  "personalization_type": "achievement|shared_interest|company_news|mutual_connection|content_reference"
+}</div>
+  </div>
+
+  <!-- PROMPT 14 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 14: Chatbot Conversation Router</span>
+      <span class="pt-tag">Support</span>
+    </div>
+    <div class="pt-body">Analyze this chatbot conversation and determine the best next action.
+
+Conversation so far:
+<span class="var">{{conversation_history}}</span>
+
+Latest message: <span class="var">{{latest_message}}</span>
+
+Available actions:
+1. continue_chat - Bot can handle this
+2. transfer_sales - Lead showing buying intent
+3. transfer_support - Technical issue detected
+4. collect_email - Capture lead before they leave
+5. show_pricing - Pricing question detected
+6. book_demo - Demo request detected
+7. send_resource - Can be answered with a specific resource
+
+Return JSON:
+{
+  "action": "one of the above",
+  "confidence": 0.0-1.0,
+  "intent": "what the user is trying to accomplish",
+  "bot_response": "what the bot should say next",
+  "internal_notes": "context for human if transferred",
+  "lead_score_adjustment": -10 to +10
+}</div>
+  </div>
+
+  <!-- PROMPT 15 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 15: Social Media Comment Moderator</span>
+      <span class="pt-tag">Social</span>
+    </div>
+    <div class="pt-body">Analyze this social media comment and determine the appropriate action.
+
+Comment: <span class="var">{{comment_text}}</span>
+Author: <span class="var">{{author_name}}</span>
+Platform: <span class="var">{{platform}}</span>
+Post context: <span class="var">{{original_post_topic}}</span>
+
+Return JSON:
+{
+  "action": "approve|reply|hide|delete|escalate",
+  "category": "positive|question|complaint|spam|inappropriate|troll",
+  "reply_text": "suggested reply if action is reply, null otherwise",
+  "urgency": "high|medium|low",
+  "public_sentiment_impact": "positive|neutral|negative",
+  "reasoning": "why this action was chosen"
+}</div>
+  </div>
+
+  <!-- PROMPT 16 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 16: Resume/Application Screener</span>
+      <span class="pt-tag">HR</span>
+    </div>
+    <div class="pt-body">Screen this job application against the job requirements.
+
+Job title: <span class="var">{{job_title}}</span>
+Requirements: <span class="var">{{job_requirements}}</span>
+Nice-to-haves: <span class="var">{{nice_to_haves}}</span>
+
+Application data:
+<span class="var">{{resume_text}}</span>
+
+Return JSON:
+{
+  "overall_match": "strong|good|partial|weak",
+  "score": 0-100,
+  "requirements_met": [{"requirement": "...", "met": true/false, "evidence": "..."}],
+  "nice_to_haves_met": [{"item": "...", "met": true/false}],
+  "strengths": ["notable strengths relevant to role"],
+  "concerns": ["potential issues or gaps"],
+  "experience_years": "estimated relevant experience",
+  "recommended_action": "advance_to_interview|phone_screen|hold|reject",
+  "interview_questions": ["3 role-specific questions based on their background"]
+}</div>
+  </div>
+
+  <!-- PROMPT 17 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 17: Product Description Generator</span>
+      <span class="pt-tag">E-Commerce</span>
+    </div>
+    <div class="pt-body">Generate an optimized product description from raw product data.
+
+Product name: <span class="var">{{product_name}}</span>
+Category: <span class="var">{{category}}</span>
+Raw specs: <span class="var">{{raw_specifications}}</span>
+Target customer: <span class="var">{{target_customer}}</span>
+Key selling points: <span class="var">{{selling_points}}</span>
+Competitor price range: <span class="var">{{competitor_prices}}</span>
+
+Return JSON:
+{
+  "title": "SEO-optimized product title (60 chars)",
+  "short_description": "50-word benefit-focused summary",
+  "long_description": "200-word detailed description with HTML formatting",
+  "bullet_points": ["5-7 key feature/benefit bullets"],
+  "seo_keywords": ["primary and secondary keywords"],
+  "meta_description": "155 chars for search results",
+  "suggested_categories": ["where to list this product"],
+  "upsell_angles": ["cross-sell and upsell suggestions"]
+}</div>
+  </div>
+
+  <!-- PROMPT 18 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 18: Contract Clause Analyzer</span>
+      <span class="pt-tag">Legal</span>
+    </div>
+    <div class="pt-body">Analyze this contract excerpt and flag important clauses.
+
+Contract text:
+<span class="var">{{contract_text}}</span>
+
+Contract type: <span class="var">{{contract_type}}</span>
+Our role: <span class="var">{{our_role}}</span> (vendor/client/partner)
+
+IMPORTANT: This is for informational flagging only, not legal advice.
+
+Return JSON:
+{
+  "clauses_identified": [
+    {
+      "type": "termination|liability|payment|ip|non_compete|auto_renewal|indemnity|confidentiality|other",
+      "text": "relevant excerpt",
+      "risk_level": "high|medium|low",
+      "plain_english": "what this means in simple terms",
+      "flag_reason": "why this needs attention"
+    }
+  ],
+  "missing_clauses": ["important clauses not found in the contract"],
+  "overall_risk": "high|medium|low",
+  "recommended_review": true/false,
+  "summary": "2-3 sentence plain-English contract summary"
+}</div>
+  </div>
+
+  <!-- PROMPT 19 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 19: Weekly KPI Report Narrator</span>
+      <span class="pt-tag">Reporting</span>
+    </div>
+    <div class="pt-body">Generate an executive narrative from these KPI metrics.
+
+Current week metrics:
+<span class="var">{{current_metrics_json}}</span>
+
+Previous week metrics:
+<span class="var">{{previous_metrics_json}}</span>
+
+Monthly targets:
+<span class="var">{{monthly_targets_json}}</span>
+
+Return JSON:
+{
+  "headline": "one-line summary of the week (positive or concerning)",
+  "executive_summary": "3-4 sentences for busy stakeholders",
+  "wins": ["top 3 positive trends with specific numbers"],
+  "concerns": ["areas that need attention with specific numbers"],
+  "week_over_week": [
+    {"metric": "...", "change": "+/-X%", "trend": "up|down|flat", "context": "why this matters"}
+  ],
+  "on_track_for_monthly": true/false,
+  "gap_to_target": "what needs to happen to hit monthly goals",
+  "recommended_focus": ["top 3 priorities for next week"]
+}</div>
+  </div>
+
+  <!-- PROMPT 20 -->
+  <div class="prompt-template">
+    <div class="pt-header">
+      <span class="pt-label">Prompt 20: Multi-Language Response Translator</span>
+      <span class="pt-tag">International</span>
+    </div>
+    <div class="pt-body">Detect the language of this customer message and generate a response in the same language.
+
+Customer message:
+<span class="var">{{customer_message}}</span>
+
+Response template (English):
+<span class="var">{{english_response_template}}</span>
+
+Business context: <span class="var">{{context}}</span>
+
+Return JSON:
+{
+  "detected_language": "ISO 639-1 code",
+  "detected_language_name": "English name of language",
+  "confidence": 0.0-1.0,
+  "translated_response": "the response in the detected language",
+  "cultural_notes": "any cultural considerations for this market",
+  "formality_adjusted": true/false,
+  "formality_note": "explanation of formality adjustments if any"
+}</div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Prompt Engineering Best Practices for Automation</h3>
+  <ol>
+    <li><strong>Always request JSON output.</strong> Specify the exact schema. Use OpenAI's structured output mode when available.</li>
+    <li><strong>Include edge case instructions.</strong> "If the data is missing, return null for that field. Never fabricate information."</li>
+    <li><strong>Provide examples when the task is ambiguous.</strong> One-shot or few-shot examples dramatically improve consistency.</li>
+    <li><strong>Set the context explicitly.</strong> Tell the AI who it is, what the data represents, and how the output will be used.</li>
+    <li><strong>Use temperature 0 for classification/extraction</strong> and temperature 0.7-0.9 for creative content generation.</li>
+    <li><strong>Validate AI output in your automation.</strong> After the AI module, add a JSON parse step and check for required fields before proceeding.</li>
+    <li><strong>Version your prompts.</strong> Store them in a data store or config table. When you improve a prompt, you want to know which version generated each output.</li>
+    <li><strong>Monitor output quality.</strong> Periodically sample AI outputs and rate them. If quality degrades, investigate prompt drift or model updates.</li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<div class="guide-footer">
+  <div class="brand">JEDAI FLOW</div>
+  <p>The AI Automation Mastery Guide - Advanced Edition 2026</p>
+  <p style="margin-top: 24px; font-size: 13px;">jedaiflow.com &nbsp;&bull;&nbsp; AI-Powered Automation for Modern Business</p>
+  <p style="margin-top: 16px; font-size: 12px; color: var(--text-muted);">Copyright &copy; 2026 Jedai Flow. All rights reserved. This material is for the exclusive use of the purchaser. Do not distribute.</p>
+</div>
+
+</div><!-- .page-container -->
+</body>
+</html>
