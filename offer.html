@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limited Offer - AI Automation Setup 50% Off | Jedai Flow</title>
+  <meta name="description" content="Get your custom AI automation system built in 7 days or you don't pay. Limited to 5 clients — 3 spots remaining. 50% off setup for a limited time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef7ff',
+              100: '#d9edff',
+              200: '#bce0ff',
+              300: '#8eccff',
+              400: '#59afff',
+              500: '#338dff',
+              600: '#1a6df5',
+              700: '#1357e1',
+              800: '#1646b6',
+              900: '#183d8f',
+              950: '#132757',
+            },
+            dark: {
+              900: '#0a0e1a',
+              800: '#0f1629',
+              700: '#151d38',
+              600: '#1c2545',
+            },
+            accent: '#00d4aa',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #338dff 0%, #00d4aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-border {
+      position: relative;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, #338dff, #00d4aa);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .glow {
+      box-shadow: 0 0 60px rgba(51, 141, 255, 0.15), 0 0 120px rgba(0, 212, 170, 0.08);
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(0, 212, 170, 0.6), 0 0 80px rgba(51, 141, 255, 0.3); }
+    }
+
+    .urgency-pulse {
+      animation: urgencyPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes urgencyPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .spot-dot {
+      width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+    }
+    .spot-taken { background: #374151; }
+    .spot-open { background: #00d4aa; box-shadow: 0 0 8px rgba(0, 212, 170, 0.6); }
+
+    .check-icon { color: #00d4aa; flex-shrink: 0; }
+  </style>
+</head>
+<body class="bg-dark-900 text-white antialiased">
+
+  <!-- Urgency Banner -->
+  <div class="bg-gradient-to-r from-brand-600 to-accent/80 py-3 px-4 text-center sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 text-sm md:text-base font-semibold">
+      <span class="urgency-pulse">Limited Time: First 5 Clients Get 50% Off Setup</span>
+      <span class="bg-white/20 rounded-full px-3 py-1 text-xs md:text-sm font-bold tracking-wide flex items-center gap-2">
+        <span class="spot-dot spot-taken"></span>
+        <span class="spot-dot spot-taken"></span>
+        <span class="spot-dot spot-open"></span>
+        <span class="spot-dot spot-open"></span>
+        <span class="spot-dot spot-open"></span>
+        3 SPOTS LEFT
+      </span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="pt-16 pb-12 md:pt-24 md:pb-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+        We'll Build Your AI Automation System in 7 Days
+        <span class="gradient-text block mt-2">Or You Don't Pay</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Stop losing leads, missing follow-ups, and wasting hours on manual work. We build it. We test it. You profit.
+      </p>
+      <a href="#claim" class="inline-block bg-accent hover:bg-accent/90 text-dark-900 font-bold text-lg px-8 py-4 rounded-xl transition-all pulse-glow">
+        Claim Your Spot Now
+      </a>
+    </div>
+  </section>
+
+  <!-- What You Get -->
+  <section class="py-16 md:py-24 px-4 bg-dark-800">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-4">Everything We Build For You</h2>
+      <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">A complete automation system, custom-built for your business and fully managed.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Item 1 -->
+        <div class="bg-dark-700 rounded-2xl p-6 flex gap-4 items-start gradient-border">
+          <svg class="check-icon w-6 h-6 mt-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Custom AI Lead Follow-Up System</h3>
+            <p class="text-gray-400 text-sm">Responds to every new lead within 60 seconds, 24 hours a day, 7 days a week. Never miss another opportunity.</p>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="bg-dark-700 rounded-2xl p-6 flex gap-4 items-start gradient-border">
+          <svg class="check-icon w-6 h-6 mt-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Automated Appointment Reminders</h3>
+            <p class="text-gray-400 text-sm">Reduce no-shows by 50% or more with smart, perfectly timed reminders via SMS and email.</p>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="bg-dark-700 rounded-2xl p-6 flex gap-4 items-start gradient-border">
+          <svg class="check-icon w-6 h-6 mt-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Review Request Automation</h3>
+            <p class="text-gray-400 text-sm">Get 5-star reviews on autopilot. Automatically ask happy clients to leave reviews at the perfect moment.</p>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="bg-dark-700 rounded-2xl p-6 flex gap-4 items-start gradient-border">
+          <svg class="check-icon w-6 h-6 mt-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Client Onboarding Workflow</h3>
+            <p class="text-gray-400 text-sm">Professional, hands-free onboarding that makes every new client feel taken care of from day one.</p>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="bg-dark-700 rounded-2xl p-6 flex gap-4 items-start gradient-border">
+          <svg class="check-icon w-6 h-6 mt-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div>
+            <h3 class="font-bold text-lg mb-1">Weekly Performance Reports</h3>
+            <p class="text-gray-400 text-sm">Clear, actionable reports delivered straight to your inbox so you always know what's working.</p>
+          </div>
+        </div>
+        <!-- Item 6 -->
+        <div class="bg-dark-700 rounded-2xl p-6 flex gap-4 items-start gradient-border">
+          <svg class="check-icon w-6 h-6 mt-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div>
+            <h3 class="font-bold text-lg mb-1">30 Days of Support & Optimization</h3>
+            <p class="text-gray-400 text-sm">We don't just build it and leave. We optimize and fine-tune your system for a full month after launch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-2xl md:text-4xl font-bold mb-12">Simple, Transparent Pricing</h2>
+
+      <div class="bg-dark-700 rounded-3xl p-8 md:p-10 glow gradient-border">
+        <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Limited Time Offer</p>
+        <div class="mb-2">
+          <span class="text-gray-500 line-through text-2xl">$2,500</span>
+          <span class="text-5xl md:text-6xl font-black gradient-text ml-3">$1,250</span>
+        </div>
+        <p class="text-gray-400 mb-1">One-time setup fee <span class="text-accent font-semibold">(50% off for first 5 clients)</span></p>
+        <div class="border-t border-white/10 my-6"></div>
+        <p class="text-3xl font-bold mb-1">$497<span class="text-lg text-gray-400 font-normal">/month</span></p>
+        <p class="text-gray-400 text-sm mb-6">Ongoing management & optimization</p>
+        <div class="border-t border-white/10 my-6"></div>
+        <p class="text-lg font-semibold text-white">Pays for itself in the first week.</p>
+        <p class="text-gray-400 text-sm mt-2">One closed lead or one saved hour of work per day covers the entire cost.</p>
+        <a href="#claim" class="mt-8 inline-block w-full bg-accent hover:bg-accent/90 text-dark-900 font-bold text-lg px-8 py-4 rounded-xl transition-all pulse-glow">
+          Claim Your Spot
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-16 px-4 bg-dark-800">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="bg-dark-700 rounded-2xl p-8 md:p-10 gradient-border">
+        <svg class="w-10 h-10 text-accent mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <p class="text-xl md:text-2xl font-semibold leading-relaxed mb-4">
+          Businesses using AI automation save <span class="text-accent">20+ hours per week</span> and respond to leads <span class="text-accent">10x faster</span> than competitors still doing it manually.
+        </p>
+        <p class="text-gray-400 text-sm">Based on data from businesses using automated lead response and workflow systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-12">Common Questions</h2>
+
+      <div class="space-y-4">
+        <details class="bg-dark-700 rounded-2xl group" open>
+          <summary class="cursor-pointer p-6 font-semibold text-lg flex justify-between items-center">
+            How long does setup take?
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 -mt-2">
+            Most systems are fully built, tested, and live within 7 business days. We handle everything -- you just answer a few questions about your business during onboarding and we take it from there.
+          </div>
+        </details>
+
+        <details class="bg-dark-700 rounded-2xl group">
+          <summary class="cursor-pointer p-6 font-semibold text-lg flex justify-between items-center">
+            Do I need any technical skills?
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 -mt-2">
+            Not at all. We build, manage, and optimize everything for you. If you can check your email, you have all the technical skills you need.
+          </div>
+        </details>
+
+        <details class="bg-dark-700 rounded-2xl group">
+          <summary class="cursor-pointer p-6 font-semibold text-lg flex justify-between items-center">
+            What if it doesn't work for my business?
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 -mt-2">
+            Our guarantee is simple: if we don't deliver a working system in 7 days, you don't pay the setup fee. We also include 30 days of optimization to make sure everything is dialed in for your specific workflow.
+          </div>
+        </details>
+
+        <details class="bg-dark-700 rounded-2xl group">
+          <summary class="cursor-pointer p-6 font-semibold text-lg flex justify-between items-center">
+            Can I cancel the monthly management?
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 -mt-2">
+            Yes, you can cancel the monthly management at any time. No long-term contracts, no cancellation fees. The automations we built for you keep running -- you just won't have ongoing optimization and support.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Form -->
+  <section id="claim" class="py-16 md:py-24 px-4 bg-dark-800">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-4xl font-bold mb-3">Claim Your Spot</h2>
+        <p class="text-gray-400">Fill out the form below and we'll call you within 2 hours to discuss your custom automation plan.</p>
+      </div>
+
+      <form id="offer-form" class="bg-dark-700 rounded-3xl p-6 md:p-8 space-y-5 glow gradient-border">
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Full Name</label>
+          <input type="text" name="name" required placeholder="John Smith" class="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Email</label>
+          <input type="email" name="email" required placeholder="john@business.com" class="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Business Name</label>
+          <input type="text" name="business" required placeholder="Acme Services" class="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Phone Number</label>
+          <input type="tel" name="phone" required placeholder="(555) 123-4567" class="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">What's your biggest time-waster?</label>
+          <textarea name="pain_point" rows="3" placeholder="E.g., following up with leads, scheduling, sending reminders..." class="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-accent hover:bg-accent/90 text-dark-900 font-bold text-lg px-8 py-4 rounded-xl transition-all pulse-glow">
+          Get My Custom Automation Plan
+        </button>
+        <p class="text-center text-gray-500 text-xs">No obligation. We'll reach out to see if we're a good fit.</p>
+      </form>
+
+      <!-- Success Message (hidden by default) -->
+      <div id="form-success" class="hidden bg-dark-700 rounded-3xl p-8 text-center glow gradient-border">
+        <svg class="w-16 h-16 text-accent mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <h3 class="text-2xl font-bold mb-2">You're In!</h3>
+        <p class="text-gray-300 text-lg">We'll call you within 2 hours to discuss your custom automation plan.</p>
+        <p class="text-gray-500 text-sm mt-3">Check your email for a confirmation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 md:py-20 px-4 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-accent font-semibold text-sm uppercase tracking-wider mb-3">Don't wait</p>
+      <h2 class="text-2xl md:text-4xl font-bold mb-4">Only 3 spots left at this price.</h2>
+      <p class="text-gray-400 text-lg mb-8">Once they're gone, setup goes back to $2,500. Lock in your rate today.</p>
+      <a href="#claim" class="inline-block bg-accent hover:bg-accent/90 text-dark-900 font-bold text-lg px-10 py-4 rounded-xl transition-all pulse-glow">
+        Claim Your Spot Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-white/5 text-center">
+    <p class="text-gray-500 text-sm">Jedai Flow &mdash; AI Automations for Your Business</p>
+    <a href="https://jedaiflow.com" class="text-brand-500 hover:text-brand-400 text-sm mt-1 inline-block">jedaiflow.com</a>
+  </footer>
+
+  <script>
+    document.getElementById('offer-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        business: form.business.value,
+        phone: form.phone.value,
+        pain_point: form.pain_point.value,
+        source: 'offer-page',
+        submitted_at: new Date().toISOString()
+      };
+
+      try {
+        await fetch('https://hook.us2.make.com/2qi68q1xvuz1gguvb3bo1l1iebqxdl6j', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          mode: 'no-cors'
+        });
+        form.classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Get My Custom Automation Plan';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    });
+  </script>
+</body>
+</html>
