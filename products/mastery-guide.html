@@ -6,21 +6,26 @@
 <title>The AI Automation Mastery Guide | Jedai Flow</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  @page {
+    margin: 1in;
+    size: letter;
+  }
+
   :root {
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #111827;
-    --bg-tertiary: #1a2035;
-    --bg-code: #0d1117;
-    --text-primary: #f0f2f5;
-    --text-secondary: #9ca3af;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-code: #f5f5f5;
+    --text-primary: #1a1a2e;
+    --text-secondary: #374151;
     --text-muted: #6b7280;
     --accent-blue: #338dff;
     --accent-teal: #00d4aa;
     --accent-purple: #8b5cf6;
-    --accent-orange: #f59e0b;
-    --accent-red: #ef4444;
-    --border: #1e293b;
-    --border-light: #2d3a50;
+    --accent-orange: #d97706;
+    --accent-red: #dc2626;
+    --border: #e2e8f0;
+    --border-light: #cbd5e1;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +34,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    line-height: 1.75;
+    line-height: 1.8;
     font-size: 16px;
   }
 
@@ -51,23 +56,19 @@
     position: relative;
     overflow: hidden;
     page-break-after: always;
+    background: var(--bg-primary);
   }
 
   .cover::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 40% 50%, rgba(51,141,255,0.12) 0%, transparent 55%),
-                radial-gradient(ellipse at 65% 60%, rgba(0,212,170,0.08) 0%, transparent 50%);
-    animation: coverGlow 15s ease-in-out infinite alternate;
-  }
-
-  @keyframes coverGlow {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-3%, 2%); }
+    bottom: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal));
   }
 
   .cover-content { position: relative; z-index: 1; }
@@ -83,21 +84,18 @@
     color: var(--accent-blue);
     margin-bottom: 40px;
     padding: 10px 24px;
-    border: 1px solid rgba(51,141,255,0.3);
+    border: 2px solid var(--accent-blue);
     border-radius: 50px;
   }
 
   .brand-mark svg { width: 20px; height: 20px; }
 
   .cover h1 {
-    font-size: clamp(36px, 6vw, 64px);
+    font-size: 48px;
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 24px;
-    background: linear-gradient(135deg, #ffffff 0%, #338dff 50%, #00d4aa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
   }
 
   .cover .subtitle {
@@ -106,6 +104,7 @@
     max-width: 560px;
     margin: 0 auto 40px;
     font-weight: 400;
+    line-height: 1.6;
   }
 
   .cover-meta {
@@ -124,7 +123,7 @@
 
   .edition-badge {
     display: inline-block;
-    padding: 6px 18px;
+    padding: 8px 24px;
     border-radius: 6px;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
     color: #fff;
@@ -145,7 +144,7 @@
     font-size: 32px;
     font-weight: 800;
     margin-bottom: 40px;
-    color: var(--text-primary);
+    color: var(--accent-blue);
   }
 
   .toc-item {
@@ -181,8 +180,9 @@
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent-teal);
+    color: var(--accent-blue);
     margin-bottom: 12px;
+    opacity: 0.8;
   }
 
   .chapter-header h2 {
@@ -190,6 +190,7 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 16px;
+    color: var(--accent-blue);
   }
 
   .chapter-header .chapter-desc {
@@ -199,7 +200,7 @@
   }
 
   h3 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     margin: 48px 0 20px;
     color: var(--text-primary);
@@ -228,14 +229,14 @@
   pre {
     background: var(--bg-code);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 24px;
     overflow-x: auto;
     margin: 20px 0 28px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13.5px;
+    font-size: 13px;
     line-height: 1.7;
-    color: #e6edf3;
+    color: #1a1a2e;
   }
 
   code {
@@ -244,11 +245,11 @@
   }
 
   p code, li code {
-    background: var(--bg-tertiary);
+    background: #eef2ff;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.85em;
-    color: var(--accent-teal);
+    color: #4338ca;
   }
 
   .code-label {
@@ -261,31 +262,31 @@
     margin-bottom: 8px;
   }
 
-  /* Info Boxes */
+  /* Info Boxes / Callout Boxes */
   .info-box {
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 24px 28px;
     margin: 28px 0;
     border-left: 4px solid;
   }
 
   .info-box.tip {
-    background: rgba(0,212,170,0.06);
-    border-color: var(--accent-teal);
+    background: #f0f7ff;
+    border-color: var(--accent-blue);
   }
 
   .info-box.warning {
-    background: rgba(245,158,11,0.06);
+    background: #fffbeb;
     border-color: var(--accent-orange);
   }
 
   .info-box.critical {
-    background: rgba(239,68,68,0.06);
+    background: #fef2f2;
     border-color: var(--accent-red);
   }
 
   .info-box.pro {
-    background: rgba(139,92,246,0.06);
+    background: #f5f3ff;
     border-color: var(--accent-purple);
   }
 
@@ -297,7 +298,7 @@
     margin-bottom: 8px;
   }
 
-  .info-box.tip .box-title { color: var(--accent-teal); }
+  .info-box.tip .box-title { color: var(--accent-blue); }
   .info-box.warning .box-title { color: var(--accent-orange); }
   .info-box.critical .box-title { color: var(--accent-red); }
   .info-box.pro .box-title { color: var(--accent-purple); }
@@ -315,7 +316,7 @@
     background: var(--bg-tertiary);
     padding: 12px 16px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     border-bottom: 2px solid var(--border-light);
     font-size: 13px;
@@ -329,15 +330,17 @@
     color: var(--text-secondary);
   }
 
-  tr:hover td { background: rgba(51,141,255,0.03); }
+  tr:nth-child(even) td { background: #f8fafc; }
 
   /* Prompt Template Box */
   .prompt-template {
     background: var(--bg-secondary);
-    border: 1px solid var(--border-light);
-    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
     margin: 24px 0;
     overflow: hidden;
+    border-left: 4px solid;
+    border-image: linear-gradient(to bottom, var(--accent-blue), var(--accent-teal)) 1;
   }
 
   .prompt-template .pt-header {
@@ -361,7 +364,7 @@
     font-size: 11px;
     padding: 3px 10px;
     border-radius: 20px;
-    background: rgba(139,92,246,0.15);
+    background: #ede9fe;
     color: var(--accent-purple);
     font-weight: 600;
   }
@@ -384,7 +387,7 @@
   .flow-diagram {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 32px;
     margin: 24px 0;
     text-align: center;
@@ -405,9 +408,9 @@
   }
 
   .flow-diagram .arrow { color: var(--accent-teal); margin: 0 8px; }
-  .flow-diagram .node.trigger { border-color: var(--accent-teal); color: var(--accent-teal); }
-  .flow-diagram .node.action { border-color: var(--accent-blue); color: var(--accent-blue); }
-  .flow-diagram .node.ai { border-color: var(--accent-purple); color: var(--accent-purple); }
+  .flow-diagram .node.trigger { border-color: var(--accent-teal); color: #047857; }
+  .flow-diagram .node.action { border-color: var(--accent-blue); color: #1d4ed8; }
+  .flow-diagram .node.ai { border-color: var(--accent-purple); color: #6d28d9; }
   .flow-diagram .node.error { border-color: var(--accent-red); color: var(--accent-red); }
 
   /* Separator */
@@ -421,7 +424,7 @@
   .guide-footer {
     text-align: center;
     padding: 60px 0 40px;
-    border-top: 1px solid var(--border);
+    border-top: 2px solid var(--border);
     margin-top: 60px;
     page-break-before: always;
   }
@@ -431,7 +434,7 @@
 
   /* Print Styles */
   @media print {
-    body { background: #0a0e1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: #ffffff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .page-container { padding: 20px; }
     .cover { min-height: auto; padding: 80px 20px; }
     pre { white-space: pre-wrap; word-break: break-all; }
@@ -1197,12 +1200,12 @@ Error Handler:
     <span class="node trigger">Day 0</span> <span class="arrow">&rarr;</span> <span class="node action">Personalized Email #1</span><br><br>
     <span class="arrow">&darr;</span> <em style="color: var(--text-muted); font-size: 12px;">Wait 2 days. Check: opened?</em><br><br>
     <span class="node trigger">Day 2</span> <span class="arrow">&rarr;</span>
-    <span style="color: var(--accent-teal);">If opened, no reply:</span> <span class="node action">SMS Follow-up</span><br>
+    <span style="color: #047857;">If opened, no reply:</span> <span class="node action">SMS Follow-up</span><br>
     <span style="margin-left: 120px; color: var(--accent-orange);">If not opened:</span> <span class="node action">Email #2 (new subject line)</span><br><br>
     <span class="node trigger">Day 4</span> <span class="arrow">&rarr;</span> <span class="node action">Ringless Voicemail Drop</span><br><br>
     <span class="node trigger">Day 5</span> <span class="arrow">&rarr;</span> <span class="node ai">AI-Generated LinkedIn Message</span><br><br>
     <span class="node trigger">Day 7</span> <span class="arrow">&rarr;</span>
-    <span style="color: var(--accent-teal);">If any engagement:</span> <span class="node action">Phone Call Task for Rep</span><br>
+    <span style="color: #047857;">If any engagement:</span> <span class="node action">Phone Call Task for Rep</span><br>
     <span style="margin-left: 120px; color: var(--accent-orange);">If no engagement:</span> <span class="node action">Direct Mail Trigger (Lob API)</span>
   </div>
 
@@ -1994,7 +1997,7 @@ RULES:
     <p class="chapter-desc">20 production-ready prompts for automation workflows. Copy, customize the variables, and deploy.</p>
   </div>
 
-  <p>Each prompt below is designed for use in Make.com's OpenAI/HTTP modules. Variables in <code style="color: var(--accent-teal);">{{brackets}}</code> should be mapped to data from previous modules in your scenario.</p>
+  <p>Each prompt below is designed for use in Make.com's OpenAI/HTTP modules. Variables in <code>{{brackets}}</code> should be mapped to data from previous modules in your scenario.</p>
 
   <!-- PROMPT 1 -->
   <div class="prompt-template">

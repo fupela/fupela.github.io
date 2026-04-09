@@ -8,36 +8,27 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  @page { margin: 1in; }
+
   :root {
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #111827;
-    --bg-card: #151c2e;
-    --bg-card-alt: #1a2238;
-    --text-primary: #f0f2f5;
-    --text-secondary: #9ca3af;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #f8fafc;
+    --bg-card-alt: #f0f7ff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #374151;
     --text-muted: #6b7280;
     --accent-blue: #338dff;
     --accent-green: #00d4aa;
-    --accent-purple: #8b5cf6;
-    --accent-orange: #f59e0b;
+    --accent-purple: #338dff;
+    --accent-orange: #e67e22;
     --accent-red: #ef4444;
     --accent-pink: #ec4899;
-    --border-color: #1e293b;
-    --border-accent: #2d3a52;
+    --border-color: #e2e8f0;
+    --border-accent: #cbd5e1;
   }
 
   @media print {
-    :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8f9fa;
-      --bg-card: #f1f3f5;
-      --bg-card-alt: #e9ecef;
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --text-muted: #6b7280;
-      --border-color: #d1d5db;
-      --border-accent: #9ca3af;
-    }
     body { font-size: 11pt; }
     .blueprint-section { page-break-before: always; }
     .blueprint-section:first-of-type { page-break-before: auto; }
@@ -52,7 +43,8 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    line-height: 1.7;
+    line-height: 1.8;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -70,50 +62,58 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 60px 40px;
-    background: linear-gradient(180deg, #0a0e1a 0%, #111827 50%, #0a0e1a 100%);
+    padding: 80px 40px;
+    background: #ffffff;
     position: relative;
     overflow: hidden;
   }
   .cover-page::before {
     content: '';
     position: absolute;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(51,141,255,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px;
+    transform: translateY(180px);
+    background: linear-gradient(90deg, #338dff, #00d4aa);
+    opacity: 0.7;
     pointer-events: none;
   }
+  .cover-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #338dff, #00d4aa);
+  }
   .cover-brand {
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 6px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 8px;
     text-transform: uppercase;
     color: var(--accent-blue);
-    margin-bottom: 40px;
+    margin-bottom: 48px;
   }
   .cover-title {
     font-size: 52px;
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, #ffffff 0%, #338dff 50%, #00d4aa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    margin-bottom: 16px;
+    color: #1a1a2e;
   }
   .cover-subtitle {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
     color: var(--text-secondary);
     margin-bottom: 50px;
     max-width: 600px;
+    line-height: 1.7;
   }
   .cover-meta {
     display: flex;
-    gap: 40px;
+    gap: 48px;
     margin-bottom: 50px;
     flex-wrap: wrap;
     justify-content: center;
@@ -124,13 +124,14 @@
   .cover-meta-item .number {
     font-size: 36px;
     font-weight: 800;
-    color: var(--accent-green);
+    color: var(--accent-blue);
   }
   .cover-meta-item .label {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin-top: 4px;
   }
   .cover-badge {
     display: inline-block;
@@ -138,7 +139,7 @@
     color: #fff;
     font-size: 13px;
     font-weight: 700;
-    padding: 10px 28px;
+    padding: 12px 32px;
     border-radius: 50px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -158,10 +159,10 @@
     padding: 80px 0;
   }
   .toc-page h2 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 800;
     margin-bottom: 40px;
-    color: var(--text-primary);
+    color: var(--accent-blue);
   }
   .toc-list {
     list-style: none;
@@ -174,15 +175,13 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    transition: background 0.2s;
   }
-  .toc-list li:hover { background: var(--bg-card); }
   .toc-num {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 10px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-accent);
+    background: #f0f7ff;
+    border: 1px solid #d4e5ff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,12 +204,14 @@
 
   /* ── Blueprint Sections ── */
   .blueprint-section {
-    padding: 80px 0;
-    border-top: 1px solid var(--border-color);
+    padding: 60px 0 80px;
+    page-break-before: always;
   }
 
   .bp-header {
     margin-bottom: 48px;
+    border-bottom: 3px solid var(--accent-blue);
+    padding-bottom: 32px;
   }
   .bp-number {
     font-size: 13px;
@@ -225,10 +226,10 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 16px;
-    color: var(--text-primary);
+    color: var(--accent-blue);
   }
   .bp-description {
-    font-size: 17px;
+    font-size: 16px;
     color: var(--text-secondary);
     max-width: 750px;
     line-height: 1.8;
@@ -244,7 +245,7 @@
   .info-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 24px;
   }
   .info-card.full-width {
@@ -255,7 +256,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent-green);
+    color: #00b894;
     margin-bottom: 10px;
   }
   .info-card p, .info-card li {
@@ -282,9 +283,9 @@
 
   /* Diagram */
   .diagram-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border-accent);
-    border-radius: 12px;
+    background: #fafbfc;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
     padding: 32px;
     margin-bottom: 48px;
     overflow-x: auto;
@@ -294,14 +295,14 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent-purple);
+    color: var(--accent-blue);
     margin-bottom: 16px;
   }
   .diagram-box pre {
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--accent-green);
+    font-size: 12px;
+    line-height: 1.5;
+    color: #1a1a2e;
     white-space: pre;
     overflow-x: auto;
   }
@@ -314,12 +315,12 @@
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 28px;
-    color: var(--text-primary);
+    color: var(--accent-blue);
   }
   .step-card {
-    background: var(--bg-card);
+    background: #ffffff;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 28px 28px 28px 80px;
     margin-bottom: 16px;
     position: relative;
@@ -331,7 +332,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    background: var(--accent-blue);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,17 +352,17 @@
     line-height: 1.8;
   }
   .step-body code {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: #f5f5f5;
+    border: 1px solid #e2e8f0;
     padding: 2px 8px;
     border-radius: 4px;
     font-family: 'SF Mono', 'Fira Code', monospace;
     font-size: 13px;
-    color: var(--accent-green);
+    color: #1a1a2e;
   }
   .step-body pre {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: #f5f5f5;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
     padding: 20px;
     margin: 16px 0;
@@ -369,22 +370,23 @@
     font-family: 'SF Mono', 'Fira Code', monospace;
     font-size: 13px;
     line-height: 1.6;
-    color: var(--text-secondary);
+    color: #1a1a2e;
     white-space: pre-wrap;
   }
 
   /* ROI Box */
   .roi-box {
-    background: linear-gradient(135deg, rgba(51,141,255,0.08), rgba(0,212,170,0.08));
-    border: 1px solid var(--border-accent);
-    border-radius: 12px;
+    background: #f0fdf9;
+    border: 1px solid #b2f5e4;
+    border-left: 4px solid var(--accent-green);
+    border-radius: 10px;
     padding: 32px;
     margin-bottom: 48px;
   }
   .roi-box h3 {
     font-size: 18px;
     font-weight: 700;
-    color: var(--accent-green);
+    color: #00b894;
     margin-bottom: 16px;
   }
   .roi-box ul {
@@ -402,23 +404,23 @@
     content: '+';
     position: absolute;
     left: 0;
-    color: var(--accent-green);
+    color: #00b894;
     font-weight: 700;
     font-size: 18px;
   }
 
   /* Pro Tips */
   .pro-tips {
-    background: var(--bg-card-alt);
-    border-left: 4px solid var(--accent-purple);
-    border-radius: 0 12px 12px 0;
+    background: #f0f7ff;
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 0 10px 10px 0;
     padding: 28px 32px;
     margin-bottom: 48px;
   }
   .pro-tips h3 {
     font-size: 16px;
     font-weight: 700;
-    color: var(--accent-purple);
+    color: var(--accent-blue);
     margin-bottom: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -431,7 +433,7 @@
     padding: 6px 0;
     font-size: 15px;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.8;
     padding-left: 20px;
     position: relative;
   }
@@ -439,15 +441,15 @@
     content: '*';
     position: absolute;
     left: 0;
-    color: var(--accent-purple);
+    color: var(--accent-blue);
     font-weight: 700;
   }
 
   /* Variations */
   .variations {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    background: #fffbf0;
+    border: 1px solid #f0e4c8;
+    border-radius: 10px;
     padding: 28px;
   }
   .variations h3 {
@@ -464,8 +466,8 @@
     padding: 8px 0;
     font-size: 15px;
     color: var(--text-secondary);
-    line-height: 1.7;
-    border-bottom: 1px solid var(--border-color);
+    line-height: 1.8;
+    border-bottom: 1px solid #f0e4c8;
   }
   .variations li:last-child { border-bottom: none; }
   .variations li strong { color: var(--text-primary); }
@@ -480,11 +482,35 @@
     letter-spacing: 1px;
   }
 
+  /* Tables within email templates */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  table th {
+    background: #f0f7ff;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    color: var(--text-primary);
+  }
+  table td {
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    color: var(--text-secondary);
+  }
+  table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
   /* Footer */
   .doc-footer {
     text-align: center;
     padding: 80px 40px;
-    border-top: 1px solid var(--border-color);
+    border-top: 3px solid var(--accent-blue);
+    page-break-before: always;
   }
   .doc-footer p {
     color: var(--text-muted);
@@ -2386,7 +2412,7 @@ Provide your analysis.</pre>
 &lt;div style="font-family:Arial,sans-serif; max-width:650px;
             margin:0 auto; background:#f8f9fa; padding:30px;"&gt;
 
-  &lt;div style="background:#0a0e1a; color:#fff; padding:24px;
+  &lt;div style="background:#338dff; color:#fff; padding:24px;
               border-radius:12px 12px 0 0; text-align:center;"&gt;
     &lt;h1 style="margin:0; font-size:22px;"&gt;WEEKLY BUSINESS REPORT&lt;/h1&gt;
     &lt;p style="color:#9ca3af; margin:8px 0 0;"&gt;
@@ -3308,12 +3334,12 @@ React :x: to skip this testimonial</pre>
   <div style="margin-bottom:30px;">
     <div style="font-size:14px; font-weight:700; letter-spacing:4px; color:var(--accent-blue); text-transform:uppercase;">JEDAI FLOW</div>
   </div>
-  <p style="font-size:18px; font-weight:600; color:var(--text-primary); margin-bottom:16px;">Ready to implement these automations?</p>
-  <p>We build these systems for businesses every day. If you want them set up<br>professionally and customized to your exact workflow, let's talk.</p>
+  <p style="font-size:18px; font-weight:600; color:#1a1a2e; margin-bottom:16px;">Ready to implement these automations?</p>
+  <p style="color:#374151;">We build these systems for businesses every day. If you want them set up<br>professionally and customized to your exact workflow, let's talk.</p>
   <p style="margin-top:24px;">
-    <a href="https://jedaiflow.com" style="display:inline-block; background:var(--accent-blue); color:#fff; padding:14px 36px; border-radius:8px; text-decoration:none; font-weight:700; font-size:15px;">Book a Free Strategy Call &rarr;</a>
+    <a href="https://jedaiflow.com" style="display:inline-block; background:#338dff; color:#fff; padding:14px 36px; border-radius:8px; text-decoration:none; font-weight:700; font-size:15px;">Book a Free Strategy Call &rarr;</a>
   </p>
-  <p style="margin-top:40px; font-size:12px; color:var(--text-muted);">
+  <p style="margin-top:40px; font-size:12px; color:#6b7280;">
     &copy; 2026 Jedai Flow. All rights reserved.<br>
     This document is for the exclusive use of the purchaser. Do not redistribute.<br>
     <a href="https://jedaiflow.com">jedaiflow.com</a>
