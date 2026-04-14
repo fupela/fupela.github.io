@@ -12,6 +12,7 @@ Build JediFlow into a scalable AI-powered business focused on lead capture, foll
 
 ## Quick Links
 - [[Home]]
+- [[Daily Logs/2026-04-13]]
 - [[Offers]]
 - [[Sales Pipeline]]
 - [[Outreach Tracker]]
