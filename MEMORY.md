@@ -49,17 +49,19 @@ Both agents read this file. Keep it lean, accurate, and current.
 ---
 
 ## CURRENT STATE
-- **Build Loop**: Operational. Batch 1 complete, Batch 2 active (Tasks 1-4 done, Echo fix sent, awaiting apply+retest).
+- **Build Loop**: Operational. Batch 1 complete, Batch 2 active (Echo fix and infrastructure health check completed, waiting on Claude to write Batch 3 after latest sync).
 - **Sandbox Mode**: Fixed (off)
 - **Cowork Typer**: Working (Fupie -> Claude)
 - **Bridge-to-Telegram**: Working (Bot API mode)
 - **Watchdog**: Running via launchd
-- **Mission Control**: .env.local partially configured (Sheet IDs filled, private key + Gmail creds pending)
+- **Mission Control**: Running on port 3000 (HTTP 200). `.env.local` partially configured (Sheet IDs filled, private key + Gmail creds pending)
 - **Claude's Name**: Pela (Team Cowork)
 - **Custom Skills Installed**: build-loop-ops, fupie-session-boot, lead-pipeline, openclaw-agent-team
 - **Scheduled Tasks**: build-loop-check (every 2 hours), morning-briefing (daily 7am)
 - **Cowork Integrations**: HubSpot CRM, MailerLite, Slack, Gamma, Gmail, Google Calendar, Stripe, Google Drive, Cloudflare, Make.com, Chrome Extension, Notion
 - **Integration Routing**: Fupie's agents handle research/writing/content; Pela handles all external API calls (CRM, email, payments, web browsing, presentations)
+- **Agent Roster Health**: Scout, Quill, Echo, Forge, Muse, Sentinel, and Anvil all responding after Echo moved from `ollama/kimi-k2.5:cloud` to `openrouter/google/gemma-4-31b-it`.
+- **Site Health**: `jedaiflow.com` resolving with HTTP 200. Gumroad storefront `jediquest77.gumroad.com` returning HTTP 200.
 - **Product Sprint**: PIVOTED — "The OpenClaw + Claude Cowork Operator Stack Guide" — replaces the generic "Dual-Model Operator Guide." New angle: Anthropic cut off Claude subscriptions from OpenClaw on April 4 2026; guide covers API setup, OpenClaw model config, Cowork as the second agent, bridge architecture, cost optimization, 7-prompt pack. PDF built, social posts rewritten, Notion page updated. Launch price ~$12. Awaiting Gumroad login from John to complete listing.
 - **Cowork Context (CRITICAL — read this)**: Claude Cowork (Pela) is not just a tool John uses — it IS the second agent in John's two-agent setup. Fupie (OpenClaw) = ops/research/content/code side. Pela (Cowork) = strategy/quality/external APIs side. The bridge between them IS the product being documented. When John asks about products, content, or workflows, always frame answers in the context of this specific OpenClaw + Cowork stack — not generic "GPT vs Claude" framing. John confirmed this context was missing from earlier product work and wants it explicitly understood going forward.
 
