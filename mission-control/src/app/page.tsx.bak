@@ -1,0 +1,437 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import {
+  Activity,
+  Bot,
+  Brain,
+  FileText,
+  Wrench,
+  ArrowRight,
+  Zap,
+  Circle,
+  Clock,
+} from "lucide-react";
+
+interface ActivityEvent {
+  id: string;
+  type: string;
+  title: string;
+  description: string;
+  timestamp: string;
+  agent: string;
+  icon: string;
+}
+
+interface ModelUsageStat {
+  model: string;
+  provider: string;
+  sessions: number;
+  inputTokens: number;
+  outputTokens: number;
+  cacheReadTokens: number;
+  estimatedCostUsd: number;
+}
+
+interface AgentInfo {
+  name: string;
+  codename: string;
+  role: string;
+  model: string;
+  status: "active" | "idle" | "offline";
+  mission: string;
+  lastSeen: string;
+  costTier: string;
+}
+
+function timeAgo(date: string) {
+  const diff = Date.now() - new Date(date).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+function StatusPulse({ status }: { status: string }) {
+  const color =
+    status === "active"
+      ? "bg-success"
+      : status === "idle"
+        ? "bg-warning"
+        : "bg-muted-2";
+  return (
+    <span className="relative flex h-2 w-2">
+      {status === "active" && (
+        <span
+          className={`animate-ping absolute inline-flex h-full w-full rounded-full ${color} opacity-75`}
+        />
+      )}
+      <span
+        className={`relative inline-flex rounded-full h-2 w-2 ${color}`}
+      />
+    </span>
+  );
+}
+
+export default function Dashboard() {
+  type UsageWindow = "day" | "week" | "30d";
+  const [activity, setActivity] = useState<ActivityEvent[]>([]);
+  const [agents, setAgents] = useState<AgentInfo[]>([]);
+  const [usageDay, setUsageDay] = useState<ModelUsageStat[]>([]);
+  const [usageWeek, setUsageWeek] = useState<ModelUsageStat[]>([]);
+  const [usage30d, setUsage30d] = useState<ModelUsageStat[]>([]);
+  const [usageTab, setUsageTab] = useState<UsageWindow>("day");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Promise.all([
+      fetch("/api/workspace?type=activity").then((r) => r.json()),
+      fetch("/api/workspace?type=agents").then((r) => r.json()),
+      fetch("/api/workspace?type=usage&window=1").then((r) => r.json()),
+      fetch("/api/workspace?type=usage&window=7").then((r) => r.json()),
+      fetch("/api/workspace?type=usage&window=30").then((r) => r.json()),
+    ]).then(([actData, agentData, dayData, weekData, d30Data]) => {
+      setActivity(actData);
+      setAgents(agentData);
+      setUsageDay(dayData);
+      setUsageWeek(weekData);
+      setUsage30d(d30Data);
+      setLoading(false);
+    });
+  }, []);
+
+  const usageMap: Record<UsageWindow, ModelUsageStat[]> = {
+    day: usageDay,
+    week: usageWeek,
+    "30d": usage30d,
+  };
+  const activeUsage = usageMap[usageTab];
+  const totalCost = activeUsage.reduce((s, u) => s + u.estimatedCostUsd, 0);
+
+  const activeAgents = agents.filter((a) => a.status === "active").length;
+
+  return (
+    <div className="p-6 max-w-[1100px]">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-lg font-semibold flex items-center gap-2">
+            <Zap size={18} className="text-accent" />
+            Mission Control
+          </h1>
+          <p className="text-[13px] text-muted mt-0.5">
+            Fupie workspace overview
+          </p>
+        </div>
+        <div className="flex items-center gap-2 text-[12px]">
+          <StatusPulse status="active" />
+          <span className="text-success font-medium">System Online</span>
+        </div>
+      </div>
+
+      {/* API Usage */}
+      <div className="mb-6 border border-card-border rounded-lg overflow-hidden glass-panel glow-card">
+        <div className="px-4 py-3 border-b border-card-border bg-card-bg flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Activity size={14} className="text-muted" />
+            <span className="text-[13px] font-medium">Model Activity</span>
+            <span className="text-[10px] text-muted-2 bg-card-border px-1.5 py-0.5 rounded">
+              token volume · Claude Max plan
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex rounded overflow-hidden border border-card-border text-[11px]">
+              {(["day", "week", "30d"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setUsageTab(tab)}
+                  className={`px-2.5 py-1 transition-colors ${
+                    usageTab === tab
+                      ? "bg-accent text-white"
+                      : "bg-card-bg text-muted hover:bg-hover-bg"
+                  }`}
+                >
+                  {tab === "day" ? "Today" : tab === "week" ? "7d" : "30d"}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        {loading ? (
+          <div className="px-4 py-6 text-center">
+            <p className="text-[13px] text-muted">Loading...</p>
+          </div>
+        ) : activeUsage.length === 0 ? (
+          <div className="px-4 py-6 text-center">
+            <p className="text-[13px] text-muted">No usage in this period</p>
+          </div>
+        ) : (
+          <div className="divide-y divide-card-border">
+            {(() => {
+              const maxTokens = Math.max(
+                ...activeUsage.map((s) => s.inputTokens)
+              );
+              return activeUsage.map((stat) => {
+                const pct =
+                  maxTokens > 0 ? (stat.inputTokens / maxTokens) * 100 : 0;
+                const totalTok = stat.inputTokens;
+                const tokLabel =
+                  totalTok >= 1_000_000
+                    ? `${(totalTok / 1_000_000).toFixed(1)}M`
+                    : totalTok >= 1_000
+                      ? `${(totalTok / 1_000).toFixed(0)}K`
+                      : totalTok.toString();
+                return (
+                  <div
+                    key={stat.model}
+                    className="px-4 py-3 hover:bg-hover-bg transition-colors"
+                  >
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div>
+                        <span className="text-[12px] font-semibold">
+                          {stat.model}
+                        </span>
+                        <span className="text-[10px] text-muted-2 ml-2">
+                          {stat.provider}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 text-[11px] text-muted-2">
+                        <span>
+                          <span className="text-foreground font-medium">
+                            {tokLabel}
+                          </span>{" "}
+                          tokens
+                        </span>
+                        {stat.sessions > 0 && (
+                          <span>
+                            {stat.sessions} run{stat.sessions !== 1 ? "s" : ""}
+                          </span>
+                        )}
+                        {stat.cacheReadTokens > 0 && (
+                          <span className="text-success">
+                            {(stat.cacheReadTokens / 1_000_000).toFixed(1)}M cached
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="h-1.5 bg-card-border rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-accent rounded-full transition-all"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              });
+            })()}
+          </div>
+        )}
+      </div>
+
+      {/* Stat cards */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        <div className="bg-card-bg border border-card-border rounded-lg p-4 glow-card glass-panel">
+          <div className="flex items-center gap-2 mb-2">
+            <Bot size={14} className="text-accent" />
+            <span className="text-[11px] text-muted uppercase tracking-wider font-medium">
+              Agents
+            </span>
+          </div>
+          <p className="text-xl font-semibold">{agents.length}</p>
+          <p className="text-[11px] text-success mt-0.5">
+            {activeAgents} active
+          </p>
+        </div>
+        <div className="bg-card-bg border border-card-border rounded-lg p-4 glow-card glass-panel">
+          <div className="flex items-center gap-2 mb-2">
+            <Activity size={14} className="text-accent" />
+            <span className="text-[11px] text-muted uppercase tracking-wider font-medium">
+              Events
+            </span>
+          </div>
+          <p className="text-xl font-semibold">{activity.length}</p>
+          <p className="text-[11px] text-muted-2 mt-0.5">Total tracked</p>
+        </div>
+        <div className="bg-card-bg border border-card-border rounded-lg p-4 glow-card glass-panel">
+          <div className="flex items-center gap-2 mb-2">
+            <Brain size={14} className="text-accent" />
+            <span className="text-[11px] text-muted uppercase tracking-wider font-medium">
+              Memories
+            </span>
+          </div>
+          <p className="text-xl font-semibold">
+            {activity.filter((a) => a.type === "memory").length}
+          </p>
+          <p className="text-[11px] text-muted-2 mt-0.5">Entries recorded</p>
+        </div>
+        <div className="bg-card-bg border border-card-border rounded-lg p-4 glow-card glass-panel">
+          <div className="flex items-center gap-2 mb-2">
+            <Wrench size={14} className="text-accent" />
+            <span className="text-[11px] text-muted uppercase tracking-wider font-medium">
+              Tools
+            </span>
+          </div>
+          <p className="text-xl font-semibold">0</p>
+          <p className="text-[11px] text-muted-2 mt-0.5">Custom tools</p>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-5 gap-4">
+        {/* Activity feed - wider */}
+        <div className="lg:col-span-3 border border-card-border rounded-lg overflow-hidden glass-panel glow-card">
+          <div className="px-4 py-3 border-b border-card-border bg-card-bg flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Activity size={14} className="text-muted" />
+              <span className="text-[13px] font-medium">Recent Activity</span>
+            </div>
+            <Link
+              href="/activity"
+              className="text-[11px] text-accent hover:text-accent-hover transition-colors"
+            >
+              View all
+            </Link>
+          </div>
+          <div className="divide-y divide-card-border max-h-[380px] overflow-auto">
+            {loading ? (
+              <div className="px-4 py-8 text-center">
+                <p className="text-[13px] text-muted">Loading...</p>
+              </div>
+            ) : activity.length === 0 ? (
+              <div className="px-4 py-8 text-center">
+                <p className="text-[13px] text-muted">No activity yet</p>
+              </div>
+            ) : (
+              activity.slice(0, 8).map((event) => (
+                <div
+                  key={event.id}
+                  className="px-4 py-3 hover:bg-hover-bg transition-colors"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5">
+                      {event.icon === "brain" ? (
+                        <Brain size={14} className="text-accent" />
+                      ) : event.icon === "search" ? (
+                        <Activity size={14} className="text-warning" />
+                      ) : (
+                        <FileText size={14} className="text-muted" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <p className="text-[12px] font-medium">{event.title}</p>
+                        <span className="text-[10px] text-muted-2 px-1.5 py-0.5 bg-card-bg rounded border border-card-border">
+                          {event.agent}
+                        </span>
+                      </div>
+                      <p className="text-[12px] text-muted mt-0.5 truncate">
+                        {event.description}
+                      </p>
+                    </div>
+                    <span className="text-[10px] text-muted-2 whitespace-nowrap flex items-center gap-1">
+                      <Clock size={10} />
+                      {timeAgo(event.timestamp)}
+                    </span>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        {/* Agent status panel */}
+        <div className="lg:col-span-2 border border-card-border rounded-lg overflow-hidden glass-panel glow-card">
+          <div className="px-4 py-3 border-b border-card-border bg-card-bg flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Bot size={14} className="text-muted" />
+              <span className="text-[13px] font-medium">Agent Status</span>
+            </div>
+            <Link
+              href="/agents"
+              className="text-[11px] text-accent hover:text-accent-hover transition-colors"
+            >
+              Details
+            </Link>
+          </div>
+          <div className="divide-y divide-card-border">
+            {loading ? (
+              <div className="px-4 py-8 text-center">
+                <p className="text-[13px] text-muted">Loading...</p>
+              </div>
+            ) : (
+              agents.map((agent) => (
+                <div
+                  key={agent.name}
+                  className="px-4 py-2.5 hover:bg-hover-bg transition-colors"
+                >
+                  <div className="flex items-center justify-between mb-0.5">
+                    <div className="flex items-center gap-2">
+                      <StatusPulse status={agent.status} />
+                      <p className="text-[12px] font-semibold">{agent.name}</p>
+                      <span className="text-[9px] text-muted-2">{agent.codename}</span>
+                    </div>
+                    <span className="text-[10px] text-muted-2 capitalize">
+                      {agent.status}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-muted pl-4">{agent.model}</p>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Quick nav */}
+      <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3">
+        {[
+          {
+            href: "/activity",
+            icon: Activity,
+            label: "Activity Log",
+            desc: "Monitor events",
+          },
+          {
+            href: "/agents",
+            icon: Bot,
+            label: "Agent Overview",
+            desc: "View missions",
+          },
+          {
+            href: "/memory",
+            icon: Brain,
+            label: "Memory Journal",
+            desc: "Search memories",
+          },
+          {
+            href: "/documents",
+            icon: FileText,
+            label: "Document Hub",
+            desc: "Browse files",
+          },
+        ].map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="border border-card-border rounded-lg p-3 hover:bg-hover-bg transition-all group glass-panel glow-card"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <item.icon size={14} className="text-accent" />
+                <span className="text-[12px] font-medium">{item.label}</span>
+              </div>
+              <ArrowRight
+                size={12}
+                className="text-muted-2 group-hover:text-muted transition-colors"
+              />
+            </div>
+            <p className="text-[11px] text-muted-2 mt-1">{item.desc}</p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}

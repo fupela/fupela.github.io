@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-13",
+  "day_number": 1,
+  "lead_stats": {
+    "total": 25,
+    "hot": 11,
+    "warm": 9,
+    "cool": 5,
+    "sector": "restaurants",
+    "area": "Houston (Greenspoint / North Houston corridor)"
+  },
+  "gumroad_urgency": "$19 until Friday April 18 — goes to $29 after",
+  "twitter": [
+    {
+      "time": "8:00 AM",
+      "type": "hook",
+      "post": "11 Houston restaurants have zero website.\n\nFound them this morning in under an hour.\n\nOne has 230+ Yelp photos. One is open until 2 AM every night.\n\nBoth are completely invisible on Google.\n\nThis is the gap I'm building a business to fill. 🧵"
+    },
+    {
+      "time": "10:00 AM",
+      "type": "behind-the-scenes",
+      "post": "Here's what actually happened this morning:\n\nRan an AI-assisted lead scan on Houston restaurants — Greenspoint and North Houston.\n\n25 results.\n11 with zero web presence.\n9 with outdated or broken sites.\n5 with good sites but missing revenue features.\n\nBest find: a taqueria with 230+ Yelp photos and no website. Their fans literally cannot share a link to them.\n\nTotal time: 45 minutes. No ads. No cold calls. Just data."
+    },
+    {
+      "time": "12:00 PM",
+      "type": "value-thread",
+      "posts": [
+        "How to find businesses that need a website in under an hour.\n\nThe exact workflow I ran this morning. 🧵",
+        "Step 1: Pick a neighborhood + niche.\n\nToday: Houston restaurants, Greenspoint area.\n\nOpen Yelp → filter by category → sort by review count → open the top 20-30 results → check the 'Website' field.\n\nYou'll be shocked how many are blank.",
+        "Step 2: Score every lead.\n\nHOT = no website + real reviews/photos = proven demand, zero digital presence.\nWARM = outdated site or missing key pages.\nCOOL = solid site, missing a revenue feature (online ordering, catering form, email list).\n\nToday: 11 HOT, 9 WARM, 5 COOL.",
+        "Step 3: Build your angle before you reach out.\n\nDon't say 'you need a website.'\n\nSay: 'La Lupita has 230+ Yelp photos and no website — your regulars literally can't share a link to you.'\n\nThat's a real, specific problem. That gets replies.",
+        "This whole workflow took 45 minutes.\n\nThe full system — prompts, scoring rubric, outreach templates, objection scripts — is documented and packaged.\n\n$19 until Friday April 18. Goes to $29 after. Link in bio."
+      ]
+    },
+    {
+      "time": "3:00 PM",
+      "type": "gumroad-callout",
+      "post": "The exact system I used to find 11 website-less Houston restaurants this morning:\n\n→ AI lead scanner prompts\n→ HOT/WARM/COOL scoring rubric\n→ Cold outreach templates\n→ Objection handling scripts\n→ Full workflow documentation\n\n$19 until Friday April 18 — goes to $29 after.\n\nLink in bio."
+    },
+    {
+      "time": "6:00 PM",
+      "type": "day-update",
+      "post": "Day 1 update.\n\n25 Houston restaurant leads pulled. 11 zero-website. Outreach queued for tomorrow morning.\n\nWhat worked: Greenspoint corridor is basically a digital dead zone for local food businesses. Every third listing has no website. The density is wild.\n\nWhat didn't: Yelp doesn't surface email addresses for most listings. Pivoting to Facebook DMs + Google Maps contact forms tomorrow.\n\nBack with results."
+    }
+  ],
+  "reddit": {
+    "subreddit": "r/Entrepreneur",
+    "title": "I found 11 Houston restaurants with zero website in 45 minutes using AI prompts — documenting the whole process publicly",
+    "body": "Been building an AI-powered lead gen system that targets local businesses that are 'digitally invisible' — good food, loyal customers, zero online presence.\n\nToday I ran it on Houston restaurants in the Greenspoint area.\n\n**Results from 25 businesses scanned:**\n- 11 with literally no website\n- 9 with outdated or feature-missing sites\n- 5 with solid sites but missing a revenue layer (online ordering, catering forms, email capture)\n\n**Most striking finds:**\n- A taqueria with 230+ Yelp photos and no website. Their fanbase can't share a link.\n- A seafood restaurant open until 2 AM every night with zero web presence. They're missing every late-night 'tacos near me' search.\n- A food truck with 1 Yelp review and no phone number — just showing up and hoping people find them.\n\n**The workflow:**\n1. Prompt-based Yelp scan (targeted by neighborhood + category)\n2. Manual site check on each result\n3. Assign HOT/WARM/COOL score based on urgency\n4. Generate a custom angle for outreach (not 'you need a website' — something specific to their situation)\n\nTotal time this morning: about 45 minutes.\n\nI'm documenting this whole process publicly — wins and failures. Currently pre-revenue, running 3-6 outreach batches per day. Today is Day 1.\n\nHappy to share specifics on the prompts or scoring rubric in the comments if useful.",
+    "top_comment": "For those asking about the full packaged system — prompts, scoring rubric, outreach templates, objection handling — I put it all together here: [GUMROAD LINK]. Currently $19, going to $29 Friday April 18."
+  },
+  "linkedin": {
+    "post": "Most Houston restaurants I've looked at this week have the same problem: they're excellent at cooking and completely invisible online.\n\nToday I scanned 25 restaurants in the Greenspoint area. 11 of them have no website at all. One has 230+ Yelp photos. One is open until 2 AM every night. Neither shows up on Google. Their customers can't share a link. They're losing business they'll never know about.\n\nI built an AI-assisted system that finds these businesses in under an hour, scores them by how urgently they need help, and generates a specific pitch for each one — not 'you need a website' but 'here's the exact revenue you're leaving on the table.' The whole workflow runs on prompts I've refined over the past two weeks. This morning it surfaced 25 leads in 45 minutes.\n\nIf you're a Houston restaurant owner dealing with this — invisible on Google, stuck on an outdated site, watching foot traffic but zero online presence — DM me. I'll show you exactly what I'd build for your situation. No pitch deck. Just a real conversation."
+  },
+  "tiktok": {
+    "duration_target": "75 seconds",
+    "script": [
+      {
+        "time": "0-3s",
+        "visual": "Screen recording of lead scan running in terminal or browser",
+        "audio": "11 Houston restaurants have zero website. I found them this morning in 45 minutes. Here's how."
+      },
+      {
+        "time": "3-15s",
+        "visual": "Browser tab: Yelp search results, Greenspoint Houston restaurants",
+        "audio": "I built an AI lead scanner. It searches local business directories, checks for websites, and scores every lead by urgency. Today I ran it on Houston restaurants."
+      },
+      {
+        "time": "15-30s",
+        "visual": "Yelp listing: La Lupita Taco Restaurant — 230+ photos, Website field: blank",
+        "audio": "25 businesses. 11 with no website. This one — 230 Yelp photos. Their customers love them. But Google 'tacos near Pinemont Drive' and they don't exist. That's fixable. That's a sale."
+      },
+      {
+        "time": "30-45s",
+        "visual": "Google Maps search: 'late night tacos Houston' — competitors shown, target restaurant absent",
+        "audio": "This one's open until 2 AM. Every night. Zero web presence. They're missing every 'late night tacos Houston' search. One landing page with hours and a menu captures all of it."
+      },
+      {
+        "time": "45-65s",
+        "visual": "Simple slide or screen with scoring breakdown: 11 HOT / 9 WARM / 5 COOL",
+        "audio": "The scoring system: HOT means no website but proven demand. WARM means bad site, fixable fast. COOL means good site, missing a revenue feature. Today: 11 HOT, 9 WARM, 5 COOL. 45 minutes of work. Outreach starts tomorrow."
+      },
+      {
+        "time": "65-75s",
+        "visual": "Gumroad product page on screen",
+        "audio": "The full system — prompts, scoring rubric, outreach templates — is $19 until Friday. After Friday it's $29. Link in bio."
+      }
+    ],
+    "screen_notes": "Open on terminal or browser with scan running → cut to Yelp listing (La Lupita, no website) → cut to Google Maps search showing competitor results but not the target restaurant → cut to scoring slide → end on Gumroad product page. Keep cuts fast. No talking head needed — voiceover over screen is fine."
+  },
+  "youtube": {
+    "day": "Monday — included per schedule",
+    "title": "How I Find 25 Local Business Leads in 45 Minutes Using AI (Houston Restaurant Case Study)",
+    "thumbnail_concept": "Split-screen: LEFT — list of business names with red 'NO WEBSITE' label next to each. RIGHT — person at laptop with surprised/focused expression. Bold text overlay center: '45 MINUTES'. Yellow accent bar at bottom.",
+    "target_keyword": "AI lead generation local businesses",
+    "outline": [
+      "1. The opportunity nobody talks about — local businesses with loyal customers but zero digital presence, why this is a massive gap, and why now is the right time to build a business around it",
+      "2. The exact tool stack — which AI prompts I use, which directories I scan (Yelp, Google Maps, MapQuest), and how I've automated the scoring so I can process 25+ leads in under an hour",
+      "3. Live walkthrough — screen share of this morning's actual run: Houston restaurants, Greenspoint corridor, real businesses, real data, real scores",
+      "4. The HOT/WARM/COOL scoring system and how to write a pitch angle that gets replies — not 'you need a website' but 'here's the specific revenue you're missing right now'",
+      "5. What happens next — outreach strategy, expected response rates, what I charge, and how I've packaged the full system for $19 (going to $29 Friday)"
+    ]
+  }
+}

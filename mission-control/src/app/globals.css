@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+:root {
+  --background: #04040e;
+  --foreground: #f0f0f8;
+  --sidebar-bg: rgba(6, 6, 18, 0.55);
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.09);
+  --hover-bg: rgba(255, 255, 255, 0.07);
+  --accent: #a78bfa;
+  --accent-hover: #8b5cf6;
+  --accent-subtle: rgba(167, 139, 250, 0.15);
+  --danger: #f87171;
+  --danger-subtle: rgba(248, 113, 113, 0.12);
+  --success: #34d399;
+  --success-subtle: rgba(52, 211, 153, 0.12);
+  --warning: #fbbf24;
+  --muted: #9090b8;
+  --muted-2: #55557a;
+  --border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-focus: #a78bfa;
+  --glow-accent: rgba(167, 139, 250, 0.2);
+  --glow-blue: rgba(96, 165, 250, 0.12);
+  /* Liquid Glass */
+  --glass-blur: blur(48px) saturate(200%) brightness(1.1);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --glass-sheen: linear-gradient(135deg,
+    rgba(255,255,255,0.10) 0%,
+    rgba(180,160,255,0.06) 30%,
+    rgba(100,180,255,0.04) 60%,
+    rgba(255,255,255,0.02) 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-hover-bg: var(--hover-bg);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-border: var(--border);
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+  --color-input-focus: var(--input-focus);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ───── Space background ───── */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Starfield layers — three depths of stars */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  will-change: transform;
+}
+
+.stars-small {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80px 120px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 160px 60px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 240px 180px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 50px 200px, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 300px 90px, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 130px 250px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 350px 170px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 400px 40px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 200px 300px, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 450px 220px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 100px 350px, rgba(255,255,255,0.3), transparent);
+  background-size: 500px 400px;
+  animation: drift-slow 120s linear infinite;
+}
+
+.stars-medium {
+  background-image:
+    radial-gradient(1.5px 1.5px at 100px 150px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 300px 250px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 450px 50px, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.5px 1.5px at 200px 350px, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 550px 180px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 50px 400px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 380px 320px, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.5px 1.5px at 600px 100px, rgba(255,255,255,0.4), transparent);
+  background-size: 700px 500px;
+  animation: drift-medium 90s linear infinite;
+}
+
+.stars-large {
+  background-image:
+    radial-gradient(2px 2px at 250px 200px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 500px 350px, rgba(200,210,255,0.65), transparent),
+    radial-gradient(2.5px 2.5px at 100px 400px, rgba(180,200,255,0.6), transparent),
+    radial-gradient(2px 2px at 650px 100px, rgba(255,255,255,0.55), transparent),
+    radial-gradient(2px 2px at 400px 500px, rgba(220,200,255,0.6), transparent);
+  background-size: 800px 600px;
+  animation: twinkle 4s ease-in-out infinite alternate, drift-fast 60s linear infinite;
+}
+
+/* Nebula glow layers */
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: nebula-pulse 8s ease-in-out infinite alternate;
+}
+
+.nebula-1 {
+  width: 800px;
+  height: 800px;
+  top: -15%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28), rgba(59, 130, 246, 0.1), transparent 70%);
+}
+
+.nebula-2 {
+  width: 700px;
+  height: 700px;
+  bottom: -20%;
+  left: -15%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18), rgba(139, 92, 246, 0.08), transparent 70%);
+  animation-delay: -4s;
+}
+
+.nebula-3 {
+  width: 500px;
+  height: 500px;
+  top: 35%;
+  left: 28%;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.1), rgba(167, 139, 250, 0.12), transparent 70%);
+  animation-delay: -2s;
+}
+
+@keyframes drift-slow {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-500px, -400px); }
+}
+
+@keyframes drift-medium {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-700px, -500px); }
+}
+
+@keyframes drift-fast {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-800px, -600px); }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes nebula-pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.5; transform: scale(1.1); }
+}
+
+/* ───── Liquid Glass ───── */
+.glass-panel {
+  position: relative;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+
+/* Iridescent sheen overlay */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glass-sheen);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Top highlight edge */
+.glass-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--glass-highlight) 20%,
+    rgba(255,255,255,0.22) 50%,
+    var(--glass-highlight) 80%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content sits above the sheen */
+.glass-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ───── Content layer ───── */
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted-2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Selection */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+  border-radius: 4px;
+}
+
+/* Liquid glass card hover */
+.glow-card {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.2s ease;
+}
+.glow-card:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+/* Status pulse glow */
+.pulse-glow {
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}

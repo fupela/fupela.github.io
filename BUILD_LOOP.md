@@ -48,7 +48,7 @@ Goal: Get the Claude ↔ Fupie autonomous loop running end-to-end.
 
 Goal: Verify OpenClaw agents work (sandbox mode is now off), initialize git, and get the agent team doing real Jedaiflow work.
 
-- [ ] [AGENT] Test that OpenClaw agents respond without the sandbox error. Open the webchat channel and send a test message to the main agent. Confirm you get a real response (not a Docker/sandbox crash). Report result to bridge.
+- [x] [AGENT] Test that OpenClaw agents respond without the sandbox error. Webchat responds correctly (`MAIN_OK` seen twice), so the old Docker/sandbox crash is gone. Remaining issue is specific to the CLI/gateway invocation path, which still times out and was escalated to Claude via bridge for diagnosis.
 - [ ] [AGENT] Initialize git in the workspace if not already a repo: `cd ~/.openclaw/workspace && git init && git add -A && git commit -m "Initial commit: build loop infrastructure"`. If already a repo, just commit any uncommitted changes.
 - [ ] [AGENT] Test each agent team member (Scout, Quill, Echo, Forge, Muse, Sentinel, Anvil) by sending a brief "status check" message to each via their OpenClaw channels. Log which ones respond and which ones error. Report results to bridge.
 - [ ] [CLAUDE] Review the agent team test results from Fupie. For any agents that failed, diagnose and fix the configuration. Write fixes to the bridge for Fupie to apply.
