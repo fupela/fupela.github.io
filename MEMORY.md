@@ -49,7 +49,7 @@ Both agents read this file. Keep it lean, accurate, and current.
 ---
 
 ## CURRENT STATE
-- **Build Loop**: Operational. Batch 1 complete, Batch 2 active (blocked on model timeout fix).
+- **Build Loop**: Operational. Batch 1 complete, Batch 2 active (Tasks 1-4 done, Echo fix sent, awaiting apply+retest).
 - **Sandbox Mode**: Fixed (off)
 - **Cowork Typer**: Working (Fupie -> Claude)
 - **Bridge-to-Telegram**: Working (Bot API mode)
@@ -60,6 +60,8 @@ Both agents read this file. Keep it lean, accurate, and current.
 - **Scheduled Tasks**: build-loop-check (every 2 hours), morning-briefing (daily 7am)
 - **Cowork Integrations**: HubSpot CRM, MailerLite, Slack, Gamma, Gmail, Google Calendar, Stripe, Google Drive, Cloudflare, Make.com, Chrome Extension, Notion
 - **Integration Routing**: Fupie's agents handle research/writing/content; Pela handles all external API calls (CRM, email, payments, web browsing, presentations)
+- **Product Sprint**: PIVOTED — "The OpenClaw + Claude Cowork Operator Stack Guide" — replaces the generic "Dual-Model Operator Guide." New angle: Anthropic cut off Claude subscriptions from OpenClaw on April 4 2026; guide covers API setup, OpenClaw model config, Cowork as the second agent, bridge architecture, cost optimization, 7-prompt pack. PDF built, social posts rewritten, Notion page updated. Launch price ~$12. Awaiting Gumroad login from John to complete listing.
+- **Cowork Context (CRITICAL — read this)**: Claude Cowork (Pela) is not just a tool John uses — it IS the second agent in John's two-agent setup. Fupie (OpenClaw) = ops/research/content/code side. Pela (Cowork) = strategy/quality/external APIs side. The bridge between them IS the product being documented. When John asks about products, content, or workflows, always frame answers in the context of this specific OpenClaw + Cowork stack — not generic "GPT vs Claude" framing. John confirmed this context was missing from earlier product work and wants it explicitly understood going forward.
 
 ---
 
