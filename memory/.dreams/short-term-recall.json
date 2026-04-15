@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-14T02:22:48.676Z",
+  "updatedAt": "2026-04-15T04:31:21.481Z",
   "entries": {
     "memory:memory/2026-04-10.md:1:10": {
       "key": "memory:memory/2026-04-10.md:1:10",
@@ -9,23 +9,31 @@
       "endLine": 10,
       "source": "memory",
       "snippet": "# 2026-04-10 - Met John in the main session. He wants to be called John and is in the Central timezone. - John is trying to build an automated business using AI tools to grow other businesses and sell software/products. - Current strong interest: automated lead generation software and outbound email scheduling that can target businesses across multiple sectors such as real estate, business sales, and tech sales. - John is already running outbound via Manus, sending 3 to 6 email batches per day with about 10 to 15 emails per batch. - He has separate Manus prompts/workflows for software sales and for one-on-one sales of an automated service to businesses. - His lead sourcing has been prompt-b",
-      "recallCount": 4,
+      "recallCount": 11,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.631946870320284,
+      "totalScore": 8.631946870320284,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-11T05:26:21.542Z",
-      "lastRecalledAt": "2026-04-14T02:17:51.397Z",
+      "lastRecalledAt": "2026-04-15T04:31:21.481Z",
       "queryHashes": [
         "4075aba38645",
         "b7d3de05f795",
         "8a5b05b58b21",
-        "d376815d476e"
+        "d376815d476e",
+        "2ed3f1d93bb0",
+        "fabcf5d4fd80",
+        "dfd89ea0c35c",
+        "e3b26b86b1e8",
+        "4880c8164a35",
+        "24c50a863565",
+        "6cbdd9a4b155"
       ],
       "recallDays": [
         "2026-04-11",
         "2026-04-12",
-        "2026-04-13"
+        "2026-04-13",
+        "2026-04-14"
       ],
       "conceptTags": [
         "software/products",
@@ -45,19 +53,24 @@
       "endLine": 30,
       "source": "memory",
       "snippet": "# 2026-04-11 ## Brain Dump Session — Goals & Vision - John's core mission: build an automated AI business that works 24/7 helping small businesses in multiple ways (websites, traffic, workflow automation, payments, outreach). - Future ambition: eventually teach others how to set up similar AI-powered businesses, but not ready for that yet — still learning. - Still relatively new to this space but deeply committed — hours and hours of research, content consumption, and building. ### Timeline Goals - **6 months:** Build out the business, establish real clientele, reach several thousand dollars/month in revenue. - **5 years:** Scale to multiple millions as AI capabilities expand and his own",
-      "recallCount": 2,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.6313002230438467,
+      "totalScore": 5.631300223043847,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-14T02:13:37.489Z",
-      "lastRecalledAt": "2026-04-14T02:22:48.676Z",
+      "lastRecalledAt": "2026-04-15T04:31:21.481Z",
       "queryHashes": [
         "8a5b05b58b21",
-        "6d86a2d653fd"
+        "6d86a2d653fd",
+        "2ed3f1d93bb0",
+        "e3b26b86b1e8",
+        "24c50a863565",
+        "6cbdd9a4b155"
       ],
       "recallDays": [
-        "2026-04-13"
+        "2026-04-13",
+        "2026-04-14"
       ],
       "conceptTags": [
         "24/7",
@@ -68,6 +81,130 @@
         "goals",
         "vision",
         "john's"
+      ]
+    },
+    "memory:memory/2026-04-14.md:14:19": {
+      "key": "memory:memory/2026-04-14.md:14:19",
+      "path": "memory/2026-04-14.md",
+      "startLine": 14,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "- John updated the outreach approval rule: Pela can send outreach emails without prior review unless something glaring suggests John should review first, like awkward wording or risky phrasing. - OpenClaw config cleanup: removed `ollama/glm-5.1:cloud` from `/Users/fupie/.openclaw/openclaw.json` defaults and Ollama model list, with default primary set to `openai-codex/gpt-5.4`. - Hermes setup issue is separate from OpenClaw gateway config: Hermes was still trying to call `glm-5.1:cloud` directly via provider `custom` at `http://127.0.0.1:11434`, producing HTTP 404. Likely a model/provider mismatch in Hermes, not an API key problem. - Guidance for Hermes: if John wants to use GLM 5.1 there, pr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-15T01:18:48.153Z",
+      "lastRecalledAt": "2026-04-15T01:18:48.153Z",
+      "queryHashes": [
+        "423264cb0228"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "gateway",
+        "gpt",
+        "openai",
+        "ollama/glm-5.1",
+        "users/fupie",
+        "openclaw/openclaw.json",
+        "openai-codex/gpt-5.4",
+        "glm-5.1"
+      ]
+    },
+    "memory:memory/2026-04-14.md:1:10": {
+      "key": "memory:memory/2026-04-14.md:1:10",
+      "path": "memory/2026-04-14.md",
+      "startLine": 1,
+      "endLine": 10,
+      "source": "memory",
+      "snippet": "# 2026-04-14 - Mission Control already has Gumroad revenue plumbing in `mission-control/src/app/api/revenue/route.ts`; blocker is Google Sheets auth not fully configured (`GOOGLE_SERVICE_ACCOUNT_EMAIL` and `GOOGLE_PRIVATE_KEY` still needed in `mission-control/.env.local`). - Batch 3 progress: Muse completed `content/stack-guide-launch-social.md` with X, LinkedIn, and Reddit-style launch drafts focused on the OpenClaw + Cowork two-agent stack. - Batch 3 progress: Sentinel completed `reputation-monitor/scan-001.md`. Key findings: Jedaiflow has near-zero web footprint, Gumroad product has no visible external pickup yet, OpenClaw/Cowork ecosystem sentiment looks healthy, and the Claude cutoff n",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6314828370799894,
+      "maxScore": 0.6314828370799894,
+      "firstRecalledAt": "2026-04-15T04:31:21.481Z",
+      "lastRecalledAt": "2026-04-15T04:31:21.481Z",
+      "queryHashes": [
+        "6cbdd9a4b155"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "google-service-account-email",
+        "google-private-key",
+        "mission-control",
+        "env.local",
+        "reddit-style",
+        "two-agent",
+        "reputation-monitor/scan-001.md",
+        "near-zero"
+      ]
+    },
+    "memory:memory/2026-04-14.md:14:20": {
+      "key": "memory:memory/2026-04-14.md:14:20",
+      "path": "memory/2026-04-14.md",
+      "startLine": 14,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "- John updated the outreach approval rule: Pela can send outreach emails without prior review unless something glaring suggests John should review first, like awkward wording or risky phrasing. - OpenClaw config cleanup: removed `ollama/glm-5.1:cloud` from `/Users/fupie/.openclaw/openclaw.json` defaults and Ollama model list, with default primary set to `openai-codex/gpt-5.4`. - Hermes setup issue is separate from OpenClaw gateway config: Hermes was still trying to call `glm-5.1:cloud` directly via provider `custom` at `http://127.0.0.1:11434`, producing HTTP 404. Likely a model/provider mismatch in Hermes, not an API key problem. - Guidance for Hermes: if John wants to use GLM 5.1 there, pr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6313350205437893,
+      "maxScore": 0.6313350205437893,
+      "firstRecalledAt": "2026-04-15T04:31:21.481Z",
+      "lastRecalledAt": "2026-04-15T04:31:21.481Z",
+      "queryHashes": [
+        "6cbdd9a4b155"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "gateway",
+        "gpt",
+        "openai",
+        "ollama/glm-5.1",
+        "users/fupie",
+        "openclaw/openclaw.json",
+        "openai-codex/gpt-5.4",
+        "glm-5.1"
+      ]
+    },
+    "memory:memory/2026-04-14.md:7:15": {
+      "key": "memory:memory/2026-04-14.md:7:15",
+      "path": "memory/2026-04-14.md",
+      "startLine": 7,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "- John updated the outreach approval rule: Pela can send outreach emails without prior review unless something glaring suggests John should review first, like awkward wording or risky phrasing. # 2026-04-14 - Mission Control already has Gumroad revenue plumbing in `mission-control/src/app/api/revenue/route.ts`; blocker is Google Sheets auth not fully configured (`GOOGLE_SERVICE_ACCOUNT_EMAIL` and `GOOGLE_PRIVATE_KEY` still needed in `mission-control/.env.local`). - Batch 3 progress: Muse completed `content/stack-guide-launch-social.md` with X, LinkedIn, and Reddit-style launch drafts focused on the OpenClaw + Cowork two-agent stack. - Batch 3 progress: Sentinel completed `reputation-monitor",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6312837071017694,
+      "maxScore": 0.6312837071017694,
+      "firstRecalledAt": "2026-04-15T04:31:21.481Z",
+      "lastRecalledAt": "2026-04-15T04:31:21.481Z",
+      "queryHashes": [
+        "6cbdd9a4b155"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "google-service-account-email",
+        "google-private-key",
+        "mission-control",
+        "env.local",
+        "reddit-style",
+        "two-agent",
+        "reputation-monitor",
+        "john"
       ]
     }
   }
