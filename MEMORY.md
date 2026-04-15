@@ -32,10 +32,10 @@ Both agents read this file. Keep it lean, accurate, and current.
 - **Bridge-to-Telegram**: `/Users/fupie/.openclaw/workspace/projects/agent-hq/scripts/bridge_to_telegram.py` (Bot API mode)
 - **Telegram Config**: `/Users/fupie/.openclaw/workspace/projects/agent-hq/scripts/telegram_config.json`
 - **Watchdog**: `/Users/fupie/.openclaw/watchdog.sh`
-- **Agent Team**: Scout (research), Quill (outreach), Echo (follow-up), Forge (proposals), Muse (content), Sentinel (reputation), Anvil (code)
-- **Channels**: Telegram (primary via Fupie_bot @fupela_bot)
+- **Agent Team**: Scout (research), Quill (outreach), Echo (follow-up), Forge (proposals), Muse (content), Sentinel (reputation), Anvil (code), Jolie (Hermes-side local agent)
+- **Channels**: Telegram (primary via Fupie_bot @fupela_bot + Jolie on Hermes)
 - **Obsidian**: Bridged between OpenClaw Mac Mini and John's main PC
-- **This Mac Mini is Fupie's dedicated machine** — John's main work happens on a separate PC
+- **This Mac Mini is Fupie's dedicated machine (shared with Jolie via Hermes)** — John's main work happens on a separate PC
 
 ---
 
@@ -85,6 +85,7 @@ Both agents read this file. Keep it lean, accurate, and current.
 
 ## OPERATING RULES
 - **Approval boundary**: John stays in the loop for major business commitments, deal-signing, sensitive client-facing decisions, and other very important high-risk actions.
+- **Outreach sending rule**: Pela can send outreach emails without John's pre-approval when he judges them sound, unless there is a glaring reason John should review first (for example awkward wording, risky claims, or something that clearly feels off).
 - **Writing stack**: GLM/GPT prepare context, briefs, and drafts. Claude/Opus performs the final human-polish pass for important outreach and persuasive writing.
 - **Update routing**: Avoid duplicate updates. Prefer one clean reporting lane, and when Claude's scheduled update system already covers it, let Claude deliver the packaged update to John.
 - **Collaboration model**: Fupie coordinates and surfaces what matters, Claude executes heavy lifting and final polish, John remains the front-facing closer when stakes are high.
