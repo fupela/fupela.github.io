@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to VibeShip — You're in!</title>
+  <title>Welcome to ShipClean — You're in!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -136,7 +136,7 @@
 </div>
 
 <script>
-  const API_BASE = 'https://vibeship-auth.jpjedai.workers.dev';
+  const API_BASE = 'https://shipclean-auth.jpjedai.workers.dev';
 
   async function lookupKey() {
     const params = new URLSearchParams(window.location.search);
@@ -183,7 +183,7 @@
     document.getElementById('card').innerHTML = `
       <div class="check">&#10003;</div>
       <h1>You're in!</h1>
-      <div class="plan-badge">VibeShip ${planName}</div>
+      <div class="plan-badge">ShipClean ${planName}</div>
       <p class="subtitle">Your subscription is active. Here's your API key — save it somewhere safe.</p>
 
       <div class="key-section">
@@ -198,21 +198,21 @@
         <h3>Get started in 30 seconds:</h3>
         <div class="step-item">
           <div class="step-num">1</div>
-          <div>Save your API key: <code>npx vibeship config --key ${data.api_key}</code></div>
+          <div>Save your API key: <code>npx shipclean config --key ${data.api_key}</code></div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
-          <div>Scan your project: <code>npx vibeship scan</code></div>
+          <div>Scan your project: <code>npx shipclean scan</code></div>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
-          <div>Auto-fix issues: <code>npx vibeship fix</code></div>
+          <div>Auto-fix issues: <code>npx shipclean fix</code></div>
         </div>
       </div>
 
       <div class="footer-links">
-        <a href="https://github.com/fupela/vibeship" target="_blank">Documentation</a>
-        <a href="https://jedaiflow.com/vibeship">Back to VibeShip</a>
+        <a href="https://github.com/fupela/shipclean" target="_blank">Documentation</a>
+        <a href="https://jedaiflow.com/shipclean">Back to ShipClean</a>
         <a href="mailto:hello@jedaiflow.com">Need help?</a>
       </div>
     `;
@@ -225,7 +225,7 @@
       <p class="subtitle">${message}</p>
       <div class="footer-links">
         <a href="mailto:hello@jedaiflow.com">Contact support</a>
-        <a href="https://jedaiflow.com/vibeship">Back to VibeShip</a>
+        <a href="https://jedaiflow.com/shipclean">Back to ShipClean</a>
       </div>
     `;
   }
