@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeShip — Make any vibe-coded project production-ready in 60 seconds</title>
+  <meta name="description" content="VibeShip scans, fixes, and ships your vibe-coded projects. Stop shipping broken builds. Start shipping fast." />
+  <meta property="og:title" content="VibeShip — Production-ready in 60 seconds" />
+  <meta property="og:description" content="The missing layer between your AI-generated code and a clean production deploy." />
+  <meta property="og:url" content="https://jedaiflow.com/vibeship" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --green: #10b981;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .logo { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent-light); }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; text-decoration: none; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.4);
+      border-radius: 99px;
+      font-size: 0.8rem;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    h1 em { font-style: normal; color: var(--accent-light); }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .install-block {
+      margin: 3rem auto 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      display: inline-block;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: var(--green);
+    }
+    .install-block .prompt { color: var(--muted); margin-right: 0.5rem; }
+
+    /* HOW IT WORKS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .section-sub { color: var(--muted); margin-bottom: 3rem; }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .step-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.875rem; color: var(--muted); }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+    }
+    .plan.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+    .plan-badge {
+      position: absolute;
+      top: -0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.7rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .plan-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+    .plan-price { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+    .plan-price span { font-size: 0.875rem; font-weight: 400; color: var(--muted); }
+    .plan-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .plan ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .plan li { font-size: 0.875rem; color: var(--muted); padding-left: 1.25rem; position: relative; }
+    .plan li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.825rem;
+    }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Vibe<span>Ship</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://github.com/fupela/vibeship" target="_blank">GitHub</a>
+    <a href="#pricing" class="btn btn-primary">Get started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">Now in beta · v0.1.0</div>
+  <h1>Make any vibe-coded project<br/><em>production-ready in 60 seconds</em></h1>
+  <p class="hero-sub">You built fast with Cursor, Windsurf, or Claude. VibeShip scans your project, fixes the rough edges, and ships it clean — before your users find the problems.</p>
+  <div class="hero-ctas">
+    <a href="https://github.com/fupela/vibeship" class="btn btn-primary" target="_blank">⭐ Star on GitHub</a>
+    <a href="#pricing" class="btn btn-outline">View pricing</a>
+  </div>
+  <div class="install-block">
+    <span class="prompt">$</span>npx @jedaiflow/vibeship scan
+  </div>
+</section>
+
+<section id="how" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-inner">
+    <h2>Ship in three steps</h2>
+    <p class="section-sub">No config files. No setup docs. Just run it.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Step 01</div>
+        <h3>Scan</h3>
+        <p>VibeShip audits your project for common vibe-coding gaps — missing error handling, exposed secrets, broken imports, unoptimized assets.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 02</div>
+        <h3>Fix</h3>
+        <p>Auto-applies safe fixes. Flags anything that needs a human decision. You stay in control — VibeShip just does the tedious part.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 03</div>
+        <h3>Ship</h3>
+        <p>Deploy to your platform of choice with a clean, production-ready build. No last-minute surprises. No "it worked on my machine."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-inner">
+    <h2>Simple pricing</h2>
+    <p class="section-sub">Start free. Upgrade when you need more.</p>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0<span>/mo</span></div>
+        <div class="plan-desc">For solo builders shipping personal projects.</div>
+        <ul>
+          <li>Core scan + auto-fix</li>
+          <li>Up to 3 projects</li>
+          <li>Community support</li>
+          <li>MIT licensed</li>
+        </ul>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$9<span>/mo</span></div>
+        <div class="plan-desc">For builders who ship frequently and need AI-assisted fixes.</div>
+        <ul>
+          <li>Everything in Free</li>
+          <li>AI deep analysis</li>
+          <li>Priority deploy</li>
+          <li>Custom check rules</li>
+          <li>Unlimited projects</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Team</div>
+        <div class="plan-price">$29<span>/mo</span></div>
+        <div class="plan-desc">For teams that want VibeShip wired into their CI/CD pipeline.</div>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>CI/CD integration</li>
+          <li>Shared configs</li>
+          <li>Team dashboard</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by <a href="https://jedaiflow.com" target="_blank">Jedaiflow</a> · <a href="https://github.com/fupela/vibeship" target="_blank">github.com/fupela/vibeship</a> · MIT License</p>
+</footer>
+
+</body>
+</html>
