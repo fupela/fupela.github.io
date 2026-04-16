@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to ShipClean — You're in!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #09090b;
+      --surface: #111113;
+      --surface-2: #18181b;
+      --border: #27272a;
+      --border-light: #3f3f46;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --muted: #71717a;
+      --green: #22c55e;
+      --green-dim: rgba(34, 197, 94, 0.1);
+      --radius: 12px;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+    .mono { font-family: 'JetBrains Mono', 'SF Mono', monospace; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .card {
+      max-width: 560px; width: 100%;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 3rem 2.5rem; text-align: center;
+    }
+    .check {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--green-dim); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; font-size: 1.75rem;
+    }
+    h1 {
+      font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .plan-badge {
+      display: inline-block; padding: 0.2rem 0.75rem;
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 99px; font-size: 0.8rem; font-weight: 600;
+      color: var(--accent-light); margin-bottom: 1.5rem;
+    }
+    .subtitle {
+      color: var(--text-secondary); font-size: 1rem;
+      margin-bottom: 2rem; line-height: 1.7;
+    }
+
+    .key-section {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      margin-bottom: 2rem; text-align: left;
+    }
+    .key-label {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .key-value {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .key-value code {
+      flex: 1; font-size: 0.9rem; color: var(--green);
+      word-break: break-all;
+    }
+    .copy-btn {
+      padding: 0.4rem 0.8rem; border-radius: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; font-family: inherit; white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover { border-color: var(--border-light); color: var(--text); }
+    .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+    .steps {
+      text-align: left; margin-bottom: 2rem;
+    }
+    .steps h3 {
+      font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .step-item {
+      display: flex; gap: 1rem; margin-bottom: 1rem;
+      font-size: 0.875rem; color: var(--text-secondary);
+    }
+    .step-num {
+      flex-shrink: 0; width: 24px; height: 24px;
+      border-radius: 6px; background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; color: var(--accent-light);
+    }
+    .step-item code {
+      background: var(--surface-2); padding: 0.15rem 0.4rem;
+      border-radius: 4px; font-size: 0.8rem; color: var(--green);
+    }
+
+    .footer-links {
+      display: flex; gap: 1.5rem; justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    /* Loading & Error states */
+    .loading { color: var(--text-secondary); }
+    .spinner {
+      width: 32px; height: 32px; border: 3px solid var(--border);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error { color: #f87171; }
+    .retry-msg { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <div class="spinner" id="spinner"></div>
+  <p class="loading" id="loading-msg">Activating your subscription...</p>
+</div>
+
+<script>
+  const API_BASE = 'https://shipclean-auth.jpjedai.workers.dev';
+
+  async function lookupKey() {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+
+    if (!sessionId) {
+      showError('No session ID found. Check your email for your API key, or contact support.');
+      return;
+    }
+
+    let attempts = 0;
+    const maxAttempts = 8;
+
+    while (attempts < maxAttempts) {
+      try {
+        const resp = await fetch(`${API_BASE}/lookup?session_id=${encodeURIComponent(sessionId)}`);
+        const data = await resp.json();
+
+        if (data.api_key) {
+          showSuccess(data);
+          return;
+        }
+
+        if (data.retry || resp.status === 202) {
+          attempts++;
+          document.getElementById('loading-msg').textContent = 'Setting up your account...';
+          await new Promise(r => setTimeout(r, 2000));
+          continue;
+        }
+
+        showError(data.error || 'Something went wrong.');
+        return;
+      } catch (err) {
+        attempts++;
+        await new Promise(r => setTimeout(r, 2000));
+      }
+    }
+
+    showError('Your payment was successful! Your API key is being generated — check your email or refresh this page in a minute.');
+  }
+
+  function showSuccess(data) {
+    const planName = data.plan === 'team' ? 'Team' : 'Pro';
+    document.getElementById('card').innerHTML = `
+      <div class="check">&#10003;</div>
+      <h1>You're in!</h1>
+      <div class="plan-badge">ShipClean ${planName}</div>
+      <p class="subtitle">Your subscription is active. Here's your API key — save it somewhere safe.</p>
+
+      <div class="key-section">
+        <div class="key-label">Your API Key</div>
+        <div class="key-value">
+          <code class="mono" id="api-key">${data.api_key}</code>
+          <button class="copy-btn" onclick="copyKey()">Copy</button>
+        </div>
+      </div>
+
+      <div class="steps">
+        <h3>Get started in 30 seconds:</h3>
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div>Save your API key: <code>npx shipclean config --key ${data.api_key}</code></div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div>Scan your project: <code>npx shipclean scan</code></div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div>Auto-fix issues: <code>npx shipclean fix</code></div>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://github.com/fupela/shipclean" target="_blank">Documentation</a>
+        <a href="https://jedaiflow.com/shipclean">Back to ShipClean</a>
+        <a href="mailto:hello@jedaiflow.com">Need help?</a>
+      </div>
+    `;
+  }
+
+  function showError(message) {
+    document.getElementById('card').innerHTML = `
+      <div class="check" style="border-color: var(--accent); background: rgba(124,58,237,0.1);">&#9888;</div>
+      <h1>Almost there</h1>
+      <p class="subtitle">${message}</p>
+      <div class="footer-links">
+        <a href="mailto:hello@jedaiflow.com">Contact support</a>
+        <a href="https://jedaiflow.com/shipclean">Back to ShipClean</a>
+      </div>
+    `;
+  }
+
+  function copyKey() {
+    const key = document.getElementById('api-key').textContent;
+    navigator.clipboard.writeText(key).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  lookupKey();
+</script>
+
+</body>
+</html>
