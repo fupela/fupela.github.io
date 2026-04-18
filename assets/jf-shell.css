@@ -1,0 +1,143 @@
+/* jf-shell.css — shared Jedaiflow nav + footer chrome (v1) */
+/* Namespaced with .jf-shell-* to avoid collisions with page-local nav/footer styles. */
+
+:root {
+  --jf-bg: #0a0a12;
+  --jf-border: rgba(255,255,255,0.08);
+  --jf-border-bright: rgba(0,201,255,0.25);
+  --jf-text: #f0f0f8;
+  --jf-text-muted: #8888aa;
+  --jf-accent: #00c9ff;
+  --jf-accent-green: #00e5a0;
+}
+
+/* ========== NAV ========== */
+.jf-shell-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(10,10,18,0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--jf-border);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.jf-shell-nav * { box-sizing: border-box; }
+
+.jf-shell-nav-logo {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--jf-accent), var(--jf-accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.jf-shell-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.jf-shell-nav-links a {
+  color: var(--jf-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+.jf-shell-nav-links a:hover { color: var(--jf-text); }
+
+.jf-shell-nav-cta {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, var(--jf-accent), var(--jf-accent-green)) !important;
+  color: #0a0a12 !important;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.jf-shell-nav-cta:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  color: #0a0a12 !important;
+}
+
+/* Spacer so fixed nav doesn't cover first content */
+.jf-shell-nav-spacer { height: 64px; }
+
+@media (max-width: 720px) {
+  .jf-shell-nav { padding: 14px 18px; gap: 12px; }
+  .jf-shell-nav-links { gap: 16px; }
+  .jf-shell-nav-links .jf-shell-nav-hide-sm { display: none; }
+  .jf-shell-nav-cta { padding: 8px 14px; font-size: 13px; }
+  .jf-shell-nav-spacer { height: 56px; }
+}
+
+/* ========== FOOTER ========== */
+.jf-shell-footer {
+  padding: 56px 24px 40px;
+  text-align: center;
+  background: #0a0a12;
+  color: var(--jf-text-muted);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 14px;
+  border-top: 1px solid var(--jf-border);
+}
+
+.jf-shell-footer-logo {
+  font-size: 17px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--jf-accent), var(--jf-accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.jf-shell-footer-tagline {
+  max-width: 440px;
+  margin: 0 auto 22px;
+  line-height: 1.6;
+  color: var(--jf-text-muted);
+}
+
+.jf-shell-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 24px;
+  margin-bottom: 22px;
+}
+
+.jf-shell-footer-links a {
+  color: var(--jf-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+.jf-shell-footer-links a:hover { color: var(--jf-text); }
+
+.jf-shell-footer-legal {
+  font-size: 12px;
+  color: var(--jf-text-muted);
+  opacity: 0.7;
+}

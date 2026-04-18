@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,46 +52,6 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(10,10,18,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-green));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none;
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-green));
-      color: #0a0a12;
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
     /* HERO */
     .hero {
@@ -479,33 +440,6 @@
       margin: 0 auto 40px;
     }
 
-    /* FOOTER */
-    footer {
-      padding: 40px 24px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-    }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      margin: 0 12px;
-    }
-    footer a:hover { color: var(--text); }
-
-    .footer-logo {
-      font-size: 16px;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--accent-green));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-      margin-bottom: 12px;
-    }
-
     /* DIVIDER */
     .divider {
       border: none;
@@ -526,11 +460,19 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="/" class="nav-logo">Jedaiflow</a>
-    <a href="#demo" class="nav-cta">Book a Demo →</a>
+  <!-- JF:NAV:START v1 -->
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/#how" class="jf-shell-nav-hide-sm">Product</a>
+      <a href="/#pricing" class="jf-shell-nav-hide-sm">Pricing</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="/#demo" class="jf-shell-nav-cta">Book demo →</a>
+    </div>
   </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <!-- JF:NAV:END -->
 
   <!-- HERO -->
   <div class="hero">
@@ -713,17 +655,22 @@
     </p>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-logo">Jedaiflow</span>
-    AI phone answering for home service businesses in Houston, TX.
-    <br><br>
-    <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
-    <a href="/blog">Blog</a>
-    <a href="/vibeship.html">VibeShip</a>
-    <br><br>
-    © 2026 Jedaiflow. All rights reserved.
+  <!-- JF:FOOTER:START v1 -->
+  <footer class="jf-shell-footer">
+    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+    <p class="jf-shell-footer-tagline">
+      24/7 AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="jf-shell-footer-links">
+      <a href="/#how">Product</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
   </footer>
+  <!-- JF:FOOTER:END -->
 
 </body>
 </html>
