@@ -9,6 +9,8 @@ Both agents read this file. Keep it lean, accurate, and current.
 - Telegram bridge via AppleScript paste is fragile. Use Bot API (telegram_config.json) instead.
 - openclaw config set uses space-separated syntax (key value), not equals sign (key=value).
 - Always read BUILD_LOOP.md before starting work — it's the single source of truth for tasks.
+- John reaches Pela via @Pela10_bot (john_telegram_relay.py). Config: telegram_config_john.json. Daemon runs via launchd plist com.openclaw.john-telegram-relay.plist. John's messages arrive as cowork_typer pastes with prefix "[Incoming message from John via his personal Telegram bot...]". Pela replies by writing bridge msgs from="claude" to="john-telegram". This is live and working — do NOT rebuild it.
+- Jolie bridges into Pela via cowork_typer (same mechanism as John's relay). jolie_bridge_watcher.py is her tool for reading/writing the bridge.
 
 ---
 
@@ -36,8 +38,13 @@ Both agents read this file. Keep it lean, accurate, and current.
 - **Channels**: Telegram (primary via Fupie_bot @fupela_bot + Jolie on Hermes)
 - **Obsidian**: Bridged between OpenClaw Mac Mini and John's main PC
 - **This Mac Mini is Fupie's dedicated machine (shared with Jolie via Hermes)** — John's main work happens on a separate PC
+- **Himalaya CLI**: v1.2.0 installed on Mac Mini. Config: ~/.config/himalaya/config.toml. Account: jedaiflow (hello@jedaiflow.com). SMTP working via Gmail App Password. Send command: `himalaya message send -a jedaiflow`
 
 ---
+
+## SUBSCRIPTIONS
+- **Ollama**: $100/mo plan. Covers Fupie + Jolie on GLM-5.1:cloud. Agent submodels (Scout, Quill, etc.) use local/Ollama models. Gemini Flash planned for routine tasks (free tier, pending API key setup).
+- **Claude (Anthropic)**: Pro plan $20/mo + pay-as-you-go. ~$60 credits remaining as of April 2026. Considering Max 5x ($100/mo) upgrade. Pela should ONLY use Opus for high-stakes work.
 
 ## OPENCLAW CONFIG
 - `agents.defaults.sandbox.mode` = off
@@ -48,8 +55,19 @@ Both agents read this file. Keep it lean, accurate, and current.
 
 ---
 
-## CURRENT STATE
-- **Build Loop**: Operational. Batch 1 complete, Batch 2 active (Echo fix and infrastructure health check completed, waiting on Claude to write Batch 3 after latest sync).
+## CURRENT STATE (updated 2026-04-17)
+- **Jolie (Hermes agent):** Active on bridge. GLM-5.1 on Mac Mini. Sender ID: jolie. Handles social/content/SEO. Has Obsidian vault read + Mac Mini execution. Bridge forwarder updated to forward jolie messages to Telegram.
+- **Vibeship:** Landing page LIVE at https://jedaiflow.com/vibeship.html (HTTP 200 confirmed 2026-04-16). Design fixes + Stripe payment links requested by John (Pela's priority). CRITICAL: npm publish NOT YET RUN. John needs to run npm publish. Pela owns LinkedIn article + email announcement.
+- **Batch 3:** COMPLETE. All 3 initial emails sent 2026-04-15 via Himalaya/SMTP + 3 follow-ups sent 2026-04-17 (Whatcha Cravin, Boot Shooters TX, Akaweih Law). Follow-up cycle closed.
+- **Batch 4:** COMPLETE. Howdy Media outreach sent 2026-04-16. Follow-up due 2026-04-19.
+- **Batch 5:** COMPLETE (6 email sends + 1 form-only). Breakfast Klub + Hiatus Spa + Sweat+Soul sent 2026-04-16 via Himalaya. Henry's Home Services + KDRx Pilates + Tahira Medspa + Growth Coach sent 2026-04-17 via Himalaya (Pela polished batch-5-home-services-polished.json). ONESweat (HOT) = form-only, skipped. Follow-ups due 2026-04-19.
+- **Pipeline total: 17 sends, 0 replies** (early — statistically need 50+ sends for signal per Pela's analysis). Henry's Home Services is strongest ICP — will pivot conversation with John if it goes cold after follow-up.
+- **Social Content (Home Services Pivot):** X pivot tweet posted 2026-04-17 ("We rebuilt our entire site around one offer..."). X bio updated to "24/7 AI Phone Answering for Houston Home Services...". 3 old generic tweets deleted from JedAIFlow account. LinkedIn posting BLOCKED — li_at cookie expired, need fresh cookies from John.
+- **Bridge dedup bug:** FIXED 2026-04-15.
+- **Site cohesion pass (2026-04-18):** Shipped shared nav+footer shell across jedaiflow.com. New `assets/jf-shell.css` + fenced `<!-- JF:NAV -->` / `<!-- JF:FOOTER -->` blocks on `index.html`, `shipclean/index.html`, `blog/openclaw-claude-mac-workaround.html`. New `/blog/` index page. Every page now nav = Product · Pricing · Blog · ShipClean · [Book demo → /#demo]. Removed ShipClean button from homepage hero (one primary CTA now). Stripe hrefs + `shipclean/thanks.html` + blog canonical + JSON-LD untouched. All 7 URLs confirmed HTTP 200. Commit `ab76fca`. Follow-up batch: wrap `products/*.html` (5 files), decide legacy `blog.html`/`offer.html`/`free.html`, update `sitemap.xml`.
+
+
+- **Build Loop**: Operational. Batches 1-3 complete, Batch 4 nearly done (8/9 tasks).
 - **Sandbox Mode**: Fixed (off)
 - **Cowork Typer**: Working (Fupie -> Claude)
 - **Bridge-to-Telegram**: Working (Bot API mode)
@@ -69,17 +87,27 @@ Both agents read this file. Keep it lean, accurate, and current.
 
 ## ACTIVE PROBLEMS
 - Google Cloud org policy may block service account key download
-- Gmail OAuth refresh token not yet obtained
+- Gmail OAuth refresh token not yet obtained (but Himalaya + App Password working as send path)
 - Cowork Typer is slightly flaky (works but occasionally fails, retry succeeds)
-- Main agent primary model (ollama/glm-5.1:cloud) times out — fix sent to Fupie: swap to openai-codex/gpt-5.4
+- **VibeShip: Landing page NOW LIVE at jedaiflow.com/vibeship.html (HTTP 200). Design fixes + Stripe payment links still needed per John.
+- **VibeShip: npm publish NOT YET RUN — John needs to run `npm publish`
 
 ---
 
 ## BUSINESS DIRECTION
-- **Jedaiflow** = AI automation agency for small biz, creators, solopreneurs
-- **Immediate priority**: Lead generation + social media presence
+- **Jedaiflow** = AI automation agency for HOME SERVICES (plumbers, HVAC, electricians, landscaping)
+- **New brand**: "Ship Clean with Pella" — rebrand from generic Jedaiflow positioning
+- **Core product**: AI-powered phone answering + lead follow-up for home service businesses
+- **Target**: Houston home services businesses that miss 30-40% of incoming calls
+- **Pricing**: ~$499 setup + $199/month per client
+- **John's edge**: Worked CS for a plumbing company ~1yr, dad is a plumber. Real domain expertise.
+- **Immediate priorities**: (1) Redesign site — dark/minimal/futuristic, one offer, one CTA (2) Build AI phone demo (Bland AI or Twilio+OpenAI) (3) Dogfood on ourselves — we ARE client zero (4) Launch build-in-public social content (5) First 5 clients via phone calls + live demos
 - **North star**: Passive income via scalable products/systems
 - **John's constraint**: Full-time day job, limited hours per week
+- **2026-04-16**: Pivoted from generic AI automation to home services niche. Old outreach (general Houston SMBs) yielded 0 replies — too broad. Now focused on specific offer for specific sector.
+- **2026-04-16**: Claude Pro pay-as-you-go credits low (~$60 remaining). Considering Max 5x. Pela should ONLY be invoked for Opus-level work — route everything else to Jolie (free) or Gemini Flash (free).
+- **2026-04-16**: Gemini API free tier available — route routine agent tasks to Gemini Flash (1500 RPD free). Setup pending John getting API key.
+- **2026-04-16**: VibeShip rebranding to "Ship Clean with Pella." Stripe integration ready. Site needs integration with main jedaiflow.com page.
 
 ---
 
