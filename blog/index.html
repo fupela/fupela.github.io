@@ -31,33 +31,31 @@
     .wrap {
       max-width: 760px;
       margin: 0 auto;
-      padding: 64px 24px 80px;
+      padding: 52px 24px 80px;
     }
 
     /* HERO */
-    .page-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #00c9ff;
+    h1 {
+      font-size: clamp(42px, 6vw, 64px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.03;
       margin-bottom: 14px;
     }
 
-    h1 {
-      font-size: clamp(38px, 5vw, 58px);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      line-height: 1.05;
-      margin-bottom: 16px;
+    h1 span {
+      background: linear-gradient(135deg, #00c9ff, #00e5a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .page-sub {
-      font-size: 17px;
+      font-size: 16px;
       color: #8888aa;
-      max-width: 520px;
-      margin-bottom: 56px;
-      line-height: 1.6;
+      max-width: 480px;
+      margin-bottom: 48px;
+      line-height: 1.65;
     }
 
     /* FEATURED POST */
@@ -274,10 +272,9 @@
   <!-- JF:NAV:END -->
 
   <main class="wrap">
-    <div class="page-label">Blog</div>
-    <h1>Field notes.</h1>
+    <h1>Field <span>notes.</span></h1>
     <p class="page-sub">
-      Practical writing on AI phone answering, home-service automation, and what's actually working in the field.
+      AI for home services — what's working, what we're shipping, and what the field actually looks like.
     </p>
 
     <!-- Featured post -->
