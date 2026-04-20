@@ -1,1 +1,5 @@
-{"leads":[]}
+{
+  "warmLeads": [],
+  "lastUpdated": "2026-04-20T18:41:00-05:00",
+  "notes": "No warm leads yet. DKIM/DMARC not configured — all outreach likely in spam. No replies expected until deliverability fixed. HOT leads from batches 5-7 identified but not converting due to email deliverability hold."
+}
