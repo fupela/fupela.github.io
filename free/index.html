@@ -380,7 +380,7 @@
   <section class="section">
     <div class="section-label">Free guides</div>
     <h2 class="section-heading">Start here.</h2>
-    <p class="section-sub">Practical reads you can act on today. No email required.</p>
+    <p class="section-sub">Subscribe free above — one email unlocks all guides instantly.</p>
 
     <div class="guide-grid">
 
@@ -541,10 +541,24 @@
   <!-- JF:FOOTER:END -->
 
   <script>
+    var pendingUrl = null;
+
+    // Intercept guide card clicks — require newsletter subscribe first
+    document.querySelectorAll('.guide-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        if (localStorage.getItem('jf_subscribed')) return; // already subscribed, let href through
+        e.preventDefault();
+        pendingUrl = card.getAttribute('href');
+        document.querySelector('.newsletter').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function() { document.getElementById('nl-email').focus(); }, 500);
+      });
+    });
+
     document.getElementById('nl-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('nl-btn');
       const email = document.getElementById('nl-email').value;
+      if (!email) return;
       btn.textContent = 'Sending…';
       btn.disabled = true;
       try {
@@ -554,9 +568,14 @@
           body: JSON.stringify({ email, source: 'free-hub-newsletter' })
         });
       } catch (_) {}
-      document.getElementById('nl-confirm').style.display = 'block';
-      document.getElementById('nl-email').style.display = 'none';
-      btn.style.display = 'none';
+      localStorage.setItem('jf_subscribed', '1');
+      if (pendingUrl) {
+        window.location.href = pendingUrl;
+      } else {
+        document.getElementById('nl-confirm').style.display = 'block';
+        document.getElementById('nl-email').style.display = 'none';
+        btn.style.display = 'none';
+      }
     });
   </script>
 
