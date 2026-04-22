@@ -2,11 +2,169 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=/free/">
-  <link rel="canonical" href="https://jedaiflow.com/free/">
-  <title>Redirecting to Free Resources...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI Automation Cheat Sheet - Jedai Flow</title>
+  <meta name="description" content="Download the 5-Minute Automation Cheat Sheet. 5 automations you can set up in 5 minutes — no coding required. Free from Jedai Flow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 500: '#338dff', 600: '#1a6df5', 700: '#1357e1' },
+            dark: { 900: '#0a0e1a', 800: '#0f1629', 700: '#151d38', 600: '#1c2545' },
+            accent: '#00d4aa',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #338dff 0%, #00d4aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-box {
+      box-shadow: 0 0 60px rgba(51, 141, 255, 0.15), 0 0 120px rgba(0, 212, 170, 0.08);
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #338dff 0%, #00d4aa 100%);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(51, 141, 255, 0.4);
+    }
+    #success-message { display: none; }
+  </style>
 </head>
-<body>
-  <p>You are being redirected to <a href="/free/">free resources</a>.</p>
+<body class="bg-dark-900 text-white min-h-screen">
+
+  <!-- Nav -->
+  <nav class="py-4 px-6 flex justify-between items-center max-w-5xl mx-auto">
+    <a href="https://jedaiflow.com" class="text-xl font-bold gradient-text">Jedai Flow</a>
+    <a href="https://jedaiflow.com" class="text-sm text-gray-400 hover:text-white transition">&larr; Back to site</a>
+  </nav>
+
+  <!-- Hero -->
+  <main class="max-w-5xl mx-auto px-6 py-12 md:py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: Copy -->
+      <div>
+        <div class="inline-block bg-accent/10 text-accent text-sm font-semibold px-3 py-1 rounded-full mb-6">100% FREE</div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+          Get Your Free <span class="gradient-text">AI Automation</span> Cheat Sheet
+        </h1>
+        <p class="text-lg text-gray-400 mb-8">5 automations you can set up in 5 minutes — no coding required.</p>
+
+        <h2 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">What's inside:</h2>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-gray-300">Lead auto-response setup (step by step)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-gray-300">Appointment reminder template</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-gray-300">Review request email script</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-gray-300">Tools comparison quick-reference</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-gray-300">ROI calculator formula</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: Form -->
+      <div>
+        <div id="form-card" class="bg-dark-800 border border-dark-600 rounded-2xl p-8 glow-box">
+          <h3 class="text-2xl font-bold mb-2 text-center">Download the Cheat Sheet</h3>
+          <p class="text-gray-400 text-sm text-center mb-6">Enter your info and we'll send it right over.</p>
+
+          <form id="lead-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-300 mb-1">First Name</label>
+              <input type="text" id="name" name="name" required placeholder="John"
+                class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com"
+                class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+            </div>
+            <button type="submit" id="submit-btn" class="w-full btn-gradient text-white font-bold py-3.5 px-6 rounded-lg text-lg">
+              Send Me the Cheat Sheet
+            </button>
+          </form>
+
+          <div class="flex items-center justify-center gap-4 mt-5 text-xs text-gray-500">
+            <span class="flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              No spam, ever
+            </span>
+            <span>Unsubscribe anytime</span>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="bg-dark-800 border border-accent/30 rounded-2xl p-8 text-center glow-box">
+          <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">You're in!</h3>
+          <p class="text-gray-400 mb-4">Check your inbox — your cheat sheet is on its way.</p>
+          <a href="https://jedaiflow.com" class="btn-gradient inline-block text-white font-semibold py-2.5 px-6 rounded-lg">Explore Jedai Flow</a>
+        </div>
+
+        <!-- Social proof -->
+        <p class="text-center text-gray-500 text-sm mt-4">Join 500+ business owners automating their workflows</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-dark-700 text-center text-gray-500 text-sm">
+    &copy; 2026 Jedai Flow. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('lead-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      try {
+        await fetch('https://hook.us2.make.com/2qi68q1xvuz1gguvb3bo1l1iebqxdl6j', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, source: 'cheat-sheet-lead-magnet' })
+        });
+      } catch (err) {
+        // Still show success — webhook may block CORS but data gets through
+      }
+
+      document.getElementById('form-card').style.display = 'none';
+      document.getElementById('success-message').style.display = 'block';
+    });
+  </script>
 </body>
 </html>

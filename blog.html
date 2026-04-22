@@ -2,11 +2,672 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=/blog/">
-  <link rel="canonical" href="https://jedaiflow.com/blog/">
-  <title>Redirecting to Blog...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jedai Flow Blog - AI Automation Tips for Small Business</title>
+  <meta name="description" content="Learn how to automate your small business with AI. Expert tips on Make.com, Zapier, med spa automation, and building an AI automation agency. Free guides and tutorials from Jedai Flow.">
+  <meta name="keywords" content="automate small business, business automation no code, med spa automation, AI automation agency, make.com vs zapier, AI for small business">
+  <meta name="author" content="John Jedlowski">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jedaiflow.com/blog.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jedai Flow Blog - AI Automation Tips for Small Business">
+  <meta property="og:description" content="Learn how to automate your small business with AI. Expert tips, comparisons, and free guides from Jedai Flow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jedaiflow.com/blog.html">
+  <meta property="og:site_name" content="Jedai Flow">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jedai Flow Blog - AI Automation Tips for Small Business">
+  <meta name="twitter:description" content="Learn how to automate your small business with AI. Expert tips, comparisons, and free guides.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f1629'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%23338dff'/><stop offset='100%25' stop-color='%2300d4aa'/></linearGradient></defs></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef7ff',
+              100: '#d9edff',
+              200: '#bce0ff',
+              300: '#8eccff',
+              400: '#59afff',
+              500: '#338dff',
+              600: '#1a6df5',
+              700: '#1357e1',
+              800: '#1646b6',
+              900: '#183d8f',
+              950: '#132757',
+            },
+            dark: {
+              900: '#0a0e1a',
+              800: '#0f1629',
+              700: '#151d38',
+              600: '#1c2545',
+            },
+            accent: '#00d4aa',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #338dff 0%, #00d4aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-border {
+      position: relative;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, #338dff, #00d4aa);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .glow {
+      box-shadow: 0 0 60px rgba(51, 141, 255, 0.15), 0 0 120px rgba(0, 212, 170, 0.08);
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(51, 141, 255, 0.15);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
+
+    article h2 { color: #fff; }
+    article h3 { color: #e2e8f0; }
+    article strong { color: #e2e8f0; }
+    article a { color: #338dff; text-decoration: underline; }
+    article a:hover { color: #00d4aa; }
+    article ul { list-style-type: disc; padding-left: 1.5rem; }
+    article ol { list-style-type: decimal; padding-left: 1.5rem; }
+    article li { margin-bottom: 0.5rem; }
+  </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Automate Your Small Business in 2026 (No Coding Required)",
+      "description": "Learn how to automate your small business without writing a single line of code. Discover the best no-code tools, 5 things to automate first, and real ROI examples.",
+      "author": { "@type": "Person", "name": "John Jedlowski" },
+      "publisher": { "@type": "Organization", "name": "Jedai Flow", "url": "https://jedaiflow.com" },
+      "datePublished": "2026-04-08",
+      "dateModified": "2026-04-08",
+      "mainEntityOfPage": "https://jedaiflow.com/blog.html#post-automate-small-business",
+      "keywords": ["automate small business", "business automation no code", "no code automation", "small business automation"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "10 AI Automations Every Med Spa Needs",
+      "description": "Discover 10 must-have AI automations for med spas including lead follow-up, appointment reminders, review requests, and no-show recovery.",
+      "author": { "@type": "Person", "name": "John Jedlowski" },
+      "publisher": { "@type": "Organization", "name": "Jedai Flow", "url": "https://jedaiflow.com" },
+      "datePublished": "2026-03-28",
+      "dateModified": "2026-03-28",
+      "mainEntityOfPage": "https://jedaiflow.com/blog.html#post-med-spa-automation",
+      "keywords": ["med spa automation", "med spa AI", "med spa software", "med spa marketing"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Start an AI Automation Agency in 2026",
+      "description": "A complete guide to starting an AI automation agency. Learn the skills you need, how to find clients, pricing strategies, and how to scale.",
+      "author": { "@type": "Person", "name": "John Jedlowski" },
+      "publisher": { "@type": "Organization", "name": "Jedai Flow", "url": "https://jedaiflow.com" },
+      "datePublished": "2026-04-01",
+      "dateModified": "2026-04-01",
+      "mainEntityOfPage": "https://jedaiflow.com/blog.html#post-start-ai-agency",
+      "keywords": ["AI automation agency", "start automation business", "sell AI services"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Make.com vs Zapier: Which Automation Tool is Right for Your Business?",
+      "description": "An honest comparison of Make.com and Zapier covering pricing, ease of use, power features, and which tool is best for your business needs.",
+      "author": { "@type": "Person", "name": "John Jedlowski" },
+      "publisher": { "@type": "Organization", "name": "Jedai Flow", "url": "https://jedaiflow.com" },
+      "datePublished": "2026-04-04",
+      "dateModified": "2026-04-04",
+      "mainEntityOfPage": "https://jedaiflow.com/blog.html#post-make-vs-zapier",
+      "keywords": ["make.com vs zapier", "best automation tool", "automation tool comparison"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "5 Ways AI Can Save Your Business 20 Hours Per Week",
+      "description": "Discover 5 practical ways AI can save your small business 20+ hours per week through automated lead response, scheduling, reporting, email, and data entry.",
+      "author": { "@type": "Person", "name": "John Jedlowski" },
+      "publisher": { "@type": "Organization", "name": "Jedai Flow", "url": "https://jedaiflow.com" },
+      "datePublished": "2026-04-08",
+      "dateModified": "2026-04-08",
+      "mainEntityOfPage": "https://jedaiflow.com/blog.html#post-ai-save-time",
+      "keywords": ["AI save time business", "AI for small business", "business productivity AI"]
+    }
+  ]
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCCP46ZFZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7BCCP46ZFZ');
+  </script>
 </head>
-<body>
-  <p>You are being redirected to the <a href="/blog/">blog</a>.</p>
+<body class="bg-dark-900 text-gray-300 antialiased">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-accent flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span class="font-bold text-xl text-white">Jedai Flow</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+        <a href="index.html#services" class="hover:text-white transition-colors">Services</a>
+        <a href="index.html#how-it-works" class="hover:text-white transition-colors">How It Works</a>
+        <a href="index.html#products" class="hover:text-white transition-colors">Products</a>
+        <a href="index.html#shop" class="hover:text-white transition-colors">Shop</a>
+        <a href="blog.html" class="text-white transition-colors">Blog</a>
+        <a href="index.html#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="index.html#contact" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold rounded-lg hover:from-brand-600 hover:to-brand-700 transition-all duration-200 shadow-lg shadow-brand-500/25">
+          Free AI Audit
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-dark-900/95 backdrop-blur-xl">
+      <div class="px-6 py-4 space-y-3">
+        <a href="index.html#services" class="block text-gray-400 hover:text-white transition-colors py-2">Services</a>
+        <a href="index.html#how-it-works" class="block text-gray-400 hover:text-white transition-colors py-2">How It Works</a>
+        <a href="index.html#products" class="block text-gray-400 hover:text-white transition-colors py-2">Products</a>
+        <a href="index.html#shop" class="block text-gray-400 hover:text-white transition-colors py-2">Shop</a>
+        <a href="blog.html" class="block text-white transition-colors py-2">Blog</a>
+        <a href="index.html#contact" class="block text-gray-400 hover:text-white transition-colors py-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Header -->
+  <section class="pt-32 pb-12 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">The <span class="gradient-text">Jedai Flow</span> Blog</h1>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto">Practical AI automation tips, tool comparisons, and growth strategies for small business owners.</p>
+    </div>
+  </section>
+
+  <!-- Article Index -->
+  <section class="pb-16 px-6">
+    <div class="max-w-4xl mx-auto grid gap-4">
+      <a href="blog/openclaw-claude-mac-workaround.html" class="block bg-dark-800 rounded-xl p-5 border border-brand-500/30 card-hover">
+        <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+          <span>April 14, 2026</span>
+          <span>&middot;</span>
+          <span>8 min read</span>
+        </div>
+        <h2 class="text-lg font-bold text-white mb-1">Claude Mac + OpenClaw: The Free Workaround After Anthropic's Subscription Changes</h2>
+        <p class="text-sm text-gray-400">Anthropic cut off Claude Pro and Max subscriptions from OpenClaw. This walkthrough shows the bridge workaround using Claude Cowork, without needing a direct API setup.</p>
+      </a>
+      <a href="#post-automate-small-business" class="block bg-dark-800 rounded-xl p-5 border border-white/5 card-hover">
+        <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+          <span>April 8, 2026</span>
+          <span>&middot;</span>
+          <span>9 min read</span>
+        </div>
+        <h2 class="text-lg font-bold text-white mb-1">How to Automate Your Small Business in 2026 (No Coding Required)</h2>
+        <p class="text-sm text-gray-400">Learn the best no-code tools and the 5 workflows you should automate first for maximum ROI.</p>
+      </a>
+      <a href="#post-med-spa-automation" class="block bg-dark-800 rounded-xl p-5 border border-white/5 card-hover">
+        <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+          <span>March 28, 2026</span>
+          <span>&middot;</span>
+          <span>10 min read</span>
+        </div>
+        <h2 class="text-lg font-bold text-white mb-1">10 AI Automations Every Med Spa Needs</h2>
+        <p class="text-sm text-gray-400">From lead follow-up to no-show recovery, these automations transform med spa operations.</p>
+      </a>
+      <a href="#post-start-ai-agency" class="block bg-dark-800 rounded-xl p-5 border border-white/5 card-hover">
+        <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+          <span>April 1, 2026</span>
+          <span>&middot;</span>
+          <span>10 min read</span>
+        </div>
+        <h2 class="text-lg font-bold text-white mb-1">How to Start an AI Automation Agency in 2026</h2>
+        <p class="text-sm text-gray-400">The opportunity, skills, pricing, and playbook to launch your own automation business.</p>
+      </a>
+      <a href="#post-make-vs-zapier" class="block bg-dark-800 rounded-xl p-5 border border-white/5 card-hover">
+        <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+          <span>April 4, 2026</span>
+          <span>&middot;</span>
+          <span>9 min read</span>
+        </div>
+        <h2 class="text-lg font-bold text-white mb-1">Make.com vs Zapier: Which Automation Tool is Right for Your Business?</h2>
+        <p class="text-sm text-gray-400">An honest head-to-head comparison covering pricing, features, and who each tool is best for.</p>
+      </a>
+      <a href="#post-ai-save-time" class="block bg-dark-800 rounded-xl p-5 border border-white/5 card-hover">
+        <div class="flex items-center gap-3 text-xs text-gray-500 mb-2">
+          <span>April 8, 2026</span>
+          <span>&middot;</span>
+          <span>8 min read</span>
+        </div>
+        <h2 class="text-lg font-bold text-white mb-1">5 Ways AI Can Save Your Business 20 Hours Per Week</h2>
+        <p class="text-sm text-gray-400">Practical AI strategies that free up your time for lead response, scheduling, reporting, and more.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-4xl mx-auto px-6"><hr class="border-white/10"></div>
+
+  <!-- ============================================ -->
+  <!-- ARTICLE 1 -->
+  <!-- ============================================ -->
+  <article id="post-automate-small-business" class="py-16 px-6 fade-up">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <span>April 8, 2026</span>
+        <span>&middot;</span>
+        <span>By John Jedlowski</span>
+        <span>&middot;</span>
+        <span>9 min read</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-8">How to Automate Your Small Business in 2026 (No Coding Required)</h1>
+
+      <p class="mb-6">If you run a small business, you already know time is your most valuable asset. Between answering leads, scheduling appointments, sending invoices, and following up with clients, your day disappears before you ever get to the work that actually grows your revenue. <strong>Business automation</strong> changes that equation entirely, and in 2026, you do not need to write a single line of code to make it happen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">What Is Business Automation?</h2>
+      <p class="mb-6">At its simplest, business automation means using software to perform repetitive tasks without manual effort. When a new lead fills out your contact form, automation can instantly send them a welcome email, add them to your CRM, notify your sales team on Slack, and schedule a follow-up reminder. All of this happens in seconds, <strong>24 hours a day, 7 days a week</strong>, without you lifting a finger.</p>
+      <p class="mb-6">Automation is not about replacing people. It is about freeing your team from repetitive busywork so they can focus on the high-value tasks that require human judgment, creativity, and relationship building.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">The Best No-Code Automation Tools in 2026</h2>
+      <p class="mb-4">You do not need a developer or a computer science degree. These platforms let you build powerful automations with a visual drag-and-drop interface:</p>
+      <ul class="mb-6 space-y-2">
+        <li><strong>Make.com (formerly Integromat)</strong> &mdash; Our top recommendation for small businesses. It offers incredible flexibility, a visual workflow builder, and pricing that scales affordably. You can connect hundreds of apps, add conditional logic, and handle complex multi-step workflows.</li>
+        <li><strong>Zapier</strong> &mdash; The most well-known automation tool. Zapier excels at simple, linear automations and has the largest app library with over 6,000 integrations. Perfect if your workflows are straightforward.</li>
+        <li><strong>n8n</strong> &mdash; An open-source alternative for the more technically inclined. Self-hosted, highly customizable, and completely free if you run it on your own server.</li>
+        <li><strong>Relay.app</strong> &mdash; A newer entrant that blends automation with human-in-the-loop steps, perfect when certain decisions still need a person's approval.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">5 Things to Automate First</h2>
+      <p class="mb-4">If you are new to automation, start here. These five workflows deliver the fastest ROI for most small businesses:</p>
+      <ol class="mb-6 space-y-3">
+        <li><strong>Lead follow-up.</strong> Speed to lead is everything. When someone submits a form on your website, an automated workflow can send a personalized response within 60 seconds. Businesses that respond in under five minutes are <strong>21 times more likely</strong> to qualify a lead than those that wait 30 minutes.</li>
+        <li><strong>Appointment reminders.</strong> No-shows cost service businesses thousands of dollars per year. Automated SMS and email reminders 24 hours and 1 hour before appointments can reduce no-shows by up to 40 percent.</li>
+        <li><strong>Invoice and payment follow-up.</strong> Stop chasing payments manually. Set up automated reminders when invoices are overdue, and send thank-you messages when payments are received.</li>
+        <li><strong>Client onboarding.</strong> When a new client signs up, trigger a sequence that sends a welcome email, shares intake forms, schedules a kickoff call, and adds them to your project management tool.</li>
+        <li><strong>Review requests.</strong> After completing a service, automatically send a request for a Google review. Consistent reviews are one of the most powerful drivers of local SEO and new business.</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Real ROI Examples</h2>
+      <p class="mb-4">Automation is not just about saving time. It directly impacts your bottom line:</p>
+      <ul class="mb-6 space-y-2">
+        <li><strong>A med spa in Texas</strong> automated their lead follow-up and appointment reminders. They recovered an estimated $4,200 per month in revenue from reduced no-shows and faster lead conversion.</li>
+        <li><strong>A roofing contractor</strong> automated their estimate follow-up sequence. Instead of manually calling every prospect, they sent a three-part email and SMS sequence automatically. Their close rate increased by 18 percent.</li>
+        <li><strong>A coaching business</strong> automated client onboarding, saving the owner 6 hours per week that they reinvested into content creation and marketing.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Getting Started Today</h2>
+      <p class="mb-6">The best way to start is to pick one workflow that is eating your time. Map out the steps you do manually, then recreate those steps in a tool like Make.com or Zapier. Start simple, test it, and build from there.</p>
+      <p class="mb-6">If you want a step-by-step walkthrough of building your first automations, <strong>we put together a complete guide</strong> that covers everything from choosing the right tool to building your first 10 workflows.</p>
+
+      <div class="mt-8 p-6 bg-dark-700 rounded-xl border border-white/10">
+        <p class="text-white font-semibold mb-2">Ready to automate your business?</p>
+        <p class="text-gray-400 text-sm mb-4">Get the Jedai Flow Automation Guide &mdash; a complete blueprint for building no-code automations that save you hours every week.</p>
+        <a href="https://buy.stripe.com/00w3cxdvo3TV1ii73x0RG09" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold rounded-lg hover:from-brand-600 hover:to-brand-700 transition-all duration-200 shadow-lg shadow-brand-500/25">Get the Automation Guide</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="max-w-4xl mx-auto px-6"><hr class="border-white/10"></div>
+
+  <!-- ============================================ -->
+  <!-- ARTICLE 2 -->
+  <!-- ============================================ -->
+  <article id="post-med-spa-automation" class="py-16 px-6 fade-up">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <span>March 28, 2026</span>
+        <span>&middot;</span>
+        <span>By John Jedlowski</span>
+        <span>&middot;</span>
+        <span>10 min read</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-8">10 AI Automations Every Med Spa Needs</h1>
+
+      <p class="mb-6">The med spa industry is booming, but competition is fiercer than ever. The practices that are winning in 2026 are not just offering better treatments; they are delivering a <strong>better client experience</strong> powered by AI automation. From the moment a potential client discovers your med spa online to the follow-up after their visit, every touchpoint can be automated to increase revenue, reduce staff workload, and create a seamless experience that keeps clients coming back.</p>
+      <p class="mb-6">Here are the <strong>10 AI automations that every med spa needs</strong> to stay competitive and grow.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">1. Instant Lead Follow-Up</h3>
+      <p class="mb-6">When a potential client fills out your website form, requests a consultation, or messages you on social media, <strong>time is critical</strong>. Studies show that responding within 5 minutes makes you 100 times more likely to connect with that lead compared to waiting even 30 minutes. An AI-powered automation can instantly send a personalized text message and email, acknowledge their inquiry, answer common questions, and even offer a link to book a consultation. No receptionist required.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">2. Appointment Reminders and Confirmations</h3>
+      <p class="mb-6">No-shows are one of the biggest revenue killers for med spas. A single missed Botox appointment might cost $300 to $600 in lost revenue. Automated SMS and email reminders sent 48 hours, 24 hours, and 1 hour before appointments can <strong>reduce no-shows by 30 to 50 percent</strong>. Include a confirm or reschedule link to make it effortless for clients to manage their bookings.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">3. No-Show Recovery Sequences</h3>
+      <p class="mb-6">When a client does miss their appointment, do not let that revenue walk away. An automated no-show recovery sequence sends a friendly message within an hour: "We missed you today! Would you like to reschedule?" Include a direct booking link and optionally offer a small incentive. Many med spas recover <strong>20 to 30 percent of no-show appointments</strong> with this single automation.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">4. Google Review Requests</h3>
+      <p class="mb-6">Online reviews are the lifeblood of local marketing for med spas. After every appointment, automatically send a text message thanking the client and asking them to leave a Google review. Timing is everything &mdash; <strong>send it within 2 hours</strong> while the experience is still fresh. This simple automation can double your monthly review volume.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">5. Treatment Follow-Up and Aftercare</h3>
+      <p class="mb-6">Different treatments require different aftercare instructions. Automation lets you send personalized aftercare emails based on the specific service performed. A client who just got laser treatment gets different instructions than someone who had filler. This reduces post-treatment calls, improves outcomes, and shows clients you care.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">6. Rebooking Reminders</h3>
+      <p class="mb-6">Many med spa treatments require maintenance visits every 3 to 6 months. Automation can track when each client is due for their next session and send a personalized reminder: "Hi Sarah, it has been 12 weeks since your last Botox treatment. Ready to rebook?" This <strong>increases rebooking rates by 25 to 40 percent</strong> without any manual outreach.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">7. Birthday and VIP Offers</h3>
+      <p class="mb-6">Automated birthday emails and VIP loyalty rewards make clients feel valued. Send a special offer two weeks before their birthday with a limited-time discount on their favorite treatment. These campaigns consistently generate a <strong>15 to 25 percent redemption rate</strong>, driving incremental revenue on autopilot.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">8. New Client Intake and Onboarding</h3>
+      <p class="mb-6">Eliminate the clipboard in your waiting room. When a new client books, automatically send them digital intake forms, consent documents, and a welcome guide before they arrive. This reduces check-in time, gives providers more context before the appointment, and creates a premium first impression.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">9. Social Media Lead Capture</h3>
+      <p class="mb-6">Running Instagram or Facebook ads? When someone clicks your ad and submits a lead form, automation can instantly add them to your CRM, send a text and email, and notify your front desk. No leads fall through the cracks, even if your ad generates inquiries at midnight.</p>
+
+      <h3 class="text-xl font-bold mt-8 mb-3">10. Internal Staff Notifications</h3>
+      <p class="mb-6">Keep your team in the loop without endless group texts. Automations can notify providers about new bookings, alert managers about cancellations, and send daily summary reports. Everyone stays informed without anyone having to manually update the team.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">The Bottom Line</h2>
+      <p class="mb-6">Med spas that implement even half of these automations see a dramatic improvement in client retention, revenue recovery, and team productivity. The technology is accessible, affordable, and works around the clock.</p>
+
+      <div class="mt-8 p-6 bg-dark-700 rounded-xl border border-white/10">
+        <p class="text-white font-semibold mb-2">Want these automations built for your med spa?</p>
+        <p class="text-gray-400 text-sm mb-4">Get the Jedai Flow Blueprint Pack with pre-built automation templates for med spas, or reach out for a free consultation.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://buy.stripe.com/bJedRbcrk8ab4uu73x0RG0a" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold rounded-lg hover:from-brand-600 hover:to-brand-700 transition-all duration-200 shadow-lg shadow-brand-500/25">Get the Blueprint Pack</a>
+          <a href="index.html#contact" class="inline-flex items-center px-5 py-2.5 border border-white/20 text-white text-sm font-semibold rounded-lg hover:bg-white/5 transition-all duration-200">Book a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="max-w-4xl mx-auto px-6"><hr class="border-white/10"></div>
+
+  <!-- ============================================ -->
+  <!-- ARTICLE 3 -->
+  <!-- ============================================ -->
+  <article id="post-start-ai-agency" class="py-16 px-6 fade-up">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <span>April 1, 2026</span>
+        <span>&middot;</span>
+        <span>By John Jedlowski</span>
+        <span>&middot;</span>
+        <span>10 min read</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-8">How to Start an AI Automation Agency in 2026</h1>
+
+      <p class="mb-6">The demand for AI automation services has exploded. Every small business owner is hearing about AI, but most have no idea how to implement it. That gap between awareness and implementation is where the <strong>AI automation agency</strong> opportunity lives &mdash; and in 2026, it is one of the most lucrative businesses you can start with minimal upfront cost.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Why the Opportunity Is Massive Right Now</h2>
+      <p class="mb-6">There are over 33 million small businesses in the United States alone, and the vast majority are still running on manual processes. They know they need automation, but they do not have the time, knowledge, or confidence to build it themselves. That is exactly where you come in.</p>
+      <p class="mb-6">Unlike traditional agencies that compete on creative work, <strong>AI automation agencies sell measurable results</strong>: hours saved, leads recovered, revenue increased. The value proposition is clear and easy to prove, which makes sales significantly easier than selling something subjective like branding or social media management.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">What Skills Do You Need?</h2>
+      <p class="mb-4">Here is the good news: you do not need to be a programmer. The core skills for running an AI automation agency are:</p>
+      <ul class="mb-6 space-y-2">
+        <li><strong>No-code tool proficiency.</strong> Learn Make.com or Zapier inside and out. These platforms are your primary tools for building client workflows. Most automations can be learned in 2 to 4 weeks of focused practice.</li>
+        <li><strong>Problem-solving mindset.</strong> Your real job is understanding a client's workflow, identifying bottlenecks, and designing automated solutions. This is about business logic, not code.</li>
+        <li><strong>Basic AI literacy.</strong> Understand what tools like ChatGPT, Claude, and other AI models can do. Many automations involve connecting an AI model to generate personalized responses, summarize data, or classify information.</li>
+        <li><strong>Communication and sales.</strong> You need to explain complex technology in simple terms. Business owners do not care about APIs or webhooks &mdash; they care about saving time and making more money.</li>
+        <li><strong>Project management.</strong> Delivering automations on time and keeping clients informed builds trust and generates referrals.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">How to Find Your First Clients</h2>
+      <p class="mb-4">Finding clients is the number one challenge for new agency owners. Here are the strategies that work best in 2026:</p>
+      <ul class="mb-6 space-y-2">
+        <li><strong>Pick a niche.</strong> Specializing in one industry (med spas, real estate, coaching, roofing, etc.) makes your marketing infinitely more effective. You can speak their language, reference industry-specific pain points, and build reusable templates.</li>
+        <li><strong>Offer a free AI audit.</strong> Reach out to local businesses and offer to audit their workflows for free. Identify 3 to 5 processes you could automate and present the time and cost savings. This positions you as an expert and naturally leads into a paid engagement.</li>
+        <li><strong>Leverage LinkedIn and cold email.</strong> Create content showing before-and-after automation results. Send personalized outreach to business owners in your niche. Focus on the outcome, not the technology.</li>
+        <li><strong>Build in public.</strong> Share your automation builds, case studies, and learnings on social media. This attracts inbound leads and establishes credibility.</li>
+        <li><strong>Partner with adjacent service providers.</strong> Web designers, marketing agencies, and business consultants all have clients who need automation. Build referral relationships where you handle the automation piece.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">How to Price Your Services</h2>
+      <p class="mb-4">Pricing is where many new agency owners undercharge. Here is a framework that works:</p>
+      <ul class="mb-6 space-y-2">
+        <li><strong>One-time build projects: $500 to $5,000+</strong> depending on complexity. A simple three-step automation might be $500. A full lead management system with AI responses, CRM integration, and reporting might be $3,000 to $5,000.</li>
+        <li><strong>Monthly retainers: $300 to $2,000/month</strong> for ongoing maintenance, optimization, and new automation builds. This is where recurring revenue lives.</li>
+        <li><strong>Value-based pricing.</strong> If your automation saves a client $4,000 per month in recovered revenue, charging $1,500 to build it is a no-brainer for them. Always tie your pricing to the value you deliver, not the hours you spend.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Scaling Your Agency</h2>
+      <p class="mb-6">Start by handling everything yourself to learn the business deeply. As you grow past 5 to 8 clients, you can start building systems: <strong>templatize your most common automations</strong> so new builds take hours instead of days. Hire a junior automation builder to handle implementation while you focus on sales and client strategy. Create standard operating procedures for onboarding, building, testing, and delivering automations.</p>
+      <p class="mb-6">The beauty of this business model is that your margins improve over time. The more you build, the more reusable components you have. Your tenth med spa client takes a fraction of the time your first one did.</p>
+
+      <div class="mt-8 p-6 bg-dark-700 rounded-xl border border-white/10">
+        <p class="text-white font-semibold mb-2">Want the complete playbook?</p>
+        <p class="text-gray-400 text-sm mb-4">The Jedai Flow Side Hustle Guide walks you through everything: finding clients, pricing, building your first automations, and scaling to a full-time income.</p>
+        <a href="https://buy.stripe.com/4gM5kF8b4cqr5yy73x0RG0b" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold rounded-lg hover:from-brand-600 hover:to-brand-700 transition-all duration-200 shadow-lg shadow-brand-500/25">Get the Side Hustle Guide</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="max-w-4xl mx-auto px-6"><hr class="border-white/10"></div>
+
+  <!-- ============================================ -->
+  <!-- ARTICLE 4 -->
+  <!-- ============================================ -->
+  <article id="post-make-vs-zapier" class="py-16 px-6 fade-up">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <span>April 4, 2026</span>
+        <span>&middot;</span>
+        <span>By John Jedlowski</span>
+        <span>&middot;</span>
+        <span>9 min read</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-8">Make.com vs Zapier: Which Automation Tool is Right for Your Business?</h1>
+
+      <p class="mb-6">If you are looking to automate your business, you have probably come across two names over and over: <strong>Make.com</strong> and <strong>Zapier</strong>. Both are powerful no-code automation platforms, but they take very different approaches. After building hundreds of automations on both platforms, here is an honest breakdown to help you decide which one is right for your business.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">The Quick Answer</h2>
+      <p class="mb-6"><strong>Zapier</strong> is better if you want simple, quick automations and do not want a learning curve. <strong>Make.com</strong> is better if you want more power, flexibility, and lower cost at scale. Most businesses that start with Zapier eventually migrate to Make.com as their needs grow.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Ease of Use</h2>
+      <p class="mb-6"><strong>Zapier wins for beginners.</strong> Zapier uses a simple linear format: "When this happens, do that." Setting up a basic automation takes just a few clicks. The interface is clean, intuitive, and requires almost no learning curve. If you have never automated anything before, you can have your first Zap running in under 10 minutes.</p>
+      <p class="mb-6"><strong>Make.com has a steeper learning curve</strong> but rewards you with a visual workflow builder that shows your entire automation as a flowchart. You can see exactly how data flows between steps, add branches, loops, filters, and error handling. It takes a few hours to learn, but once you do, building complex workflows becomes significantly easier than in Zapier.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Power and Flexibility</h2>
+      <p class="mb-6"><strong>Make.com wins decisively.</strong> Make.com lets you build automations that would be extremely difficult or impossible in Zapier. Branching logic (if/then paths), loops that iterate over lists of data, routers that split workflows into parallel paths, and aggregators that combine data back together. You can also make direct HTTP requests to any API, giving you unlimited integration possibilities.</p>
+      <p class="mb-6">Zapier has added "Paths" and "Looping" in recent years, but the implementation feels bolted on rather than native. Complex workflows in Zapier often require multiple separate Zaps that trigger each other, which becomes difficult to manage and debug.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Pricing Comparison</h2>
+      <p class="mb-4">This is where the differences become dramatic:</p>
+      <ul class="mb-6 space-y-2">
+        <li><strong>Zapier</strong> charges based on the number of "tasks" (individual steps in an automation). Their free plan includes 100 tasks per month. Paid plans start around $20/month for 750 tasks. For a busy small business, costs can quickly reach $50 to $150 per month or more.</li>
+        <li><strong>Make.com</strong> charges based on "operations" but gives you significantly more for your money. Their free plan includes 1,000 operations per month. Paid plans start at $9/month for 10,000 operations. For the same workload that costs $100/month on Zapier, you might pay $20 to $30 on Make.com.</li>
+      </ul>
+      <p class="mb-6">For businesses running multiple automations, <strong>Make.com is typically 3 to 5 times cheaper</strong> than Zapier for equivalent usage. Over a year, that savings adds up significantly.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">App Integrations</h2>
+      <p class="mb-6"><strong>Zapier has the largest app library</strong> with over 6,000 integrations. If you use a niche or lesser-known tool, Zapier is more likely to have a native integration for it. Make.com has around 1,800 integrations, which covers all the popular tools. And because Make.com lets you make custom HTTP requests, you can connect to virtually any app that has an API, even without a native integration.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Error Handling</h2>
+      <p class="mb-6">Make.com has superior error handling built into the platform. You can add error handlers to any module, set up retry logic, create fallback paths, and get detailed execution logs that show exactly what data passed through each step. Zapier's error handling is more basic &mdash; you get notifications when something fails, but debugging requires more guesswork.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Who Should Use What?</h2>
+      <p class="mb-4"><strong>Choose Zapier if:</strong></p>
+      <ul class="mb-4 space-y-1">
+        <li>You want the fastest possible setup with zero learning curve</li>
+        <li>Your automations are simple and linear (trigger then 2 to 3 actions)</li>
+        <li>You use niche tools that only Zapier supports</li>
+        <li>Budget is not a primary concern</li>
+      </ul>
+      <p class="mb-4"><strong>Choose Make.com if:</strong></p>
+      <ul class="mb-6 space-y-1">
+        <li>You want to build complex, multi-step workflows</li>
+        <li>You plan to scale your automations over time</li>
+        <li>Cost efficiency matters to your business</li>
+        <li>You want better error handling and debugging tools</li>
+        <li>You are willing to invest a few hours learning the platform</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Our Recommendation</h2>
+      <p class="mb-6">At Jedai Flow, we build primarily on <strong>Make.com</strong> for our clients. The combination of visual workflow building, powerful logic capabilities, and cost-effective pricing makes it the best choice for businesses that are serious about automation. That said, we have nothing against Zapier and use it when it makes sense for a specific use case.</p>
+
+      <div class="mt-8 p-6 bg-dark-700 rounded-xl border border-white/10">
+        <p class="text-white font-semibold mb-2">Learn to build automations on both platforms</p>
+        <p class="text-gray-400 text-sm mb-4">The Jedai Flow Automation Guide includes step-by-step tutorials for Make.com and Zapier, plus templates you can duplicate and use immediately.</p>
+        <a href="https://buy.stripe.com/00w3cxdvo3TV1ii73x0RG09" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold rounded-lg hover:from-brand-600 hover:to-brand-700 transition-all duration-200 shadow-lg shadow-brand-500/25">Get the Automation Guide</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="max-w-4xl mx-auto px-6"><hr class="border-white/10"></div>
+
+  <!-- ============================================ -->
+  <!-- ARTICLE 5 -->
+  <!-- ============================================ -->
+  <article id="post-ai-save-time" class="py-16 px-6 fade-up">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <span>April 8, 2026</span>
+        <span>&middot;</span>
+        <span>By John Jedlowski</span>
+        <span>&middot;</span>
+        <span>8 min read</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-8">5 Ways AI Can Save Your Business 20 Hours Per Week</h1>
+
+      <p class="mb-6">Twenty hours. That is half a work week. That is the amount of time most small business owners spend on tasks that <strong>AI can handle better, faster, and more consistently</strong> than any human. We are not talking about futuristic technology. These are tools and automations available right now, in 2026, that businesses of every size are using to reclaim their time.</p>
+      <p class="mb-6">Here are five specific ways AI can give you back 20 or more hours every single week.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">1. Automated Lead Response (Save 5+ Hours/Week)</h2>
+      <p class="mb-6">How much time does your team spend responding to inquiries that come through your website, Facebook, Instagram, Google Business Profile, and email? For most businesses, it is hours every day. An AI-powered lead response system can <strong>instantly reply to every inquiry</strong> with a personalized message that answers common questions, qualifies the lead, and offers a booking link. The AI can handle the initial conversation, gather key information, and only loop in a human when the lead is qualified and ready to move forward.</p>
+      <p class="mb-6">The time saved is obvious, but the real benefit is speed. <strong>Responding instantly converts dramatically more leads</strong> than responding hours later. You save time and make more money.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">2. Smart Scheduling and Calendar Management (Save 3+ Hours/Week)</h2>
+      <p class="mb-6">The back-and-forth of scheduling meetings, appointments, and calls is one of the biggest hidden time sinks in any business. AI scheduling assistants can manage your entire calendar: finding available slots, sending booking links, handling rescheduling, sending reminders, and even adjusting for time zones and buffer times between meetings.</p>
+      <p class="mb-6">Combined with automated appointment reminders and no-show follow-ups, you eliminate the entire scheduling workflow. No more "Does Tuesday at 2 work?" email chains. No more manually texting reminders. <strong>The AI handles all of it.</strong></p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">3. Automated Reporting and Analytics (Save 4+ Hours/Week)</h2>
+      <p class="mb-6">How much time do you or your team spend pulling numbers from different platforms, copying data into spreadsheets, and building reports? AI automation can connect to your CRM, ad platforms, accounting software, and other tools to <strong>automatically generate daily, weekly, or monthly reports</strong> and deliver them to your inbox or Slack channel.</p>
+      <p class="mb-6">These are not just raw data dumps. AI can analyze the numbers, highlight trends, flag anomalies, and even provide plain-English summaries of what the data means. Instead of spending Friday afternoon building a report, you get an AI-generated briefing that tells you exactly what you need to know in two minutes.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">4. Email Drafting and Communication (Save 4+ Hours/Week)</h2>
+      <p class="mb-6">The average professional spends 28 percent of their workday on email. AI can dramatically reduce that burden. Use AI to <strong>draft responses to common inquiries</strong>, write follow-up emails after meetings, create personalized outreach sequences, and generate newsletter content.</p>
+      <p class="mb-6">This does not mean sending robotic, generic emails. Modern AI tools can match your tone, reference specific details from previous conversations, and produce emails that sound genuinely human. You review and send rather than write from scratch, turning a 15-minute email into a 2-minute review.</p>
+      <p class="mb-6">For recurring communications like onboarding emails, payment reminders, and check-in messages, automate them entirely. Set up templates that the AI personalizes and sends on a schedule. <strong>Your clients get consistent, timely communication without you touching a keyboard.</strong></p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">5. Data Entry and CRM Management (Save 4+ Hours/Week)</h2>
+      <p class="mb-6">Manually entering data into your CRM, updating contact records, logging call notes, and transferring information between systems is tedious and error-prone. AI automation eliminates it entirely. When a new lead comes in, their information is <strong>automatically captured, formatted, and added to your CRM</strong> with the correct tags, status, and source attribution.</p>
+      <p class="mb-6">After a sales call, AI can listen to the recording (or read the transcript), extract key action items, update the CRM record, and create follow-up tasks automatically. After a meeting, notes are summarized and stored. When a deal moves through your pipeline, all associated records update simultaneously.</p>
+      <p class="mb-6">The result is a CRM that is always up to date, always accurate, and requires <strong>zero manual data entry</strong> from your team. Your salespeople sell. Your operations team operates. Nobody wastes time on data entry.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Adding It All Up</h2>
+      <p class="mb-4">Here is the weekly time savings breakdown:</p>
+      <ul class="mb-6 space-y-1">
+        <li>Lead response: <strong>5 hours saved</strong></li>
+        <li>Scheduling: <strong>3 hours saved</strong></li>
+        <li>Reporting: <strong>4 hours saved</strong></li>
+        <li>Email: <strong>4 hours saved</strong></li>
+        <li>Data entry: <strong>4 hours saved</strong></li>
+      </ul>
+      <p class="mb-6"><strong>Total: 20 hours per week. Over 1,000 hours per year.</strong> That is time you can reinvest into strategy, client relationships, product development, or simply getting your evenings back.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Where to Start</h2>
+      <p class="mb-6">You do not need to implement all five at once. Pick the area where you or your team spend the most time on repetitive work. Build one automation, measure the time savings, and then move to the next. Most businesses see meaningful results within the first week.</p>
+
+      <div class="mt-8 p-6 bg-dark-700 rounded-xl border border-white/10">
+        <p class="text-white font-semibold mb-2">Find out exactly where AI can save you time</p>
+        <p class="text-gray-400 text-sm mb-4">Book a free AI audit with Jedai Flow. We will analyze your current workflows and show you exactly which tasks to automate first for maximum time savings.</p>
+        <a href="index.html#contact" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold rounded-lg hover:from-brand-600 hover:to-brand-700 transition-all duration-200 shadow-lg shadow-brand-500/25">Book Your Free AI Audit</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 px-6 mt-8">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="flex flex-col items-center gap-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-accent flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <span class="font-bold text-white">Jedai Flow</span>
+        </div>
+        <p class="text-gray-500 text-sm">&copy; 2026 Jedai Flow. All rights reserved.</p>
+        <a href="mailto:john@jedaiflow.com" class="text-gray-400 hover:text-white transition-colors text-sm">john@jedaiflow.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
 </body>
 </html>
