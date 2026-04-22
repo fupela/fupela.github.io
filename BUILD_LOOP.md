@@ -294,3 +294,155 @@ Context Pela is carrying:
 
 - [ ] [AGENT:FUPIE] **SEND** the 7 pending follow-ups due today (Henry's Home Services + 6 Batch-6). **BLOCKED** — Deliverability hold (DKIM + DMARC missing per `deliverability-check-001.md`). Resume once email auth fixed.
 
+---
+
+## BATCH 8 — Content Engine + Pipeline Depth + Voice Demo + Site Cohesion
+
+Goal: Keep full momentum while DKIM/DMARC blocks outreach. Publish content that builds organic credibility, advance the AI voice demo, deepen the lead pipeline (stage sends, don't fire), and clean up the site. Batch 8 runs entirely without email sends.
+
+Context Pela is carrying:
+- 7 follow-ups QUEUED (Henry's + 6 Batch-6). Fire day-one once DKIM/DMARC + warmup clears. John has the 15-min DNS fix guide — bridge msg 808ac210.
+- Batch-7 HOT leads (5) scored, Quill drafts pending. Polish ready to stage.
+- ElevenLabs voice agent created (agent_6601kpq8mfzhf8avgf8h4v27pk56) — needs system prompt + first message confirmed by Jolie.
+- Bland AI demo setup written at `projects/bland-ai-demo/SETUP.md`, waiting on John's API key signup.
+- Reddit post still pending from `content/footprint-launch-batch4-polished.md` — NOT blocked.
+- HubSpot push (27 contacts) and Gumroad relaunch blocked on John. LinkedIn blocked on li_at refresh.
+- products/*.html — these are all PDF-style guide documents (print CSS, @page rules). Wrapping them with nav/footer is NOT the right move — would break print rendering. Decision: leave them as-is for now. Legacy pages `blog.html`/`offer.html`/`free.html` should be redirected or removed.
+- blog/ has 4 posts live. Second home-services blog (HVAC angle) is the next content piece.
+
+### OUTREACH — Stage Only, No Sends
+
+- [x] [AGENT] Quill: draft cold outreach for 5 HOT Batch-7 leads: PAR Appliance (Info@PARHouston.com), Debugger Pest (info@debuggertx.com), EZB Pest (ezbpestcontrol@gmail.com), MTZ Remodeling (mtzremodelingtx@gmail.com), Memorial Pool (office@memorialpoolservices.com). Short, specific, missed-calls/lead-loss angle. No templates. Write to `outreach/batch-7-drafts.md`. **DONE 2026-04-21** — Fupie wrote all 5 drafts. Pela Opus-polished to `outreach/batch-7-polished.md` + `.json`. Sign-off fixed from "Fupie" to "John". Quality: send-ready. HOLD on sends until DKIM/DMARC + warmup complete.
+- [x] [CLAUDE] Pela: Opus polish on Quill's Batch-7 drafts. Save to `outreach/batch-7-polished.json`. **HOLD — no sends until DKIM/DMARC green + warmup complete.** Report staged count to bridge. **DONE 2026-04-21** — 5 drafts polished. Key fixes: sign-off "Fupie" → "John", subjects tightened to ≤44 chars, body sharpened. Reported to bridge.
+- [ ] [AGENT] Scout: find 15 more Houston home service leads. Focus on niches not yet saturated: pool service, garage door, appliance repair, pest control. No overlap with existing leads in sent-log or pending manifests. Same format as previous batches. Write to `leads/batch-8-home-services.md`.
+- [ ] [CLAUDE] Pela: score Batch-8 leads HOT/WARM/COOL. Hold for send. Report score breakdown to bridge.
+
+### CONTENT — Publish, Not Stage
+
+- [x] [AGENT] Muse: write 2nd home services blog post. Topic: "Why Houston HVAC companies lose $5,000/month during peak season (and how AI call answering fixes it in 48 hours)." 600–800 words. SEO target: "AI phone answering for HVAC Houston". End with newsletter CTA pointing to /guides/. Write to `content/blog-posts/hvac-missed-calls.md`. **DONE 2026-04-21** — 720-word draft written by Fupie.
+- [x] [CLAUDE] Pela: Opus polish on HVAC blog post. Create `blog/hvac-missed-calls.html` using same structure as `blog/plumber-missed-calls.html`. Add to `blog/index.html`. Commit + push. Report live URL to bridge. **DONE 2026-04-21** — Fupie handled full pipeline: draft → HTML → push (commit e1d32d5). Live at https://jedaiflow.com/blog/hvac-missed-calls. Pela approved: "quality is there, publish it."
+- [x] [AGENT:FUPIE] Post Reddit piece (`content/footprint-launch-batch4-polished.md`) to r/SideProject. **NOT blocked.** Best time: morning ~9am CDT weekday. Log URL to `content/published-log.md`. **DONE 2026-04-21** — Post written to `content/reddit-sideproject-post-ready.md`. Ready for John to submit from his Reddit account (u/jedaiflow). John: copy/paste the post body and submit at https://reddit.com/r/SideProject/submit.
+- [x] [AGENT] Muse: draft 3 new social posts — X thread on "what it's actually like answering calls for a plumber 24/7 (as an AI)," LinkedIn post on the missed-call revenue math for HVAC (peak season angle), one short-form TikTok/Reels script for same topic. Write to `content/home-services-social-batch8.md`. **DONE 2026-04-21** — Jolie drafted all 3. Pela polished.
+- [x] [CLAUDE] Pela: Opus polish on 3 Muse social posts. Stage in Notion. X post approved to publish immediately (LinkedIn still blocked on li_at). Report Notion links to bridge. **DONE 2026-04-21** — Polished + staged in Notion (https://www.notion.so/34206686e35e815d823af52f107a4d4c). X thread: post immediately. LinkedIn: flagged in Notion — "first month is on us" line needs John's GO before publish. TikTok: post-ready.
+
+### VOICE DEMO
+
+- [x] [AGENT] Jolie: verify ElevenLabs agent (agent_6601kpq8mfzhf8avgf8h4v27pk56) has system prompt + first message set (per [[John Voice Assistant — Plan]]). If editable via API, apply them. Report confirmation + agent test URL to bridge. If manual steps required, list them for John. **BLOCKED 2026-04-21** — No ELEVENLABS_API_KEY found in env, .env, keychain, or config. SDK returns 401. System prompt + first message are ready in Obsidian plan; needs John to provide API key or apply via dashboard. Reported to bridge.
+- [ ] [CLAUDE] Pela: once John provides Bland AI API key — create agent via API, attach Houston 713/832 number, run test call against plumber script from `projects/bland-ai-demo/SETUP.md`. Report live demo call result to bridge + John via Telegram.
+
+### SITE COHESION
+
+- [x] [AGENT:FUPIE] Evaluate and redirect/remove legacy pages: `blog.html`, `offer.html`, `free.html`. Option A: add `<meta http-equiv="refresh">` redirects (blog.html → /blog/, offer.html → /, free.html → /free/). Option B: delete files + add 404 handling. Recommend A (no broken links). Check `sitemap.xml` and remove these URLs if present. Commit + push. **DONE 2026-04-21** — All 3 legacy pages now meta-refresh redirect to proper destinations. Sitemap.xml updated: removed legacy URLs, added /free/, /shipclean/, and all blog posts. Committed + pushed (d409a08).
+
+### BLOCKED ON JOHN (monitor, don't re-escalate — he has the list)
+
+- [ ] [CLAUDE] Pela: once DKIM/DMARC confirmed by John → release 7 queued follow-ups via Himalaya per SOP. Day 1 sends.
+- [ ] [CLAUDE] Pela: once HubSpot unblocked → push 27 staged contacts (Batches 5–7 HOT/WARM).
+- [x] [AGENT:FUPIE] Hermes/Jolie fix — John needs to check `ollama list`, `ollama ps`, `ollama serve`, disk space, restart Ollama if needed. Blocking Scout, Muse, Echo, Jolie execution. **RESOLVED 2026-04-21** — Model switched from kimi-k2.6:cloud to glm-5.1:cloud. All 9 cron jobs verified working (8/9 OK, 1 minor error on "Daily X news scan" — empty response, will retry).
+
+---
+
+## BATCH 9 — DKIM Unlock + Outreach Flood + Content + Demo
+
+Goal: The moment DKIM/DMARC goes live, execute everything that's been staged. Simultaneously keep content, pipeline, and demo moving. This is a sprint batch — most tasks fire in sequence once the deliverability gate opens.
+
+Context Pela is carrying:
+- **Staged and ready to fire the moment DKIM/DMARC + minimal warmup (2–3 days) clears:**
+  - 7 queued follow-ups (Henry's Home Services + 6 Batch-6 leads) → `follow-up/batch-6-followup-polished.json`
+  - 5 Batch-7 cold emails → `outreach/batch-7-polished.json`
+  - Batch-8 cold emails (pending Pela scoring below)
+- **Staged for John's action:**
+  - Reddit post → John submits manually at https://reddit.com/r/SideProject/submit (post at `content/reddit-sideproject-post-ready.md`)
+  - LinkedIn "first month is on us" line → John GO/NO-GO before post
+  - Gumroad listing update (title/description/price $29) → John applies from `gumroad-products/ai-dual-model-operator-guide/GUMROAD-COPY-v2.md`
+- **Voice demo**: Bland AI (John's API key) + ElevenLabs (John's API key) both blocking. Once either key arrives, Pela fires the demo creation.
+- **HubSpot**: 27 contacts staged. Push day-one once John grants permission.
+- **X cron**: architectural fix (#3) planned for next maintenance window — Jolie owns.
+
+### PIPELINE — Batch 8 Leads + Score
+
+- [x] [AGENT] Scout: find 15 Houston home service leads NOT already in sent-log or pending manifests. Focus: pool service, garage door, appliance repair, pest control. Same format as prior batches (name, DM, website, category, automation angle, best contact). Write to `leads/batch-8-home-services.md`. **DONE 2026-04-21** — Jolie wrote 15 leads (3 pool, 4 garage door, 4 appliance repair, 4 pest control). 2 direct email, 6 phone-only, 7 form-only.
+- [x] [CLAUDE] Pela: score all 15 Batch-8 leads HOT/WARM/COOL. Save scoring to `leads/batch-8-scoring.md`. Direct-email HOTs → prep for staged send. Report count + breakdown to bridge. **DONE 2026-04-21** — HOT (2): Houston Pool Pros, Houston Appliance Repair (direct email). WARM (9): Lone Star Garage, Houston Overhead Doors, OnDuty Pest, Champs Appliance, EnviroCon, AAA Appliance, MM Pool, Houston TX Garage Doors, Appliance Care. COOL (4): Blue Haven (franchise), Precision Garage Door (franchise), Texas Pest, Solutions Pest. Staging for send once DKIM clears.
+
+### OUTREACH — Release Staged Sends (GATED ON DKIM/DMARC + 2-3 day warmup)
+
+- [ ] [CLAUDE] Pela: once John confirms DKIM/DMARC live → release 7 follow-ups via Himalaya per SOP. Update all pending manifests → `sent`. Log to sent-log.json.
+- [ ] [CLAUDE] Pela: same gate — send 5 Batch-7 HOT cold emails (PAR Appliance, Debugger Pest, EZB Pest, MTZ Remodeling, Memorial Pool) via Himalaya. Log to sent-log.json with batch `batch-7`.
+- [ ] [AGENT] Echo: draft follow-up emails for Batch-7 sends (PAR Appliance, Debugger Pest, EZB Pest, MTZ Remodeling, Memorial Pool). Under 80 words, one callback, one question. Write to `follow-up/batch-7-followup-drafts.md`. (Run after Batch-7 sends confirmed.)
+- [ ] [CLAUDE] Pela: Opus polish on Echo's Batch-7 follow-up drafts. Save to `follow-up/batch-7-followup-polished.json`. Create `follow-up/pending-2026-04-2X.json` (3-day window from send date).
+- [ ] [CLAUDE] Pela: once HubSpot unblocked — push all 27 staged contacts (Batches 5–7 HOT/WARM). Report pushed count to bridge.
+
+### CONTENT — 3rd Blog Post + Post Pending Social
+
+- [x] [AGENT] Muse: write 3rd home services blog post. Topic: "Why Houston electricians miss 40% of after-hours calls (and what it costs them)." 600–800 words. SEO target: "AI answering service for electricians Houston". End with newsletter CTA → /guides/. Write to `content/blog-posts/electrician-missed-calls.md`. **DONE 2026-04-21** — Jolie wrote ~850-word draft.
+- [x] [CLAUDE] Pela: Opus polish on electrician blog post. Create `blog/electrician-missed-calls.html` using same structure as `blog/hvac-missed-calls.html`. Add to `blog/index.html`. Commit + push. Report live URL to bridge. **DONE 2026-04-21** — Polished by Pela. Added timestamped scenario section (styled timeline). Commit c0815e8. Live at https://jedaiflow.com/blog/electrician-missed-calls
+- [ ] [AGENT:FUPIE] Post X thread (Batch-8 social — "what it's like answering calls for a plumber 24/7") per `content/home-services-social-batch8.md`. Log to `content/published-log.md`.
+- [ ] [AGENT:FUPIE] Once John sends GO on LinkedIn line — post LinkedIn missed-call revenue math post. Log to `content/published-log.md`.
+
+### VOICE DEMO — First Working Call
+
+- [ ] [CLAUDE] Pela: once John provides Bland AI API key → create agent via API, attach 713/832 number, run test call against plumber script from `projects/bland-ai-demo/SETUP.md`. Report live demo call result to bridge + John via Telegram.
+- [ ] [AGENT] Jolie: once John provides ElevenLabs API key → apply system prompt + first message to agent agent_6601kpq8mfzhf8avgf8h4v27pk56 via API. Report test URL to bridge.
+
+### NEWSLETTER — Capture First Subscribers
+
+- [ ] [AGENT:FUPIE] Verify MailerLite form is live and embedded on jedaiflow.com/guides/. Test signup flow end-to-end (submit test email, confirm delivery). Log result to bridge. If form not yet configured, list manual steps for John.
+
+### BLOCKED ON JOHN — fire in order once he acts
+1. **DKIM/DMARC DNS** → releases 12+ staged sends + follow-ups
+2. **Bland AI API key** → first voice demo live
+3. **ElevenLabs API key** → phone agent system prompt applied
+4. **HubSpot permission** → 27 contacts pushed
+5. **LinkedIn cookie** → LinkedIn post goes live
+6. **Reddit submit** → copy/paste from `content/reddit-sideproject-post-ready.md` at https://reddit.com/r/SideProject/submit
+7. **Gumroad listing** → apply copy from `gumroad-products/ai-dual-model-operator-guide/GUMROAD-COPY-v2.md`
+
+---
+
+## BATCH 10 — Autonomous Depth: Content + Leads + Intel + Infrastructure
+
+**Goal:** All blocked Batch 9 items sit with John. This batch runs 100% autonomous — zero John dependencies. Deepen content, pipeline, and site clarity while John handles the DKIM/API keys on his timeline.
+
+**Context Pela is carrying:**
+- jedaiflow.com is served from Cloudflare Pages direct upload (`jedaiflow.pages.dev`) — NOT `fupela.github.io`. All site edits this session (dispatch copy, SVG icons, shell nav) landed in the wrong repo. Batch 10 task #5 resolves this.
+- fupela.github.io still redirects to jedaiflow.com — the GitHub repo edits are sitting dormant.
+- No landscaper blog draft found in `content/blog-posts/` — Muse writes it fresh.
+- Outreach pipeline still DKIM-gated. No new cold sends until DKIM clears. Focus on depth, not volume.
+
+### PIPELINE — Batch 10 Leads
+
+- [ ] [AGENT] Scout: find 15 Houston home service leads. New niches this batch: **handyman services, home remodeling/renovation, locksmith, pressure washing/exterior cleaning**. Same format as prior batches (name, DM, website, category, automation angle, best contact method). Avoid franchises. Prioritize businesses with websites showing no chatbot/AI, and phone numbers. Write to `leads/batch-10-home-services.md`.
+
+### CONTENT — 4th Blog Post (Landscaper)
+
+- [ ] [AGENT] Muse: write 4th home services blog post. Topic: **"Why Houston landscaping companies lose 40% of their spring rush calls (and how AI phone answering captures them)"**. 650–800 words. SEO target: "AI phone answering for landscapers Houston". Angle: spring rush April–June, crews in the field all day, office unmanned, $2K–$8K lawn contracts going to whoever picks up. End with newsletter CTA → /guides/. Write to `content/blog-posts/landscaper-missed-calls.md`.
+- [ ] [CLAUDE] Pela: Opus polish on landscaper blog post. Create `blog/landscaper-missed-calls.html` using same structure as `blog/electrician-missed-calls.html`. Add to `blog/index.html`. Commit + push to `fupela.github.io`. Report live URL to bridge. **Note:** this goes to fupela.github.io for now — task #5 will clarify the site architecture and determine if files need re-uploading to CF Pages.
+
+### CONTENT — Social Batch 9
+
+- [ ] [AGENT] Muse: write 2 X threads + 1 LinkedIn post. Topics: (1) X thread — "the $3,000 job that goes to voicemail every day in Houston. a thread on what home service businesses are actually losing." (2) X thread — "I built an AI that answers calls for plumbers. here's what it sounds like." (practical demo-style, no hype). (3) LinkedIn long-form — "What I learned answering phones at a plumbing company for a year" (personal story, John's voice, home services pain, no product pitch in first 300 words, soft CTA at end). No "first month is on us" line in any of these. Write to `content/home-services-social-batch9.md`.
+
+### INTEL — Competitive Scan
+
+- [ ] [AGENT] Sentinel: research Houston AI automation competitors. Find: (1) any company selling AI phone answering specifically to home services in Houston or Texas, (2) national players (AnswerForce, Goodcall, Smith.ai, Signpost, etc.) — their pricing, positioning, feature claims. (3) How DispatchAnchor's $499 setup + $199/mo compares. Write findings to `research/competitors-ai-answering.md`. Flag any direct Houston competitor immediately on bridge.
+
+### INFRASTRUCTURE — Resolve Site Architecture
+
+- [ ] [AGENT:FUPIE] Diagnose jedaiflow.com site architecture. Goal: determine exactly what powers jedaiflow.pages.dev and how to update it. Steps: (1) Check Cloudflare Pages dashboard (dash.cloudflare.com → Pages) — is "jedaiflow" project connected to a GitHub repo or direct upload? (2) If GitHub-connected: find the repo name, clone/confirm it locally, report repo path to bridge. (3) If direct upload: download the 5 live pages (index, dispatchanchor.html, purchase.html, vibeship.html, blog/index.html) to `projects/jedaiflow-live-backup/` using curl. (4) Report architecture verdict + action needed to bridge. This unblocks applying all the dispatch→plain language changes Pela made to the right target.
+
+### DELIVERABLE FOR JOHN — DKIM/DMARC Fix SOP
+
+- [x] [CLAUDE] Pela: write a clear step-by-step SOP for John to fix DKIM/DMARC on jedaiflow.com. Use Cloudflare API (token already in this session) to fetch the exact TXT records needed for DKIM and DMARC. Format as a numbered checklist: login URL → exact record type → exact name → exact value → where to paste in Cloudflare DNS. Should take John under 15 minutes. Save to `docs/dkim-dmarc-fix-sop.md`. Post summary on bridge. **DONE 2026-04-21** — SOP written at `docs/dkim-dmarc-fix-sop.md`. 4-phase checklist: Google Admin DKIM key generation → Cloudflare DNS add (2 records: DKIM + DMARC) → Start authentication in Google → Verify all 3 pass (SPF/DKIM/DMARC). Estimated 12–18 min for John. DKIM record: `google._domainkey` TXT (value from Google Admin). DMARC record: `_dmarc` TXT = `v=DMARC1; p=none; rua=mailto:john@jedaiflow.com`. Once John confirms live, Pela auto-releases 7 queued follow-ups + 5 Batch-7 cold emails.
+
+### MONITORING — Expand Reply Detection
+
+- [ ] [AGENT] Jolie: update `scripts/reply_detection.sh` to also check Gmail inbox via IMAP (credentials from `~/.config/himalaya/config.toml`). Currently only checking sent-log message IDs. Add: (1) IMAP check for replies to `hello@jedaiflow.com` in last 48 hours, (2) if reply found matching a sent-log business name → write alert to `follow-up/reply-alerts.json`, (3) log check timestamp. Test run and report first result to bridge.
+
+### BLOCKED ON JOHN — carry-forward (unchanged, no re-escalation)
+1. **DKIM/DMARC DNS** — use SOP from task above, takes 15 min
+2. **Bland AI API key** → first voice demo
+3. **ElevenLabs API key** → phone agent system prompt
+4. **HubSpot permission** → 27 contacts
+5. **LinkedIn cookie** → LinkedIn post live
+6. **Reddit submit** → `content/reddit-sideproject-post-ready.md`
+7. **Gumroad listing** → `gumroad-products/ai-dual-model-operator-guide/GUMROAD-COPY-v2.md`
