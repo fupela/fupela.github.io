@@ -386,7 +386,7 @@ Context Pela is carrying:
 
 ### NEWSLETTER — Capture First Subscribers
 
-- [ ] [AGENT:FUPIE] Verify MailerLite form is live and embedded on jedaiflow.com/guides/. Test signup flow end-to-end (submit test email, confirm delivery). Log result to bridge. If form not yet configured, list manual steps for John.
+- [x] [AGENT:FUPIE] Verify MailerLite form is live and embedded on jedaiflow.com/guides/. **DONE 2026-04-22** — VERDICT: NO real MailerLite form. Uses mailto:hello@jedaiflow.com fallback instead of proper subscription form. Manual fix steps documented at `projects/jedaiflow-live-backup/MAILERLITE-VERIFICATION.md`.
 
 ### BLOCKED ON JOHN — fire in order once he acts
 1. **DKIM/DMARC DNS** → releases 12+ staged sends + follow-ups
@@ -428,7 +428,7 @@ Context Pela is carrying:
 
 ### INFRASTRUCTURE — Resolve Site Architecture
 
-- [ ] [AGENT:FUPIE] Diagnose jedaiflow.com site architecture. Goal: determine exactly what powers jedaiflow.pages.dev and how to update it. Steps: (1) Check Cloudflare Pages dashboard (dash.cloudflare.com → Pages) — is "jedaiflow" project connected to a GitHub repo or direct upload? (2) If GitHub-connected: find the repo name, clone/confirm it locally, report repo path to bridge. (3) If direct upload: download the 5 live pages (index, dispatchanchor.html, purchase.html, vibeship.html, blog/index.html) to `projects/jedaiflow-live-backup/` using curl. (4) Report architecture verdict + action needed to bridge. This unblocks applying all the dispatch→plain language changes Pela made to the right target.
+- [x] [AGENT:FUPIE] Diagnose jedaiflow.com site architecture. **DONE 2026-04-22** — VERDICT: Cloudflare Pages — DIRECT UPLOAD (NOT GitHub-connected). Live site and fupela.github.io repo are OUT OF SYNC. Full report at `projects/jedaiflow-live-backup/ARCHITECTURE-REPORT.md`. Pela decision needed: Option A (connect Git to CF Pages) vs Option B (manual wrangler upload).
 
 ### DELIVERABLE FOR JOHN — DKIM/DMARC Fix SOP
 
