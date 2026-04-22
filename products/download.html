@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Downloads — Jedai Flow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0a0e1a; color: #e2e8f0; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+    .brand { text-align: center; margin-bottom: 16px; }
+    .brand span { font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; background: linear-gradient(135deg, #338dff, #00d4aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h1 { text-align: center; font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .subtitle { text-align: center; color: #94a3b8; font-size: 18px; margin-bottom: 48px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 48px; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card { background: #0f1629; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; }
+    .card.featured { border-color: rgba(0,212,170,0.3); grid-column: 1 / -1; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; width: fit-content; }
+    .badge-blue { background: rgba(51,141,255,0.1); color: #338dff; }
+    .badge-green { background: rgba(0,212,170,0.1); color: #00d4aa; }
+    .badge-purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+    .badge-yellow { background: rgba(234,179,8,0.1); color: #eab308; }
+    .badge-gradient { background: linear-gradient(135deg, #338dff, #00d4aa); color: #0a0e1a; }
+    .card h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .card p { color: #94a3b8; font-size: 14px; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+    .btn-row { display: flex; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; flex: 1; padding: 14px 16px; border-radius: 12px; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; transition: all 0.2s; }
+    .btn-blue { background: #338dff; } .btn-blue:hover { background: #1a6df5; }
+    .btn-teal { background: #00d4aa; color: #0a0e1a; } .btn-teal:hover { background: #00b894; }
+    .btn-gradient { background: linear-gradient(135deg, #338dff, #00d4aa); } .btn-gradient:hover { opacity: 0.9; }
+    .help { text-align: center; color: #64748b; font-size: 14px; margin-top: 32px; }
+    .help a { color: #338dff; text-decoration: none; } .help a:hover { text-decoration: underline; }
+    .format-label { font-size: 11px; opacity: 0.7; margin-left: 4px; }
+    .btn-outline { background: transparent; border: 1px solid #00d4aa; color: #00d4aa; } .btn-outline:hover { background: rgba(0,212,170,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand"><span>Jedai Flow</span></div>
+    <h1>Thank You for Your Purchase!</h1>
+    <p class="subtitle">Download your PDF guides and video walkthroughs below.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge badge-blue">STARTER</span>
+        <h3>Automation Guide</h3>
+        <p>Your complete beginner's guide to AI automation. Tools, first workflow, 10 high-ROI automations, and an ROI calculator.</p>
+        <div class="btn-row">
+          <a href="d-934797adeea6/Jedai-Flow-Automation-Guide.pdf" download class="btn btn-blue">PDF Guide</a>
+          <a href="d-934797adeea6/Jedai-Flow-Automation-Guide-Video.mp4" target="_blank" class="btn btn-teal">Watch</a>
+          <a href="d-934797adeea6/Jedai-Flow-Automation-Guide-Video.mp4" download class="btn btn-outline">Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-green">POPULAR</span>
+        <h3>Blueprint Pack</h3>
+        <p>10 ready-to-deploy automation blueprints with step-by-step Make.com instructions, email templates, and flow diagrams.</p>
+        <div class="btn-row">
+          <a href="d-934797adeea6/Jedai-Flow-Blueprint-Pack.pdf" download class="btn btn-blue">PDF Guide</a>
+          <a href="d-934797adeea6/Jedai-Flow-Blueprint-Pack-Video.mp4" target="_blank" class="btn btn-teal">Watch</a>
+          <a href="d-934797adeea6/Jedai-Flow-Blueprint-Pack-Video.mp4" download class="btn btn-outline">Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-purple">BUSINESS</span>
+        <h3>AI Side Hustle Guide</h3>
+        <p>Start selling AI automation services. Niches, pricing, cold email scripts, audit templates, and a 30-day launch plan.</p>
+        <div class="btn-row">
+          <a href="d-934797adeea6/Jedai-Flow-Side-Hustle-Guide.pdf" download class="btn btn-blue">PDF Guide</a>
+          <a href="d-934797adeea6/Jedai-Flow-Side-Hustle-Guide-Video.mp4" target="_blank" class="btn btn-teal">Watch</a>
+          <a href="d-934797adeea6/Jedai-Flow-Side-Hustle-Guide-Video.mp4" download class="btn btn-outline">Download</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-yellow">ADVANCED</span>
+        <h3>Mastery Guide</h3>
+        <p>Advanced strategies: AI agents, API integrations, error handling, multi-channel flows, and 20 production-ready prompts.</p>
+        <div class="btn-row">
+          <a href="d-934797adeea6/Jedai-Flow-Mastery-Guide.pdf" download class="btn btn-blue">PDF Guide</a>
+          <a href="d-934797adeea6/Jedai-Flow-Mastery-Guide-Video.mp4" target="_blank" class="btn btn-teal">Watch</a>
+          <a href="d-934797adeea6/Jedai-Flow-Mastery-Guide-Video.mp4" download class="btn btn-outline">Download</a>
+        </div>
+      </div>
+
+      <div class="card featured">
+        <span class="badge badge-gradient">BEST VALUE — ULTIMATE BUNDLE</span>
+        <h3>All 4 Products — PDFs + Videos</h3>
+        <p>You have access to everything. Download all four guides and video walkthroughs below.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+          <a href="d-934797adeea6/Jedai-Flow-Automation-Guide.pdf" download class="btn btn-gradient" style="font-size:12px;">Automation PDF</a>
+          <a href="d-934797adeea6/Jedai-Flow-Automation-Guide-Video.mp4" target="_blank" class="btn btn-gradient" style="font-size:12px;">Watch Automation</a>
+          <a href="d-934797adeea6/Jedai-Flow-Automation-Guide-Video.mp4" download class="btn btn-outline" style="font-size:12px;">Download Video</a>
+          <a href="d-934797adeea6/Jedai-Flow-Blueprint-Pack.pdf" download class="btn btn-gradient" style="font-size:12px;">Blueprint PDF</a>
+          <a href="d-934797adeea6/Jedai-Flow-Blueprint-Pack-Video.mp4" target="_blank" class="btn btn-gradient" style="font-size:12px;">Watch Blueprint</a>
+          <a href="d-934797adeea6/Jedai-Flow-Blueprint-Pack-Video.mp4" download class="btn btn-outline" style="font-size:12px;">Download Video</a>
+          <a href="d-934797adeea6/Jedai-Flow-Side-Hustle-Guide.pdf" download class="btn btn-gradient" style="font-size:12px;">Side Hustle PDF</a>
+          <a href="d-934797adeea6/Jedai-Flow-Side-Hustle-Guide-Video.mp4" target="_blank" class="btn btn-gradient" style="font-size:12px;">Watch Side Hustle</a>
+          <a href="d-934797adeea6/Jedai-Flow-Side-Hustle-Guide-Video.mp4" download class="btn btn-outline" style="font-size:12px;">Download Video</a>
+          <a href="d-934797adeea6/Jedai-Flow-Mastery-Guide.pdf" download class="btn btn-gradient" style="font-size:12px;">Mastery PDF</a>
+          <a href="d-934797adeea6/Jedai-Flow-Mastery-Guide-Video.mp4" target="_blank" class="btn btn-gradient" style="font-size:12px;">Watch Mastery</a>
+          <a href="d-934797adeea6/Jedai-Flow-Mastery-Guide-Video.mp4" download class="btn btn-outline" style="font-size:12px;">Download Video</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="help">
+      <p>Need help? Email us at <a href="mailto:john@jedaiflow.com">john@jedaiflow.com</a></p>
+      <p style="margin-top:8px;"><a href="https://jedaiflow.com">← Back to jedaiflow.com</a></p>
+    </div>
+  </div>
+</body>
+</html>

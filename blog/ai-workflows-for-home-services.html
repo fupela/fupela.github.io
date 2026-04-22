@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 AI Workflows I'm Using to Help Home-Service Businesses Answer Leads Faster</title>
+  <meta name="description" content="A practical field note on Claude, Gemini, OpenClaw, and other AI tools for home-service businesses. Learn the workflows that turn missed calls into booked jobs." />
+  <link rel="canonical" href="https://jedaiflow.com/blog/ai-workflows-for-home-services" />
+  <meta property="og:title" content="7 AI Workflows I'm Using to Help Home-Service Businesses Answer Leads Faster" />
+  <meta property="og:description" content="Practical AI workflows for home-service businesses: faster lead response, better follow-up, and content that actually sells." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jedaiflow.com/blog/ai-workflows-for-home-services" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300c9ff'/><stop offset='100%25' stop-color='%2300e5a0'/></linearGradient></defs></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      padding: 96px 24px 54px;
+      background: radial-gradient(circle at top, rgba(0,201,255,0.14), transparent 35%), #0a0a12;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    h1 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+      margin-bottom: 18px;
+      font-weight: 900;
+      max-width: 14ch;
+    }
+    .subtitle {
+      max-width: 680px;
+      font-size: 18px;
+      color: #a4a4c2;
+      margin-bottom: 28px;
+    }
+    .meta {
+      font-size: 13px;
+      color: #70708a;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 84px;
+    }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-top: 48px;
+    }
+    article h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 44px 0 14px;
+      color: #ffffff;
+      letter-spacing: -0.4px;
+    }
+    article p {
+      font-size: 17px;
+      margin-bottom: 18px;
+      color: #d7d7e9;
+    }
+    article ul, article ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    article li {
+      margin-bottom: 10px;
+      color: #d7d7e9;
+    }
+    article strong { color: #ffffff; }
+    article a { color: #00c9ff; text-decoration: underline; }
+    .callout {
+      margin: 28px 0;
+      padding: 22px 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,201,255,0.22);
+      background: rgba(15,15,26,0.85);
+    }
+    .callout .label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 8px;
+    }
+    .cta {
+      margin-top: 38px;
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(0,201,255,0.18), rgba(0,229,160,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cta h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .cta p {
+      margin-bottom: 16px;
+      color: #c9c9df;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #0a0a12;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .cta a:hover { opacity: 0.92; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "7 AI Workflows I'm Using to Help Home-Service Businesses Answer Leads Faster",
+    "description": "A practical field note on Claude, Gemini, OpenClaw, and other AI tools for home-service businesses. Learn the workflows that turn missed calls into booked jobs.",
+    "author": { "@type": "Organization", "name": "Jedaiflow" },
+    "publisher": { "@type": "Organization", "name": "Jedaiflow", "url": "https://jedaiflow.com" },
+    "datePublished": "2026-04-18",
+    "dateModified": "2026-04-18"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- JF:NAV:START v1 -->
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/#how" class="jf-shell-nav-hide-sm">Product</a>
+      <a href="/#pricing" class="jf-shell-nav-hide-sm">Pricing</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="/#demo" class="jf-shell-nav-cta">Book demo →</a>
+    </div>
+  </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <!-- JF:NAV:END -->
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Field Notes · AI / Home Services</div>
+      <h1>7 AI workflows I'm using to help home-service businesses answer leads faster</h1>
+      <p class="subtitle">
+        Missed calls are missed revenue. The real win with AI isn't novelty — it's speed, consistency, and turning every lead into a conversation.
+      </p>
+      <div class="meta">April 18, 2026 · By Jedaiflow · 7 min read</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article>
+      <p>
+        I’ve been spending a lot of time thinking about what actually matters in AI right now. Not hype. Not benchmark theater. Just the practical stuff that makes a business run better.
+      </p>
+      <p>
+        For home-service businesses — plumbers, HVAC companies, electricians, landscapers — the first place AI earns its keep is simple: <strong>answer faster, follow up better, and never let a lead go cold</strong>.
+      </p>
+      <p>
+        Here are the seven workflows I think are most useful right now.
+      </p>
+
+      <h2>1. Instant lead response</h2>
+      <p>
+        If a lead comes in and nobody replies for 10–15 minutes, the chance of losing that job goes way up. The easiest AI win is an automatic reply that confirms the request, asks one or two qualifying questions, and nudges the person toward the next step.
+      </p>
+      <p>
+        That’s the idea behind <a href="/shipclean/">ShipClean</a>: a clean, simple system that helps service businesses respond fast enough to stay in the running.
+      </p>
+
+      <h2>2. Call handling for after-hours and missed calls</h2>
+      <p>
+        A lot of the revenue leak is not even from form fills — it’s from missed phone calls. A voice agent can answer the obvious stuff, capture the job details, and make sure the lead is not lost just because the office is busy.
+      </p>
+      <p>
+        For home services, that matters because customers usually call when they need help now.
+      </p>
+
+      <h2>3. Better follow-up sequences</h2>
+      <p>
+        Most businesses don’t lose because the first message was bad. They lose because the second, third, and fourth follow-up never happened.
+      </p>
+      <p>
+        AI makes it easy to create a follow-up sequence that sounds human, stays on-brand, and adapts based on what the lead actually said.
+      </p>
+
+      <h2>4. Claude for drafting, refining, and simplifying</h2>
+      <p>
+        One of the best uses of Claude is not “write me something from nothing.” It’s: give me the raw notes, make them clearer, tighten the wording, and give me 3 stronger versions.
+      </p>
+      <p>
+        The better prompt is often something like:
+      </p>
+      <div class="callout">
+        <div class="label">Prompt pattern</div>
+        “Take this draft, remove fluff, make it more specific, and give me 3 versions: one direct, one friendly, and one more sales-focused.”
+      </div>
+      <p>
+        That one pattern alone saves a ton of time on blog posts, outreach, and landing page copy.
+      </p>
+
+      <h2>5. Gemini or ChatGPT for fast brainstorming</h2>
+      <p>
+        When I want quick options, structure, or a second opinion, tools like Gemini and ChatGPT are great for speed. I like using them to generate angles, list objections, and pressure-test a headline before I commit to it.
+      </p>
+      <p>
+        The key is not asking for “content.” Ask for decisions, alternatives, or tradeoffs. That gets you something useful much faster.
+      </p>
+
+      <h2>6. OpenClaw / Hermes for repeatable agent workflows</h2>
+      <p>
+        The real power move is not just chatting with AI — it’s building repeatable workflows. That’s where agent systems like OpenClaw and Hermes start to matter.
+      </p>
+      <p>
+        If a task happens every day or every week, I want it automated, delegated, or at least made predictable. That includes lead reviews, content drafts, blog formatting, and social post preparation.
+      </p>
+
+      <h2>7. Turn every insight into content</h2>
+      <p>
+        If I learn something useful, it shouldn’t stay trapped in a chat window. It should become a blog post, an X post, a service page improvement, or a better sales script.
+      </p>
+      <p>
+        That’s how you compound. You learn once, then reuse the insight in five places.
+      </p>
+
+      <div class="cta">
+        <h3>What this means for Jedaiflow</h3>
+        <p>
+          The best product is still the one that saves a business owner time and makes more calls turn into booked jobs. That’s why we’re focused on ShipClean and our AI lead response systems for home-service businesses.
+        </p>
+        <p>
+          If you run a plumbing, HVAC, electrical, or other local service business, the goal is simple: answer faster, follow up better, and keep your pipeline moving.
+        </p>
+        <a href="/shipclean/">See ShipClean</a>
+      </div>
+
+      <p>
+        I’m going to keep sharing the practical stuff as I learn it — tools, prompts, workflows, and the bits that actually help a business grow.
+      </p>
+    </article>
+  </main>
+
+  <!-- JF:FOOTER:START v1 -->
+  <footer class="jf-shell-footer">
+    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+    <p class="jf-shell-footer-tagline">
+      24/7 AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="jf-shell-footer-links">
+      <a href="/#how">Product</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+  </footer>
+  <!-- JF:FOOTER:END -->
+
+</body>
+</html>

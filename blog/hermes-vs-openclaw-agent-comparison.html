@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hermes vs. OpenClaw: I Use Both. Here's What Each Actually Does.</title>
+  <meta name="description" content="A real breakdown of Hermes Agent (OpenAI/Hermes CLI) vs. OpenClaw, based on running both daily for home-service lead generation, content, and voice agents." />
+  <link rel="canonical" href="https://jedaiflow.com/blog/hermes-vs-openclaw-agent-comparison.html" />
+  <meta property="og:title" content="Hermes vs. OpenClaw: I Use Both. Here's What Each Actually Does." />
+  <meta property="og:description" content="Most people pick the wrong AI agent stack. I run Hermes + OpenClaw side-by-side. This is where each wins." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jedaiflow.com/blog/hermes-vs-openclaw-agent-comparison.html" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300c9ff'/><stop offset='100%25' stop-color='%2300e5a0'/></linearGradient></defs></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      padding: 96px 24px 54px;
+      background: radial-gradient(circle at top, rgba(0,201,255,0.15), transparent 35%), #0a0a12;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    h1 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+      margin-bottom: 18px;
+      font-weight: 900;
+      max-width: 14ch;
+    }
+    .subtitle {
+      max-width: 700px;
+      font-size: 18px;
+      color: #a4a4c2;
+      margin-bottom: 28px;
+    }
+    .meta {
+      font-size: 13px;
+      color: #70708a;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 84px;
+    }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-top: 48px;
+    }
+    article h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 44px 0 14px;
+      color: #ffffff;
+      letter-spacing: -0.4px;
+    }
+    article p {
+      font-size: 17px;
+      margin-bottom: 18px;
+      color: #d7d7e9;
+    }
+    article ul, article ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    article li {
+      margin-bottom: 10px;
+      color: #d7d7e9;
+    }
+    article strong { color: #ffffff; }
+    article a { color: #00c9ff; text-decoration: underline; }
+    article code {
+      font-family: 'SFMono-Regular', 'Fira Code', monospace;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 15px;
+      color: #00e5a0;
+    }
+    article pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 18px 22px;
+      overflow-x: auto;
+      margin-bottom: 22px;
+    }
+    article pre code { background: none; padding: 0; }
+
+    .callout {
+      border-left: 3px solid #00c9ff;
+      background: rgba(0,201,255,0.06);
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin: 24px 0;
+      font-size: 16px;
+      color: #e0e0f4;
+    }
+    .callout strong { color: #ffffff; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 14px;
+      text-align: left;
+    }
+    th {
+      color: #a4a4c2;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.02);
+    }
+    td { color: #d7d7e9; }
+
+    .cta {
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      padding: 28px;
+      margin-top: 48px;
+      text-align: center;
+      background: rgba(255,255,255,0.02);
+    }
+    .cta-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .cta-body {
+      font-size: 16px;
+      color: #a4a4c2;
+      margin-bottom: 18px;
+    }
+    .cta a {
+      display: inline-block;
+      background: linear-gradient(90deg, #00c9ff, #00e5a0);
+      color: #0a0a12;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="eyebright" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#00c9ff;font-weight:800;margin-bottom:12px;">Agent Stack Deep Dive</p>
+    <h1>Hermes vs. OpenClaw</h1>
+    <p class="subtitle">I use both every day for home-service automation, content, and voice agents. This is where each one wins — and why I don't pick just one.</p>
+    <p class="meta">April 22, 2026 · by Jedaiflow</p>
+  </div>
+</div>
+
+<main class="container">
+  <article>
+    <p>Most people building with AI agents pick the wrong stack. They either:</p>
+    <ul>
+      <li>Try to make one tool do everything and hit walls</li>
+      <li>Over-optimize for code when they actually need voice + social execution</li>
+      <li>Or they bolt together 12 different services and wonder why nothing talks to each other</li>
+    </ul>
+    <p>I've been running a <strong>three-agent system</strong> daily since April 2025 for <a href="https://jedaiflow.com">Jedaiflow</a> — a Houston home-services AI lead-response agency. The stack is:</p>
+    <ul>
+      <li><strong>Fupie</strong> (OpenClaw + GLM-5.1) — infrastructure, orchestration, code, pipeline wiring</li>
+      <li><strong>Pela</strong> (Claude Code via OpenClaw + Cowork) — strategy, quality polish, external integrations</li>
+      <li><strong>Jolie</strong> (Hermes Agent — Kimi K2.6 on Ollama Max) — social media execution, daily content, bridge watch</li>
+    </ul>
+    <p class="callout"><strong>The punchline:</strong> Hermes and OpenClaw do completely different jobs. Comparing them head-to-head is like comparing Slack and PostgreSQL — you wouldn't replace one with the other. You'd wire them together.</p>
+
+    <h2>What Hermes Agent Actually Is</h2>
+    <p>Hermes is a CLI-first agent framework built around <strong>function calling + persistent memory</strong>. It runs on top of any OpenAI-compatible API (I use Ollama Max locally with Kimi K2.6 cloud, ~$100/mo). Its killer features:</p>
+    <ul>
+      <li><strong>Skills system:</strong> Reusable task files with exact commands, pitfalls, and verification steps. I have skills for cron automation, Bridge watching, social posting, Maya bridge maintenance — all versioned and patchable.</li>
+      <li><strong>Cross-session memory:</strong> `memory.md` and `user profile` files survive between sessions. Jolie remembers my timezone, voice preferences, and that I sign deals myself.</li>
+      <li><strong>Cron jobs:</strong> Scheduled tasks run autonomously — bridge checks every 2 hours, X news scans, KB sync for Maya.</li>
+      <li><strong>Telegram + SMS delivery:</strong> Cron outputs and alerts land directly in my phone.</li>
+      <li><strong>Subagent delegation:</strong> Spawns isolated subagents for parallel work (e.g., Scout lead research + Muse blog drafting simultaneously).</li>
+      <li><strong>File-based everything:</strong> Configs, state, outputs, logs — all files on disk. Transparent, versionable, easy to debug.</li>
+    </ul>
+    <p>Where Hermes <strong>shines</strong>: Daily execution, social media delivery, scheduled maintenance, voice agent monitoring, and anything that needs to run on a clock without human babysitting.</p>
+    <p>Where Hermes <strong>struggles</strong>: Deep architecture decisions, complex multi-step coding that spans sessions, and high-stakes writing polish. It can code, but it's not its specialty. It can draft tweets, but I route final quality passes to Pela.</p>
+
+    <h2>What OpenClaw Actually Is</h2>
+    <p>OpenClaw is a <strong>multi-agent orchestration system</strong> designed for running independent specialist agents from a central hub. Think of it as an agent team manager. Its killer features:</p>
+    <ul>
+      <li><strong>Specialist agent roster:</strong> I have 7 agents: Scout (lead research), Quill (copy), Forge (code), Muse (content), Echo (follow-up), Sentinel (competitor watching), Anvil (QA).</li>
+      <li><strong>Model routing:</strong> Each agent gets a specific model. Scout runs Gemma 4 via OpenRouter, Forge runs GPT-5.4, the main agent routes through whatever's fastest.</li>
+      <li><strong>Webchat interface:</strong> You can chat with any agent in a browser. Useful for debugging and quick tasks.</li>
+      <li><strong>Task-based execution:</strong> Agents run to completion and produce file artifacts. Great for batch work.</li>
+      <li><strong>Git commit integration:</strong> Workspace changes get committed to git automatically. History is tracked.</li>
+    </ul>
+    <p>Where OpenClaw <strong>shines</strong>: Orchestrating multiple AI workers on parallel tasks, maintaining agent state across reboots, and providing a structured hub for team-scale work.</p>
+    <p>Where OpenClaw <strong>struggles</strong>: Direct user interaction (no native mobile delivery), cron scheduling (jobs exist but are fragile), and social media execution (the X posting path requires external scripts). It can do the work, but it won't text you when it's done.</p>
+
+    <h2>The Real Comparison Table</h2>
+    <table>
+      <tr><th>Use Case</th><th>Hermes</th><th>OpenClaw</th></tr>
+      <tr><td>Daily social media posting</td><td>✅ Native (X, LinkedIn, Reddit)</td><td>❌ Needs external script</td></tr>
+      <tr><td>Cron / scheduled work</td><td>✅ First-class cron system</td><td>⚠️ Fragile, needs babysitting</td></tr>
+      <tr><td>Lead research (15 leads)</td><td>⚠️ Can do it, slower</td><td>✅ Scout agent, parallel</td></tr>
+      <tr><td>Code architecture</td><td>⚠️ Single-turn, no session memory</td><td>✅ Multi-agent, git-tracked</td></tr>
+      <tr><td>Voice agent (phone calls)</td><td>✅ Maya bridge lives here</td><td>❌ Not its domain</td></tr>
+      <tr><td>Quality writing polish</td><td>⚠️ Drafts fine, needs Claude pass</td><td>✅ Pela (Claude) handles final</td></tr>
+      <tr><td>Telegram / SMS alerts</td><td>✅ Built-in delivery</td><td>❌ No native messaging</td></tr>
+      <tr><td>Cross-agent bridge (team chat)</td><td>✅ Bridge JSON file</td><td>✅ Also reads/writes bridge</td></tr>
+      <tr><td>Cost</td><td>$100/mo (Ollama Max + tools)</td><td>$20/mo (Claude Pro)</td></tr>
+    </table>
+
+    <h2>How I Actually Use Them Together</h2>
+    <p>This is the part most people miss. I don't choose one. I wire them into a <strong>two-platform, three-agent team</strong>:</p>
+    <pre><code>
+┌─────────────────┐     ┌─────────────────┐
+│   OpenClaw      │◄───►│   Cowork (Claude)│
+│   Mac Mini      │     │   Quality + APIs │
+│                 │     │                 │
+│  ├─ Fupie      │     │  ├─ Pela        │
+│  ├─ Scout      │     │  ├─ HubSpot      │
+│  ├─ Quill      │     │  ├─ MailerLite   │
+│  ├─ Forge      │     │  ├─ Gmail/Cal    │
+│  ├─ Muse       │     │  ├─ Chrome MCP   │
+│  ├─ Echo       │     │  └─ Slack        │
+│  └─ Sentinel   │     │                 │
+└─────────────────┘     └─────────────────┘
+         │                       │
+         └──────────┬────────────┘
+                    │
+         ┌──────────▼──────────┐
+         │   Hermes Agent       │
+         │   (Telegram/SMS)     │
+         │                      │
+         │  ├─ Jolie            │
+         │  ├─ Maya Bridge      │
+         │  ├─ X/LinkedIn/Reddit│
+         │  └─ Cron Jobs        │
+         └─────────────────────┘
+    </code></pre>
+    <p><strong>The bridge is a JSON file.</strong> When Jolie finishes her bridge check, she writes to <code>~/.openclaw/workspace/projects/agent-hq/mcp-bridge/messages.json</code>. Fupie reads that file, passes the message to Pela via Cowork, and Pela handles HubSpot, Gmail, or whatever external API is needed. Then Pela writes back to the bridge. Jolie picks it up on her next poll.</p>
+    <p>No real-time socket. No fancy pub/sub. A file on disk that three agents take turns reading and writing. It works because it's simple.</p>
+
+    <h2>When to Pick Hermes</h2>
+    <p>Pick Hermes if you need:</p>
+    <ul>
+      <li>A <strong>personal voice assistant</strong> (via Telegram or SMS) that remembers context across days</li>
+      <li><strong>Daily execution</strong> — social posts, content calendars, scheduled reports</li>
+      <li>A <strong>phone agent</strong> wired to Twilio (my Maya setup lives entirely in Hermes)</li>
+      <li><strong>Transparent file-based workflows</strong> — every config, skill, and log is a file you can git</li>
+      <li><strong>Cron-native</strong> — jobs run on schedule without external schedulers</li>
+    </ul>
+
+    <h2>When to Pick OpenClaw</h2>
+    <p>Pick OpenClaw if you need:</p>
+    <ul>
+      <li><strong>Multiple specialist agents</strong> working in parallel (research + writing + QA simultaneously)</li>
+      <li><strong>Model flexibility</strong> — route different tasks to different LLMs automatically</li>
+      <li><strong>Git-tracked workspace</strong> — all agent output commits to a repo</li>
+      <li><strong>Webchat access</strong> — interact with agents via browser UI</li>
+      <li><strong>Deep code architecture</strong> — agents that build, test, and commit code across sessions</li>
+    </ul>
+
+    <h2>When You Need Both (Most People Do)</h2>
+    <p>The real power is the <strong>bridge</strong>. If your setup looks like this, you probably need both:</p>
+    <ul>
+      <li>You want agents to post social content <strong>and</strong> code infrastructure</li>
+      <li>You want voice calls answered by AI <strong>and</strong> follow-up emails triggered automatically</li>
+      <li>You want quality polish on outreach writing <strong>and</strong> execution on a daily clock</li>
+      <li>You want the team to text you updates <strong>and</strong> push leads into your CRM</li>
+    </ul>
+
+    <h2>The Bottom Line</h2>
+    <p>Hermes is your <strong>execution layer</strong> — the thing that runs on a schedule, texts you updates, and talks to the world. OpenClaw is your <strong>orchestration layer</strong> — the thing that assigns work to specialist agents, routes models, and tracks code.</p>
+    <p>Neither replaces the other. The teams that get it working fastest are the ones that wire them together with a bridge, assign clear roles, and stop trying to make one tool do everything.</p>
+
+    <div class="cta">
+      <p class="cta-title">Want this setup for your business?</p>
+      <p class="cta-body">We build dual-agent stacks for Houston home-service businesses — lead response, phone agents, and daily content. One call to see what's possible.</p>
+      <a href="https://jedaiflow.com">See Services at Jedaiflow</a>
+    </div>
+  </article>
+</main>
+
+</body>
+</html>

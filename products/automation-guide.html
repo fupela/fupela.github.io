@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Automation Guide | Jedai Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --bg-card: #f8fafc;
+  --bg-card-alt: #f0f7ff;
+  --bg-highlight: #f0f7ff;
+  --text: #1a1a2e;
+  --text-dim: #5a6278;
+  --text-bright: #1a1a2e;
+  --accent: #338dff;
+  --accent-light: rgba(51, 141, 255, 0.1);
+  --green: #00d4aa;
+  --green-light: rgba(0, 212, 170, 0.1);
+  --yellow: #d4a017;
+  --red: #d94452;
+  --border: #e2e8f0;
+  --border-light: #cbd5e1;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── PRINT / PDF STYLES ────────────────────────────── */
+@page {
+  margin: 1in;
+  @top-left { content: "Jedai Flow"; font-family: 'Inter', sans-serif; font-size: 9pt; color: #94a3b8; }
+  @top-right { content: "The AI Automation Guide"; font-family: 'Inter', sans-serif; font-size: 9pt; color: #94a3b8; }
+  @bottom-center { content: counter(page); font-family: 'Inter', sans-serif; font-size: 9pt; color: #94a3b8; }
+}
+
+@media print {
+  html { font-size: 11pt; }
+  body { background: #fff; color: #1a1a2e; }
+  .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .toc, .chapter, .bonus-section { page-break-before: always; }
+  .no-break { page-break-inside: avoid; }
+  .card, .tool-card, .auto-card, .callout, .step { page-break-inside: avoid; }
+  a { color: #338dff; }
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── SECTION DIVIDER ────────────────────────────────── */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--green), transparent);
+  margin: 3rem 0;
+  border: none;
+  border-radius: 2px;
+}
+
+/* ── COVER PAGE ─────────────────────────────────────── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+.cover-content { position: relative; z-index: 1; }
+
+.brand {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--green));
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 800;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.cover h1 {
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text-bright);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.cover h1 span {
+  color: var(--accent);
+}
+
+.cover-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-dim);
+  font-weight: 400;
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.cover-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.cover-meta-item .icon {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-highlight);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.cover-divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  margin: 0 auto 2rem;
+  border-radius: 3px;
+}
+
+.cover-edition {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── TABLE OF CONTENTS ──────────────────────────────── */
+.toc {
+  padding: 4rem 0;
+}
+
+.toc h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.toc-list {
+  list-style: none;
+  counter-reset: toc-counter;
+}
+
+.toc-list li {
+  counter-increment: toc-counter;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-list li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.toc-list li a:hover { color: var(--accent); }
+
+.toc-list li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--mono);
+  min-width: 2.5rem;
+}
+
+.toc-list li a .toc-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.toc-list li a .toc-desc {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* ── CHAPTERS ───────────────────────────────────────── */
+.chapter { padding: 3rem 0 2rem; page-break-before: always; }
+
+.chapter-header {
+  background: #ffffff;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent), var(--green)) 1;
+  padding: 0 0 2rem 0;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.chapter-number {
+  font-family: var(--mono);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(51, 141, 255, 0.15);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.chapter-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.chapter-header p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  max-width: 600px;
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────── */
+h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 2.5rem 0 1rem;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 2rem 0 0.75rem;
+}
+
+p { margin-bottom: 1.25rem; }
+
+strong { color: var(--text-bright); font-weight: 600; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── CARDS ──────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.card.accent-border { border-left: 4px solid var(--accent); }
+.card.green-border { border-left: 4px solid var(--green); }
+.card.yellow-border { border-left: 4px solid var(--yellow); }
+.card.red-border { border-left: 4px solid var(--red); }
+
+.card h4 { margin-top: 0; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.card-grid .card { margin-bottom: 0; }
+
+/* ── TOOL CARDS ─────────────────────────────────────── */
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  page-break-inside: avoid;
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.tool-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.tool-card-header h4 { margin: 0; font-size: 1.15rem; }
+.tool-card-header .tool-tagline { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pros-cons ul { list-style: none; padding: 0; }
+
+.pros-cons li {
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.pros-cons li::before { flex-shrink: 0; font-size: 0.85rem; margin-top: 0.15rem; }
+
+.pros li::before { content: '+'; color: var(--green); font-weight: 700; }
+.cons li::before { content: '-'; color: var(--red); font-weight: 700; }
+
+.pricing-tag {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  margin-top: 0.5rem;
+}
+
+/* ── STEP BLOCKS ────────────────────────────────────── */
+.step {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  page-break-inside: avoid;
+}
+
+.step-number {
+  width: 38px;
+  height: 38px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.step-content { flex: 1; }
+.step-content h4 { margin-top: 0; }
+
+/* ── CODE BLOCKS ────────────────────────────────────── */
+.code-block {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  color: #2d3748;
+}
+
+.code-block .comment { color: #718096; }
+.code-block .string { color: #2563eb; }
+.code-block .keyword { color: #d94452; }
+.code-block .function { color: #7c3aed; }
+
+/* ── LISTS ──────────────────────────────────────────── */
+ul, ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.75rem;
+}
+
+li {
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.check-list li {
+  padding-left: 1.75rem;
+  position: relative;
+}
+
+ul.check-list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ── CALLOUTS ───────────────────────────────────────── */
+.callout {
+  background: var(--bg-highlight);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  page-break-inside: avoid;
+}
+
+.callout.tip { border-left-color: var(--green); background: rgba(0, 212, 170, 0.06); }
+.callout.warning { border-left-color: var(--yellow); background: rgba(212, 160, 23, 0.06); }
+.callout.important { border-left-color: var(--accent); background: #f0f7ff; }
+
+.callout-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.callout.tip .callout-label { color: var(--green); }
+.callout.warning .callout-label { color: var(--yellow); }
+.callout.important .callout-label { color: var(--accent); }
+
+/* ── TABLES ─────────────────────────────────────────── */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th {
+  background: var(--accent);
+  text-align: left;
+  padding: 0.85rem 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+td {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+/* ── AUTOMATION CARDS (Ch4) ───────────────────────── */
+.auto-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  page-break-inside: avoid;
+}
+
+.auto-card-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.auto-card h4 { margin-top: 0; font-size: 1.2rem; }
+
+.auto-card .roi-badge {
+  display: inline-block;
+  background: var(--green-light);
+  color: #0a8a6f;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.85rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+/* ── ROI CALCULATOR ─────────────────────────────────── */
+.formula-box {
+  background: #f5f5f5;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--text-bright);
+}
+
+.formula-box .label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-family: var(--font);
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+/* ── CHECKLIST ──────────────────────────────────────── */
+.checklist-container {
+  background: #ffffff;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+}
+
+.checklist-container h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.checklist-group {
+  margin-bottom: 1.5rem;
+}
+
+.checklist-group h4 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+.checklist-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.checklist-group input[type="checkbox"] {
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+/* ── FOOTER ─────────────────────────────────────────── */
+.guide-footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent), var(--green)) 1;
+  margin-top: 3rem;
+}
+
+.guide-footer .brand {
+  margin-bottom: 1rem;
+}
+
+.guide-footer p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.guide-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+  .cover h1 { font-size: 2rem; }
+  .chapter-header h2 { font-size: 1.5rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .pros-cons { grid-template-columns: 1fr; }
+  .step { flex-direction: column; gap: 0.75rem; }
+  .container { padding: 0 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     COVER PAGE
+     ════════════════════════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-content">
+    <div class="brand">
+      <span class="brand-icon">JF</span>
+      Jedai Flow
+    </div>
+    <h1>The AI Automation<br><span>Guide</span></h1>
+    <p class="cover-subtitle">The complete playbook for business owners who want to save 20+ hours per week, eliminate repetitive tasks, and scale with intelligent automation.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="icon">&#128218;</span>
+        <span>8 Chapters</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="icon">&#9881;</span>
+        <span>10 Ready-to-Build Automations</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="icon">&#10003;</span>
+        <span>Printable Checklists</span>
+      </div>
+    </div>
+    <div class="cover-divider"></div>
+    <p class="cover-edition">2026 Edition &mdash; jedaiflow.com</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     TABLE OF CONTENTS
+     ════════════════════════════════════════════════════════ -->
+<section class="toc" id="toc">
+  <div class="container">
+    <h2>Table of Contents</h2>
+    <ol class="toc-list">
+      <li><a href="#intro"><span class="toc-title">Introduction: What AI Automation Is &amp; Why It Matters Now</span></a></li>
+      <li><a href="#ch1"><span class="toc-title">The Automation Mindset</span><span class="toc-desc">Finding the 80/20</span></a></li>
+      <li><a href="#ch2"><span class="toc-title">The Tools Landscape</span><span class="toc-desc">7 platforms compared</span></a></li>
+      <li><a href="#ch3"><span class="toc-title">Your First Automation</span><span class="toc-desc">Step-by-step build</span></a></li>
+      <li><a href="#ch4"><span class="toc-title">10 High-ROI Automations Every Business Needs</span></a></li>
+      <li><a href="#ch5"><span class="toc-title">Measuring ROI</span><span class="toc-desc">Time, revenue, cost</span></a></li>
+      <li><a href="#ch6"><span class="toc-title">Common Mistakes &amp; How to Avoid Them</span></a></li>
+      <li><a href="#bonus"><span class="toc-title">Bonus: Automation Readiness Checklist</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     INTRODUCTION
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="intro">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Introduction</div>
+      <h2>What AI Automation Is &amp; Why It Matters Now</h2>
+      <p>The single biggest competitive advantage available to small and mid-size businesses today has nothing to do with hiring more people.</p>
+    </div>
+
+    <p>Imagine this: a potential customer fills out a contact form on your website at 11:47 PM. By 11:48 PM, they have received a personalized email acknowledging their request. By 11:49 PM, their information has been added to your CRM, a task has been created for your sales team, and a text message has been sent to your phone alerting you of the new lead. Nobody on your team lifted a finger. That is AI automation.</p>
+
+    <p><strong>AI automation is the practice of using software tools and artificial intelligence to perform tasks that previously required a human being to complete manually.</strong> This is not science fiction. It is not even cutting-edge anymore. It is the baseline expectation of how efficient businesses operate in 2026.</p>
+
+    <h3>The Shift That Already Happened</h3>
+
+    <p>Between 2023 and 2025, three things converged that changed the game forever:</p>
+
+    <ol>
+      <li><strong>Large Language Models became accessible through APIs.</strong> OpenAI's ChatGPT API and Anthropic's Claude API made it possible for any developer (or no-code builder) to integrate human-quality text generation, analysis, and decision-making into workflows. Prior to this, "AI" meant hiring a machine learning team. Now it means connecting a module in a visual workflow builder.</li>
+      <li><strong>No-code automation platforms matured.</strong> Tools like Make.com (formerly Integromat), Zapier, and n8n went from niche to mainstream. They now support hundreds of integrations and can handle sophisticated multi-step logic without writing a single line of code.</li>
+      <li><strong>The cost of NOT automating became unbearable.</strong> Your competitors are responding to leads in under 2 minutes. If your response time is 4 hours, you lose that deal 78% of the time (Harvard Business Review). Customers expect instant, personalized interaction. The businesses that deliver it are winning. The ones that don't are slowly dying.</li>
+    </ol>
+
+    <h3>Who This Guide Is For</h3>
+
+    <p>This guide is written for <strong>business owners, operators, and marketing professionals</strong> who know they need to automate but don't know where to start. You do not need to be technical. You do not need to know how to code. You need to understand your business processes, be willing to invest 5-10 hours in learning the tools, and be ready to reclaim a significant portion of your week.</p>
+
+    <p>By the end of this guide, you will:</p>
+
+    <ul class="check-list">
+      <li>Understand exactly which tasks in your business should be automated first</li>
+      <li>Know the strengths and weaknesses of every major automation platform</li>
+      <li>Have built your first working automation from scratch</li>
+      <li>Have a blueprint for 10 high-ROI automations you can implement immediately</li>
+      <li>Know how to measure the actual dollar value of every automation you create</li>
+      <li>Avoid the mistakes that waste money and break trust with customers</li>
+    </ul>
+
+    <div class="callout tip">
+      <div class="callout-label">Why Jedai Flow Exists</div>
+      <p>Jedai Flow was founded to help businesses implement exactly what this guide teaches. We build, maintain, and optimize AI-powered automations so business owners can focus on growth instead of busywork. If you read this guide and want help implementing, visit <strong>jedaiflow.com</strong> or reach out directly. We do the building so you don't have to.</p>
+    </div>
+
+    <h3>How to Use This Guide</h3>
+
+    <p>Read it front to back if you are a complete beginner. If you already understand the basics, skip to Chapter 3 for a hands-on build, or Chapter 4 for the 10 automation blueprints. The Bonus section at the end includes a printable checklist you can use to audit your own business before you start building.</p>
+
+    <p>Print this guide, highlight it, take notes in the margins. This is not a brochure. It is a working manual.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CHAPTER 1 — THE AUTOMATION MINDSET
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="ch1">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter 01</div>
+      <h2>The Automation Mindset</h2>
+      <p>Before you touch a single tool, you need to change how you think about the work happening inside your business every day.</p>
+    </div>
+
+    <h3>Stop Thinking in Tasks. Start Thinking in Workflows.</h3>
+
+    <p>Most business owners think about their operations as a collection of individual tasks: "send a follow-up email," "update the spreadsheet," "schedule the appointment." But automation does not work at the task level. It works at the <strong>workflow level</strong>.</p>
+
+    <p>A workflow is the complete sequence of steps that happen between a trigger event and a final outcome. For example:</p>
+
+    <div class="card accent-border">
+      <h4>Example Workflow: New Lead Handling</h4>
+      <ol>
+        <li><strong>Trigger:</strong> Someone submits your website contact form</li>
+        <li>Their information is added to your CRM (e.g., GoHighLevel, HubSpot)</li>
+        <li>They receive an immediate email confirmation with next steps</li>
+        <li>They receive a text message thanking them for reaching out</li>
+        <li>A task is created in your project management tool for your sales rep</li>
+        <li>If no response in 24 hours, a follow-up email is sent automatically</li>
+        <li>If no response after 72 hours, a final "last chance" email goes out</li>
+        <li><strong>Outcome:</strong> Lead is either engaged or marked as cold in the CRM</li>
+      </ol>
+    </div>
+
+    <p>When you think in workflows, you realize that most of the manual labor in your business is not individual tasks. It is the <strong>connective tissue between tasks</strong>: the copy-pasting, the remembering, the "oh I forgot to send that email" moments. That connective tissue is exactly what automation eliminates.</p>
+
+    <h3>The 80/20 Rule for Automation ROI</h3>
+
+    <p>Not every process should be automated. The Pareto Principle applies aggressively here: <strong>20% of your workflows will generate 80% of the value when automated.</strong> Your job is to identify that 20%.</p>
+
+    <p>Here is a simple framework for prioritizing which workflows to automate first. Score each process on three dimensions:</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Question to Ask</th>
+            <th>Score (1-5)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Frequency</strong></td>
+            <td>How often does this happen? Daily = 5, Monthly = 1</td>
+            <td>___</td>
+          </tr>
+          <tr>
+            <td><strong>Time Cost</strong></td>
+            <td>How many minutes does it take each time? 30+ min = 5, Under 5 min = 1</td>
+            <td>___</td>
+          </tr>
+          <tr>
+            <td><strong>Error Impact</strong></td>
+            <td>How much does a mistake cost? Lost customer = 5, Minor inconvenience = 1</td>
+            <td>___</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Multiply the three scores together.</strong> Any workflow scoring 50 or above is a priority-one automation target. Anything between 20-49 is worth automating when you have the bandwidth. Below 20, leave it manual for now.</p>
+
+    <h4>Real-World Scoring Example</h4>
+
+    <div class="card-grid">
+      <div class="card green-border no-break">
+        <h4>Lead Follow-Up Emails</h4>
+        <p>Frequency: <strong>5</strong> (daily)<br>
+        Time Cost: <strong>4</strong> (15-20 min per lead)<br>
+        Error Impact: <strong>5</strong> (lost revenue)<br>
+        <strong>Score: 100</strong> &mdash; Automate immediately.</p>
+      </div>
+      <div class="card yellow-border no-break">
+        <h4>Monthly Report Compilation</h4>
+        <p>Frequency: <strong>1</strong> (monthly)<br>
+        Time Cost: <strong>5</strong> (2+ hours)<br>
+        Error Impact: <strong>3</strong> (bad decisions from bad data)<br>
+        <strong>Score: 15</strong> &mdash; Automate later.</p>
+      </div>
+    </div>
+
+    <h3>The Task Audit: Mapping Your Current Operations</h3>
+
+    <p>Before you automate anything, you need a clear picture of what you and your team actually do all day. Here is the exercise:</p>
+
+    <ol>
+      <li><strong>Track every task for one full work week.</strong> Use a simple spreadsheet or even a notepad. Every time you or someone on your team does something, write it down. Include the task name, how long it took, and whether it involved moving information from one place to another.</li>
+      <li><strong>Categorize each task</strong> into one of four buckets:
+        <ul>
+          <li><strong>Manual + Repetitive</strong> (same steps every time) &rarr; Prime automation candidate</li>
+          <li><strong>Manual + Variable</strong> (requires judgment each time) &rarr; Partial automation candidate (AI can help with the judgment part)</li>
+          <li><strong>Already Semi-Automated</strong> (uses some tool but still needs babysitting) &rarr; Optimization candidate</li>
+          <li><strong>Creative / Strategic</strong> (genuinely needs a human brain) &rarr; Leave manual</li>
+        </ul>
+      </li>
+      <li><strong>Calculate total hours per week</strong> spent on "Manual + Repetitive" tasks. For most small businesses, this number is between 15-30 hours per week across the team. That is a part-time employee's worth of labor that could be eliminated.</li>
+    </ol>
+
+    <div class="callout important">
+      <div class="callout-label">Key Insight</div>
+      <p>The biggest time sinks are rarely the tasks themselves. They are the <strong>transitions</strong>: switching between apps, re-entering data that already exists somewhere else, sending reminders that should happen automatically, and following up on things that should never have been forgotten in the first place. Automation eliminates transitions.</p>
+    </div>
+
+    <h3>The Three Levels of Business Automation</h3>
+
+    <p>Not all automations are equal. Understanding these three levels will help you plan your automation roadmap:</p>
+
+    <div class="card no-break">
+      <h4>Level 1: Simple Triggers (No AI Required)</h4>
+      <p>"When X happens, do Y." These are basic cause-and-effect automations. Examples: when a form is submitted, send a confirmation email. When a payment is received, create an invoice. When a calendar event is created, send a reminder 24 hours before.</p>
+      <p><strong>Tools:</strong> Zapier, Make.com, native integrations<br>
+      <strong>Time to build:</strong> 15-30 minutes each<br>
+      <strong>Value:</strong> Eliminates forgetting. Ensures consistency.</p>
+    </div>
+
+    <div class="card no-break">
+      <h4>Level 2: Multi-Step Workflows (Light Logic)</h4>
+      <p>"When X happens, check condition A, then do Y or Z depending on the result." These involve branching logic, filters, and multiple connected steps. Examples: when a lead submits a form, check if they are a returning customer. If yes, send a "welcome back" sequence. If no, send a "first time" sequence. Route high-value leads to the sales manager and low-value leads to the standard pipeline.</p>
+      <p><strong>Tools:</strong> Make.com, n8n, Zapier (with Paths)<br>
+      <strong>Time to build:</strong> 1-3 hours each<br>
+      <strong>Value:</strong> Replaces decision-making that used to require a human.</p>
+    </div>
+
+    <div class="card no-break">
+      <h4>Level 3: AI-Powered Workflows (Intelligent Automation)</h4>
+      <p>"When X happens, use AI to analyze, generate, or decide, then take action based on the AI's output." These are the game-changers. Examples: when a customer sends a support email, use Claude or ChatGPT to analyze the sentiment and intent, draft a response, categorize the issue, and route it to the right department. When a review is submitted, use AI to generate a personalized thank-you response. When a sales call transcript is available, use AI to extract action items and update the CRM.</p>
+      <p><strong>Tools:</strong> Make.com + Claude API, n8n + OpenAI, custom builds<br>
+      <strong>Time to build:</strong> 3-8 hours each<br>
+      <strong>Value:</strong> Creates capabilities that didn't exist before. Handles nuance at scale.</p>
+    </div>
+
+    <p>Start at Level 1. Get comfortable. Move to Level 2 within your first month. Tackle Level 3 once you understand the foundations&mdash;or hire a specialist (like Jedai Flow) to build them for you.</p>
+
+    <h3>The Golden Rule of Automation</h3>
+
+    <div class="callout tip">
+      <div class="callout-label">Remember This</div>
+      <p><strong>Never automate a broken process.</strong> If your lead follow-up system is disorganized as a manual process, automating it will just create disorganized emails faster. Fix the process first, then automate the fixed version. Automation amplifies what already exists&mdash;good or bad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CHAPTER 2 — THE TOOLS LANDSCAPE
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="ch2">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter 02</div>
+      <h2>The Tools Landscape</h2>
+      <p>A detailed breakdown of the seven platforms you need to know, what each one does best, what it costs, and when to use it.</p>
+    </div>
+
+    <p>The automation ecosystem can be overwhelming. There are hundreds of tools, and new ones launch every week. But for 90% of business automation needs, you only need to understand seven platforms. Here they are, in order of importance for most small-to-mid-size businesses.</p>
+
+    <!-- MAKE.COM -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #6d28d9, #a855f7);">M</div>
+        <div>
+          <h4>Make.com (formerly Integromat)</h4>
+          <p class="tool-tagline">The visual workflow builder that powers serious automation</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> Make.com is a visual automation platform where you build workflows (called "scenarios") by connecting modules on a drag-and-drop canvas. Each module represents an action: send an email, update a spreadsheet, call an API, filter data, transform text, and hundreds more. You connect modules with lines that represent the data flowing between them.</p>
+      <p><strong>Why it matters:</strong> Make is the single most important tool in this guide. It is more powerful and more flexible than Zapier for complex workflows, and its visual interface makes it easier to understand what your automation is actually doing. It supports advanced features like routers (branching logic), iterators (looping through arrays), aggregators (combining data), error handlers, and custom HTTP/webhook modules that let you connect to literally any API.</p>
+      <p><strong>Best for:</strong> Multi-step workflows, anything involving branching logic, API integrations, automations that need to transform data between steps, scenarios that run on a schedule.</p>
+      <span class="pricing-tag">Free: 1,000 ops/mo &bull; Core: $10.59/mo (10K ops) &bull; Pro: $18.82/mo (10K ops + advanced features)</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Visual canvas makes complex workflows understandable</li>
+            <li>Far more powerful than Zapier for multi-step logic</li>
+            <li>Custom HTTP modules let you connect to any API</li>
+            <li>Built-in error handling with retry logic</li>
+            <li>Operations-based pricing is more cost-effective at scale</li>
+            <li>Excellent JSON/data transformation tools</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Steeper learning curve than Zapier</li>
+            <li>Documentation can be technical</li>
+            <li>Some niche app integrations missing (check first)</li>
+            <li>Free tier is limited for production use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZAPIER -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #ff4f00, #ff8c00);">Z</div>
+        <div>
+          <h4>Zapier</h4>
+          <p class="tool-tagline">The easiest way to connect your apps</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> Zapier connects over 6,000+ apps using simple "Zaps"&mdash;trigger-action pairs. When something happens in App A, do something in App B. It also supports multi-step Zaps with filters, formatters, and branching paths.</p>
+      <p><strong>Why it matters:</strong> Zapier has the largest integration library of any automation platform. If you use a niche tool that Make.com does not support, Zapier probably has a native connector. It is also the easiest platform to learn, which makes it ideal for quick, simple automations.</p>
+      <p><strong>Best for:</strong> Simple 2-3 step automations, businesses using many SaaS tools that need basic connections, teams where non-technical staff will manage the automations.</p>
+      <span class="pricing-tag">Free: 100 tasks/mo &bull; Starter: $29.99/mo (750 tasks) &bull; Professional: $73.50/mo (2K tasks)</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>6,000+ native app integrations</li>
+            <li>Easiest learning curve of any platform</li>
+            <li>Zapier Tables and Interfaces for simple databases</li>
+            <li>Good for teams&mdash;easy to share and manage Zaps</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Expensive at scale (task-based pricing adds up fast)</li>
+            <li>Limited branching and looping compared to Make</li>
+            <li>Complex workflows become hard to manage</li>
+            <li>Less control over data transformation</li>
+            <li>No visual canvas&mdash;just a linear step list</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- N8N -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #ea4b71, #ff6b6b);">n8n</div>
+        <div>
+          <h4>n8n</h4>
+          <p class="tool-tagline">Open-source automation with full code access when you need it</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> n8n is an open-source workflow automation platform that works similarly to Make.com but gives you the option to write custom JavaScript or Python within any node. You can self-host it on your own server (free) or use their cloud version.</p>
+      <p><strong>Why it matters:</strong> n8n is the choice for businesses that want full control over their data and infrastructure. Because it is open-source, there are no per-operation fees when self-hosted. You pay only for server costs. For businesses running thousands of automations, this can save significant money. It also supports writing custom code inside workflow nodes, making it a bridge between no-code and full development.</p>
+      <p><strong>Best for:</strong> Technically comfortable teams, businesses with data privacy requirements, high-volume automation where per-operation costs matter, workflows that need custom code within specific steps.</p>
+      <span class="pricing-tag">Self-hosted: Free (pay for server ~$5-20/mo) &bull; Cloud Starter: $24/mo &bull; Cloud Pro: $60/mo</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Open-source&mdash;no vendor lock-in</li>
+            <li>Self-hosting eliminates per-operation costs</li>
+            <li>Write custom JS/Python in any node</li>
+            <li>Visual canvas similar to Make.com</li>
+            <li>Active community and marketplace for node templates</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Self-hosting requires some DevOps knowledge</li>
+            <li>Fewer native integrations than Make or Zapier</li>
+            <li>Cloud version still less polished than Make.com</li>
+            <li>Debugging can be trickier for complex workflows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHATGPT API -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #10a37f, #1a7f64);">G</div>
+        <div>
+          <h4>OpenAI / ChatGPT API</h4>
+          <p class="tool-tagline">Add human-quality text generation and analysis to any workflow</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> The OpenAI API gives your automations access to GPT-4o and other models for text generation, summarization, classification, extraction, translation, and conversational AI. You send a prompt with instructions and data, and the API returns intelligent text output.</p>
+      <p><strong>Why it matters:</strong> This is what makes modern automation "intelligent." Instead of just moving data between apps, you can now analyze, interpret, and generate content at every step. Use it to draft personalized emails from CRM data, summarize support tickets, extract key information from documents, classify leads based on form responses, or generate social media posts.</p>
+      <p><strong>Best for:</strong> Content generation, email drafting, data extraction from unstructured text, sentiment analysis, chatbot building, any workflow that needs "thinking" between steps.</p>
+      <span class="pricing-tag">Pay-per-use: GPT-4o ~$2.50 per 1M input tokens / $10 per 1M output tokens &bull; GPT-4o-mini ~$0.15/$0.60 per 1M tokens</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Most widely adopted AI API&mdash;huge community</li>
+            <li>Strong at creative writing and conversational tasks</li>
+            <li>Native Make.com and Zapier modules available</li>
+            <li>GPT-4o-mini is extremely cost-effective for simple tasks</li>
+            <li>Function calling enables structured data extraction</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Can "hallucinate" (generate plausible but false info)</li>
+            <li>Costs can spike with high-volume use</li>
+            <li>Rate limits on higher-tier models</li>
+            <li>Requires prompt engineering for best results</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLAUDE API -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #d97706, #f59e0b);">C</div>
+        <div>
+          <h4>Anthropic / Claude API</h4>
+          <p class="tool-tagline">The most reliable AI for business-critical automation workflows</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> The Claude API from Anthropic provides access to the Claude model family for text generation, analysis, coding, and reasoning tasks. Claude excels at following complex instructions precisely, handling long documents (up to 200K tokens of context), and producing well-structured, reliable output.</p>
+      <p><strong>Why it matters:</strong> For business automation, reliability is more important than creativity. Claude consistently follows instructions more precisely than competing models, making it ideal for workflows where the output needs to match a specific format, tone, or structure every time. Its massive context window means you can feed it entire documents, email threads, or databases and get accurate analysis.</p>
+      <p><strong>Best for:</strong> Document analysis, structured data extraction, compliance-sensitive content, long-document summarization, workflows where output consistency is critical, technical writing, customer communication that must be on-brand.</p>
+      <span class="pricing-tag">Claude Sonnet: $3/$15 per 1M tokens &bull; Claude Haiku: $0.25/$1.25 per 1M tokens</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Superior instruction-following for structured tasks</li>
+            <li>200K token context window handles massive documents</li>
+            <li>Lower hallucination rate on factual tasks</li>
+            <li>Haiku model is fast and cheap for simple classification</li>
+            <li>Excellent at maintaining brand voice consistently</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Smaller integration ecosystem than OpenAI</li>
+            <li>Make.com module requires HTTP module setup (no native module yet)</li>
+            <li>Newer platform&mdash;fewer community tutorials</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWILIO -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #e81f3e, #f22f46);">T</div>
+        <div>
+          <h4>Twilio</h4>
+          <p class="tool-tagline">Programmable SMS, voice, and WhatsApp for automated communication</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> Twilio is a communications platform that lets you send and receive SMS messages, make phone calls, send WhatsApp messages, and handle voice interactions through an API. In automation workflows, Twilio is the module that actually sends the text message or makes the phone call.</p>
+      <p><strong>Why it matters:</strong> Email open rates average 20-25%. SMS open rates average 98%, with 90% read within 3 minutes. For time-sensitive automations like appointment reminders, lead follow-ups, and no-show notifications, SMS dramatically outperforms email. Twilio is the industry standard for programmable messaging.</p>
+      <p><strong>Best for:</strong> Appointment reminders, lead notification via SMS, two-factor authentication, no-show follow-ups, delivery notifications, emergency alerts, conversational SMS bots.</p>
+      <span class="pricing-tag">SMS: ~$0.0079/msg sent + $1.50/mo per phone number &bull; Voice: ~$0.014/min &bull; WhatsApp: ~$0.005/msg</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Industry-standard reliability (99.95% uptime SLA)</li>
+            <li>Native Make.com and Zapier modules</li>
+            <li>Supports SMS, MMS, voice, WhatsApp, and email (via SendGrid)</li>
+            <li>Programmable voice for IVR systems</li>
+            <li>Global coverage in 180+ countries</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Costs can add up at high volume</li>
+            <li>10DLC registration required for US SMS (compliance process)</li>
+            <li>Phone number provisioning takes a few days</li>
+            <li>API-first approach&mdash;no built-in GUI for message management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOHIGHLEVEL -->
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);">G</div>
+        <div>
+          <h4>GoHighLevel (GHL)</h4>
+          <p class="tool-tagline">The all-in-one CRM and marketing platform built for agencies</p>
+        </div>
+      </div>
+      <p><strong>What it does:</strong> GoHighLevel is an all-in-one platform that combines CRM, email marketing, SMS marketing, landing page builder, appointment scheduling, pipeline management, reputation management, and workflow automation into a single tool. It was built specifically for marketing agencies and service businesses.</p>
+      <p><strong>Why it matters:</strong> For many small businesses, the biggest automation bottleneck is not the automation tool itself but the fact that their data is scattered across 8 different platforms. GHL consolidates these into one system, which means your automations have access to all customer data in one place. Its built-in workflow builder handles many common automations natively, and it integrates well with Make.com and Zapier for more complex scenarios.</p>
+      <p><strong>Best for:</strong> Service businesses, agencies, businesses that need a CRM + marketing platform + appointment scheduling in one place, anyone currently juggling multiple tools for customer communication.</p>
+      <span class="pricing-tag">Starter: $97/mo &bull; Unlimited: $297/mo &bull; SaaS Mode: $497/mo</span>
+      <div class="pros-cons">
+        <div class="pros">
+          <ul>
+            <li>Replaces 5-10 separate tools (CRM, email, SMS, calendar, etc.)</li>
+            <li>Built-in workflow automation for common sequences</li>
+            <li>White-label option for agencies</li>
+            <li>Integrated two-way SMS and calling</li>
+            <li>Native appointment booking with automated reminders</li>
+            <li>Reputation management (automated review requests)</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <ul>
+            <li>Expensive entry point at $97/mo minimum</li>
+            <li>Jack-of-all-trades&mdash;individual features less deep than dedicated tools</li>
+            <li>Learning curve is significant (lots of features)</li>
+            <li>UI can feel cluttered</li>
+            <li>Built-in workflow builder is less flexible than Make.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>Which Tool Should You Start With?</h3>
+
+    <div class="callout important">
+      <div class="callout-label">Recommendation</div>
+      <p>If you are starting from scratch, begin with <strong>Make.com</strong> (free tier) connected to whatever CRM you already use. Build 3-5 simple automations to learn the platform. When you need AI capabilities, add <strong>Claude API</strong> or <strong>ChatGPT API</strong> via Make's HTTP module or native OpenAI module. When you need SMS, add <strong>Twilio</strong>. If you do not have a CRM yet and you are a service business, <strong>GoHighLevel</strong> is worth considering as your foundation since it has so much built in.</p>
+    </div>
+
+    <h3>Cost Comparison: Real Monthly Spend for a Small Business</h3>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Stack</th>
+            <th>Tools</th>
+            <th>Monthly Cost</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Starter</strong></td>
+            <td>Make.com (Core) + ChatGPT API</td>
+            <td>$15-25/mo</td>
+            <td>Solo operators, testing automations</td>
+          </tr>
+          <tr>
+            <td><strong>Growth</strong></td>
+            <td>Make.com (Pro) + Claude API + Twilio + Existing CRM</td>
+            <td>$40-80/mo</td>
+            <td>Small teams, lead gen businesses</td>
+          </tr>
+          <tr>
+            <td><strong>Professional</strong></td>
+            <td>GoHighLevel + Make.com (Pro) + Claude API + Twilio</td>
+            <td>$150-200/mo</td>
+            <td>Service businesses, agencies</td>
+          </tr>
+          <tr>
+            <td><strong>Scale</strong></td>
+            <td>GHL + Make.com (Teams) + n8n (self-hosted) + Multiple AI APIs</td>
+            <td>$300-500/mo</td>
+            <td>Agencies managing multiple clients</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>To put this in perspective: a part-time virtual assistant costs $1,500-2,500/month. The "Professional" stack above costs $200/month, runs 24/7, never forgets a step, and handles unlimited volume. The ROI is obvious.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CHAPTER 3 — YOUR FIRST AUTOMATION
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="ch3">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter 03</div>
+      <h2>Your First Automation</h2>
+      <p>A complete, step-by-step walkthrough of building a lead follow-up automation in Make.com. Follow along and have it running in under an hour.</p>
+    </div>
+
+    <p>We are going to build the single most valuable automation for any business that generates leads online: the <strong>Instant Lead Follow-Up Sequence</strong>. When someone fills out a form on your website, this automation will:</p>
+
+    <ol>
+      <li>Capture the lead's information via a webhook</li>
+      <li>Use AI to generate a personalized response based on their inquiry</li>
+      <li>Send them an immediate email</li>
+      <li>Log their information in a Google Sheet (or your CRM)</li>
+      <li>Send you an SMS notification via Twilio</li>
+    </ol>
+
+    <h3>Prerequisites</h3>
+
+    <ul>
+      <li>A free Make.com account (sign up at make.com)</li>
+      <li>A Gmail or SMTP email account for sending</li>
+      <li>An OpenAI API key (get one at platform.openai.com)</li>
+      <li>A Google Sheet created with columns: Name, Email, Message, Date, AI Response</li>
+      <li>(Optional) A Twilio account with a phone number for SMS alerts</li>
+    </ul>
+
+    <h3>Step-by-Step Build</h3>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Create a New Scenario in Make.com</h4>
+        <p>Log into Make.com, click <strong>"Create a new scenario"</strong> in the top right. You will see a blank canvas with a single empty node. This is where we start building.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Add the Webhook Trigger</h4>
+        <p>Click the empty node, then search for <strong>"Webhooks"</strong> in the module list. Select <strong>"Webhooks &gt; Custom webhook"</strong>. Click <strong>"Add"</strong> to create a new webhook. Name it something descriptive like "Lead Form Webhook." Make will generate a unique URL like:</p>
+        <div class="code-block">
+https://hook.us1.make.com/abc123xyz789
+        </div>
+        <p>Copy this URL. This is what your website form will send data to. Click <strong>"OK"</strong> to save the module, then click <strong>"Run once"</strong> at the bottom left of the canvas to put the webhook in listening mode.</p>
+        <p>Now, open a new browser tab and test the webhook by sending a sample request. You can use your website form, or send a test request using this format in your browser's developer console or a tool like Postman:</p>
+        <div class="code-block">
+<span class="comment">// Test payload to send to your webhook URL</span>
+POST https://hook.us1.make.com/abc123xyz789
+Content-Type: application/json
+
+{
+  <span class="string">"name"</span>: <span class="string">"Jane Smith"</span>,
+  <span class="string">"email"</span>: <span class="string">"jane@example.com"</span>,
+  <span class="string">"message"</span>: <span class="string">"I'm interested in automating my appointment scheduling for my dental practice. We currently book about 40 appointments per week by phone."</span>
+}
+        </div>
+        <p>Go back to Make.com. The webhook module should now show a green checkmark with the test data. Click <strong>"OK"</strong>.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Add the OpenAI Module for Personalized Response</h4>
+        <p>Click the <strong>"+"</strong> button to the right of the webhook module to add the next step. Search for <strong>"OpenAI"</strong> and select <strong>"OpenAI (ChatGPT, DALL-E, Whisper) &gt; Create a Completion"</strong>.</p>
+        <p>Configure the module:</p>
+        <ul>
+          <li><strong>Connection:</strong> Click "Add" and paste your OpenAI API key</li>
+          <li><strong>Model:</strong> Select <code>gpt-4o-mini</code> (fast and cheap for this task)</li>
+          <li><strong>Messages:</strong> Add a System message and a User message</li>
+        </ul>
+        <p><strong>System message:</strong></p>
+        <div class="code-block">
+You are a friendly, professional business development assistant for
+[YOUR COMPANY NAME]. A potential client has just submitted a contact
+form on our website. Write a warm, personalized 3-4 sentence email
+response that:
+1. Acknowledges their specific inquiry
+2. Shows you understand their needs
+3. Suggests a next step (booking a call or consultation)
+4. Signs off with a professional closing
+
+Keep the tone conversational but professional. Do not use generic
+phrases like "Thank you for your interest." Reference specific
+details from their message.
+        </div>
+        <p><strong>User message:</strong> Map the fields from the webhook by clicking in the field and selecting the variables from the webhook output:</p>
+        <div class="code-block">
+New lead information:
+Name: <span class="function">{{1.name}}</span>
+Email: <span class="function">{{1.email}}</span>
+Message: <span class="function">{{1.message}}</span>
+
+Write the email body only (no subject line).
+        </div>
+        <p>Set <strong>Max Tokens</strong> to <code>300</code> and <strong>Temperature</strong> to <code>0.7</code> for a good balance of creativity and consistency.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h4>Add the Email Module</h4>
+        <p>Click <strong>"+"</strong> again. Search for <strong>"Email"</strong> and select <strong>"Email &gt; Send an email"</strong>. (Alternatively, use <strong>"Gmail &gt; Send an Email"</strong> if you prefer the Gmail module.)</p>
+        <p>Configure the module:</p>
+        <ul>
+          <li><strong>To:</strong> Map <code>{{1.email}}</code> from the webhook</li>
+          <li><strong>Subject:</strong> <code>Re: Your inquiry, {{1.name}} - we'd love to help</code></li>
+          <li><strong>Content (HTML):</strong></li>
+        </ul>
+        <div class="code-block">
+&lt;div style="font-family: Arial, sans-serif; max-width: 600px;"&gt;
+  &lt;p&gt;Hi <span class="function">{{1.name}}</span>,&lt;/p&gt;
+  &lt;p&gt;<span class="function">{{2.result}}</span>&lt;/p&gt;
+  &lt;p&gt;Best regards,&lt;br&gt;
+  [Your Name]&lt;br&gt;
+  [Your Company]&lt;br&gt;
+  [Your Phone]&lt;/p&gt;
+&lt;/div&gt;
+        </div>
+        <p>Note: <code>{{2.result}}</code> refers to the output from the OpenAI module (module 2 in the sequence). Make.com auto-numbers modules.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h4>Add the Google Sheets Module</h4>
+        <p>Click <strong>"+"</strong>. Search for <strong>"Google Sheets"</strong> and select <strong>"Google Sheets &gt; Add a Row"</strong>.</p>
+        <p>Configure the module:</p>
+        <ul>
+          <li><strong>Connection:</strong> Connect your Google account</li>
+          <li><strong>Spreadsheet:</strong> Select your lead tracking spreadsheet</li>
+          <li><strong>Sheet:</strong> Select the sheet (usually "Sheet1")</li>
+          <li><strong>Values:</strong> Map the columns:
+            <ul>
+              <li>Column A (Name): <code>{{1.name}}</code></li>
+              <li>Column B (Email): <code>{{1.email}}</code></li>
+              <li>Column C (Message): <code>{{1.message}}</code></li>
+              <li>Column D (Date): <code>{{now}}</code></li>
+              <li>Column E (AI Response): <code>{{2.result}}</code></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">6</div>
+      <div class="step-content">
+        <h4>(Optional) Add the Twilio SMS Module</h4>
+        <p>Click <strong>"+"</strong>. Search for <strong>"Twilio"</strong> and select <strong>"Twilio &gt; Send an SMS"</strong>.</p>
+        <p>Configure the module:</p>
+        <ul>
+          <li><strong>Connection:</strong> Add your Twilio Account SID and Auth Token</li>
+          <li><strong>From:</strong> Your Twilio phone number (e.g., <code>+1234567890</code>)</li>
+          <li><strong>To:</strong> Your personal phone number</li>
+          <li><strong>Body:</strong></li>
+        </ul>
+        <div class="code-block">
+NEW LEAD: <span class="function">{{1.name}}</span> (<span class="function">{{1.email}}</span>)
+"<span class="function">{{1.message}}</span>"
+Auto-reply sent. Check sheet for details.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">7</div>
+      <div class="step-content">
+        <h4>Add Error Handling</h4>
+        <p>This is the step most beginners skip, and it is the one that separates amateur automations from professional ones.</p>
+        <p>Right-click on the <strong>Email module</strong> and select <strong>"Add error handler"</strong>. Choose the <strong>"Resume"</strong> directive. This means if the email fails to send (bad address, server issue), the scenario will continue to the next module instead of stopping entirely. Your lead still gets logged in the spreadsheet and you still get the SMS.</p>
+        <p>Do the same for the Google Sheets module and Twilio module. Each should have a Resume error handler so a failure in one step does not break the entire sequence.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">8</div>
+      <div class="step-content">
+        <h4>Test and Activate</h4>
+        <p>Click <strong>"Run once"</strong> in the bottom left. Send another test webhook request. Watch each module execute in sequence&mdash;you should see green checkmarks on every module. Check your email inbox (send to yourself for testing), check the Google Sheet, and check your phone for the SMS.</p>
+        <p>Once everything works, click the toggle in the bottom left to turn the scenario <strong>"ON"</strong>. Set the scheduling to <strong>"Immediately"</strong> (this means the scenario runs every time the webhook receives data, not on a timer).</p>
+        <p>You now have a working lead follow-up automation. Every form submission on your website will trigger an instant, AI-personalized email response, log the lead, and notify you via text. Total build time: 30-60 minutes.</p>
+      </div>
+    </div>
+
+    <h3>Connecting This to Your Website Form</h3>
+
+    <p>The final step is making your website form send data to the Make.com webhook URL. Here is how to do it with common form tools:</p>
+
+    <div class="card-grid">
+      <div class="card no-break">
+        <h4>WordPress (Contact Form 7, Gravity Forms, WPForms)</h4>
+        <p>Use the <strong>Webhooks add-on</strong> or the "Send to webhook" option in form settings. Paste your Make.com webhook URL. Map form fields to JSON keys (name, email, message).</p>
+      </div>
+      <div class="card no-break">
+        <h4>Webflow / Squarespace / Wix</h4>
+        <p>Use Make.com's native <strong>Webflow/Squarespace module</strong> as the trigger instead of the custom webhook. These have native "Watch Form Submissions" triggers that pull data directly from your form builder.</p>
+      </div>
+      <div class="card no-break">
+        <h4>Custom HTML Form</h4>
+        <p>Add a simple JavaScript fetch call to your form's submit handler that sends the form data as JSON to the webhook URL. Three lines of JavaScript is all you need.</p>
+      </div>
+      <div class="card no-break">
+        <h4>GoHighLevel</h4>
+        <p>Use the <strong>GHL trigger module</strong> in Make.com: "Watch Contacts" or "Watch Opportunities." No webhook needed&mdash;Make.com pulls data directly from GHL when new contacts are created.</p>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-label">Pro Tip</div>
+      <p>Bookmark this scenario in Make.com and duplicate it as a starting template. Nearly every automation you build in the future will follow this same pattern: <strong>Trigger &rarr; Process/Enrich &rarr; Act &rarr; Log &rarr; Notify</strong>. The specific modules change, but the structure stays the same.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CHAPTER 4 — 10 HIGH-ROI AUTOMATIONS
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="ch4">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter 04</div>
+      <h2>10 High-ROI Automations Every Business Needs</h2>
+      <p>Detailed blueprints for the automations that deliver the biggest return. Implement these in order of priority for your business.</p>
+    </div>
+
+    <p>Each automation below includes the trigger, the workflow steps, the tools required, estimated build time, and the expected ROI. These are not theoretical&mdash;they are the exact automations we build for Jedai Flow clients every week.</p>
+
+    <!-- AUTO 1 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 01</div>
+      <h4>Lead Capture Auto-Response</h4>
+      <div class="roi-badge">ROI: Recover 30-50% of leads that would go cold</div>
+      <p><strong>The problem:</strong> The average business takes 47 hours to respond to a web lead. By then, the lead has contacted 3 competitors. Harvard Business Review found that responding within 5 minutes makes you 100x more likely to connect compared to waiting 30 minutes.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Website form submission (via webhook or native module)</li>
+        <li>OpenAI/Claude generates a personalized email acknowledging their specific inquiry</li>
+        <li>Email is sent immediately (&lt;60 seconds after form submission)</li>
+        <li>Lead is created in your CRM with all form data + the AI-generated response</li>
+        <li>Internal notification sent via SMS or Slack to your sales team</li>
+        <li>If no reply in 24 hours, automated follow-up email is sent</li>
+        <li>If no reply in 72 hours, final "last chance" email with a limited-time offer</li>
+      </ol>
+      <p><strong>Tools:</strong> Make.com + OpenAI module + Email module + CRM module (GHL/HubSpot) + Twilio (optional)</p>
+      <p><strong>Build time:</strong> 1-2 hours | <strong>Monthly cost:</strong> ~$5-15 in API/operations</p>
+    </div>
+
+    <!-- AUTO 2 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 02</div>
+      <h4>Appointment Reminders (SMS + Email)</h4>
+      <div class="roi-badge">ROI: Reduce no-shows by 40-60%</div>
+      <p><strong>The problem:</strong> No-shows cost service businesses thousands per month. The average no-show rate without reminders is 20-30%. With automated reminders, it drops to 5-10%.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> New appointment created in your calendar (Google Calendar, Calendly, GHL)</li>
+        <li>Make.com schedules three reminder messages:
+          <ul>
+            <li>48 hours before: Email with appointment details, location/link, what to prepare</li>
+            <li>24 hours before: SMS reminder with a confirm/reschedule option</li>
+            <li>2 hours before: Final SMS reminder with the meeting link or address</li>
+          </ul>
+        </li>
+        <li>If the client replies "C" to confirm, log confirmation in your CRM</li>
+        <li>If the client replies "R" to reschedule, send them your booking link</li>
+      </ol>
+      <p><strong>Make.com implementation detail:</strong> Use the <strong>"Schedule"</strong> module to delay execution. Create a scenario that triggers on new calendar events, then use a <strong>Router</strong> with three paths, each with a <strong>"Sleep"</strong> module set to the appropriate delay (e.g., calculate the time difference between now and 48 hours before the appointment using the <code>dateDifference</code> function). Alternatively, use Make.com's built-in scheduling to run a scenario every hour that checks for upcoming appointments in the next 2/24/48 hours.</p>
+      <p><strong>Tools:</strong> Make.com + Google Calendar module + Twilio + Email module</p>
+      <p><strong>Build time:</strong> 2-3 hours | <strong>Monthly cost:</strong> ~$10-20 (mostly Twilio SMS costs)</p>
+    </div>
+
+    <!-- AUTO 3 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 03</div>
+      <h4>No-Show Follow-Up</h4>
+      <div class="roi-badge">ROI: Rebook 20-35% of no-shows</div>
+      <p><strong>The problem:</strong> When a client no-shows, most businesses either do nothing (lost revenue) or manually follow up hours later (by which point the client has moved on). The window for rebooking is narrow.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Appointment marked as "no-show" in your CRM or calendar (or: appointment time passes with no check-in logged)</li>
+        <li>Wait 15 minutes (gives a buffer for late arrivals)</li>
+        <li>Send a friendly SMS: "Hi [Name], we missed you today! No worries&mdash;life happens. Want to rebook? Click here: [booking link]. We're holding a spot for you this week."</li>
+        <li>Simultaneously send an email with the same message + your cancellation policy (gentle, not threatening)</li>
+        <li>If no response in 48 hours, send one more message: "Hi [Name], just following up. We'd love to get you rescheduled. Here's our availability for this week: [link]. If now's not a good time, just reply and we'll reach out when you're ready."</li>
+        <li>Update CRM status to "No-Show - Follow-Up Sent"</li>
+      </ol>
+      <p><strong>Tools:</strong> Make.com + CRM module + Twilio + Email module</p>
+      <p><strong>Build time:</strong> 1-2 hours | <strong>Monthly cost:</strong> ~$5-10</p>
+    </div>
+
+    <!-- AUTO 4 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 04</div>
+      <h4>Review Request After Service</h4>
+      <div class="roi-badge">ROI: 3-5x increase in monthly reviews</div>
+      <p><strong>The problem:</strong> Online reviews are the number one factor in local search rankings and consumer trust. But asking for reviews manually is awkward and inconsistent. Most businesses get 1-2 reviews per month when they should be getting 10-20.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Service marked as "completed" in your CRM, or invoice marked as "paid"</li>
+        <li>Wait 2-4 hours (give them time to experience the result)</li>
+        <li>Send a personalized SMS: "Hi [Name], thanks for choosing [Company]! We'd love to hear how it went. Would you mind leaving us a quick review? [Google Review Link]. It means the world to us!"</li>
+        <li>If no review detected after 3 days, send a follow-up email with a slightly different angle: "Hi [Name], your feedback helps us improve and helps other [customers/patients/clients] find great service. If you have 30 seconds, we'd really appreciate a Google review: [link]."</li>
+        <li>Log the review request in your CRM to avoid duplicate asks</li>
+      </ol>
+      <p><strong>Implementation tip:</strong> Create a short Google Review link for your business. Go to your Google Business Profile, click "Ask for reviews," and copy the link. Use a link shortener if needed. This link goes directly to the review form, reducing friction.</p>
+      <p><strong>Tools:</strong> Make.com + CRM module + Twilio + Email module</p>
+      <p><strong>Build time:</strong> 1 hour | <strong>Monthly cost:</strong> ~$5-8</p>
+    </div>
+
+    <!-- AUTO 5 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 05</div>
+      <h4>Client Onboarding Sequence</h4>
+      <div class="roi-badge">ROI: 50-70% reduction in onboarding time, higher client satisfaction</div>
+      <p><strong>The problem:</strong> Onboarding a new client involves dozens of steps: sending welcome materials, collecting information, setting up accounts, scheduling kickoff calls, explaining processes. When done manually, steps get missed, clients feel confused, and your team wastes hours per new client.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> New deal/opportunity moved to "Won" or "Onboarding" stage in CRM</li>
+        <li>Immediately send a welcome email with: company overview PDF, what to expect timeline, and a link to an intake form (Google Form or Typeform) that collects all the info you need</li>
+        <li>Create a project/folder in your project management tool (Asana, Monday.com, Notion) with a templated task list for this client</li>
+        <li>Send a Calendly/booking link for the kickoff call, with pre-selected duration and agenda</li>
+        <li>When the intake form is submitted (second webhook trigger), parse the responses and update the CRM with the new information</li>
+        <li>If the intake form is not completed within 48 hours, send a reminder email</li>
+        <li>Day 3: Send a "getting started" email with video tutorials or FAQ links</li>
+        <li>Day 7: Send a check-in email: "How's everything going? Any questions so far?"</li>
+      </ol>
+      <p><strong>Tools:</strong> Make.com + CRM module + Google Forms/Typeform + Project management module + Email module + Scheduling tool</p>
+      <p><strong>Build time:</strong> 3-5 hours | <strong>Monthly cost:</strong> ~$10-15</p>
+    </div>
+
+    <!-- AUTO 6 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 06</div>
+      <h4>Invoice Follow-Up &amp; Payment Reminders</h4>
+      <div class="roi-badge">ROI: Reduce outstanding receivables by 30-50%</div>
+      <p><strong>The problem:</strong> Chasing payments is uncomfortable and time-consuming. Many business owners avoid it entirely, leading to cash flow problems. On average, small businesses are owed $84,000 in unpaid invoices at any given time.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Invoice created in your accounting tool (QuickBooks, FreshBooks, Stripe)</li>
+        <li>Day 0: Send the invoice with a friendly payment reminder and clear payment link</li>
+        <li>Day 7 (if unpaid): Send a gentle reminder: "Hi [Name], just a friendly reminder that invoice #[number] for $[amount] is due on [date]. Pay here: [link]."</li>
+        <li>Day 14 (if unpaid): Send a firmer reminder: "Hi [Name], invoice #[number] is now past due. Please process payment at your earliest convenience: [link]. If there's an issue, let us know and we'll work something out."</li>
+        <li>Day 30 (if unpaid): Send final notice and flag the account internally for personal follow-up</li>
+        <li>When payment is received (trigger: payment webhook from Stripe/QuickBooks), send an automated "Thank you for your payment" email and update the CRM</li>
+      </ol>
+      <p><strong>Implementation note:</strong> Use Make.com's <strong>Data Store</strong> to track invoice status. When an invoice is created, store its ID, amount, due date, and status. Run a scheduled scenario daily that checks the data store for unpaid invoices past their reminder dates.</p>
+      <p><strong>Tools:</strong> Make.com + Accounting tool module (QuickBooks/Stripe) + Email module + Data Store</p>
+      <p><strong>Build time:</strong> 3-4 hours | <strong>Monthly cost:</strong> ~$10</p>
+    </div>
+
+    <!-- AUTO 7 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 07</div>
+      <h4>Social Media Content Scheduling</h4>
+      <div class="roi-badge">ROI: Save 5-10 hours/week on content creation</div>
+      <p><strong>The problem:</strong> Consistent social media posting is critical for brand visibility, but creating and scheduling content daily is a massive time sink. Most business owners start strong, then fall off after a few weeks.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Scheduled (runs every Monday at 8 AM)</li>
+        <li>Pull recent blog posts, client testimonials, or service descriptions from a Google Sheet "content bank"</li>
+        <li>Send each piece of content to Claude/ChatGPT with instructions to generate 5 social media posts (one per weekday) in your brand voice, optimized for the target platform</li>
+        <li>For each generated post, create a scheduled post in Buffer, Hootsuite, or directly via the Facebook/LinkedIn/Instagram API</li>
+        <li>Log all generated posts in a Google Sheet for review</li>
+        <li>Send you a Monday morning email summary: "Here are your 5 social posts for this week. Reply to this email if you want any changes."</li>
+      </ol>
+      <p><strong>AI prompt strategy:</strong> Include your brand voice description, example posts that performed well, and rules (e.g., "never use emojis in LinkedIn posts," "always include a call to action," "keep Instagram captions under 150 words"). The more specific your prompt, the less editing you need.</p>
+      <p><strong>Tools:</strong> Make.com + Google Sheets + OpenAI/Claude module + Buffer/social media API + Email module</p>
+      <p><strong>Build time:</strong> 3-4 hours | <strong>Monthly cost:</strong> ~$15-25 (mostly AI API costs)</p>
+    </div>
+
+    <!-- AUTO 8 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 08</div>
+      <h4>Automated Report Generation</h4>
+      <div class="roi-badge">ROI: Save 3-5 hours/week on reporting</div>
+      <p><strong>The problem:</strong> Compiling weekly or monthly reports from multiple sources (CRM, analytics, ad platforms, accounting) is tedious, error-prone, and takes hours. Yet reports are essential for making informed decisions.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Scheduled (runs every Friday at 5 PM, or first of the month)</li>
+        <li>Pull data from multiple sources:
+          <ul>
+            <li>CRM: New leads, conversion rate, pipeline value</li>
+            <li>Google Analytics (via API): Website traffic, top pages, conversion events</li>
+            <li>Ad platforms (Meta Ads, Google Ads via API): Spend, impressions, clicks, cost per lead</li>
+            <li>Accounting: Revenue, invoices sent, payments received</li>
+          </ul>
+        </li>
+        <li>Send all data to Claude/ChatGPT with a prompt: "Analyze this data and generate a weekly business report. Highlight trends, flag any concerns, and provide 3 actionable recommendations."</li>
+        <li>Format the AI output into an HTML email template</li>
+        <li>Send the report to yourself, your team, or your clients (if you are an agency)</li>
+        <li>Archive the report in a Google Drive folder</li>
+      </ol>
+      <p><strong>Tools:</strong> Make.com + CRM module + Google Analytics module + Ad platform modules + Claude/OpenAI + Email module + Google Drive module</p>
+      <p><strong>Build time:</strong> 4-6 hours | <strong>Monthly cost:</strong> ~$10-20</p>
+    </div>
+
+    <!-- AUTO 9 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 09</div>
+      <h4>Data Entry Elimination</h4>
+      <div class="roi-badge">ROI: Eliminate 5-15 hours/week of manual entry</div>
+      <p><strong>The problem:</strong> Your team spends hours every week manually copying data between systems: taking info from an email and entering it into the CRM, copying form responses into a spreadsheet, updating inventory from supplier emails, transferring invoice details into accounting software.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> Varies by use case (new email, form submission, file uploaded, etc.)</li>
+        <li>Parse the incoming data using Make.com's built-in text parser, JSON parser, or AI (for unstructured data like emails)</li>
+        <li>Map the parsed data to the destination system's fields</li>
+        <li>Create/update records in the destination system (CRM, spreadsheet, accounting tool, inventory system)</li>
+        <li>Log the transfer for audit purposes</li>
+      </ol>
+      <p><strong>Real example:</strong> A client receives supplier invoices via email as PDF attachments. Previously, an office manager spent 2 hours/day manually entering invoice details into QuickBooks. Now: Make.com watches the inbox for emails from known suppliers, extracts the PDF, sends it to an AI vision API for data extraction (vendor name, invoice number, line items, totals), then creates the bill in QuickBooks automatically. The office manager reviews and approves in 10 minutes instead of spending 2 hours entering data.</p>
+      <p><strong>Tools:</strong> Make.com + Email/Gmail module + Text Parser + OpenAI (for unstructured data) + Destination system module</p>
+      <p><strong>Build time:</strong> 2-6 hours (depends on complexity) | <strong>Monthly cost:</strong> ~$10-30</p>
+    </div>
+
+    <!-- AUTO 10 -->
+    <div class="auto-card">
+      <div class="auto-card-num">Automation 10</div>
+      <h4>Customer Support Triage</h4>
+      <div class="roi-badge">ROI: 60% reduction in response time, 40% fewer escalations</div>
+      <p><strong>The problem:</strong> Support requests come in through multiple channels (email, website form, social media DMs) with no consistent handling. Simple questions that could be answered instantly get stuck in a queue behind complex issues. Your team wastes time categorizing and routing when AI can do it instantly.</p>
+      <p><strong>The automation:</strong></p>
+      <ol>
+        <li><strong>Trigger:</strong> New support email, form submission, or chat message</li>
+        <li>Send the customer's message to Claude API with a classification prompt:
+          <div class="code-block" style="margin: 0.75rem 0;">
+Classify this customer support message into exactly one category:
+- BILLING (payment issues, refund requests, invoice questions)
+- TECHNICAL (product not working, bugs, setup help)
+- GENERAL (hours, location, pricing questions)
+- URGENT (safety issue, data breach, legal)
+- CANCELLATION (wants to cancel service)
+
+Also rate the sentiment: POSITIVE, NEUTRAL, NEGATIVE, or ANGRY.
+
+Respond in JSON format:
+{"category": "...", "sentiment": "...", "suggested_response": "..."}
+          </div>
+        </li>
+        <li>Based on the category, use a Make.com <strong>Router</strong> to branch:
+          <ul>
+            <li><strong>GENERAL:</strong> Auto-reply with the AI-suggested response (after human review of prompt quality)</li>
+            <li><strong>BILLING:</strong> Route to billing team's Slack channel with context</li>
+            <li><strong>TECHNICAL:</strong> Create a ticket in your helpdesk, assign to tech team</li>
+            <li><strong>URGENT:</strong> Immediately SMS the on-call manager + auto-reply acknowledging the urgency</li>
+            <li><strong>CANCELLATION:</strong> Route to retention specialist + trigger a retention email sequence</li>
+          </ul>
+        </li>
+        <li>Log all interactions in your CRM with category, sentiment, and response</li>
+      </ol>
+      <p><strong>Tools:</strong> Make.com + Email/form module + Claude API (HTTP module) + Router + Slack module + CRM module + Twilio (for urgent)</p>
+      <p><strong>Build time:</strong> 4-6 hours | <strong>Monthly cost:</strong> ~$15-30</p>
+    </div>
+
+    <div class="callout important">
+      <div class="callout-label">Implementation Order</div>
+      <p>Do not try to build all 10 at once. Start with <strong>#1 (Lead Auto-Response)</strong> and <strong>#2 (Appointment Reminders)</strong> as they have the highest immediate ROI. Then add <strong>#4 (Review Requests)</strong> and <strong>#3 (No-Show Follow-Up)</strong>. Build the rest over 2-3 months as you get comfortable with the tools. Or, if you want all 10 running within a week, <strong>let Jedai Flow build them for you</strong>&mdash;that is literally what we do.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CHAPTER 5 — MEASURING ROI
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="ch5">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter 05</div>
+      <h2>Measuring ROI</h2>
+      <p>How to calculate the exact dollar value of every automation you build, so you can justify the investment and prioritize what to build next.</p>
+    </div>
+
+    <p>If you cannot measure it, you cannot improve it. Every automation you build should be tied to a measurable business outcome. Here are the three frameworks for calculating automation ROI.</p>
+
+    <h3>Framework 1: Time Saved</h3>
+
+    <p>The simplest and most common ROI calculation. Figure out how much time the manual process takes, then multiply by the hourly cost of the person doing it.</p>
+
+    <div class="formula-box">
+      <span class="label">Time-Saved ROI Formula</span>
+      (Hours saved per month) &times; (Hourly labor cost) = Monthly value of automation
+    </div>
+
+    <div class="card green-border no-break">
+      <h4>Worked Example: Lead Follow-Up</h4>
+      <p><strong>Before automation:</strong> You spend 15 minutes per lead researching their inquiry, writing a personalized email, logging their info in the CRM, and notifying your team. You get 80 leads/month.</p>
+      <p>80 leads &times; 15 min = <strong>20 hours/month</strong></p>
+      <p><strong>Your effective hourly rate:</strong> $75/hour (what your time is worth to the business)</p>
+      <p>20 hours &times; $75 = <strong>$1,500/month in time value recovered</strong></p>
+      <p><strong>Cost of automation:</strong> $25/month (Make.com + API costs)</p>
+      <p><strong>Net ROI: $1,475/month, or 5,900% return</strong></p>
+    </div>
+
+    <h3>Framework 2: Revenue Gained</h3>
+
+    <p>Some automations don't just save time; they directly generate revenue that would not exist otherwise. Speed-to-lead automations are the best example.</p>
+
+    <div class="formula-box">
+      <span class="label">Revenue-Gain ROI Formula</span>
+      (Additional conversions per month) &times; (Average deal value) = Monthly revenue gained
+    </div>
+
+    <div class="card green-border no-break">
+      <h4>Worked Example: Speed-to-Lead Impact</h4>
+      <p><strong>Before automation:</strong> Average response time: 4 hours. Conversion rate: 8%. Monthly leads: 100. Deals closed: 8. Average deal value: $2,000.</p>
+      <p>Monthly revenue: 8 &times; $2,000 = $16,000</p>
+      <p><strong>After automation:</strong> Average response time: 47 seconds. Conversion rate increases to 14% (industry data shows 2x or more improvement with sub-5-minute response). Monthly leads: 100. Deals closed: 14.</p>
+      <p>Monthly revenue: 14 &times; $2,000 = $28,000</p>
+      <p><strong>Revenue gained: $12,000/month from a single automation.</strong></p>
+    </div>
+
+    <h3>Framework 3: Cost Per Automation</h3>
+
+    <p>To compare automations and prioritize your roadmap, calculate the total cost of each automation including build time, tools, and maintenance.</p>
+
+    <div class="formula-box">
+      <span class="label">Total Cost of Automation (Annual)</span>
+      (Build time &times; hourly rate) + (Monthly tool cost &times; 12) + (Monthly maintenance hours &times; hourly rate &times; 12)
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Automation</th>
+            <th>Build Cost (one-time)</th>
+            <th>Monthly Run Cost</th>
+            <th>Monthly Value</th>
+            <th>Payback Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lead Auto-Response</td>
+            <td>$150 (2 hrs)</td>
+            <td>$25</td>
+            <td>$1,500+</td>
+            <td>4 days</td>
+          </tr>
+          <tr>
+            <td>Appointment Reminders</td>
+            <td>$225 (3 hrs)</td>
+            <td>$15</td>
+            <td>$800+</td>
+            <td>10 days</td>
+          </tr>
+          <tr>
+            <td>Review Requests</td>
+            <td>$75 (1 hr)</td>
+            <td>$8</td>
+            <td>$500+</td>
+            <td>5 days</td>
+          </tr>
+          <tr>
+            <td>No-Show Follow-Up</td>
+            <td>$150 (2 hrs)</td>
+            <td>$10</td>
+            <td>$600+</td>
+            <td>8 days</td>
+          </tr>
+          <tr>
+            <td>Client Onboarding</td>
+            <td>$375 (5 hrs)</td>
+            <td>$12</td>
+            <td>$400+</td>
+            <td>30 days</td>
+          </tr>
+          <tr>
+            <td>Invoice Follow-Up</td>
+            <td>$300 (4 hrs)</td>
+            <td>$10</td>
+            <td>$1,000+</td>
+            <td>10 days</td>
+          </tr>
+          <tr>
+            <td>Social Scheduling</td>
+            <td>$300 (4 hrs)</td>
+            <td>$20</td>
+            <td>$600+</td>
+            <td>16 days</td>
+          </tr>
+          <tr>
+            <td>Report Generation</td>
+            <td>$450 (6 hrs)</td>
+            <td>$15</td>
+            <td>$400+</td>
+            <td>35 days</td>
+          </tr>
+          <tr>
+            <td>Data Entry Elimination</td>
+            <td>$375 (5 hrs)</td>
+            <td>$20</td>
+            <td>$1,200+</td>
+            <td>10 days</td>
+          </tr>
+          <tr>
+            <td>Support Triage</td>
+            <td>$450 (6 hrs)</td>
+            <td>$25</td>
+            <td>$900+</td>
+            <td>16 days</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Tracking Your Automation ROI Over Time</h3>
+
+    <p>Create a simple dashboard (a Google Sheet works fine) that tracks:</p>
+
+    <ul>
+      <li><strong>Executions per month</strong> &mdash; How many times each automation ran (Make.com shows this in the dashboard)</li>
+      <li><strong>Errors per month</strong> &mdash; How many times an automation failed (should be under 2%)</li>
+      <li><strong>Time saved (calculated)</strong> &mdash; Executions &times; estimated manual time per task</li>
+      <li><strong>Revenue attributable</strong> &mdash; For sales-related automations, track which deals came from automated follow-ups</li>
+      <li><strong>Tool costs</strong> &mdash; What you actually paid for Make.com, APIs, and Twilio</li>
+    </ul>
+
+    <p>Review this dashboard monthly. You will be shocked at how fast the numbers add up. Most businesses recoup their entire automation investment within the first 2-4 weeks.</p>
+
+    <div class="callout tip">
+      <div class="callout-label">The Hidden ROI</div>
+      <p>The biggest return from automation is often the hardest to measure: <strong>mental bandwidth</strong>. When you stop worrying about whether the follow-up email was sent, whether the appointment reminder went out, or whether the invoice was logged correctly, you free up cognitive energy for strategy, creativity, and the high-value work that actually grows your business. That is worth more than any dollar figure on a spreadsheet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CHAPTER 6 — COMMON MISTAKES
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter" id="ch6">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter 06</div>
+      <h2>Common Mistakes &amp; How to Avoid Them</h2>
+      <p>The pitfalls that trip up nearly every business owner who starts automating. Learn from others' expensive mistakes.</p>
+    </div>
+
+    <h3>Mistake #1: Over-Automating Too Fast</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>You get excited about automation and try to automate everything at once. You build 15 scenarios in a week, half of them break, you don't have time to fix them, and you end up with a tangled mess of broken workflows that cause more problems than they solve. Customers receive duplicate emails. Data gets corrupted. Your team loses trust in the system and goes back to doing everything manually.</p>
+      <h4>How to avoid it:</h4>
+      <p><strong>The "One Per Week" rule.</strong> Build and fully stabilize one automation per week. Do not start the next one until the current one has run successfully for 5 consecutive business days with zero errors. This forces you to build properly, test thoroughly, and understand what you've built before moving on. After 10 weeks, you will have 10 rock-solid automations instead of 15 broken ones.</p>
+    </div>
+
+    <h3>Mistake #2: Ignoring Edge Cases</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>You build your lead follow-up automation and it works perfectly for standard form submissions. Then someone submits the form with a company email that has a typo. Or they paste an entire paragraph into the "name" field. Or they submit the form 4 times because the button did not give feedback. Or someone fills it out in Spanish. Your automation sends 4 duplicate emails, one addressed to "John Smith Hey I wanted to ask about your services I found you on Google and," and the AI-generated response is in English to a Spanish-speaking lead.</p>
+      <h4>How to avoid it:</h4>
+      <p><strong>The "10 Weird Inputs" test.</strong> Before activating any automation, send 10 test inputs through it that are intentionally wrong, weird, or edge-case scenarios:</p>
+      <ol>
+        <li>Empty fields</li>
+        <li>Extremely long inputs (500+ characters in a name field)</li>
+        <li>Special characters and emoji</li>
+        <li>Duplicate submissions within seconds</li>
+        <li>Non-English text</li>
+        <li>Obvious spam ("Buy Viagra cheap!")</li>
+        <li>Invalid email addresses</li>
+        <li>Inputs with HTML or script tags (security test)</li>
+        <li>Inputs with only whitespace</li>
+        <li>Submission from a form with optional fields left blank</li>
+      </ol>
+      <p>Add <strong>filters</strong> in Make.com to catch and handle each edge case. Use the <strong>"Text parser > Match pattern"</strong> module to validate email formats. Use a <strong>Router</strong> to separate valid submissions from spam. Use Make.com's built-in <strong>"ignore"</strong> function on the duplicate detection.</p>
+    </div>
+
+    <h3>Mistake #3: No Error Handling</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>Your automation runs perfectly for 3 weeks. Then Google's API goes down for 15 minutes, and 6 leads that came in during that window were lost entirely because the Google Sheets module failed and the entire scenario stopped. Or your OpenAI API key ran out of credits, and leads started getting emails with "[Error: insufficient_quota]" as the body text. Nobody noticed for 3 days.</p>
+      <h4>How to avoid it:</h4>
+      <p><strong>Three layers of error protection:</strong></p>
+      <ol>
+        <li><strong>Module-level error handlers.</strong> In Make.com, right-click any module and add an error handler. Use "Resume" for non-critical steps (logging to a spreadsheet) and "Rollback" for critical steps (sending customer-facing emails). For the Rollback path, add a fallback action (e.g., if the AI module fails, send a template email instead of the AI-personalized one).</li>
+        <li><strong>Scenario-level notifications.</strong> In Make.com, go to your scenario's settings and enable "Email notifications" for errors. Set it to notify you immediately when any module fails. This is one checkbox and it is free.</li>
+        <li><strong>A weekly health check.</strong> Every Monday, spend 5 minutes reviewing the "History" tab of each active scenario. Look for failed executions (shown in red). Fix any issues before they compound.</li>
+      </ol>
+    </div>
+
+    <h3>Mistake #4: Not Testing Before Going Live</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>You build the automation, it looks right, and you turn it on in production immediately. The first real lead comes through and the email subject line says "Re: Your inquiry, {{1.name}}" because you forgot to map the variable. Or the appointment reminder goes out saying "Your appointment is at {{formatDate(3.date, 'MM/DD/YYYY')}}" because the date formatting function had a syntax error. Your customer sees raw code instead of their appointment time.</p>
+      <h4>How to avoid it:</h4>
+      <p><strong>The Three-Stage Testing Protocol:</strong></p>
+      <ol>
+        <li><strong>Self-test:</strong> Run the automation with your own email, your own phone number, your own name. Read every output as if you were the customer. Does it look professional? Is the tone right? Are all variables properly replaced?</li>
+        <li><strong>Colleague test:</strong> Have someone else submit a real-looking test through the trigger. Do not tell them what to expect. Ask them to screenshot everything they receive and give you honest feedback.</li>
+        <li><strong>Controlled live test:</strong> Turn the automation on but monitor the first 10 real executions in real-time. Sit in Make.com's scenario history and watch each one complete. Only walk away once 10 consecutive executions have completed without errors.</li>
+      </ol>
+    </div>
+
+    <h3>Mistake #5: Treating Automation as "Set and Forget"</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>You build a great automation in January. By March, the API you are using has updated its response format. By May, the CRM you connected has changed its field names. By July, your business has changed its pricing and the automated quotes are wrong. The automation has been silently failing or sending incorrect information for months.</p>
+      <h4>How to avoid it:</h4>
+      <p><strong>Monthly automation audit (30 minutes):</strong></p>
+      <ul>
+        <li>Review all scenario histories for the past month. Check error rates.</li>
+        <li>Verify that all API connections are still authenticated (tokens expire).</li>
+        <li>Read 3-5 recent outputs (emails, messages) to confirm content is still accurate and on-brand.</li>
+        <li>Check that all pricing, links, and business information in your templates are current.</li>
+        <li>Review Make.com's operations usage to ensure you are not approaching limits.</li>
+      </ul>
+    </div>
+
+    <h3>Mistake #6: Automating a Process Nobody Understands</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>The intern built the original spreadsheet process. The intern left. Nobody knows exactly how the data flows, what the exceptions are, or why certain columns exist. You try to automate this mystery process, and the automation faithfully replicates every confusing, redundant, and incorrect step at machine speed.</p>
+      <h4>How to avoid it:</h4>
+      <p><strong>Document before you automate.</strong> Write a plain-English description of the process: what triggers it, every step that happens, every decision point, and what the final output should be. If you cannot write it down clearly, you are not ready to automate it. The act of documenting will usually reveal inefficiencies and errors in the current process that you should fix before automating.</p>
+    </div>
+
+    <h3>Mistake #7: Using AI Without Guardrails</h3>
+
+    <div class="card red-border">
+      <h4>What happens:</h4>
+      <p>You connect ChatGPT to your email automation and let it write customer-facing emails with no constraints. The AI occasionally hallucinates a discount code that does not exist. It promises a "free consultation" that your business does not offer. It responds to an angry customer with a tone-deaf joke. It gives medical/legal/financial advice that creates liability.</p>
+      <h4>How to avoid it:</h4>
+      <ul>
+        <li><strong>Constrain the output.</strong> In your system prompt, explicitly list what the AI is NOT allowed to say: no pricing promises, no discount codes, no medical/legal advice, no comparisons to competitors, etc.</li>
+        <li><strong>Use structured output.</strong> Instead of letting the AI write free-form text, have it fill in specific sections of a template. This limits the scope for hallucination.</li>
+        <li><strong>Human-in-the-loop for high-stakes communication.</strong> For anything that involves money, contracts, legal, or health, route the AI's draft to a human for review before sending. Automate the draft creation, but keep a human approving the final send.</li>
+        <li><strong>Test the prompt 50 times</strong> before going live. Run 50 varied inputs through the AI module and read every output. If even one is unacceptable, refine the prompt until all 50 are consistently good.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     BONUS — AUTOMATION READINESS CHECKLIST
+     ════════════════════════════════════════════════════════ -->
+<section class="chapter bonus-section" id="bonus">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-number">Bonus</div>
+      <h2>Automation Readiness Checklist</h2>
+      <p>Print this section and use it to evaluate whether your business is ready to automate. Check each box as you go.</p>
+    </div>
+
+    <div class="checklist-container">
+      <h3>Business Readiness Assessment</h3>
+
+      <div class="checklist-group">
+        <h4>Part 1: Process Documentation</h4>
+        <label><input type="checkbox"> I can describe my lead-to-customer journey in clear, numbered steps</label>
+        <label><input type="checkbox"> I know how many leads come in per week and from which channels</label>
+        <label><input type="checkbox"> I know my average response time to new inquiries</label>
+        <label><input type="checkbox"> I have documented my client onboarding process step by step</label>
+        <label><input type="checkbox"> I know which tasks my team spends the most time on each week</label>
+        <label><input type="checkbox"> I have identified at least 3 processes that follow the same steps every time</label>
+      </div>
+
+      <div class="checklist-group">
+        <h4>Part 2: Tools &amp; Accounts</h4>
+        <label><input type="checkbox"> I have a CRM or plan to implement one (GHL, HubSpot, Salesforce, etc.)</label>
+        <label><input type="checkbox"> I have a business email that I can use for automated sending</label>
+        <label><input type="checkbox"> I have created a free Make.com account</label>
+        <label><input type="checkbox"> I have (or am willing to get) an OpenAI or Anthropic API key</label>
+        <label><input type="checkbox"> My website has contact/inquiry forms that I can connect to webhooks</label>
+        <label><input type="checkbox"> I have Google Workspace or Microsoft 365 for calendar and email</label>
+        <label><input type="checkbox"> I have (or am willing to get) a Twilio account for SMS</label>
+      </div>
+
+      <div class="checklist-group">
+        <h4>Part 3: Data Readiness</h4>
+        <label><input type="checkbox"> My customer/lead data is in one central system (not scattered across 5 spreadsheets)</label>
+        <label><input type="checkbox"> I have clean, consistent data formats (names are "First Last," not mixed formats)</label>
+        <label><input type="checkbox"> I have email templates or at least a defined brand voice for communications</label>
+        <label><input type="checkbox"> I have my Google Business review link ready for review request automations</label>
+        <label><input type="checkbox"> I have standard pricing/service information documented somewhere</label>
+      </div>
+
+      <div class="checklist-group">
+        <h4>Part 4: Team &amp; Commitment</h4>
+        <label><input type="checkbox"> I (or someone on my team) can dedicate 5-10 hours to learning Make.com</label>
+        <label><input type="checkbox"> I am willing to invest $25-100/month in automation tools</label>
+        <label><input type="checkbox"> I have a testing process (or will follow the Three-Stage Protocol from Chapter 6)</label>
+        <label><input type="checkbox"> I understand that automation requires monthly monitoring, not just setup</label>
+        <label><input type="checkbox"> I have identified my first automation target using the 80/20 scoring framework</label>
+      </div>
+
+      <div class="checklist-group">
+        <h4>Part 5: Priority Automations (check what you want to build first)</h4>
+        <label><input type="checkbox"> Lead capture auto-response</label>
+        <label><input type="checkbox"> Appointment reminders (SMS + email)</label>
+        <label><input type="checkbox"> No-show follow-up</label>
+        <label><input type="checkbox"> Review request after service</label>
+        <label><input type="checkbox"> Client onboarding sequence</label>
+        <label><input type="checkbox"> Invoice follow-up and payment reminders</label>
+        <label><input type="checkbox"> Social media content scheduling</label>
+        <label><input type="checkbox"> Automated report generation</label>
+        <label><input type="checkbox"> Data entry elimination</label>
+        <label><input type="checkbox"> Customer support triage</label>
+      </div>
+    </div>
+
+    <div class="callout tip" style="margin-top: 2rem;">
+      <div class="callout-label">Scoring</div>
+      <p><strong>20+ boxes checked:</strong> You are ready. Start building this week.<br>
+      <strong>12-19 boxes checked:</strong> You are close. Spend a week on the unchecked items in Parts 1-3, then start building.<br>
+      <strong>Under 12:</strong> Focus on process documentation and tool setup first. The automation itself is the easy part&mdash;having clean processes and data is the foundation everything else depends on.</p>
+    </div>
+
+    <h3>Your Next Steps</h3>
+
+    <ol>
+      <li><strong>This week:</strong> Complete the checklist above. Create your Make.com account. Get your API keys.</li>
+      <li><strong>Next week:</strong> Build Automation #1 (Lead Auto-Response) using the Chapter 3 walkthrough.</li>
+      <li><strong>Week 3:</strong> Build Automation #2 (Appointment Reminders). Monitor both automations daily.</li>
+      <li><strong>Week 4:</strong> Add Automation #4 (Review Requests) and #3 (No-Show Follow-Up).</li>
+      <li><strong>Month 2-3:</strong> Build the remaining automations from Chapter 4, one per week.</li>
+    </ol>
+
+    <p>Or, skip the learning curve entirely and let Jedai Flow build, monitor, and optimize all of it for you.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════ -->
+<footer class="guide-footer">
+  <div class="brand">
+    <span class="brand-icon">JF</span>
+    Jedai Flow
+  </div>
+  <p><strong>The AI Automation Guide</strong> &mdash; 2026 Edition</p>
+  <p style="margin-top: 0.5rem;">Built by Jedai Flow &mdash; AI automation for businesses that want to grow without the grind.</p>
+  <p style="margin-top: 1rem;"><a href="https://jedaiflow.com">jedaiflow.com</a></p>
+  <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-dim);">Copyright 2026 Jedai Flow. All rights reserved. This guide is licensed for the individual purchaser only. Do not distribute.</p>
+</footer>
+
+</body>
+</html>

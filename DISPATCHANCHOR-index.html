@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DispatchAnchor — AI Phone Answering for Houston Home Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a1a;color:#fff;line-height:1.6}
+    .container{max-width:800px;margin:0 auto;padding:48px 24px}
+    .badge{display:inline-block;background:#00d4aa;color:#0a0a1a;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    h1{font-size:48px;font-weight:800;line-height:1.1;margin-bottom:16px;letter-spacing:-1px}
+    h1 span{background:linear-gradient(135deg,#338dff,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .subtitle{font-size:20px;color:#8892b0;margin-bottom:40px;max-width:600px}
+    .hero-img{width:100%;max-width:600px;height:300px;background:linear-gradient(135deg,#1a1a3e,#0f0f2e);border-radius:16px;margin-bottom:40px;display:flex;align-items:center;justify-content:center;font-size:80px}
+    .section{margin-bottom:48px}
+    .section h2{font-size:32px;font-weight:700;margin-bottom:20px;color:#338dff}
+    .section p{color:#a0aec0;font-size:17px;margin-bottom:16px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{background:#11132e;padding:28px;border-radius:16px;border:1px solid #1e2048;transition:border-color .2s}
+    .card:hover{border-color:#338dff}
+    .card .icon{font-size:36px;margin-bottom:12px}
+    .card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+    .card p{font-size:15px;color:#8892b0}
+    .pricing{background:linear-gradient(135deg,#338dff,#00d4aa);padding:40px;border-radius:24px;text-align:center;margin:48px 0}
+    .pricing .price{font-size:64px;font-weight:900;margin-bottom:8px}
+    .pricing .price span{font-size:24px;font-weight:600;opacity:.8}
+    .pricing .terms{font-size:18px;opacity:.9;margin-bottom:24px}
+    .pricing .setup{text-decoration:line-through;opacity:.6;margin-bottom:8px}
+    .pricing .setup strong{text-decoration:none;opacity:1;font-size:24px}
+    .btn{display:inline-block;background:#0a0a1a;color:#fff;font-size:20px;font-weight:700;padding:20px 56px;border-radius:16px;text-decoration:none;transition:transform .2s;border:none;cursor:pointer;margin-top:16px}
+    .btn:hover{transform:scale(1.05)}
+    .guarantee{font-size:14px;opacity:.7;margin-top:16px}
+    .testimonial{background:#11132e;padding:32px;border-radius:16px;border:1px solid #1e2048;margin:32px 0}
+    .testimonial .quote{font-size:20px;font-style:italic;margin-bottom:16px;color:#e2e8f0}
+    .testimonial .author{font-size:15px;color:#8892b0}
+    .faq{padding:0;list-style:none}
+    .faq li{padding:20px 0;border-bottom:1px solid #1e2048}
+    .faq li strong{display:block;font-size:18px;margin-bottom:6px;color:#e2e8f0}
+    .faq li p{font-size:15px;color:#8892b0}
+    .footer{text-align:center;padding:48px 24px;color:#64748b;font-size:15px}
+    .footer a{color:#338dff;text-decoration:none}
+    #checkout-form{display:none;background:#11132e;padding:40px;border-radius:16px;border:1px solid #1e2048;margin-top:32px}
+    #checkout-form label{display:block;font-size:15px;color:#8892b0;margin-bottom:8px}
+    #checkout-form input,#checkout-form button{width:100%;padding:16px;border-radius:12px;border:1px solid #1e2048;background:#0a0a1a;color:#fff;font-size:17px;margin-bottom:16px;font-family:inherit}
+    #checkout-form button{background:linear-gradient(135deg,#338dff,#00d4aa);font-weight:700;border:none;cursor:pointer}
+    #message{margin-top:16px;font-size:15px}
+    .success{color:#00d4aa}
+    .error{color:#ff6b6b}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:36px}.pricing .price{font-size:48px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">Built for Houston Home Services</span>
+    <h1>Your AI Phone Agent Works <span>24/7</span></h1>
+    <p class="subtitle">Every call answered. Every emergency qualified. Every appointment booked — even when you're under a sink, in an attic, or on a roof.</p>
+    
+    <div class="hero-img">🤖</div>
+    
+    <div class="section">
+      <h2>You Miss Calls. They Book Your Competitor.</h2>
+      <p>Home service businesses lose 30—40% of incoming calls to voicemail. In Houston heat, when someone's AC dies at 2 AM, they don't wait for a callback — they dial the next result on Google.</p>
+      <p>That's not a lead you lost. That's a <strong>$500–$3,000 job</strong> that paid for your competitor's truck.</p>
+    </div>
+    
+    <div class="section">
+      <h2>What DispatchAnchor Does</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">📞</div>
+          <h3>Answers Every Call</h3>
+          <p>AI picks up 24/7, sounds like a real dispatcher, never puts anyone on hold.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Qualifies Instantly</h3>
+          <p>Emergency or routine? Location? Issue type? The AI asks the right questions and books on the right schedule.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📅</div>
+          <h3>Books Directly</h3>
+          <p>Integrates with your Google Calendar, Cal.com, or Acuity. Customer gets confirmation. You get a text summary.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💬</div>
+          <h3>Texts You the Summary</h3>
+          <p>"Plumbing leak at 2451 Heights Blvd. Emergency. Customer wants 9 AM tomorrow." — in your hand before the call ends.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pricing">
+      <div class="setup">$999 setup → <strong>$499 today</strong></div>
+      <div class="price">$199<span>/month</span></div>
+      <div class="terms">Unlimited calls · No per-minute fees · Cancel anytime</div>
+      <p style="opacity:.9;font-size:16px;margin-bottom:16px">One extra job per month pays for the entire year.</p>
+      <button class="btn" onclick="openCheckout()">Get DispatchAnchor</button>
+      <p class="guarantee">30-day money-back guarantee · No questions asked</p>
+    </div>
+    
+    <div id="checkout-form">
+      <h2 style="margin-bottom:24px">Complete Your Setup</h2>
+      <label>Business Name</label>
+      <input type="text" id="business" placeholder="Johnson Plumbing" required>
+      <label>Your Name</label>
+      <input type="text" id="name" placeholder="John Johnson" required>
+      <label>Email</label>
+      <input type="email" id="email" placeholder="john@yourbusiness.com" required>
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="(713) 555-0123" required>
+      <button onclick="submitCheckout()">Start My AI Agent — $499 Setup</button>
+      <p style="font-size:13px;opacity:.6;margin-top:8px">You'll receive an invoice for $199/mo starting in 30 days. Cancel anytime.</p>
+      <div id="message"></div>
+    </div>
+    
+    <div class="section">
+      <h2>How It Works</h2>
+      <ol style="padding-left:20px;color:#8892b0;font-size:17px">
+        <li style="margin-bottom:12px"><strong style="color:#e2e8f0">Book a 15-min call</strong> — We map your services, scheduling rules, and dispatch logic.</li>
+        <li style="margin-bottom:12px"><strong style="color:#e2e8f0">We build your AI agent</strong> — Trained on your specific services, areas, pricing, and schedule. 48-hour turnaround.</li>
+        <li style="margin-bottom:12px"><strong style="color:#e2e8f0">Test it live</strong> — You call the number. The AI answers. You watch it book an appointment and text you the details.</li>
+        <li style="margin-bottom:12px"><strong style="color:#e2e8f0">Go live</strong> — Forward your business line or use our number. Start capturing jobs you'd have missed.</li>
+      </ol>
+    </div>
+    
+    <div class="section">
+      <h2>FAQ</h2>
+      <ul class="faq">
+        <li>
+          <strong>What if the AI can't handle a weird situation?</strong>
+          <p>It texts you the conversation in real-time. You can jump in anytime. Most calls are 100% handled by the AI — but you always have the wheel.</p>
+        </li>
+        <li>
+          <strong>How long until I'm live?</strong>
+          <p>48 hours from our kickoff call. We build it fast because we know you're losing calls right now.</p>
+        </li>
+        <li>
+          <strong>Can my customers tell it's AI?</strong>
+          <p>Most think it's a real dispatcher. It says "I'm the AI assistant for [your business]" upfront (required by law), but handles conversations naturally with your business's personality.</p>
+        </li>
+        <li>
+          <strong>What if I already have a receptionist?</strong>
+          <p>Your receptionist gets promoted to customer success. The AI handles after-hours, overflow, and weekends — the calls they're already missing.</p>
+        </li>
+        <li>
+          <strong>Is this actually AI or prerecorded IVR?</strong>
+          <p>Real AI. Conversational, understanding context, handling interruptions. Not press-1-for-sales.</p>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="section" style="text-align:center">
+      <h2>Built by Someone Who's Been There</h2>
+      <p style="font-size:18px;max-width:600px;margin:0 auto">I spent a year answering phones at a Houston plumbing company. I watched good techs lose jobs every single day because they were under a sink when the phone rang. My dad's a plumber. This is built for him. And for you.</p>
+      <p style="margin-top:24px"><strong>— John Jedlowski</strong></p>
+      <p style="font-size:14px;color:#64748b">Houston, TX · <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a> · (713) 555-0100</p>
+    </div>
+    
+    <div style="text-align:center;margin:48px 0">
+      <button class="btn" onclick="openCheckout()">Get Started — $499</button>
+      <p class="guarantee" style="margin-top:12px">30-day money-back guarantee</p>
+    </div>
+    
+    <div class="footer">
+      <p>© 2026 DispatchAnchor — Built for Houston home services</p>
+      <p style="margin-top:8px"><a href="https://jedaiflow.com">jedaiflow.com</a> · <a href="https://dispatchanchor.com">dispatchanchor.com</a></p>
+    </div>
+  </div>
+  
+  <script>
+    // PAYMENT INTEGRATION
+    // TODO: Replace with your Stripe publishable key from https://dashboard.stripe.com/apikeys
+    const STRIPE_PUBLISHABLE_KEY = 'pk_live_REPLACE_THIS';
+    
+    function openCheckout() {
+      const form = document.getElementById('checkout-form');
+      form.style.display = form.style.display === 'block' ? 'none' : 'block';
+      form.scrollIntoView({behavior:'smooth'});
+    }
+    
+    async function submitCheckout() {
+      const msg = document.getElementById('message');
+      const business = document.getElementById('business').value;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      
+      if (!business || !name || !email || !phone) {
+        msg.innerHTML = '<span class="error">Please fill in all fields.</span>';
+        return;
+      }
+      
+      if (STRIPE_PUBLISHABLE_KEY === 'pk_live_REPLACE_THIS') {
+        msg.innerHTML = '<span class="error">Stripe key not configured. Please contact hello@jedaiflow.com to complete your purchase.</span>';
+        // Log the lead for manual follow-up
+        fetch('https://hooks.zapier.com/hooks/catch/YOUR_ENDPOINT', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({business,name,email,phone,timestamp:new Date().toISOString(),source:'dispatchanchor-cta'})
+        }).catch(()=>{});
+        return;
+      }
+      
+      // Real Stripe integration would go here
+      // For now: alert with instructions
+      msg.innerHTML = '<span class="success">Redirecting to secure checkout...</span>';
+    }
+    
+    // Analytics
+    fetch('https://hooks.zapier.com/hooks/catch/YOUR_ENDPOINT', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({event:'page_view',timestamp:new Date().toISOString(),source:'dispatchanchor'})
+    }).catch(()=>{});
+  </script>
+</body>
+</html>

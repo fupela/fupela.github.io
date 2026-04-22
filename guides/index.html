@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Guides — Jedaiflow</title>
+  <meta name="description" content="Free practical guides on AI workflows, lead response, and automation for home-service businesses. Subscribe to download." />
+  <link rel="canonical" href="https://jedaiflow.com/guides/" />
+  <meta property="og:title" content="Free Guides — Jedaiflow" />
+  <meta property="og:description" content="Subscribe to download free AI guides for home-service businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jedaiflow.com/guides/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300c9ff'/><stop offset='100%25' stop-color='%2300e5a0'/></linearGradient></defs></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HERO */
+    .hub-hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .page-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 14px;
+    }
+
+    .hub-hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .hub-hero h1 span {
+      background: linear-gradient(135deg, #00c9ff, #00e5a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hub-hero p {
+      font-size: 18px;
+      color: #8888aa;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* GUIDES GRID */
+    .guides-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 24px 48px;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      font-size: 16px;
+      color: #8888aa;
+    }
+
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .guide-card {
+      display: block;
+      padding: 28px;
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .guide-card:hover {
+      border-color: rgba(0,201,255,0.3);
+      transform: translateY(-2px);
+      background: #14141f;
+    }
+
+    .guide-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(0,201,255,0.08);
+      border: 1px solid rgba(0,201,255,0.18);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #00c9ff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .guide-tag.green {
+      background: rgba(0,229,160,0.08);
+      border-color: rgba(0,229,160,0.18);
+      color: #00e5a0;
+    }
+
+    .guide-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 8px;
+      color: #f0f0f8;
+      line-height: 1.35;
+    }
+
+    .guide-card p {
+      font-size: 14px;
+      color: #8888aa;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .guide-cta {
+      font-size: 13px;
+      font-weight: 700;
+      color: #00c9ff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .guide-lock {
+      font-size: 13px;
+      color: #8888aa;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* NEWSLETTER / SIGNUP */
+    .newsletter-section {
+      background: #0f0f1a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .newsletter-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .newsletter-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.2);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #00e5a0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .newsletter-section h2 {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-section .sub {
+      font-size: 16px;
+      color: #8888aa;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1;
+      min-width: 240px;
+      padding: 14px 18px;
+      background: #14141f;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px;
+      color: #f0f0f8;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input[type="email"]:focus { border-color: rgba(0,201,255,0.4); }
+    .signup-form input::placeholder { color: #8888aa; }
+
+    .signup-form button {
+      padding: 14px 26px;
+      background: linear-gradient(135deg, #00c9ff, #00e5a0);
+      color: #0a0a12;
+      font-weight: 800;
+      font-size: 15px;
+      font-family: inherit;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .signup-form button:hover { opacity: 0.9; transform: translateY(-1px); }
+    .signup-form button:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+    .signup-note {
+      font-size: 12px;
+      color: #8888aa;
+      opacity: 0.7;
+    }
+
+    .form-msg {
+      display: none;
+      padding: 14px 20px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .form-msg.success {
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.2);
+      color: #00e5a0;
+    }
+    .form-msg.error {
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.15);
+      color: #f87171;
+    }
+
+    /* BLOG SECTION */
+    .blog-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .blog-section .section-header {
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .post-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .post {
+      display: block;
+      padding: 24px 28px;
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .post:hover { border-color: rgba(0,201,255,0.3); transform: translateY(-2px); }
+
+    .post-meta {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 6px;
+    }
+
+    .post-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 5px;
+      color: #f0f0f8;
+    }
+
+    .post-excerpt { font-size: 13px; color: #8888aa; line-height: 1.5; }
+
+    .view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #00c9ff;
+      text-decoration: none;
+    }
+    .view-all:hover { opacity: 0.8; }
+
+    hr.divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
+
+    @media (max-width: 600px) {
+      .hub-hero { padding: 48px 20px 40px; }
+      .guides-section, .blog-section { padding-left: 20px; padding-right: 20px; }
+      .newsletter-section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- JF:NAV:START v1 -->
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/#how" class="jf-shell-nav-hide-sm">Product</a>
+      <a href="/#pricing" class="jf-shell-nav-hide-sm">Pricing</a>
+      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/shipclean/" class="jf-shell-nav-hide-sm">ShipClean</a>
+      <a href="/#demo" class="jf-shell-nav-cta">Book demo →</a>
+    </div>
+  </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <!-- JF:NAV:END -->
+
+  <!-- HERO -->
+  <div class="hub-hero">
+    <div class="page-label">Free Guides</div>
+    <h1>Practical guides.<br><span>Free to download.</span></h1>
+    <p>
+      AI workflows, lead response tactics, and automation playbooks for home-service businesses. Subscribe to the newsletter and get instant access to all guides.
+    </p>
+  </div>
+
+  <!-- GUIDE CARDS (email-gated) -->
+  <div class="guides-section">
+    <div class="section-header">
+      <h2>What you get access to</h2>
+      <p>Subscribe below — one email unlocks everything.</p>
+    </div>
+
+    <div class="guides-grid">
+
+      <!-- Paid product — featured badge -->
+      <a class="guide-card" href="/voice-agent-kit.html" style="border-color:rgba(0,201,255,0.4);position:relative;">
+        <div style="position:absolute;top:10px;right:14px;font-size:11px;font-weight:700;background:linear-gradient(135deg,#00c9ff,#00e5a0);color:#0a0a12;padding:3px 10px;border-radius:6px;">$15 • Instant</div>
+        <div class="guide-tag">Product</div>
+        <h3>AI Voice Agent Builder's Kit</h3>
+        <p>Build your own AI phone assistant in under an hour. Twilio, ElevenLabs, bridge server, custom tools, and Obsidian brain — step-by-step.</p>
+        <div class="guide-cta" style="color:var(--accent)">Browse the kit →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag green">Lead Response</div>
+        <h3>Home Services Lead Response Guide</h3>
+        <p>Scripts and timing for turning missed calls into booked jobs — built for plumbers, HVAC, and electricians.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag">AI Workflows</div>
+        <h3>The AI Automation Guide</h3>
+        <p>Step-by-step playbook for setting up AI workflows that handle lead intake, follow-up, and booking.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag green">Blueprint</div>
+        <h3>The AI Automation Blueprint Pack</h3>
+        <p>Copy-paste automation blueprints for the most common home-service scenarios — HVAC, plumbing, electrical.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag">Advanced</div>
+        <h3>Jedaiflow Mastery Guide</h3>
+        <p>Full playbook — from first AI call to full automation stack. Every tool, every workflow, every integration.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag">Business</div>
+        <h3>The AI Side Hustle Guide</h3>
+        <p>How to build and sell AI automation services to local businesses — positioning, pricing, outreach.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- NEWSLETTER SIGNUP (paywall) -->
+  <div class="newsletter-section" id="newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-badge">Free Access</div>
+      <h2>Subscribe. Download everything.</h2>
+      <p class="sub">
+        One email gets you instant access to all guides — plus a new guide every week, tips on AI phone answering, and what's actually working in home services right now.
+      </p>
+
+      <div class="form-msg" id="form-msg"></div>
+
+      <form class="signup-form" id="signup-form" novalidate>
+        <input type="email" id="email-input" placeholder="your@email.com" required autocomplete="email" />
+        <button type="submit" id="submit-btn">Get free guides →</button>
+      </form>
+      <p class="signup-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- BLOG -->
+  <div class="blog-section">
+    <div class="section-header">
+      <h2>From the blog</h2>
+      <p>Field notes — no signup required.</p>
+    </div>
+
+    <ul class="post-list">
+      <li>
+        <a class="post" href="/blog/ai-lead-response-system.html">
+          <div class="post-meta">April 22, 2026 · 7 min read</div>
+          <div class="post-title">From Missed Call to Booked Job: The Exact AI Lead Response System for Home Services</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/electrician-after-hours-calls">
+          <div class="post-meta">April 22, 2026 · 4 min read</div>
+          <div class="post-title">Houston Electricians: 60% of After-Hours Emergency Calls Go to Voicemail — Here Is What They Cost</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/daily-ai-content-workflow.html">
+          <div class="post-meta">April 19, 2026 · 6 min read</div>
+          <div class="post-title">The Daily AI Content Workflow I Use for Blog, LinkedIn, and X</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/ai-workflows-for-home-services.html">
+          <div class="post-meta">April 18, 2026 · 7 min read</div>
+          <div class="post-title">7 AI Workflows I'm Using to Help Home-Service Businesses Answer Leads Faster</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/openclaw-claude-mac-workaround">
+          <div class="post-meta">April 13, 2026 · 6 min read</div>
+          <div class="post-title">Claude Mac + OpenClaw: The Free Workaround After Anthropic's Subscription Changes</div>
+        </a>
+      </li>
+    </ul>
+
+    <a class="view-all" href="/blog/">View all posts →</a>
+  </div>
+
+  <!-- JF:FOOTER:START v1 -->
+  <footer class="jf-shell-footer">
+    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+    <p class="jf-shell-footer-tagline">
+      24/7 AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="jf-shell-footer-links">
+      <a href="/#how">Product</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/guides/">Guides</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+  </footer>
+  <!-- JF:FOOTER:END -->
+
+  <script>
+    // Smooth scroll for guide card clicks
+    document.querySelectorAll('a[href="#newsletter"]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('newsletter').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(function() {
+          document.getElementById('email-input').focus();
+        }, 600);
+      });
+    });
+
+    // Form submission → MailerLite API → redirect to thank-you
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('email-input').value.trim();
+      var btn = document.getElementById('submit-btn');
+      var msg = document.getElementById('form-msg');
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.className = 'form-msg error';
+        msg.textContent = 'Please enter a valid email address.';
+        msg.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+      msg.style.display = 'none';
+
+      var formData = new FormData();
+      formData.append('fields[email]', email);
+      formData.append('ml_submit', '1');
+      formData.append('anticsrf', 'true');
+
+      fetch('https://assets.mailerlite.com/jsonp/2266464/forms/185101564947465342/subscribe', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).then(function() {
+        window.location.href = '/guides/thank-you.html';
+      }).catch(function() {
+        // Redirect anyway — no-cors means we can't read the response
+        window.location.href = '/guides/thank-you.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

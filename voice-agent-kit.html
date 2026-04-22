@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Voice Agent Builder's Kit — JedAI Flow</title>
+  <meta name="description" content="Build your own AI phone agent in under an hour. Step-by-step guide with Twilio, ElevenLabs, webhooks, and custom tools. ">
+  <meta property="og:title" content="AI Voice Agent Builder's Kit">
+  <meta property="og:description" content="Build a real AI phone agent that answers calls, reads your notes, and books appointments — step-by-step for $15.">
+  <meta property="og:url" content="https://jedaiflow.com/voice-agent-kit.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a12;
+      --surface: #11132e;
+      --surface-border: rgba(255,255,255,0.08);
+      --surface-border-bright: rgba(0,201,255,0.35);
+      --text: #f0f0f8;
+      --text-muted: #a0aec0;
+      --text-dim: #8892b0;
+      --accent: #00c9ff;
+      --accent-green: #00e5a0;
+      --accent-blue: #338dff;
+      --accent-teal: #00d4aa;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      background:var(--bg);color:var(--text);line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{max-width:780px;margin:0 auto;padding:48px 24px}
+
+    /* Navbar */
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--surface-border)}
+    .nav a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500}
+    .nav .logo{color:var(--accent);font-weight:800;font-size:16px;letter-spacing:-0.3px}
+
+    /* Hero */
+    .badge{
+      display:inline-block;background:var(--accent-teal);color:#0a0a12;
+      font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;
+      text-transform:uppercase;letter-spacing:1.2px;margin-bottom:20px;
+    }
+    h1{font-size:48px;font-weight:800;line-height:1.1;letter-spacing:-1.2px;margin-bottom:20px}
+    h1 span{
+      color:var(--accent);
+      background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .subtitle{font-size:20px;color:var(--text-muted);margin-bottom:32px;max-width:620px;line-height:1.6}
+
+    /* Whats-inside */
+    .features{list-style:none;margin:28px 0}
+    .features li{
+      display:flex;align-items:flex-start;gap:14px;padding:14px 0;
+      border-bottom:1px solid var(--surface-border);
+    }
+    .features li:last-child{border-bottom:none}
+    .features .check{
+      width:24px;height:24px;min-width:24px;border-radius:50%;
+      background:var(--accent-teal);display:flex;align-items:center;justify-content:center;
+      color:#0a0a12;font-weight:800;font-size:13px;
+    }
+    .features h4{font-size:16px;font-weight:700;margin-bottom:4px;color:var(--text)}
+    .features p{font-size:15px;color:var(--text-dim);line-height:1.5}
+
+    /* Pricing */
+    .pricing-box{
+      background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));
+      padding:40px 32px;border-radius:24px;text-align:center;margin:48px 0;
+      color:#0a0a12;
+    }
+    .pricing-box .price{font-size:56px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
+    .pricing-box .price-note{font-size:16px;opacity:.9;margin-bottom:28px}
+    .pricing-box .cta-button{
+      display:inline-block;background:#0a0a12;color:#fff;
+      padding:16px 40px;border-radius:12px;font-size:17px;font-weight:700;
+      text-decoration:none;transition:opacity .2s;border:none;cursor:pointer;
+    }
+    .pricing-box .cta-button:hover{opacity:.85}
+    .pricing-box .guarantee{font-size:13px;opacity:.8;margin-top:14px}
+
+    /* Stripe checkout container */
+    #checkout-container{display:none;text-align:center;padding:20px}
+    #checkout-container iframe{border:none;width:100%;min-height:500px}
+
+    /* Sections */
+    .section{margin-bottom:48px}
+    .section h2{font-size:28px;font-weight:700;margin-bottom:18px;color:var(--accent);letter-spacing:-0.4px}
+    .section p{color:var(--text-muted);font-size:17px;margin-bottom:14px;line-height:1.6}
+
+    /* For-who grid */
+    .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .who-card{background:var(--surface);padding:20px;border-radius:12px;border:1px solid var(--surface-border)}
+    .who-card h4{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .who-card p{font-size:14px;color:var(--text-dim);line-height:1.5}
+
+    /* Trust */
+    .trust-box{
+      background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:22px 24px;margin:36px 0;
+      color:#0a0a12;
+    }
+    .trust-box h3{color:#16a34a;font-size:18px;margin-bottom:10px}
+    .trust-box p{font-size:15px;color:#1a1a2e;margin-bottom:8px}
+    .trust-box a{color:#16a34a;font-weight:600}
+
+    /* Footer */
+    .footer{margin-top:64px;padding-top:32px;border-top:1px solid var(--surface-border);text-align:center}
+    .footer p{font-size:14px;color:var(--text-dim)}
+    .footer a{color:var(--accent);text-decoration:none;font-weight:600}
+
+    @media (max-width:600px){
+      h1{font-size:36px}
+      .who-grid{grid-template-columns:1fr}
+      .pricing-box .price{font-size:42px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="logo">JedAI Flow</a>
+  <a href="/guides">Guides</a>
+</nav>
+
+<div class="container">
+
+  <span class="badge">Step-by-Step Guide</span>
+  <h1>Build Your Own <span>AI Voice Agent</span></h1>
+  <p class="subtitle">
+    In under an hour, wire up a phone agent that answers calls, searches your knowledge base, and connects to your tools.
+    No subscription required — works on ElevenLabs + Twilio.<br><br>
+    <strong>This is the exact stack I built for my own assistant, Maya.</strong>
+  </p>
+
+  <div class="section">
+    <h2>What's inside</h2>
+    <ul class="features">
+      <li>
+        <span class="check">1</span>
+        <div>
+          <h4>The Complete Architecture Diagram</h4>
+          <p>See exactly how Twilio → ElevenLabs → Bridge → Obsidian fits together. One diagram, zero confusion.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">2</span>
+        <div>
+          <h4>ElevenLabs Agent Setup (walkthrough)</h4>
+          <p>Dashboard clicks to create your first agent, set the right voice, and configure the webhook URL.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">3</span>
+        <div>
+          <h4>Twilio Phone Number Integration</h4>
+          <p>Buy a number, configure it for inbound/outbound, and test the full call flow.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">4</span>
+        <div>
+          <h4>Custom Tool Building (the hard part, solved)</h4>
+          <p>How to create external tools that actually work with ElevenLabs — including the exact JSON schemas that pass validation.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">5</span>
+        <div>
+          <h4>Bridge Server + Cloudflare Tunnel</h4>
+          <p>Make your local computer reachable from the internet securely. Includes the Node.js server code and startup script.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">6</span>
+        <div>
+          <h4>Obsidian Brain / Knowledge Base Wiring</h4>
+          <p>Let your agent search your notes live during a call. Template bridge code included.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">7</span>
+        <div>
+          <h4>Troubleshooting Reference</h4>
+          <p>Every error I hit building Maya — and the fix.</p>
+        </div>
+      </li>
+      <li>
+        <span class="check">8</span>
+        <div>
+          <h4>GitHub Template Repo</h4>
+          <p>Clone it, swap your keys, and run. Not from scratch — from a working baseline.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Who this is for</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <h4>🔧 Tinkerers</h4>
+        <p>You want a personal AI phone assistant but don't want to pay $99/mo for a prefab tool</p>
+      </div>
+      <div class="who-card">
+        <h4>🏠 Home Service Owners</h4>
+        <p>Plumbers, HVAC, electricians who need 24/7 phone answering without a Bland AI subscription</p>
+      </div>
+      <div class="who-card">
+        <h4>💰 Side Hustlers</h4>
+        <p>Sell voice agent setups to local businesses for $500-1,000 a pop</p>
+      </div>
+      <div class="who-card">
+        <h4>🤖 Agent Builders</h4>
+        <p>Others building AI agent stacks who need a working voice layer</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;">
+    <h2 style="margin-bottom:12px;">Free checklist before you buy</h2>
+    <p>Not sure if you're ready? Grab the <a href="/voice-agent-checklist.html" style="color:var(--accent);font-weight:600;text-decoration:none;">5-Minute Voice Agent Checklist</a> first — free, no email required.</p>
+  </div>
+
+  <div class="pricing-box">
+    <div class="price">$15</div>
+    <div class="price-note">One-time. Instant download. Lifetime updates.</div>
+    <!-- Gumroad checkout — active now -->
+    <a class="cta-button" href="https://gumroad.com/l/PLACEHOLDER_SWAP_WHEN_LIVE" target="_blank" rel="noopener">
+      Get the Builder's Kit →
+    </a>
+    <p style="font-size:13px;opacity:.8;margin-top:8px;">
+      Sold via Gumroad · Instant download · Stripe coming soon
+    </p>
+    <p class="guarantee">30-day money-back guarantee. No questions.</p>
+  </div>
+
+  <div id="checkout-container"></div>
+
+  <div class="section">
+    <h2>Why $15?</h2>
+    <p>I spent 14+ hours wiring, debugging, and documenting the exact ElevenLabs tool validation errors, Twilio quirks, and bridge server gotchas.</p>
+    <p>This guide would have saved me 10 of those hours. At $15, it costs less than one Twilio phone number — and it works on your first try.</p>
+  </div>
+
+  <div class="trust-box">
+    <h3>⚡ This is what I actually built</h3>
+    <p>I'm John. I run <a href="/">JedAI Flow</a>, an AI automation agency in Houston. Maya is my real voice assistant — she answers my calls, reads my Obsidian notes, and bridges to my entire agent team.</p>
+    <p>This guide is the setup I wish existed when I started. Every step is tested, every error is real, every fix works.</p>
+  </div>
+
+  <div class="footer">
+    <p>Questions? <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a> · <a href="/">jedaiflow.com</a></p>
+  </div>
+
+</div>
+
+<!-- Stripe Checkout (optional, requires Price ID) -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  // Uncomment and replace with your actual price ID if using Stripe Checkout instead of Payment Link
+  // const stripe = Stripe('pk_live_51TJxPRRnqMKddc4ZL3u4KjvIYdF8FFxIvb0ZVZe19Ao2JSiedxCWYtTYb5Bj4vqDwhqD0iKqUkLOVYyPEU6oV9FI00jYssZvKe');
+  // document.getElementById('checkout-btn')?.addEventListener('click', function() {
+  //   stripe.redirectToCheckout({lineItems:[{price:'price_REPLACE_ME',quantity:1}],mode:'payment',successUrl:'https://jedaiflow.com/voice-agent-kit.html?success=true',cancelUrl:'https://jedaiflow.com/voice-agent-kit.html'});
+  // });
+</script>
+
+</body>
+</html>

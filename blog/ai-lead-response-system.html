@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Missed Call to Booked Job: The Exact AI Lead Response System for Home Services</title>
+  <meta name="description" content="A step-by-step breakdown of the AI lead response system we build for plumbers, HVAC, and electricians — from the first missed call to a booked job on the calendar." />
+  <link rel="canonical" href="https://jedaiflow.com/blog/ai-lead-response-system.html" />
+  <meta property="og:title" content="From Missed Call to Booked Job: The Exact AI Lead Response System for Home Services" />
+  <meta property="og:description" content="The complete step-by-step system that turns missed calls into booked jobs using AI phone agents, instant follow-up, and smart scheduling." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jedaiflow.com/blog/ai-lead-response-system.html" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300c9ff'/><stop offset='100%25' stop-color='%2300e5a0'/></linearGradient></defs></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      padding: 96px 24px 54px;
+      background: radial-gradient(circle at top, rgba(0,201,255,0.15), transparent 35%), #0a0a12;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    h1 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+      margin-bottom: 18px;
+      font-weight: 900;
+      max-width: 14ch;
+    }
+    .subtitle {
+      max-width: 700px;
+      font-size: 18px;
+      color: #a4a4c2;
+      margin-bottom: 28px;
+    }
+    .meta {
+      font-size: 13px;
+      color: #70708a;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 84px;
+    }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-top: 48px;
+    }
+    article h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 44px 0 14px;
+      color: #ffffff;
+      letter-spacing: -0.4px;
+    }
+    article p {
+      font-size: 17px;
+      margin-bottom: 18px;
+      color: #d7d7e9;
+    }
+    article ul, article ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    article li {
+      margin-bottom: 10px;
+      color: #d7d7e9;
+    }
+    article strong { color: #ffffff; }
+    article a { color: #00c9ff; text-decoration: underline; }
+    article code {
+      font-family: 'SFMono-Regular', 'Fira Code', monospace;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 15px;
+      color: #00e5a0;
+    }
+
+    .callout {
+      border-left: 3px solid #00c9ff;
+      background: rgba(0,201,255,0.06);
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin: 24px 0;
+      font-size: 16px;
+      color: #e0e0f4;
+    }
+    .callout strong { color: #ffffff; }
+
+    .cta {
+      margin-top: 38px;
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(0,201,255,0.18), rgba(0,229,160,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cta h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .cta p {
+      margin-bottom: 16px;
+      color: #c9c9df;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #0a0a12;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .cta a:hover { opacity: 0.92; }
+
+    .mini-links {
+      margin: 26px 0;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .mini-links p {
+      font-size: 14px;
+      color: #a4a4c2;
+      margin-bottom: 10px;
+    }
+    .mini-links ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+    .mini-links li { margin-bottom: 8px; }
+
+    .numbered-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00c9ff, #00e5a0);
+      color: #0a0a12;
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .step-body { flex: 1; }
+    .step-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #f0f0f8;
+    }
+    .step-body p {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "From Missed Call to Booked Job: The Exact AI Lead Response System for Home Services",
+    "description": "A step-by-step breakdown of the AI lead response system we build for plumbers, HVAC, and electricians — from the first missed call to a booked job on the calendar.",
+    "author": { "@type": "Organization", "name": "Jedaiflow" },
+    "publisher": { "@type": "Organization", "name": "Jedaiflow", "url": "https://jedaiflow.com" },
+    "datePublished": "2026-04-22",
+    "dateModified": "2026-04-22"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- JF:NAV:START v1 -->
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/#how" class="jf-shell-nav-hide-sm">Product</a>
+      <a href="/#pricing" class="jf-shell-nav-hide-sm">Pricing</a>
+      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/shipclean/" class="jf-shell-nav-hide-sm">ShipClean</a>
+      <a href="/#demo" class="jf-shell-nav-cta">Book demo →</a>
+    </div>
+  </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <!-- JF:NAV:END -->
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Field Notes · Lead Response</div>
+      <h1>From missed call to booked job</h1>
+      <p class="subtitle">
+        The exact AI lead response system we use with Houston home-service businesses — phone agent, instant follow-up, and calendar booking, wired together in one flow.
+      </p>
+      <div class="meta">April 22, 2026 · By Jedaiflow · 7 min read</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article>
+      <p>
+        Most home-service businesses do not have a lead response problem. They have a <strong>speed problem</strong>.
+      </p>
+      <p>
+        The plumber who misses a Friday afternoon call does not lose the job because the customer hated his website. He loses it because the HVAC company three tabs over answered in 30 seconds and booked the slot.
+      </p>
+      <p>
+        Here is the system we actually build for clients — not theory, not a slide deck.
+      </p>
+
+      <h2>The five parts of the system</h2>
+
+      <div class="numbered-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>AI phone agent answers the call you can't take</h3>
+          <p>When the line is busy, after hours, or the tech is on a roof, the AI agent picks up in two rings. It asks the right questions — name, location, issue, urgency — and never forgets to offer a time slot.</p>
+        </div>
+      </div>
+
+      <div class="numbered-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Instant summary sent to your phone and inbox</h3>
+          <p>Within 30 seconds of the call ending, the owner gets a clean text summary: who called, what they need, and whether it's an emergency. No app to open. No dashboard to check.</p>
+        </div>
+      </div>
+
+      <div class="numbered-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Calendar hold or direct booking</h3>
+          <p>If the job is straightforward and slots are open, the agent books it directly. If it needs a quote or inspection, it drops a calendar hold so the lead does not cool off.</p>
+        </div>
+      </div>
+
+      <div class="numbered-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Follow-up text if the lead doesn't convert</h3>
+          <p>The AI sends a short follow-up two hours later: "Just checking — did you get the help you needed?" This simple message recaptures 15–20% of leads who called around.</p>
+        </div>
+      </div>
+
+      <div class="numbered-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Weekly roll-up so you see what actually happened</h3>
+          <p>Every Monday, a single email shows: calls answered, calls missed, jobs booked, revenue protected. No vanity metrics. Just what you need to know to run the business.</p>
+        </div>
+      </div>
+
+      <h2>Why speed beats perfection</h2>
+      <p>
+        We have tested fancy IVR trees, long intake forms, and beautiful chatbots. None of them move the needle like a <strong>fast, human-sounding phone answer</strong>.
+      </p>
+      <p>
+        The goal is not to replace your front desk. It is to catch the calls your front desk cannot — nights, weekends, lunch breaks, and Monday morning floods.
+      </p>
+      <p class="callout">
+        <strong>The numbers we see:</strong> Home-service businesses in Houston miss 30–50% of after-hours calls. One missed emergency call is a $1,200–$4,000 job. The AI agent costs less than one of those jobs per month.
+      </p>
+
+      <h2>What businesses get wrong</h2>
+      <ul>
+        <li><strong>Relying on voicemail:</strong> 60–70% of callers hang up. They do not leave a message — they call the next listing.</li>
+        <li><strong>Using only text/chat:</strong> Home-service customers still want to call. A 60-year-old with a burst pipe is not downloading an app.</li>
+        <li><strong>Forgetting follow-up:</strong> Answering is step one. If you don't follow up, the lead still dies.</li>
+        <li><strong>Buying software, not a system:</strong> A tool without a workflow is just another login. The system matters more than the brand name.</li>
+      </ul>
+
+      <div class="mini-links">
+        <p>Related reading:</p>
+        <ul>
+          <li><a href="/blog/ai-workflows-for-home-services.html">7 AI Workflows I'm Using to Help Home-Service Businesses Answer Leads Faster</a></li>
+          <li><a href="/blog/ai-phone-agent-roi.html">The ROI of an AI Phone Agent — One Missed Emergency Pays for 5 Months</a></li>
+          <li><a href="/blog/daily-ai-content-workflow.html">The Daily AI Content Workflow I Use for Blog, LinkedIn, and X</a></li>
+          <li><a href="/blog/openclaw-claude-mac-workaround.html">Claude + OpenClaw: The $20/mo AI Setup</a></li>
+        </ul>
+      </div>
+
+      <h2>What it takes to get live</h2>
+      <p>
+        From first conversation to live agent on your line: about 48 hours. We train the agent on your services, your pricing, your calendar, and your escalation rules. Then we run test calls and tune the voice and responses.
+      </p>
+      <p>
+        The setup is $499 one-time. The running cost is $199/month flat. There are no per-call fees, no usage tiers, and no annual contract.
+      </p>
+      <p>
+        If you already have a phone number, we can forward it. If you want a new local number, we provision one. Either way, your customers call a normal 10-digit number and talk to a normal-sounding person.
+      </p>
+
+      <div class="cta">
+        <h3>Want the applied version?</h3>
+        <p>
+          We build and manage this exact system for plumbers, HVAC, electricians, and contractors in Houston. One call to see how it fits your business.
+        </p>
+        <a href="/shipclean/">Explore ShipClean →</a>
+      </div>
+    </article>
+  </main>
+
+  <!-- JF:FOOTER:START v1 -->
+  <footer class="jf-shell-footer">
+    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+    <p class="jf-shell-footer-tagline">
+      24/7 AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="jf-shell-footer-links">
+      <a href="/#how">Product</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/guides/">Guides</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+  </footer>
+  <!-- JF:FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══ SEO META ═══ -->
+  <title>Claude Mac + OpenClaw: The Free Workaround After Anthropic's Subscription Changes (2026)</title>
+  <meta name="description" content="Anthropic blocked Claude Pro and Max subscriptions from OpenClaw in April 2026. Here's the free workaround using Claude Cowork as a bridge — no API account needed." />
+  <meta name="keywords" content="OpenClaw Claude subscription, Anthropic blocked OpenClaw, Claude Mac OpenClaw fix, Claude subscription OpenClaw workaround, how to use Claude with OpenClaw 2026, Claude Cowork OpenClaw bridge, Anthropic third party tool ban" />
+  <link rel="canonical" href="https://jedaiflow.com/blog/openclaw-claude-mac-workaround" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Claude Mac + OpenClaw: The Free Workaround After Anthropic's Changes" />
+  <meta property="og:description" content="Your Claude subscription still works with OpenClaw. Here's how to set it up using Cowork as the bridge — no API required." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jedaiflow.com/blog/openclaw-claude-mac-workaround" />
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Claude Mac + OpenClaw: The Free Workaround After Anthropic's Subscription Changes",
+    "description": "Anthropic blocked Claude Pro and Max subscriptions from OpenClaw in April 2026. This guide explains the free workaround using Claude Cowork as a bridge.",
+    "author": { "@type": "Organization", "name": "Jedaiflow" },
+    "publisher": { "@type": "Organization", "name": "Jedaiflow", "url": "https://jedaiflow.com" },
+    "datePublished": "2026-04-13",
+    "dateModified": "2026-04-13"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:  #1a1a2e;
+      --accent: #4f46e5;
+      --text:   #1f2937;
+      --muted:  #6b7280;
+      --bg:     #ffffff;
+      --surface:#f8f9ff;
+      --border: #e5e7eb;
+      --green:  #059669;
+      --red:    #dc2626;
+      --warn:   #d97706;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header / Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--brand) 0%, #2d2b6e 100%);
+      color: #fff;
+      padding: 72px 24px 60px;
+      text-align: center;
+    }
+    .hero .label {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 13px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 5vw, 40px);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+    .hero .subtitle {
+      font-size: 18px;
+      opacity: .85;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+    .hero .meta {
+      font-size: 13px;
+      opacity: .6;
+      letter-spacing: .03em;
+    }
+
+    /* ── Article body ── */
+    article { padding: 56px 0 80px; }
+    article h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brand);
+      margin: 48px 0 14px;
+      padding-top: 8px;
+      border-top: 3px solid var(--accent);
+      display: inline-block;
+    }
+    article h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 28px 0 10px;
+    }
+    article p { margin-bottom: 20px; }
+    article ul, article ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    article li { margin-bottom: 8px; }
+    article strong { color: var(--brand); }
+    article a { color: var(--accent); text-decoration: underline; }
+
+    /* ── Callout boxes ── */
+    .callout {
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .callout.blue  { background:#eef2ff; border-left:4px solid var(--accent); }
+    .callout.green { background:#f0fdf4; border-left:4px solid var(--green); }
+    .callout.red   { background:#fef2f2; border-left:4px solid var(--red); font-weight:600; color:var(--red); }
+    .callout.warn  { background:#fffbeb; border-left:4px solid var(--warn); }
+    .callout .callout-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: .7;
+    }
+
+    /* ── Flow diagram ── */
+    .flow {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .flow-box {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      min-width: 140px;
+      text-align: center;
+    }
+    .flow-box.accent { border-color: var(--accent); background: #eef2ff; }
+    .flow-box.green  { border-color: var(--green);  background: #f0fdf4; }
+    .flow-box .fb-label { font-size: 11px; text-transform: uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; }
+    .flow-box .fb-name  { font-size: 15px; font-weight: 700; color: var(--brand); }
+    .flow-box .fb-sub   { font-size: 12px; color: var(--muted); margin-top: 3px; }
+    .flow-arrow { font-size: 22px; color: var(--accent); font-weight: 700; }
+    .flow-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .flow-center .bridge-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .flow-center .bridge-box {
+      background: var(--brand);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .flow-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    /* ── Steps ── */
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 24px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .steps li::before {
+      content: counter(step);
+      min-width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .steps li .step-content strong { display: block; font-size: 16px; margin-bottom: 4px; }
+    .steps li .step-content span   { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: linear-gradient(135deg, var(--brand) 0%, #2d2b6e 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; color:#fff; border:none; }
+    .cta-block p  { opacity: .85; margin-bottom: 28px; font-size: 16px; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .cta-price {
+      display: block;
+      font-size: 13px;
+      opacity: .6;
+      margin-top: 12px;
+    }
+
+    /* ── What's in the guide ── */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .guide-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .guide-item .gi-icon { font-size: 24px; margin-bottom: 8px; }
+    .guide-item .gi-title { font-weight: 700; font-size: 15px; color: var(--brand); margin-bottom: 4px; }
+    .guide-item .gi-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); }
+
+    @media (max-width: 520px) {
+      .flow-row { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- JF:NAV:START v1 -->
+<nav class="jf-shell-nav">
+  <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+  <div class="jf-shell-nav-links">
+    <a href="/#how" class="jf-shell-nav-hide-sm">Product</a>
+    <a href="/#pricing" class="jf-shell-nav-hide-sm">Pricing</a>
+    <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+    <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+    <a href="/shipclean/" class="jf-shell-nav-hide-sm">ShipClean</a>
+    <a href="/#demo" class="jf-shell-nav-cta">Book demo →</a>
+  </div>
+</nav>
+<div class="jf-shell-nav-spacer"></div>
+<!-- JF:NAV:END -->
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="container">
+    <span class="label">April 2026 · OpenClaw + Claude</span>
+    <h1>Your Claude Mac Subscription Still Works With OpenClaw — Here's the Free Workaround</h1>
+    <p class="subtitle">Anthropic blocked the direct connection. Your subscription is fine. Here's the path that still works.</p>
+    <p class="meta">By Jedaiflow &nbsp;·&nbsp; jedaiflow.com &nbsp;·&nbsp; April 13, 2026 &nbsp;·&nbsp; 6 min read</p>
+  </div>
+</div>
+
+<!-- ═══ ARTICLE ═══ -->
+<article>
+<div class="container">
+
+  <!-- Intro -->
+  <p>If you run OpenClaw with Claude and your agents went quiet around April 4th, 2026, you're not alone and it's not a bug. Anthropic ended subscription access for third-party agentic tools — OpenClaw was specifically named — and a lot of users woke up to a broken setup with no clear explanation of why.</p>
+
+  <p>Most people assume the only fix is switching to the Anthropic API: a new account, new billing, paying per token on top of the subscription you already pay for. That's one path. But there's a better one that most people haven't found yet.</p>
+
+  <div class="callout green">
+    <div class="callout-label">✅ The short version</div>
+    Your Claude Mac subscription still works. Anthropic blocked the direct connection to OpenClaw — not Claude for Mac itself. By using Claude Cowork as a bridge between your subscription and OpenClaw, you get the same two-sided setup you had before, without paying a single dollar extra.
+  </div>
+
+  <!-- What happened -->
+  <h2>What Anthropic Actually Changed</h2>
+
+  <p>On April 4, 2026, Anthropic announced that Claude Pro and Max subscribers could no longer use their subscriptions to power third-party agentic tools. The stated reason: these tools were putting outsized strain on infrastructure that needed to be preserved for Anthropic's own products.</p>
+
+  <p>OpenClaw was at the center of this. The timing was notable — OpenClaw's creator had announced he was joining OpenAI just weeks earlier, and there was a brief period where he was temporarily banned from Claude access while trying to negotiate a delay. The situation got messy fast.</p>
+
+  <div class="callout red">
+    What got blocked: OpenClaw accessing Claude directly through your subscription. If you were using OpenClaw to run Claude-powered agents, that connection is gone.
+  </div>
+
+  <p>What <em>didn't</em> get blocked: Claude for Mac, Claude Cowork, or any of Anthropic's own apps. Your subscription still gives you full access to Claude through Anthropic's products. The restriction was specifically on how third-party tools could route your subscription access.</p>
+
+  <!-- The workaround -->
+  <h2>Why the Workaround Exists (and Why It's Legitimate)</h2>
+
+  <p>The gap Anthropic's policy creates is this: they blocked third-party tools from accessing Claude through your subscription. But Claude Cowork — Anthropic's own desktop agent tool — is powered by that same subscription and isn't a third-party tool. It's Anthropic's product.</p>
+
+  <p>Cowork can read and write files on your Mac. OpenClaw can also read and write files on your Mac. That's the bridge.</p>
+
+  <!-- Architecture diagram -->
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-box accent">
+        <div class="fb-label">Side 1</div>
+        <div class="fb-name">OpenClaw</div>
+        <div class="fb-sub">Your agent team</div>
+      </div>
+      <div class="flow-arrow">⇄</div>
+      <div class="flow-center">
+        <div class="bridge-label">Shared file on your Mac</div>
+        <div class="bridge-box">messages.json<br/><span style="font-size:11px;opacity:.7;">The Message Bridge</span></div>
+      </div>
+      <div class="flow-arrow">⇄</div>
+      <div class="flow-box green">
+        <div class="fb-label">Side 2</div>
+        <div class="fb-name">Claude Cowork</div>
+        <div class="fb-sub">Your Claude subscription</div>
+      </div>
+    </div>
+    <div class="flow-note">Both sides read and write to a shared JSON file. No direct subscription connection required.</div>
+  </div>
+
+  <p>OpenClaw agents do the work — research, drafts, code, data. When they finish, they write their results into a shared JSON file. Cowork reads that file using your Claude subscription, handles anything that needs Claude's judgment or quality polish, and writes responses back. The bridge is just a text file sitting in a folder on your computer.</p>
+
+  <p>This isn't a hack or a workaround that violates any terms. You're using Anthropic's own app to do Claude's work, and a local file to coordinate between two pieces of software on your own machine. That's just automation.</p>
+
+  <!-- Who this is for -->
+  <h2>Who This Is For</h2>
+
+  <ul>
+    <li><strong>Claude for Mac users</strong> on Pro, Team, or Max plans — this is the primary use case and what the full guide is built around</li>
+    <li><strong>OpenClaw users</strong> who lost their Claude agent connection after April 4th and don't want to set up an API account</li>
+    <li><strong>Windows users</strong> — the same approach works, though the file path conventions and permission setup differ slightly from Mac</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-label">📝 Windows note</div>
+    This guide is Mac-first, but everything in the architecture works on Windows. File paths use backslashes instead of forward slashes, and folder permissions are handled through Windows settings rather than macOS Privacy &amp; Security. The full guide includes Windows-specific notes throughout.
+  </div>
+
+  <!-- How it works at a high level -->
+  <h2>How the Setup Works at a High Level</h2>
+
+  <p>The two-agent setup has three pieces:</p>
+
+  <ol class="steps">
+    <li>
+      <div class="step-content">
+        <strong>OpenClaw — your operations layer</strong>
+        <span>Your agent team handles the volume work: research, content drafting, code, data processing, scheduling. Fast, systematic, good at following structured instructions at scale.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>The bridge — a shared JSON file on your Mac</strong>
+        <span>A simple text file at a path both sides can access. OpenClaw agents write completed work and task requests to the file. Cowork reads it, processes unread messages, and writes responses back. Each message tracks whether it's been handled.</span>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>Claude Cowork — your quality and strategy layer</strong>
+        <span>Powered by your existing Claude subscription, Cowork handles anything that needs Claude's judgment: final-quality writing, outreach review, strategic decisions, anything client-facing that needs to sound like a real person wrote it. It also handles external integrations your OpenClaw agents can't reach directly.</span>
+      </div>
+    </li>
+  </ol>
+
+  <p>The result is a coordinated two-agent system that runs on your existing subscription. OpenClaw handles the volume. Cowork handles the quality. The bridge is what makes them a team.</p>
+
+  <!-- What's in the guide CTA (mid-article) -->
+  <div class="callout blue">
+    <div class="callout-label">💡 Want the full setup?</div>
+    The full guide covers the complete step-by-step setup for Mac, 12 copy-paste prompts to get the bridge running in 15 minutes, the workflow patterns for common use cases, and Windows-specific notes. <a href="https://jediquest77.gumroad.com/l/cqmqg">Get the guide for $12 →</a>
+  </div>
+
+  <!-- What makes this work well -->
+  <h2>What Makes This Setup Actually Useful</h2>
+
+  <p>Beyond solving the immediate "Claude broke in OpenClaw" problem, the bridge architecture is genuinely better than having Claude directly inside every OpenClaw agent. Here's why:</p>
+
+  <h3>Not everything needs Claude</h3>
+  <p>When Claude was baked into OpenClaw, every agent call used your subscription. With the bridge, only the tasks that actually need Claude's judgment get routed to Cowork. Research digestion, first drafts, data formatting — these can stay in OpenClaw using a cheaper or local model. Claude gets called when it matters, not for everything.</p>
+
+  <h3>External integrations become available</h3>
+  <p>Cowork has native connections to tools like Gmail, Google Calendar, HubSpot, Stripe, Google Drive, Slack, and more. When an OpenClaw agent needs something sent to a CRM or posted to your calendar, it can write the request to the bridge and Cowork handles the execution. This turns OpenClaw's output into action, not just text.</p>
+
+  <h3>You stay in the loop where it matters</h3>
+  <p>Anything client-facing or high-stakes runs through Cowork before it goes out. That gives you a natural checkpoint — the bridge shows you what OpenClaw produced and what Cowork did with it — without babysitting every individual agent run.</p>
+
+  <!-- What's in the full guide -->
+  <h2>What's In the Full Guide</h2>
+
+  <div class="guide-grid">
+    <div class="guide-item">
+      <div class="gi-icon">⚙️</div>
+      <div class="gi-title">Complete Mac Setup</div>
+      <div class="gi-desc">Step-by-step from install to first bridge message, with Mac-specific screenshots and notes</div>
+    </div>
+    <div class="guide-item">
+      <div class="gi-icon">📋</div>
+      <div class="gi-title">12 Copy-Paste Prompts</div>
+      <div class="gi-desc">5 Quick Start prompts to get running in 15 minutes, plus 7 workflow templates for ongoing use</div>
+    </div>
+    <div class="guide-item">
+      <div class="gi-icon">🔄</div>
+      <div class="gi-title">Workflow Patterns</div>
+      <div class="gi-desc">How the setup works for outreach, research, coding, and client deliverables with real examples</div>
+    </div>
+    <div class="guide-item">
+      <div class="gi-icon">🪟</div>
+      <div class="gi-title">Windows Notes</div>
+      <div class="gi-desc">Key differences for Windows users at every step — paths, permissions, and common issues</div>
+    </div>
+    <div class="guide-item">
+      <div class="gi-icon">🛠️</div>
+      <div class="gi-title">Troubleshooting</div>
+      <div class="gi-desc">The five most common setup mistakes and exactly how to fix each one</div>
+    </div>
+    <div class="guide-item">
+      <div class="gi-icon">📐</div>
+      <div class="gi-title">Architecture Explained</div>
+      <div class="gi-desc">Why this works, why it's legitimate, and how the pieces fit together</div>
+    </div>
+  </div>
+
+  <!-- CTA block -->
+  <div class="cta-block">
+    <h3>Get Your Claude Mac Subscription Working With OpenClaw Again</h3>
+    <p>The full setup guide with 12 copy-paste prompts, complete Mac walkthrough, Windows notes, and workflow patterns. No API account required.</p>
+    <a class="cta-btn" href="https://jediquest77.gumroad.com/l/cqmqg">Get the Guide — $12 →</a>
+    <span class="cta-price">One-time purchase · Instant download · 30-day money-back guarantee</span>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Quick Questions</h2>
+
+  <h3>Do I need to cancel my Claude subscription?</h3>
+  <p>No. This setup runs entirely on your existing Claude Pro, Team, or Max subscription through Cowork. No changes to your subscription needed.</p>
+
+  <h3>Is this against Anthropic's terms of service?</h3>
+  <p>No. You're using Anthropic's own app (Cowork) and coordinating through a local file on your machine. The restriction was on third-party tools accessing Claude directly — Cowork is Anthropic's product, not a third-party tool.</p>
+
+  <h3>What if I'm on Windows?</h3>
+  <p>The architecture is identical on Windows. File paths use backslashes instead of forward slashes, and folder permissions are managed through Windows settings. The full guide includes specific notes for Windows users at every relevant step.</p>
+
+  <h3>Does this work for all Claude models?</h3>
+  <p>Cowork uses whatever model your Claude subscription grants access to. Claude Pro gives you access to Sonnet; Claude Max and Team plans include Opus access. The bridge doesn't change what models you can use — it just routes the coordination differently.</p>
+
+  <h3>Can my whole OpenClaw agent team use this?</h3>
+  <p>Yes. Any OpenClaw agent can be configured to write to the bridge. You can have multiple agents queuing tasks for Cowork, and Cowork processes them in priority order. The full guide covers how to structure this for teams of agents.</p>
+
+  <!-- Closing -->
+  <h2>The Bottom Line</h2>
+
+  <p>Anthropic's change broke the direct connection. It didn't break your subscription, and it didn't break OpenClaw. The workaround exists because Cowork is Anthropic's own product — it lives inside the rules instead of working around them.</p>
+
+  <p>The setup takes about 15 minutes if you have the right prompts in front of you. The guide has exactly that.</p>
+
+  <div class="cta-block">
+    <h3>Ready to set it up?</h3>
+    <p>Get the full guide with step-by-step Mac instructions, 12 copy-paste prompts, and workflow templates for common use cases.</p>
+    <a class="cta-btn" href="https://jediquest77.gumroad.com/l/cqmqg">Get the OpenClaw + Claude Mac Guide — $12 →</a>
+    <span class="cta-price">Instant download · Works on Mac · Windows notes included</span>
+  </div>
+
+</div>
+</article>
+
+<!-- JF:FOOTER:START v1 -->
+<footer class="jf-shell-footer">
+  <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+  <p class="jf-shell-footer-tagline">
+    24/7 AI phone answering for home service businesses in Houston, TX.
+  </p>
+  <div class="jf-shell-footer-links">
+    <a href="/#how">Product</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/guides/">Guides</a>
+      <a href="/blog/">Blog</a>
+    <a href="/shipclean/">ShipClean</a>
+    <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+  </div>
+  <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+</footer>
+<!-- JF:FOOTER:END -->
+
+</body>
+</html>

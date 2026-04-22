@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Downloads — Jedaiflow</title>
+  <meta name="description" content="Download your free AI guides for home-service businesses." />
+  <link rel="canonical" href="https://jedaiflow.com/guides/thank-you.html" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300c9ff'/><stop offset='100%25' stop-color='%2300e5a0'/></linearGradient></defs></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,229,160,0.12);
+      border: 1px solid rgba(0,229,160,0.3);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #00e5a0;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #8888aa;
+      max-width: 520px;
+      margin-bottom: 56px;
+      line-height: 1.55;
+    }
+
+    .downloads-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 18px;
+    }
+
+    .downloads {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+
+    .dl-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 26px;
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .dl-card:hover {
+      border-color: rgba(0,201,255,0.35);
+      background: #14141f;
+      transform: translateY(-2px);
+    }
+
+    .dl-info {
+      flex: 1;
+    }
+
+    .dl-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 5px;
+    }
+
+    .dl-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #f0f0f8;
+      margin-bottom: 4px;
+    }
+
+    .dl-desc {
+      font-size: 13px;
+      color: #8888aa;
+      line-height: 1.5;
+    }
+
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #00c9ff, #00e5a0);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0a0a12;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .dl-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .demo-cta {
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 36px;
+      text-align: center;
+    }
+
+    .demo-cta h2 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .demo-cta p {
+      font-size: 15px;
+      color: #8888aa;
+      max-width: 420px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .demo-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #00c9ff, #00e5a0);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0a0a12;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .demo-cta a:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 580px) {
+      .dl-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .dl-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- JF:NAV:START v1 -->
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/#how" class="jf-shell-nav-hide-sm">Product</a>
+      <a href="/#pricing" class="jf-shell-nav-hide-sm">Pricing</a>
+      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/shipclean/" class="jf-shell-nav-hide-sm">ShipClean</a>
+      <a href="/#demo" class="jf-shell-nav-cta">Book demo →</a>
+    </div>
+  </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <!-- JF:NAV:END -->
+
+  <main class="wrap">
+    <div class="success-badge">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#00e5a0" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="#00e5a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      You're subscribed
+    </div>
+
+    <h1>You're in. Here are your downloads.</h1>
+    <p class="subtitle">All guides are free. No catch. If any of this helps your business answer more calls and close more jobs, tell a plumber.</p>
+
+    <div class="downloads-label">Free PDF Downloads</div>
+
+    <div class="downloads">
+
+      <a class="dl-card" href="/assets/lead-response-guide.pdf" download>
+        <div class="dl-info">
+          <div class="dl-tag">Home Services · Quick Start</div>
+          <div class="dl-title">Home Services Lead Response Guide</div>
+          <div class="dl-desc">Scripts and timing for turning missed calls into booked jobs — built for plumbers, HVAC, and electricians.</div>
+        </div>
+        <span class="dl-btn">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </span>
+      </a>
+
+      <a class="dl-card" href="/products/d-934797adeea6/Jedai-Flow-Automation-Guide.pdf" download>
+        <div class="dl-info">
+          <div class="dl-tag">AI Automation · Beginner–Intermediate</div>
+          <div class="dl-title">AI Automation Guide for Home Services</div>
+          <div class="dl-desc">Step-by-step workflows for automating lead capture, follow-up, and scheduling — no code required.</div>
+        </div>
+        <span class="dl-btn">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </span>
+      </a>
+
+      <a class="dl-card" href="/products/d-934797adeea6/Jedai-Flow-Blueprint-Pack.pdf" download>
+        <div class="dl-info">
+          <div class="dl-tag">Templates · Plug-and-Play</div>
+          <div class="dl-title">Jedaiflow Blueprint Pack</div>
+          <div class="dl-desc">Ready-to-use automation blueprints for missed-call handling, appointment reminders, and review requests.</div>
+        </div>
+        <span class="dl-btn">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </span>
+      </a>
+
+      <a class="dl-card" href="/products/d-934797adeea6/Jedai-Flow-Mastery-Guide.pdf" download>
+        <div class="dl-info">
+          <div class="dl-tag">Advanced · Deep Dive</div>
+          <div class="dl-title">Jedaiflow Mastery Guide</div>
+          <div class="dl-desc">Full playbook — from first AI call to full automation stack. Covers every tool, every workflow, every integration.</div>
+        </div>
+        <span class="dl-btn">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </span>
+      </a>
+
+      <a class="dl-card" href="/products/d-934797adeea6/Jedai-Flow-Side-Hustle-Guide.pdf" download>
+        <div class="dl-info">
+          <div class="dl-tag">Business Model · Side Income</div>
+          <div class="dl-title">AI Side Hustle Guide</div>
+          <div class="dl-desc">How to productize AI automation skills and land your first paying clients — with scripts, pricing, and positioning.</div>
+        </div>
+        <span class="dl-btn">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF
+        </span>
+      </a>
+
+    </div>
+
+    <div class="demo-cta">
+      <h2>Want to see it live for your business?</h2>
+      <p>Book a 10-minute demo — we'll show you exactly how the AI phone answering works for plumbers, HVAC, and other home-service businesses in Houston.</p>
+      <a href="/#demo">Book a free demo →</a>
+    </div>
+  </main>
+
+  <!-- JF:FOOTER:START v1 -->
+  <footer class="jf-shell-footer">
+    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+    <p class="jf-shell-footer-tagline">
+      24/7 AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="jf-shell-footer-links">
+      <a href="/#how">Product</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/guides/">Guides</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+  </footer>
+  <!-- JF:FOOTER:END -->
+
+</body>
+</html>

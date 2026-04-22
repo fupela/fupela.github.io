@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeShip — Ship vibe-coded projects without the chaos</title>
+  <meta name="description" content="VibeShip scans, fixes, and ships your AI-generated code. Production-ready in 60 seconds." />
+  <meta property="og:title" content="VibeShip — Ship vibe-coded projects without the chaos" />
+  <meta property="og:description" content="The missing layer between AI-generated code and production. Scan. Fix. Ship." />
+  <meta property="og:url" content="https://jedaiflow.com/vibeship" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VibeShip — Ship vibe-coded projects without the chaos" />
+  <meta name="twitter:description" content="Scan, fix, and ship AI-generated code. Production-ready in 60 seconds." />
+  <link rel="canonical" href="https://jedaiflow.com/vibeship/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #09090b;
+      --surface: #0f0f12;
+      --surface-2: #16161a;
+      --surface-3: #1c1c21;
+      --border: #232329;
+      --border-light: #3a3a44;
+      --accent: #7c3aed;
+      --accent-hover: #6d28d9;
+      --accent-subtle: rgba(124, 58, 237, 0.08);
+      --accent-glow: rgba(124, 58, 237, 0.2);
+      --accent-light: #a78bfa;
+      --accent-lighter: #c4b5fd;
+      --text: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --muted: #71717a;
+      --green: #34d399;
+      --green-dim: rgba(52, 211, 153, 0.08);
+      --green-border: rgba(52, 211, 153, 0.15);
+      --red: #f87171;
+      --red-dim: rgba(248, 113, 113, 0.06);
+      --red-border: rgba(248, 113, 113, 0.12);
+      --yellow: #fbbf24;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.25);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.35);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-lighter); }
+    code, .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; }
+
+    /* ========== BUTTONS ========== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 10px;
+      font-size: 0.875rem; font-weight: 600; font-family: inherit;
+      cursor: pointer; border: none;
+      transition: all 0.2s ease;
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+      color: #fff;
+      box-shadow: 0 0 24px var(--accent-glow), 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent-hover) 0%, #7c3aed 100%);
+      color: #fff;
+      box-shadow: 0 0 32px rgba(124, 58, 237, 0.3), 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--border-light);
+      background: var(--surface-3);
+      color: #fff;
+    }
+
+    .btn-lg { padding: 0.9rem 2rem; font-size: 0.95rem; border-radius: 12px; }
+    .btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+    /* ========== NAV ========== */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(35, 35, 41, 0.6);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.875rem 2rem; max-width: 1120px; margin: 0 auto;
+    }
+    .logo {
+      font-weight: 800; font-size: 1.1rem;
+      letter-spacing: -0.03em; color: var(--text);
+    }
+    .logo span { color: var(--accent-light); }
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .nav-links a {
+      color: var(--text-secondary); font-size: 0.85rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { margin-left: 0.5rem; }
+
+    @media (max-width: 640px) {
+      .nav-inner { padding: 0.75rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links .hide-mobile { display: none; }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      max-width: 840px; margin: 0 auto;
+      padding: 6rem 2rem 5rem; text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 1rem; margin-bottom: 2rem;
+      background: var(--green-dim);
+      border: 1px solid var(--green-border);
+      border-radius: 99px; font-size: 0.78rem; font-weight: 500;
+      color: var(--green);
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    h1 {
+      font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.1; margin-bottom: 1.5rem;
+    }
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--accent-light) 0%, #c084fc 50%, #e879f9 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.125rem; color: var(--text-secondary);
+      max-width: 520px; margin: 0 auto 2.5rem;
+      line-height: 1.75; font-weight: 400;
+    }
+    .hero-ctas {
+      display: flex; gap: 0.875rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    /* ========== TERMINAL DEMO ========== */
+    .terminal-wrap {
+      max-width: 640px; margin: 4rem auto 0;
+      position: relative;
+    }
+    .terminal-wrap::before {
+      content: '';
+      position: absolute; inset: -1px; border-radius: calc(var(--radius-lg) + 1px);
+      background: linear-gradient(180deg, var(--border-light) 0%, var(--border) 100%);
+      z-index: -1;
+    }
+    .terminal {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 7px;
+      padding: 0.85rem 1.15rem;
+      background: var(--surface-2);
+    }
+    .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .terminal-dot.r { background: #ff5f57; }
+    .terminal-dot.y { background: #febc2e; }
+    .terminal-dot.g { background: #28c840; }
+    .terminal-title {
+      flex: 1; text-align: center;
+      font-size: 0.72rem; color: var(--muted); font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .terminal-spacer { width: 54px; }
+    .terminal-body {
+      padding: 1.5rem 1.75rem; font-size: 0.825rem;
+      line-height: 2; color: var(--text-secondary);
+    }
+    .terminal-body .prompt { color: var(--green); user-select: none; }
+    .terminal-body .cmd { color: var(--text); font-weight: 500; }
+    .terminal-body .flag { color: var(--accent-light); }
+    .terminal-body .ok { color: var(--green); }
+    .terminal-body .warn { color: var(--yellow); }
+    .terminal-body .dim { color: var(--muted); }
+
+    @media (max-width: 640px) {
+      .terminal-body { padding: 1.25rem; font-size: 0.78rem; }
+    }
+
+    /* ========== SECTION LAYOUT ========== */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1040px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-light); margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.2; margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      color: var(--text-secondary); font-size: 1.05rem;
+      max-width: 560px; margin: 0 auto; line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 4rem 1.25rem; }
+      .section-header { margin-bottom: 2.5rem; }
+    }
+
+    /* ========== PROBLEM / SOLUTION ========== */
+    .alt-bg {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .problem-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .problem-grid { grid-template-columns: 1fr; }
+    }
+    .problem-card, .solution-card {
+      padding: 2.25rem; border-radius: var(--radius-lg);
+      border: 1px solid;
+    }
+    .problem-card {
+      background: var(--red-dim);
+      border-color: var(--red-border);
+    }
+    .solution-card {
+      background: var(--green-dim);
+      border-color: var(--green-border);
+    }
+    .card-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 1.25rem;
+    }
+    .problem-card .card-label { color: var(--red); }
+    .solution-card .card-label { color: var(--green); }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .card-list li {
+      font-size: 0.9rem; color: var(--text-secondary);
+      padding-left: 1.75rem; position: relative; line-height: 1.5;
+    }
+    .problem-card .card-list li::before {
+      content: '\2715'; position: absolute; left: 0;
+      color: var(--red); font-weight: 600; font-size: 0.85rem;
+    }
+    .solution-card .card-list li::before {
+      content: '\2713'; position: absolute; left: 0;
+      color: var(--green); font-weight: 700;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 700px) { .steps { grid-template-columns: 1fr; } }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .step:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--accent-subtle);
+      border: 1px solid rgba(124,58,237,0.2);
+      color: var(--accent-light); font-size: 0.8rem; font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .step h3 {
+      font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 0.65rem; letter-spacing: -0.01em;
+    }
+    .step p {
+      font-size: 0.875rem; color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ========== SOCIAL PROOF ========== */
+    .proof-bar {
+      display: flex; justify-content: center; align-items: center;
+      gap: 3rem; flex-wrap: wrap;
+      padding: 3rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .proof-item {
+      text-align: center;
+    }
+    .proof-num {
+      font-size: 1.75rem; font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent-light), #c084fc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .proof-label {
+      font-size: 0.78rem; color: var(--muted);
+      margin-top: 0.25rem; font-weight: 500;
+    }
+
+    /* ========== PRICING ========== */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; align-items: start;
+    }
+    @media (max-width: 800px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px; margin: 0 auto;
+      }
+    }
+    .plan {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .plan:hover {
+      border-color: var(--border-light);
+    }
+    .plan.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(124,58,237,0.05) 0%, var(--surface) 40%);
+      position: relative;
+      box-shadow: 0 0 40px rgba(124, 58, 237, 0.08);
+    }
+    .plan.featured:hover {
+      border-color: var(--accent-light);
+      box-shadow: 0 0 48px rgba(124, 58, 237, 0.12);
+    }
+    .plan-badge {
+      position: absolute; top: -0.7rem; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      color: #fff;
+      font-size: 0.68rem; font-weight: 700;
+      padding: 0.25rem 1rem; border-radius: 99px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+    }
+    .plan-name {
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--text-secondary); margin-bottom: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .plan-price {
+      font-size: 2.75rem; font-weight: 800;
+      letter-spacing: -0.04em; margin-bottom: 0.25rem;
+      line-height: 1;
+    }
+    .plan-price .period {
+      font-size: 0.85rem; font-weight: 400; color: var(--muted);
+    }
+    .plan-desc {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 2rem; line-height: 1.5;
+    }
+    .plan-features {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 0.75rem; margin-bottom: 2.25rem; flex: 1;
+    }
+    .plan-features li {
+      font-size: 0.85rem; color: var(--text-secondary);
+      padding-left: 1.5rem; position: relative; line-height: 1.5;
+    }
+    .plan-features li::before {
+      content: '\2713'; position: absolute; left: 0;
+      color: var(--green); font-weight: 700; font-size: 0.85rem;
+    }
+    .plan .btn { width: 100%; }
+
+    /* ========== FAQ ========== */
+    .faq-list { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      font-weight: 600; font-size: 0.95rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--text); background: none; border: none;
+      width: 100%; font-family: inherit; text-align: left;
+      padding: 1.5rem 0; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--accent-light); }
+    .faq-q .icon {
+      font-size: 1.2rem; color: var(--muted);
+      transition: transform 0.25s ease, color 0.2s;
+      flex-shrink: 0; margin-left: 1rem;
+    }
+    .faq-item.open .faq-q .icon {
+      transform: rotate(45deg); color: var(--accent-light);
+    }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 0.875rem; color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a {
+      max-height: 250px; padding-bottom: 1.5rem;
+    }
+
+    /* ========== BOTTOM CTA ========== */
+    .cta-section {
+      text-align: center; padding: 6rem 2rem;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 { margin-bottom: 1rem; }
+    .cta-section p {
+      color: var(--text-secondary); margin-bottom: 2.5rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+    .cta-install {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 1rem 2rem;
+      font-size: 0.9rem; border-radius: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-md);
+      transition: border-color 0.2s;
+    }
+    .cta-install:hover { border-color: var(--border-light); }
+    .cta-install .dollar { color: var(--muted); user-select: none; }
+    .cta-install .command { color: var(--green); font-weight: 500; }
+    .cta-install .copy-btn {
+      background: var(--surface-3); border: 1px solid var(--border);
+      color: var(--muted); padding: 0.3rem 0.6rem; border-radius: 6px;
+      font-size: 0.7rem; font-weight: 600; cursor: pointer;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .cta-install .copy-btn:hover {
+      color: var(--text); border-color: var(--border-light);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem; text-align: center;
+    }
+    .footer-inner {
+      max-width: 1040px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-left {
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem;
+    }
+    .footer-links a {
+      color: var(--muted); font-size: 0.8rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 640px) {
+      .footer-inner {
+        flex-direction: column; text-align: center;
+      }
+    }
+
+    /* ========== UTILITY ========== */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo" aria-label="VibeShip home">vibe<span>ship</span></a>
+    <div class="nav-links">
+      <a href="#how" class="hide-mobile">How it works</a>
+      <a href="#pricing" class="hide-mobile">Pricing</a>
+      <a href="https://github.com/fupela/vibeship" target="_blank" rel="noopener">GitHub</a>
+      <a href="#pricing" class="btn btn-primary btn-sm nav-cta">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Now in beta</div>
+  <h1>Ship vibe-coded projects<br><span class="highlight">without the chaos</span></h1>
+  <p class="hero-sub">You built fast with Cursor, Windsurf, or Claude. VibeShip finds the gaps your AI left behind and fixes them before your users do.</p>
+  <div class="hero-ctas">
+    <a href="#pricing" class="btn btn-primary btn-lg">Start free</a>
+    <a href="https://github.com/fupela/vibeship" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.8"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      View on GitHub
+    </a>
+  </div>
+
+  <!-- Terminal Demo -->
+  <div class="terminal-wrap">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot r"></span>
+        <span class="terminal-dot y"></span>
+        <span class="terminal-dot g"></span>
+        <span class="terminal-title">vibeship &mdash; ~/my-project</span>
+        <span class="terminal-spacer"></span>
+      </div>
+      <div class="terminal-body mono">
+        <span class="prompt">$</span> <span class="cmd">npx vibeship scan</span><br><br>
+        <span class="dim">Scanning project...</span><br>
+        <span class="ok">&nbsp;&nbsp;[pass]</span> No exposed API keys<br>
+        <span class="ok">&nbsp;&nbsp;[pass]</span> Dependencies up to date<br>
+        <span class="warn">&nbsp;&nbsp;[warn]</span> 3 unhandled error paths<br>
+        <span class="warn">&nbsp;&nbsp;[warn]</span> Missing meta tags for SEO<br>
+        <span class="ok">&nbsp;&nbsp;[pass]</span> Build output clean<br><br>
+        <span class="dim">2 issues found.</span> Run <span class="flag">vibeship fix</span> to auto-repair.<br><br>
+        <span class="prompt">$</span> <span class="cmd">npx vibeship fix</span><br>
+        <span class="ok">&nbsp;&nbsp;Fixed 2 issues. Ready to ship.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div class="proof-num">30+</div>
+    <div class="proof-label">Built-in checks</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">60s</div>
+    <div class="proof-label">Average scan time</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">MIT</div>
+    <div class="proof-label">Open source core</div>
+  </div>
+</div>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">The problem</span>
+      <h2>AI writes code fast.<br>Shipping it is another story.</h2>
+      <p class="section-sub">Vibe-coded apps break in production for predictable reasons. VibeShip catches them all.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="card-label">Without VibeShip</div>
+        <ul class="card-list">
+          <li>Exposed secrets pushed to production</li>
+          <li>Missing error handling crashes the app</li>
+          <li>Broken imports that passed local dev</li>
+          <li>No SEO, no meta tags, no favicon</li>
+          <li>Hours debugging what AI left behind</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <div class="card-label">With VibeShip</div>
+        <ul class="card-list">
+          <li>Secrets flagged before they leave your machine</li>
+          <li>Error boundaries auto-applied</li>
+          <li>Import validation across every file</li>
+          <li>SEO and asset checks built in</li>
+          <li>60-second scan, auto-fix, ship clean</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">How it works</span>
+      <h2>Three commands. That's it.</h2>
+      <p class="section-sub">No config files. No setup wizard. Just run it.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Scan</h3>
+        <p>Point VibeShip at your project. It audits for exposed secrets, broken imports, missing error handling, unoptimized assets, and 30+ common vibe-coding gaps.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Fix</h3>
+        <p>Auto-applies safe fixes instantly. Anything that needs a judgment call gets flagged for you. You stay in control — VibeShip handles the tedious parts.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Ship</h3>
+        <p>Deploy with confidence. Clean build output, no last-minute surprises, no "it worked on my machine." Production-ready every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Pricing</span>
+      <h2>Simple, honest pricing</h2>
+      <p class="section-sub">Start free. Upgrade when VibeShip saves you enough time to justify it.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="plan">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-desc">For solo builders shipping side projects.</div>
+        <ul class="plan-features">
+          <li>Core scan + auto-fix</li>
+          <li>Up to 3 projects</li>
+          <li>30+ built-in checks</li>
+          <li>Community support</li>
+        </ul>
+        <a href="https://github.com/fupela/vibeship" class="btn btn-secondary" target="_blank" rel="noopener">Get started free</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$9<span class="period">/mo</span></div>
+        <div class="plan-desc">For builders who ship frequently and want AI-powered analysis.</div>
+        <ul class="plan-features">
+          <li>Everything in Free</li>
+          <li>AI deep analysis</li>
+          <li>Custom check rules</li>
+          <li>Priority deploy pipeline</li>
+          <li>Unlimited projects</li>
+        </ul>
+        <a href="https://buy.stripe.com/aFabJ38b4gGH3qqevZ0RG0h" class="btn btn-primary" id="btn-pro">Get Pro</a>
+      </div>
+
+      <!-- TEAM -->
+      <div class="plan">
+        <div class="plan-name">Team</div>
+        <div class="plan-price">$29<span class="period">/mo</span></div>
+        <div class="plan-desc">For teams that want VibeShip in their CI/CD pipeline.</div>
+        <ul class="plan-features">
+          <li>Everything in Pro</li>
+          <li>CI/CD integration</li>
+          <li>Shared team configs</li>
+          <li>Team dashboard</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://buy.stripe.com/bJebJ30IC2PR3qqbjN0RG0i" class="btn btn-secondary" id="btn-team">Get Team</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">FAQ</span>
+      <h2>Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What does VibeShip actually check? <span class="icon">+</span></button>
+        <div class="faq-a">Exposed secrets, broken imports, missing error handling, unoptimized images, SEO gaps, dependency issues, build output problems, and 30+ other common issues that AI-generated code tends to miss.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will it break my code? <span class="icon">+</span></button>
+        <div class="faq-a">No. VibeShip only applies safe, reversible fixes. Anything that requires a judgment call is flagged for your review. You can also run in scan-only mode to see issues without auto-fixing.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What frameworks does it support? <span class="icon">+</span></button>
+        <div class="faq-a">VibeShip works with any JavaScript/TypeScript project — React, Next.js, Vue, Svelte, Express, and more. Framework-specific checks are applied automatically based on your project structure.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I use it in CI/CD? <span class="icon">+</span></button>
+        <div class="faq-a">Yes, on the Team plan. Add one line to your GitHub Actions, GitLab CI, or any pipeline. VibeShip runs as a check and blocks deploys that don't pass.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is it open source? <span class="icon">+</span></button>
+        <div class="faq-a">The core scanner is MIT licensed and fully open source. Pro and Team features (AI deep analysis, CI/CD integration, team dashboard) are paid add-ons.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="cta-section">
+  <h2>Stop shipping broken builds.</h2>
+  <p>Run your first scan in 60 seconds. No signup required for the free tier.</p>
+  <div class="cta-install mono">
+    <span class="dollar">$</span>
+    <span class="command" id="install-cmd">npx vibeship scan</span>
+    <button class="copy-btn" onclick="copyCommand()" id="copy-btn">Copy</button>
+  </div>
+  <br>
+  <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+    <a href="#pricing" class="btn btn-primary btn-lg">View pricing</a>
+    <a href="https://github.com/fupela/vibeship" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">Star on GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      &copy; 2026 <a href="https://jedaiflow.com">JedAI Flow</a>. MIT License.
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/fupela/vibeship" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://jedaiflow.com" target="_blank" rel="noopener">JedAI Flow</a>
+      <a href="mailto:hello@jedaiflow.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      var target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Copy command
+  function copyCommand() {
+    var cmd = document.getElementById('install-cmd').textContent;
+    navigator.clipboard.writeText(cmd).then(function() {
+      var btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
