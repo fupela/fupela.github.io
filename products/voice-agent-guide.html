@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Voice Agent Builder's Kit — JedAI Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a2e; background: #fff; max-width: 720px; margin: 0 auto; padding: 40px 28px; line-height: 1.65; font-size: 14px; }
+
+@media print {
+  body { padding: 0; font-size: 12px; }
+  .page-break { page-break-before: always; }
+  .no-print { display: none; }
+  h2 { break-after: avoid; }
+  .warning { break-inside: avoid; }
+  .code-box { break-inside: avoid; }
+}
+
+.header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #338dff; padding-bottom: 14px; margin-bottom: 28px; }
+.header h1 { font-size: 26px; font-weight: 800; }
+.header h1 span { color: #338dff; }
+.header .brand { font-size: 13px; color: #666; font-weight: 600; }
+
+.cover-badge { text-align: center; background: linear-gradient(135deg, #338dff, #00d4aa); color: #fff; padding: 12px 18px; border-radius: 10px; font-weight: 700; font-size: 16px; margin-bottom: 28px; }
+
+h2 { font-size: 20px; font-weight: 700; margin: 32px 0 14px; color: #338dff; letter-spacing: -0.3px; page-break-after: avoid; }
+h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; color: #1a1a2e; }
+p { margin-bottom: 12px; font-size: 14px; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin-bottom: 6px; font-size: 14px; }
+
+.diagram { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin: 16px 0; font-family: monospace; font-size: 12px; line-height: 1.7; white-space: pre; overflow-x: auto; }
+
+.warning { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; margin: 14px 0; border-radius: 0 8px 8px 0; font-size: 13px; }
+.warning strong { color: #92400e; }
+
+.code-box { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 10px; margin: 12px 0; overflow-x: auto; font-family: monospace; font-size: 12px; line-height: 1.6; }
+
+.note { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 10px 14px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 13px; }
+.note strong { color: #166534; }
+
+.tool-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+.tool-table th { background: #f1f5f9; text-align: left; padding: 8px 10px; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+.tool-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; }
+
+.cost-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.cost-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.cost-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+.cost-row.total { border-top: 2px solid #e2e8f0; padding-top: 8px; margin-top: 6px; font-weight: 700; }
+
+.footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+.footer .brand { font-size: 12px; color: #94a3b8; }
+.footer .qr { width: 60px; height: 60px; border: 2px dashed #cbd5e1; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #94a3b8; text-align: center; }
+
+@media (max-width: 600px) {
+  body { padding: 20px 16px; }
+  .header h1 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="header"><h1>AI Voice Agent <span>Builder's Kit</span></h1><div class="brand">jedaiflow.com</div></div>
+<div class="cover-badge">Step-by-Step Guide — Build a Working Voice Agent in Under 1 Hour</div>
+<h2>1. What You're Building</h2>
+<p>An AI phone agent that:</p>
+<ul>
+<li><strong>Answers your phone number</strong> 24/7 with natural voice</li>
+<li><strong>Searches your knowledge base</strong> (Obsidian, documents) during live calls</li>
+<li><strong>Triggers actions</strong> — outbound calls, SMS, reminders</li>
+<li><strong>Costs under $15/month</strong> (vs $99+ for prefab tools)</li>
+</ul>
+<div class="warning"><strong>Prerequisites:</strong> You need a computer that can run Node.js and stay online. If it sleeps, the agent sleeps. For 24/7 uptime, run on a $5/mo VPS or Raspberry Pi.</div>
+<h2>2. Architecture Overview</h2>
+<div class="diagram">   YOU (calls Twilio number)
+        ↓
+   Twilio (routes call)
+        ↓
+   ElevenLabs Conversational AI
+        │  ← Natural voice
+        ↓
+   Webhook → Your Bridge Server
+        │  ← POST with transcription
+        ├─→ /search (query Obsidian)
+        ├─→ /call (outbound via Twilio)
+        └─→ /sms (send message)
+        ↓
+   Return result → ElevenLabs → spoken response
+</div>
+<p>Three services, one bridge, one goal.</p>
+<h2>3. Step 1: ElevenLabs Setup</h2>
+<h3>Create an Agent</h3>
+<ol>
+<li>Go to <strong>elevenlabs.io</strong> → Sign up or log in</li>
+<li>Navigate to <strong>Conversational AI</strong> → <strong>Agents</strong></li>
+<li>Click <strong>Create Agent</strong> → Name it (e.g., "Maya")</li>
+<li>Pick a voice: <strong>Sarah</strong> (warm, natural) or <strong>Bella</strong> (bright, professional)</li>
+<li>System prompt: <em>"You are my personal assistant. Answer calls warmly, take messages, and help schedule appointments."</em></li>
+</ol>
+<div class="warning"><strong>VIP Tip:</strong> Keep "first message" under 15 seconds. Example: <em>"Hi, this is Maya. How can I help you today?"</em></div>
+<h3>Get Your Agent ID</h3>
+<p>Find your <strong>Agent ID</strong> (looks like <code>agent_xxxxxxxxxxxxxxxxxxxxxxxx</code>) in the dashboard URL or settings. Save it.</p>
+<h2>4. Step 2: Twilio Phone Number</h2>
+<ol>
+<li>Go to <strong>twilio.com</strong> → Sign up → Complete "quest" for $15 free credit</li>
+<li>Buy a phone number (<strong>Phone Numbers → Manage → Buy a number</strong>)</li>
+<li>Pick one with Voice + SMS capability (~$1.15/mo)</li>
+</ol>
+<h3>Configure the Webhook</h3>
+<p>You'll wire this after your bridge is running. For now, note down:</p>
+<ul>
+<li><strong>Account SID</strong> (starts with <code>AC_</code>)</li>
+<li><strong>Auth Token</strong> (secret — never share)</li>
+<li><strong>Phone Number</strong></li>
+</ul>
+<div class="note"><strong>Wait on webhook config:</strong> Don't set the webhook URL yet. Your bridge needs to be live first.</div>
+<h2>5. Step 3: Build the Bridge Server</h2>
+<h3>Create the Project</h3>
+<div class="code-box">mkdir my-voice-agent
+cd my-voice-agent
+npm init -y
+npm install express axios dotenv</div>
+<h3>Server Code (server.js)</h3>
+<div class="code-box">require('dotenv').config();
+const express = require('express');
+const axios = require('axios');
+const app = express();
+
+app.use(express.json());
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', agent: 'voice-agent' });
+});
+
+// Main webhook
+app.post('/maya/webhook', async (req, res) => {
+  console.log('Webhook received:', req.body);
+  const { tool_name, parameters } = req.body;
+  
+  try {
+    if (tool_name === 'obsidian_search') {
+      const results = await searchObsidian(parameters.query);
+      return res.json({ success: true, result: results });
+    }
+    if (tool_name === 'outbound_call') {
+      await makeCall(parameters.phone, parameters.message);
+      return res.json({ success: true, result: 'Calling now' });
+    }
+    return res.json({ success: true, result: 'No action needed' });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+async function searchObsidian(query) {
+  const resp = await axios.get('http://127.0.0.1:27123/search/', {
+    params: { query },
+    headers: { 'Authorization': 'Bearer ' + process.env.OBSIDIAN_TOKEN }
+  });
+  return resp.data.slice(0, 3).map(r => r.filename + ': ' + r.excerpt).join('\\n');
+}
+
+async function makeCall(to, message) {
+  const twilio = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+  await twilio.calls.create({
+    to, from: process.env.TWILIO_PHONE,
+    url: process.env.BRIDGE_URL + '/twiml?msg=' + encodeURIComponent(message)
+  });
+}
+
+app.listen(process.env.PORT || 8765, () => {
+  console.log(`Bridge running on port ${process.env.PORT || 8765}`);
+});</div>
+<h3>Environment (.env)</h3>
+<div class="code-box">PORT=8765
+TWILIO_SID=AC_xxxxxxxx
+TWILIO_TOKEN=your_auth_token
+TWILIO_PHONE=+1XXXXXXXXXX
+BRIDGE_URL=https://your-tunnel-url.trycloudflare.com
+OBSIDIAN_TOKEN=your_obsidian_token</div>
+<h2>6. Step 4: Cloudflare Tunnel (Public URL)</h2>
+<p>Your computer is behind a router. You need a public URL for Twilio/ElevenLabs to reach it.</p>
+<ol>
+<li>Install <strong>cloudflared</strong>:
+<div class="code-box"># macOS
+brew install cloudflared
+
+# Ubuntu
+sudo apt install cloudflared</div>
+</li>
+<li>Run the tunnel:
+<div class="code-box">cloudflared tunnel --url http://localhost:8765</div>
+<div class="note">Copy the URL (e.g., <code>https://abc-123.trycloudflare.com</code>)</div>
+</li>
+<li><strong>Make it permanent:</strong> Sign up for Cloudflare Zero Trust (free), create a named tunnel with a fixed subdomain.</li>
+</ol>
+<div class="warning"><strong>Heads up:</strong> Free tunnel URLs change on restart. For production, use a named tunnel or run as background service: <code>nohup cloudflared tunnel --url http://localhost:8765 &</code></div>
+<h2>7. Step 5: Wire ElevenLabs → Your Bridge</h2>
+<ol>
+<li>ElevenLabs → Conversational AI → your agent → <strong>Settings</strong></li>
+<li>Paste webhook URL: <code>https://your-tunnel-url.trycloudflare.com/maya/webhook</code></li>
+<li>Add these <strong>External Tools</strong>:
+<table class="tool-table">
+<tr><th>Tool Name</th><th>Method</th><th>URL</th></tr>
+<tr><td>obsidian_search</td><td>POST</td><td>/maya/webhook</td></tr>
+<tr><td>outbound_call</td><td>POST</td><td>/maya/webhook</td></tr>
+</table>
+</li>
+</ol>
+<div class="warning"><strong>CRITICAL — ElevenLabs Tool Schema Trick:</strong> Here's the exact JSON that passes validation:
+<div class="code-box">{
+  "name": "obsidian_search",
+  "description": "Search my notes",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": { "type": "string", "description": "What to search for" }
+    },
+    "required": ["query"]
+  }
+}</div>
+If the dashboard still rejects this, create via API instead.</div>
+<h2>8. Step 6: Wire Twilio → ElevenLabs</h2>
+<ol>
+<li>Twilio Console → <strong>Phone Numbers → Manage → Active numbers</strong></li>
+<li>Click your number → <strong>Voice & Fax</strong></li>
+<li><strong>A call comes in</strong> → <strong>Webhook</strong>
+<div class="code-box">https://api.elevenlabs.io/v1/convai/twilio/outbound?agent_id=YOUR_AGENT_ID
+// Method: POST</div>
+</li>
+</ol>
+<p>Now when someone calls your Twilio number, it routes to ElevenLabs, which talks to your bridge.</p>
+<h2>9. Step 7: Obsidian Knowledge Base</h2>
+<ol>
+<li>Obsidian → <strong>Settings → Community Plugins</strong></li>
+<li>Install <strong>"Local REST API"</strong> → Enable</li>
+<li>Note port (default <code>27123</code>) and generate API token</li>
+<li>Add token to <code>.env</code></li>
+</ol>
+<div class="note"><strong>Privacy:</strong> Local REST API only works on your machine. Notes never leave your computer unless the bridge explicitly sends data.</div>
+<h2>10. Step 8: Test the Full Stack</h2>
+<ol>
+<li>Start bridge: <code>node server.js</code></li>
+<li>Start tunnel: <code>cloudflared tunnel --url http://localhost:8765</code></li>
+<li>Call your Twilio number from your cell</li>
+<li>Say: <em>"Search my notes for projects I'm working on"</em></li>
+<li>Check bridge console for the webhook hit</li>
+</ol>
+<div class="note"><strong>If nothing happens:</strong> Check Twilio logs. Common issues: wrong agent ID, cloudflared not running, missing <code>/maya/webhook</code> path.</div>
+<div class="page-break"></div>
+<h2>11. Step 9: Outbound Calling</h2>
+<p>To make your agent call YOU back:</p>
+<ol>
+<li>Add the <code>outbound_call</code> tool to your agent</li>
+<li>Tell agent: <em>"When asked, call me back with the outbound_call tool."</em></li>
+</ol>
+<div class="code-box"># Morning briefing — cron @ 7am daily
+0 7 * * * curl -X POST http://localhost:8765/maya/webhook \
+  -H "Content-Type: application/json" \
+  -d '{"tool_name":"outbound_call","parameters":{"phone":"+1YOURNUMBER","message":"Good morning briefing"}}'</div>
+<h2>12. Monthly Cost Breakdown</h2>
+<div class="cost-box">
+<div class="cost-row"><span>Twilio number</span><span>$1.15/mo</span></div>
+<div class="cost-row"><span>Incoming calls</span><span>~$0.01/min</span></div>
+<div class="cost-row"><span>ElevenLabs voice (free tier)</span><span>$0 (10k chars/mo)</span></div>
+<div class="cost-row"><span>Cloudflare tunnel</span><span>$0</span></div>
+<div class="cost-row"><span>Your computer / VPS</span><span>$0 (or $5/mo)</span></div>
+<div class="cost-row total"><span>Total (light usage)</span><span>~$3-8/mo</span></div>
+<div class="cost-row total"><span>Total (heavy + VPS)</span><span>~$15-25/mo</span></div>
+</div>
+<div class="page-break"></div>
+<h2>13. Troubleshooting</h2>
+<table class="tool-table">
+<tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+<tr><td>ElevenLabs rejects schema</td><td>API validation stricter than dashboard</td><td>Use exact JSON above. Create via API if dashboard fails.</td></tr>
+<tr><td>Calls drop immediately</td><td>Webhook URL unreachable or wrong agent ID</td><td>Test bridge URL in browser. Check agent ID.</td></tr>
+<tr><td>Agent doesn't use tools</td><td>Not enabled in prompt</td><td>Add to system prompt: "You have access to obsidian_search and outbound_call."</td></tr>
+<tr><td>Obsidian returns nothing</td><td>Local REST API not enabled</td><td>Test: <code>curl http://127.0.0.1:27123/search/?query=test</code></td></tr>
+<tr><td>Cloudflared URL changes</td><td>Temporary tunnel</td><td>Create named tunnel in Zero Trust for fixed subdomain.</td></tr>
+<tr><td>Twilio "application error"</td><td>Webhook returns 404/500</td><td>Check Twilio logs. Ensure /maya/webhook exists and returns JSON.</td></tr>
+<tr><td>Voice robotic</td><td>Wrong model</td><td>Use "Turbo v2.5" for lowest latency. Pick Sarah/Bella.</td></tr>
+</table>
+<h2>14. Next Steps</h2>
+<ul>
+<li><strong>Add more tools:</strong> Calendar booking, weather, expense logging</li>
+<li><strong>Improve prompt:</strong> Train with example conversations</li>
+<li><strong>Add fallback:</strong> Send transcript to your phone if agent can't answer</li>
+<li><strong>Measure ROI:</strong> Log calls → how many led to booked appointments</li>
+</ul>
+<div class="note"><strong>Questions?</strong> Email <strong>hello@jedaiflow.com</strong> — John responds personally.</div>
+<div class="footer">
+<div class="brand">Built by John Jedlowski in Houston, TX<br>© JedAI Flow — jedaiflow.com</div>
+<div class="qr">Scan for updates<br>jedaiflow.com</div>
+</div>
+</body>
+</html>
