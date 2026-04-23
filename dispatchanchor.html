@@ -4,318 +4,377 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DispatchAnchor — AI Phone Answering for Houston Home Services</title>
-  <meta name="description" content="AI phone answering for Houston plumbers, HVAC, electricians, and landscapers. Every call answered, every lead qualified, every job booked — 24/7.">
-  <meta property="og:title" content="DispatchAnchor — AI Phone Answering for Houston Home Services">
-  <meta property="og:description" content="Every call answered. Every lead qualified. Every job booked — even when you're under a sink.">
-  <meta property="og:url" content="https://jedaiflow.com/dispatchanchor.html">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Never miss a service call again. AI phone answering for plumbers, HVAC, and electricians in Houston. Answers every call 24/7, qualifies the lead, books the job.">
+  <meta name="keywords" content="AI phone answering, home services AI, plumber AI, HVAC AI, electrician AI, Houston, missed calls, lead follow-up, AI for contractors, DispatchAnchor">
+  <meta name="author" content="John Jedlowski">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jedaiflow.com/dispatchanchor.html">
+
+  <meta property="og:title" content="DispatchAnchor — AI Phone Answering for Houston Home Services">
+  <meta property="og:description" content="Never miss a call. Never lose a lead. AI that picks up, qualifies the lead, and books the job — 24/7.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jedaiflow.com/dispatchanchor.html">
+  <meta property="og:site_name" content="DispatchAnchor">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DispatchAnchor — AI Phone Answering for Houston Home Services">
+  <meta name="twitter:description" content="Never miss a call. AI picks up 24/7, qualifies leads, and books jobs.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230c1424'/><path d='M22 9l-7 5 7 5V9z' fill='%23ff8a3c'/><path d='M10 9h3v14h-3z' fill='%23ff8a3c'/></svg>">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/jf-shell.css">
-  <style>
-    :root {
-      --bg: #0a0a12;
-      --surface: #11132e;
-      --surface-border: rgba(255,255,255,0.08);
-      --surface-border-bright: rgba(0,201,255,0.35);
-      --text: #f0f0f8;
-      --text-muted: #a0aec0;
-      --text-dim: #8892b0;
-      --accent: #00c9ff;
-      --accent-green: #00e5a0;
-      --accent-blue: #338dff;
-      --accent-teal: #00d4aa;
-      --error: #ff6b6b;
-      --success: #00e5a0;
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-      background:var(--bg);color:var(--text);line-height:1.6;
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-    }
-    .container{max-width:820px;margin:0 auto;padding:48px 24px}
-    .badge{
-      display:inline-block;background:var(--accent-teal);color:#0a0a12;
-      font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;
-      text-transform:uppercase;letter-spacing:1.2px;margin-bottom:20px;
-    }
-    h1{font-size:52px;font-weight:800;line-height:1.08;margin-bottom:18px;letter-spacing:-1.2px}
-    h1 span{
-      color:var(--accent);
-      background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    }
-    @supports not ((-webkit-background-clip:text) or (background-clip:text)){
-      h1 span{-webkit-text-fill-color:var(--accent);color:var(--accent)}
-    }
-    .subtitle{font-size:19px;color:var(--text-muted);margin-bottom:40px;max-width:620px;line-height:1.55}
-    .hero-visual{
-      width:100%;max-width:620px;height:260px;
-      background:radial-gradient(circle at 30% 50%,rgba(0,201,255,0.12),transparent 60%),
-                 linear-gradient(135deg,#1a1a3e,#0f0f2e);
-      border:1px solid var(--surface-border);border-radius:20px;margin-bottom:48px;
-      display:flex;align-items:center;justify-content:center;
-    }
-    .hero-visual svg{width:140px;height:140px;color:var(--accent)}
-    .section{margin-bottom:52px}
-    .section h2{font-size:30px;font-weight:700;margin-bottom:18px;color:var(--accent);letter-spacing:-0.5px}
-    .section p{color:var(--text-muted);font-size:17px;margin-bottom:14px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .card{
-      background:var(--surface);padding:28px;border-radius:16px;
-      border:1px solid var(--surface-border);transition:border-color .2s,transform .2s;
-    }
-    .card:hover{border-color:var(--surface-border-bright);transform:translateY(-2px)}
-    .card-icon{width:40px;height:40px;margin-bottom:14px;color:var(--accent);display:flex;align-items:center}
-    .card-icon svg{width:36px;height:36px}
-    .card h3{font-size:19px;font-weight:700;margin-bottom:8px;color:var(--text)}
-    .card p{font-size:15px;color:var(--text-dim);line-height:1.55}
-    .pricing{
-      background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));
-      padding:44px 32px;border-radius:24px;text-align:center;margin:56px 0;color:#0a0a12;
-    }
-    .pricing .setup{text-decoration:line-through;opacity:.7;margin-bottom:10px;font-size:15px;color:#0a0a12}
-    .pricing .setup strong{text-decoration:none;opacity:1;font-size:22px}
-    .pricing .price{font-size:60px;font-weight:800;margin-bottom:8px;color:#0a0a12;letter-spacing:-2px}
-    .pricing .price span{font-size:22px;font-weight:600;opacity:.85}
-    .pricing .terms{font-size:17px;opacity:.92;margin-bottom:22px;color:#0a0a12}
-    .pricing .blurb{opacity:.9;font-size:16px;margin-bottom:18px;color:#0a0a12}
-    .btn{
-      display:inline-block;background:#0a0a12;color:#fff;
-      font-size:18px;font-weight:700;padding:18px 48px;border-radius:14px;
-      text-decoration:none;transition:transform .2s,box-shadow .2s;
-      border:none;cursor:pointer;margin-top:12px;font-family:inherit;
-    }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-    .guarantee{font-size:14px;opacity:.8;margin-top:14px;color:#0a0a12}
-    .faq{padding:0;list-style:none}
-    .faq li{padding:22px 0;border-bottom:1px solid var(--surface-border)}
-    .faq li strong{display:block;font-size:17px;margin-bottom:8px;color:var(--text)}
-    .faq li p{font-size:15px;color:var(--text-dim);line-height:1.6}
-    .how-list{padding-left:20px;color:var(--text-muted);font-size:17px}
-    .how-list li{margin-bottom:14px;line-height:1.55}
-    .how-list li strong{color:var(--text)}
-    .story{text-align:center}
-    .story p{font-size:17px;max-width:620px;margin:0 auto;color:var(--text-muted)}
-    .story .author{margin-top:22px;color:var(--text)}
-    .story .meta{font-size:14px;color:var(--text-dim);margin-top:8px}
-    .cta-block{text-align:center;margin:56px 0}
-    #checkout-form{
-      display:none;background:var(--surface);padding:36px;border-radius:16px;
-      border:1px solid var(--surface-border);margin-top:32px;
-    }
-    #checkout-form h2{font-size:24px;margin-bottom:24px;color:var(--text)}
-    #checkout-form label{display:block;font-size:14px;color:var(--text-muted);margin-bottom:8px;font-weight:500}
-    #checkout-form input,#checkout-form button{
-      width:100%;padding:14px 16px;border-radius:10px;
-      border:1px solid var(--surface-border);background:var(--bg);
-      color:var(--text);font-size:16px;margin-bottom:16px;font-family:inherit;
-    }
-    #checkout-form input:focus{outline:none;border-color:var(--accent)}
-    #checkout-form button{
-      background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));
-      color:#0a0a12;font-weight:700;border:none;cursor:pointer;font-size:17px;
-    }
-    #message{margin-top:12px;font-size:15px}
-    .success{color:var(--success)}
-    .error{color:var(--error)}
-    @media(max-width:960px){
-      .container{padding:40px 20px}
-      h1{font-size:42px}
-      .section h2{font-size:26px}
-      .pricing .price{font-size:52px}
-      .hero-visual{height:220px}
-      .hero-visual svg{width:110px;height:110px}
-    }
-    @media(max-width:600px){
-      .grid{grid-template-columns:1fr}
-      h1{font-size:34px;letter-spacing:-0.8px}
-      .subtitle{font-size:17px}
-      .pricing{padding:36px 24px}
-      .pricing .price{font-size:44px}
-      .btn{padding:16px 36px;font-size:17px;width:100%}
-      .section h2{font-size:24px}
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dispatchanchor.css?v=1">
 </head>
 <body>
-  <nav class="jf-shell-nav">
-    <a href="/" class="jf-shell-nav-logo">DispatchAnchor</a>
-    <div class="jf-shell-nav-links">
-      <a href="#how" class="jf-shell-nav-hide-sm">How it works</a>
+
+  <!-- NAV -->
+  <nav class="da-nav" id="da-nav">
+    <a href="/dispatchanchor.html" class="da-brand">
+      <span class="da-brand-mark">D</span>
+      DispatchAnchor
+    </a>
+    <div class="da-nav-links">
+      <a href="/" class="da-back">← Jedaiflow</a>
+      <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
-      <a href="#faq" class="jf-shell-nav-hide-sm">FAQ</a>
-      <a href="/purchase.html" class="jf-shell-nav-cta">Get started</a>
+      <a href="#faq">FAQ</a>
+      <a href="#demo" class="da-cta">Book a demo →</a>
     </div>
   </nav>
-  <div class="jf-shell-nav-spacer"></div>
 
-  <div class="container">
-    <span class="badge">Built for Houston Home Services</span>
-    <h1>Your AI Phone Agent Works <span>24/7</span></h1>
-    <p class="subtitle">Every call answered. Every lead qualified. Every appointment booked — even when you're under a sink, in an attic, or on a roof.</p>
-
-    <div class="hero-visual" aria-hidden="true">
-      <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M80 40a30 30 0 0 1 0 42" opacity=".7"/>
-        <path d="M92 30a45 45 0 0 1 0 62" opacity=".45"/>
-        <rect x="36" y="50" width="32" height="32" rx="6" fill="currentColor" opacity=".14"/>
-        <path d="M44 58h16M44 66h16M44 74h10"/>
-      </svg>
-    </div>
-
-    <div class="section">
-      <h2>You Miss Calls. They Book Your Competitor.</h2>
-      <p>Home service businesses lose 30–40% of incoming calls to voicemail. In Houston heat, when someone's AC dies at 2 AM, they don't wait for a callback — they dial the next result on Google.</p>
-      <p>That's not a lead you lost. That's a <strong>$500–$3,000 job</strong> that paid for your competitor's truck.</p>
-    </div>
-
-    <div class="section" id="how">
-      <h2>What DispatchAnchor Does</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <h3>Answers Every Call</h3>
-          <p>AI picks up 24/7, sounds like a real person answering your phones, never puts anyone on hold.</p>
+  <!-- HERO -->
+  <header>
+    <div class="da-hero">
+      <div class="da-hero-content">
+        <div class="da-eyebrow">
+          <span class="dot"></span>
+          Built for Houston Home Services
         </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3>Qualifies Instantly</h3>
-          <p>Emergency or routine? Location? Issue type? The AI asks the right questions and books on the right schedule.</p>
+
+        <h1>
+          Never miss a<br>
+          <span class="da-grad">service call</span> again.
+        </h1>
+
+        <p class="da-hero-sub">
+          When you're under a sink or up in an attic, your phone goes unanswered. DispatchAnchor's AI picks up every call 24/7, qualifies the lead, and sends you the job — before the customer calls your competitor.
+        </p>
+
+        <div class="da-hero-actions">
+          <a href="#demo" class="da-btn-primary">Book a 15-min demo →</a>
+          <a href="#how" class="da-btn-secondary">See how it works</a>
         </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+
+        <div class="da-hero-stats">
+          <div class="da-hero-stat">
+            <div class="num">40%</div>
+            <div class="label">of calls go unanswered</div>
           </div>
-          <h3>Books Directly</h3>
-          <p>Integrates with your Google Calendar, Cal.com, or Acuity. Customer gets confirmation. You get a text summary.</p>
+          <div class="da-hero-stat">
+            <div class="num">24/7</div>
+            <div class="label">AI coverage, always on</div>
+          </div>
+          <div class="da-hero-stat">
+            <div class="num">$199</div>
+            <div class="label">per month, all in</div>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+
+      <!-- ANIMATED PHONE CARD -->
+      <div class="da-hero-visual">
+        <div class="da-phone-card">
+          <div class="da-phone-row">
+            <div class="da-phone-ring-wrap">
+              <div class="da-phone-icon">📞</div>
+            </div>
+            <div class="da-phone-meta">
+              <div class="t1">Incoming call</div>
+              <div class="t2">New customer · Houston, TX</div>
+            </div>
           </div>
-          <h3>Texts You the Summary</h3>
-          <p>"Plumbing leak at 2451 Heights Blvd. Emergency. Customer wants 9 AM tomorrow." — in your hand before the call ends.</p>
+
+          <div class="da-waveform" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="da-transcript">
+            <strong>AI:</strong> "Thanks for calling Johnson Plumbing! Is this an emergency or routine service?"
+            <br><br>
+            <strong>Customer:</strong> "Burst pipe — water everywhere."
+            <br><br>
+            <strong>AI:</strong> "On it. Routing to your tech now and texting you a confirmation."
+          </div>
         </div>
       </div>
     </div>
+  </header>
 
-    <div class="pricing" id="pricing">
-      <div class="setup">$999 setup → <strong>$499 today</strong></div>
-      <div class="price">$199<span>/month</span></div>
-      <div class="terms">Unlimited calls · No per-minute fees · Cancel anytime</div>
-      <p class="blurb">One extra job per month pays for the entire year.</p>
-      <button class="btn" onclick="openCheckout()">Get DispatchAnchor</button>
-      <p class="guarantee">30-day money-back guarantee · No questions asked</p>
-    </div>
-
-    <div id="checkout-form">
-      <h2>Complete Your Setup</h2>
-      <label for="business">Business Name</label>
-      <input type="text" id="business" placeholder="Johnson Plumbing" required>
-      <label for="name">Your Name</label>
-      <input type="text" id="name" placeholder="John Johnson" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="john@yourbusiness.com" required>
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="(713) 555-0123" required>
-      <button onclick="submitCheckout()">Start My AI Agent — $499 Setup</button>
-      <p style="font-size:13px;opacity:.6;margin-top:8px">You'll receive an invoice for $199/mo starting in 30 days. Cancel anytime.</p>
-      <div id="message"></div>
-    </div>
-
-    <div class="section">
-      <h2>How It Works</h2>
-      <ol class="how-list">
-        <li><strong>Book a 15-min call</strong> — We map your services, scheduling rules, and call routing rules.</li>
-        <li><strong>We build your AI agent</strong> — Trained on your specific services, areas, pricing, and schedule. 48-hour turnaround.</li>
-        <li><strong>Test it live</strong> — You call the number. The AI answers. You watch it book an appointment and text you the details.</li>
-        <li><strong>Go live</strong> — Forward your business line or use our number. Start capturing jobs you'd have missed.</li>
-      </ol>
-    </div>
-
-    <div class="section" id="faq">
-      <h2>FAQ</h2>
-      <ul class="faq">
-        <li>
-          <strong>What if the AI can't handle a weird situation?</strong>
-          <p>It texts you the conversation in real-time. You can jump in anytime. Most calls are 100% handled by the AI — but you always have the wheel.</p>
-        </li>
-        <li>
-          <strong>How long until I'm live?</strong>
-          <p>48 hours from our kickoff call. We build it fast because we know you're losing calls right now.</p>
-        </li>
-        <li>
-          <strong>Can my customers tell it's AI?</strong>
-          <p>Most think it's a real person. It says "I'm the AI assistant for [your business]" upfront (required by law), but handles conversations naturally with your business's personality.</p>
-        </li>
-        <li>
-          <strong>What if I already have a receptionist?</strong>
-          <p>Your receptionist gets promoted to customer success. The AI handles after-hours, overflow, and weekends — the calls they're already missing.</p>
-        </li>
-        <li>
-          <strong>Is this actually AI or prerecorded IVR?</strong>
-          <p>Real AI. Conversational, understanding context, handling interruptions. Not press-1-for-sales.</p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="section story">
-      <h2>Built by Someone Who's Been There</h2>
-      <p>I spent a year answering phones at a Houston plumbing company. I watched good techs lose jobs every single day because they were under a sink when the phone rang. My dad's a plumber. This is built for him. And for you.</p>
-      <p class="author"><strong>— John Jedlowski</strong></p>
-      <p class="meta">Houston, TX · <a href="mailto:hello@jedaiflow.com" style="color:var(--accent)">hello@jedaiflow.com</a></p>
-    </div>
-
-    <div class="cta-block">
-      <button class="btn" onclick="openCheckout()" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));color:#0a0a12">Get Started — $499</button>
-      <p class="guarantee" style="color:var(--text-muted);margin-top:14px">30-day money-back guarantee</p>
-    </div>
+  <!-- SOCIAL PROOF STRIP -->
+  <div class="da-proof">
+    <p>Built by a former Houston dispatcher &nbsp;·&nbsp; <strong>$0 in missed calls</strong> since going live &nbsp;·&nbsp; 48-hour setup</p>
   </div>
 
-  <footer class="jf-shell-footer">
-    <a href="/" class="jf-shell-footer-logo">DispatchAnchor</a>
-    <p class="jf-shell-footer-tagline">AI phone answering for Houston home services. Every call answered, every lead qualified, every job booked.</p>
-    <div class="jf-shell-footer-links">
-      <a href="/">Home</a>
-      <a href="#pricing">Pricing</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/free.html">Free resources</a>
-      <a href="mailto:hello@jedaiflow.com">Contact</a>
+  <!-- PROBLEM -->
+  <section class="da-section" id="problem">
+    <div class="wrap">
+      <div class="da-section-head">
+        <div class="da-section-label">The problem</div>
+        <h2>Missed calls are missed revenue.</h2>
+        <p class="da-section-sub">
+          You built a reputation on showing up. But when a customer can't reach you, they call the next number on the list — and that job pays for your competitor's truck.
+        </p>
+      </div>
+
+      <div class="da-problem-grid">
+        <div class="da-problem-card">
+          <div class="da-problem-icon">📞</div>
+          <h3>You're on the job, not the phone</h3>
+          <p>When you're under a sink or up in an attic, every missed call is a missed opportunity — and a customer who won't call back.</p>
+        </div>
+        <div class="da-problem-card">
+          <div class="da-problem-icon">📱</div>
+          <h3>Voicemail doesn't close jobs</h3>
+          <p>Most callers hang up at voicemail. They want someone now — especially for urgent repairs where every minute counts.</p>
+        </div>
+        <div class="da-problem-card">
+          <div class="da-problem-icon">💸</div>
+          <h3>One missed job = $500–$2,000+</h3>
+          <p>A single unanswered call — HVAC replacement, burst pipe, panel upgrade — is money walking out the door to whoever picked up first.</p>
+        </div>
+      </div>
     </div>
-    <div class="jf-shell-footer-legal">© 2026 Jedaiflow · Built in Houston, TX</div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="da-section" id="how" style="background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04);">
+    <div class="wrap">
+      <div class="da-section-head">
+        <div class="da-section-label">How it works</div>
+        <h2>Your AI picks up. You get the job.</h2>
+        <p class="da-section-sub">Three steps. No apps to learn. No scripts to manage. Live in 48 hours.</p>
+      </div>
+
+      <div class="da-timeline">
+        <div class="da-step">
+          <div class="da-step-num">1</div>
+          <div>
+            <h3>Customer calls your number</h3>
+            <p>We forward your existing line — or set up a new local Houston number — to your AI. It answers instantly, every time, using your company name and personality.</p>
+          </div>
+        </div>
+        <div class="da-step">
+          <div class="da-step-num">2</div>
+          <div>
+            <h3>AI qualifies the lead</h3>
+            <p>Asks the right questions: What's the issue? Emergency or routine? Location? It sounds natural — not a robot, not a script. Your customers won't know the difference.</p>
+          </div>
+        </div>
+        <div class="da-step">
+          <div class="da-step-num">3</div>
+          <div>
+            <h3>You get the job details instantly</h3>
+            <p>Full lead summary sent via text before the call ends. Emergencies get routed live to your phone. Routine jobs go on the schedule automatically.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEAR THE AI -->
+  <section class="da-section">
+    <div class="wrap">
+      <div class="da-demo">
+        <h3>Hear the AI in action</h3>
+        <p>A sample call — AI answering for a Houston plumbing company, qualifying an emergency lead.</p>
+
+        <div class="da-audio-wrap">
+          <!-- TODO: Replace src with a real sample call recording (.mp3) when available -->
+          <audio controls preload="none">
+            <source src="/assets/dispatchanchor/sample-call.mp3" type="audio/mpeg">
+            Your browser doesn't support the audio element.
+          </audio>
+          <p class="da-audio-note">Sample call · 90 seconds · AI qualifies an emergency lead</p>
+        </div>
+
+        <p style="margin-top: 24px; font-size: 14px; color: var(--da-text-dim);">
+          Don't want to wait? <a href="#demo" style="color: var(--da-amber-soft); text-decoration: underline; text-underline-offset: 3px;">Book a demo</a> — we'll call a live number on the spot.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="da-section" id="pricing" style="background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04);">
+    <div class="wrap">
+      <div class="da-section-head">
+        <div class="da-section-label">Pricing</div>
+        <h2>One offer. No surprises.</h2>
+        <p class="da-section-sub">Flat monthly rate. No per-call fees. No long-term contracts.</p>
+      </div>
+
+      <div class="da-pricing">
+        <div class="da-pricing-ribbon">Most Popular</div>
+
+        <div class="da-price-setup">
+          Setup: <del>$999</del><strong>$499 today</strong>
+        </div>
+
+        <div class="da-price-main">
+          <span class="currency">$</span>
+          <span class="amount">199</span>
+          <span class="period">/mo</span>
+        </div>
+
+        <div class="da-price-terms">
+          Unlimited calls · No per-minute fees · Cancel anytime
+        </div>
+
+        <ul class="da-features">
+          <li><span class="da-check">✓</span><span>24/7 AI phone answering — never goes to voicemail</span></li>
+          <li><span class="da-check">✓</span><span>Lead qualification on every call (issue, location, urgency)</span></li>
+          <li><span class="da-check">✓</span><span>Instant job summaries via text + email before call ends</span></li>
+          <li><span class="da-check">✓</span><span>Emergency escalation — hot leads reach you live immediately</span></li>
+          <li><span class="da-check">✓</span><span>Weekly call report (volume, lead quality, missed follow-ups)</span></li>
+          <li><span class="da-check">✓</span><span>48-hour setup · No contracts · Cancel anytime</span></li>
+        </ul>
+
+        <a href="#demo" class="da-btn-primary" style="width: 100%; justify-content: center; font-size: 17px; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+          Book a Free 15-min Demo →
+        </a>
+        <p class="da-price-guarantee">30-day money-back guarantee · No questions asked</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="da-section">
+    <div class="wrap">
+      <div class="da-section-head">
+        <div class="da-section-label">Why us</div>
+        <h2>Built by someone who's been there.</h2>
+        <p class="da-section-sub">Not a Silicon Valley product. Built from inside the dispatch room.</p>
+      </div>
+
+      <div class="da-story">
+        <blockquote>
+          "I spent a year answering phones for a Houston plumbing company. I watched good technicians lose jobs every single day because they couldn't pick up while they were on a call. My dad is a plumber. I built DispatchAnchor because I knew exactly what was being lost — and I knew AI could fix it."
+        </blockquote>
+        <div class="attr">
+          <div class="avatar">J</div>
+          <div class="attr-text">
+            <div class="name">John Jedlowski</div>
+            <div class="title">Founder, DispatchAnchor · Houston, TX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="da-section" id="faq" style="background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04);">
+    <div class="wrap">
+      <div class="da-section-head">
+        <div class="da-section-label">FAQ</div>
+        <h2>Questions answered.</h2>
+      </div>
+
+      <div class="da-faq">
+        <details>
+          <summary>What if the AI can't handle a weird situation?</summary>
+          <div class="faq-body">It texts you the conversation in real-time. You can jump in anytime. Most calls are 100% handled by the AI — but you always have the wheel. Complex situations trigger a live transfer to your phone automatically.</div>
+        </details>
+
+        <details>
+          <summary>How long until I'm live?</summary>
+          <div class="faq-body">48 hours from our kickoff call. We build fast because we know you're losing calls right now. The kickoff takes 15 minutes — we map your services, scheduling rules, and dispatch logic.</div>
+        </details>
+
+        <details>
+          <summary>Can my customers tell it's AI?</summary>
+          <div class="faq-body">Most think it's a real dispatcher. The AI discloses it's an AI assistant upfront (required by law), but handles conversations naturally with your business's personality and service knowledge. It knows your pricing, service areas, and how to handle common scenarios.</div>
+        </details>
+
+        <details>
+          <summary>What if I already have a receptionist?</summary>
+          <div class="faq-body">Your receptionist gets promoted to customer success. The AI handles after-hours, overflow, and weekends — the calls they're already missing. No job losses. Better coverage.</div>
+        </details>
+
+        <details>
+          <summary>Is this actual AI or prerecorded IVR?</summary>
+          <div class="faq-body">Real conversational AI. It understands context, handles interruptions, and responds naturally. Not press-1-for-sales. If the customer changes their mind mid-call, the AI adjusts, re-qualifies, and updates the job summary accordingly.</div>
+        </details>
+
+        <details>
+          <summary>What phone systems do you integrate with?</summary>
+          <div class="faq-body">We work with any existing phone setup via call forwarding — Google Voice, RingCentral, your cell, or a dedicated business line. We can also provision a local Houston number at no extra cost. No hardware changes needed.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="da-final-cta" id="demo">
+    <div class="da-section-label">Get started</div>
+    <h2>See it live in 15 minutes.</h2>
+    <p>
+      Book a demo call. We'll show you exactly how it works, answer your questions, and call a live number on the spot so you hear your AI answer in real time.
+    </p>
+
+    <a href="mailto:hello@jedaiflow.com?subject=DispatchAnchor Demo Request" class="da-btn-primary">
+      Book Your Demo →
+    </a>
+
+    <p style="margin-top: 18px; font-size: 13px; color: var(--da-text-dim);">
+      Or email directly: <a href="mailto:hello@jedaiflow.com" style="color: var(--da-amber-soft);">hello@jedaiflow.com</a>
+    </p>
+
+    <!-- TODO: Wire Stripe when publishable key is ready.
+         Replace pk_live_REPLACE_THIS with your Stripe publishable key.
+         Phone numbers (713) 555-01xx are placeholders — update before launch. -->
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="da-footer">
+    <a href="/dispatchanchor.html" class="da-brand" style="justify-content: center; margin-bottom: 10px;">
+      <span class="da-brand-mark">D</span>
+      DispatchAnchor
+    </a>
+    <p style="margin-bottom: 6px; color: var(--da-text-muted);">
+      AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="da-footer-links">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="/">← Jedaiflow</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="da-footer-legal">© 2026 DispatchAnchor · A Jedaiflow product · All rights reserved.</div>
   </footer>
 
   <script>
-    function openCheckout() {
-      const form = document.getElementById('checkout-form');
-      form.style.display = form.style.display === 'block' ? 'none' : 'block';
-      form.scrollIntoView({behavior:'smooth'});
-    }
+    // Nav shrink on scroll
+    var nav = document.getElementById('da-nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
 
-    async function submitCheckout() {
-      const msg = document.getElementById('message');
-      const business = document.getElementById('business').value;
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-
-      if (!business || !name || !email || !phone) {
-        msg.innerHTML = '<span class="error">Please fill in all fields.</span>';
-        return;
-      }
-
-      msg.innerHTML = '<span class="success">Got it — redirecting you to secure checkout…</span>';
-      window.location.href = '/purchase.html';
-    }
+    // Smooth scroll for all in-page anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var id = this.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   </script>
+
 </body>
 </html>
