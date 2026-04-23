@@ -3,205 +3,692 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jedaiflow — Learn AI. Ship real things.</title>
-  <meta name="description" content="Practical workflows, tools, and case studies for builders and operators who'd rather ship than speculate. Learn AI. Ship real things.">
-  <meta name="keywords" content="learn AI, AI workflows, practical AI, AI case studies, AI tools, ship with AI, build with AI">
+  <title>Jedaiflow — Automation &amp; AI Studio</title>
+  <meta name="description" content="Expert automation strategies, AI workflows, and step-by-step guides that help solopreneurs and businesses reclaim time and scale without limits.">
+  <meta name="keywords" content="AI automation, workflow automation, Make.com, n8n, Zapier, AI guides, automation studio, jedaiflow">
   <meta name="author" content="John Jedlowski">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jedaiflow.com/">
 
-  <meta property="og:title" content="Jedaiflow — Learn AI. Ship real things.">
-  <meta property="og:description" content="Practical workflows, tools, and case studies for builders and operators who'd rather ship than speculate.">
+  <meta property="og:title" content="Jedaiflow — Automation &amp; AI Studio">
+  <meta property="og:description" content="Expert automation strategies, AI workflows, and step-by-step guides that help solopreneurs and businesses reclaim time and scale without limits.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jedaiflow.com/">
   <meta property="og:site_name" content="Jedaiflow">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jedaiflow — Learn AI. Ship real things.">
-  <meta name="twitter:description" content="Practical workflows, tools, and case studies for builders and operators who'd rather ship than speculate.">
+  <meta name="twitter:title" content="Jedaiflow — Automation &amp; AI Studio">
+  <meta name="twitter:description" content="Expert automation strategies, AI workflows, and step-by-step guides.">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a12'/><path d='M17 4L8 18h6v10l9-14h-6V4z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2300c9ff'/><stop offset='100%25' stop-color='%2300e5a0'/></linearGradient></defs></svg>">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/jf-shell.css?v=1">
-  <link rel="stylesheet" href="/style.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Page-local overrides: hero sits below the fixed shell nav */
-    .hero { padding-top: 72px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Topics strip colour alignment */
-    .topic-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    :root {
+      --bg: #07071a;
+      --bg-deep: #050814;
+      --bg-panel: #0f0f26;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --purple-600: #7c3aed;
+      --purple-400: #a78bfa;
+      --purple-300: #c4b5fd;
+      --cyan-400: #22d3ee;
+      --grad-primary: linear-gradient(135deg,#7c3aed 0%,#9333ea 55%,#c026d3 100%);
+      --grad-text: linear-gradient(110deg,#a78bfa 0%,#c4b5fd 25%,#22d3ee 70%,#a78bfa 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: #fff; font-family: Inter, sans-serif; line-height: 1.5; overflow-x: hidden; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      padding: 14px 28px; display: flex; align-items: center; gap: 24px;
+      background: rgba(7,7,26,0.82);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-text { font: 800 18px Sora, sans-serif; color: #fff; letter-spacing: -0.015em; }
+    .nav-logo-text em { font-style: normal; color: var(--purple-400); }
+    .nav-links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); font: 500 14px Inter, sans-serif; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      padding: 10px 20px; border-radius: 10px; background: var(--grad-primary);
+      color: #fff !important; font: 700 13px Inter, sans-serif;
+      box-shadow: 0 0 0 1px rgba(167,139,250,.35), 0 8px 28px rgba(124,58,237,.45);
+    }
+
+    /* LAYOUT */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-deep { padding: 96px 0; background: #050814; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+
+    /* HERO */
+    .hero {
+      position: relative; overflow: hidden; padding: 120px 24px 96px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,.22) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 45% at 85% 30%, rgba(236,72,153,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 15% 70%, rgba(34,211,238,.18) 0%, transparent 70%),
+        #07071a;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(167,139,250,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.05) 1px, transparent 1px);
+      background-size: 52px 52px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 40%, transparent 80%);
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 40%, transparent 80%);
+    }
+    .hero-orb-1 {
+      position: absolute; top: 25%; left: 10%; width: 280px; height: 280px; pointer-events: none;
+      border-radius: 50%; filter: blur(64px);
+      background: conic-gradient(from 140deg, #7c3aed, #ec4899, #22d3ee, #7c3aed);
+      opacity: 0.35; animation: aurora-drift 14s ease-in-out infinite;
+    }
+    .hero-orb-2 {
+      position: absolute; top: 40%; right: 8%; width: 220px; height: 220px; pointer-events: none;
+      border-radius: 50%; filter: blur(56px);
+      background: radial-gradient(circle, rgba(34,211,238,.6), transparent 65%); opacity: 0.6;
+    }
+    @keyframes aurora-drift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(30px,-20px) scale(1.05); }
+      66%      { transform: translate(-20px,15px) scale(0.95); }
+    }
+    @keyframes pulse-float {
+      0%,100% { transform: translateY(0);    box-shadow: 0 20px 60px rgba(124,58,237,.35), inset 0 1px 0 rgba(255,255,255,.06); }
+      50%      { transform: translateY(-6px); box-shadow: 0 30px 80px rgba(124,58,237,.5),  inset 0 1px 0 rgba(255,255,255,.08); }
+    }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; text-align: center; }
+    .hero-logo-tile {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 128px; height: 128px; margin-bottom: 28px; border-radius: 28px;
+      background: rgba(20,20,43,0.5); border: 1px solid rgba(167,139,250,0.25);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      animation: pulse-float 4s ease-in-out infinite;
+    }
+    .hero-logo-tile svg { filter: drop-shadow(0 0 12px rgba(124,58,237,.6)); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px; margin-bottom: 28px;
+      background: rgba(124,58,237,.14); border: 1px solid rgba(167,139,250,.35);
+      color: var(--purple-300); font: 700 11px Inter, sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--purple-300); box-shadow: 0 0 10px var(--purple-300); }
+    .hero h1 { font: 900 clamp(2.5rem,6vw,4.5rem)/1.02 Sora, sans-serif; letter-spacing: -0.035em; color: #fff; }
+    .grad-text {
+      background-image: var(--grad-text);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 24px rgba(167,139,250,.35));
+    }
+    .hero-sub { font: 400 19px/1.5 Inter, sans-serif; color: rgba(255,255,255,.78); max-width: 680px; margin: 28px auto 40px; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 12px;
+      background: var(--grad-primary); color: #fff; font: 700 15px Inter, sans-serif;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 0 0 1px rgba(167,139,250,.35), 0 12px 40px rgba(124,58,237,.45);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(167,139,250,.5), 0 16px 48px rgba(124,58,237,.55); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 12px;
+      background: rgba(255,255,255,.06); color: #fff; border: 1px solid rgba(255,255,255,.1);
+      font: 700 15px Inter, sans-serif; text-decoration: none; transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.10); }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 32px;
+      max-width: 720px; margin: 72px auto 0; padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .stat-num {
+      font: 900 44px/1 Sora, sans-serif; letter-spacing: -0.02em;
+      background-image: linear-gradient(110deg,#a78bfa,#c4b5fd,#22d3ee,#a78bfa);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .stat-label { margin-top: 10px; font: 700 11px 'Space Grotesk', sans-serif; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+
+    /* EYEBROW */
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 700 11px 'Space Grotesk', sans-serif; letter-spacing: 0.22em; text-transform: uppercase; color: var(--purple-300); }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: linear-gradient(90deg, transparent, var(--purple-300)); }
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head h2 { font: 800 clamp(2rem,4vw,2.75rem)/1.1 Sora, sans-serif; letter-spacing: -0.02em; color: #fff; margin: 10px 0 16px; }
+    .section-head p { font: 400 17px/1.6 Inter, sans-serif; color: rgba(255,255,255,.7); max-width: 620px; margin: 0 auto; }
+
+    /* SERVICE GRID */
+    .service-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 28px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { transform: translateY(-2px); border-color: rgba(167,139,250,.35); box-shadow: 0 12px 40px rgba(124,58,237,.2); }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg,#7c3aed,#9333ea 60%,#c026d3);
+      display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px;
+      box-shadow: 0 0 0 1px rgba(167,139,250,.3), 0 12px 28px rgba(124,58,237,.35);
+    }
+    .service-card h3 { font: 700 20px/1.3 Sora, sans-serif; color: #fff; margin: 0 0 10px; letter-spacing: -0.01em; }
+    .service-card p { font: 400 14.5px/1.6 Inter, sans-serif; color: rgba(255,255,255,.72); margin: 0; }
+
+    /* FEATURE ROWS */
+    .feature-rows { display: flex; flex-direction: column; gap: 96px; }
+    .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .feature-row.reverse { direction: rtl; }
+    .feature-row.reverse > * { direction: ltr; }
+    .feature-visual {
+      aspect-ratio: 1.1; border-radius: 24px; position: relative; overflow: hidden;
+      background: radial-gradient(60% 70% at 30% 30%, rgba(167,139,250,.4) 0%, transparent 60%),
+                  radial-gradient(70% 60% at 80% 70%, rgba(34,211,238,.35) 0%, transparent 60%), #0f0f26;
+      border: 1px solid rgba(167,139,250,.2); display: flex; align-items: center; justify-content: center;
+    }
+    .feature-visual-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(167,139,250,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.06) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .feature-icon { font-size: 140px; position: relative; z-index: 1; filter: drop-shadow(0 0 40px rgba(167,139,250,.7)); }
+    .feature-text h2 { font: 800 clamp(1.75rem,3.5vw,2.5rem)/1.1 Sora, sans-serif; letter-spacing: -0.02em; color: #fff; margin: 10px 0 18px; }
+    .feature-text p { font: 400 16.5px/1.65 Inter, sans-serif; color: rgba(255,255,255,.78); margin: 0 0 24px; }
+    .feature-list { list-style: none; padding: 0; margin: 0 0 28px; }
+    .feature-list li { display: flex; gap: 12px; align-items: center; padding: 8px 0; font: 500 15px Inter, sans-serif; color: rgba(255,255,255,.85); }
+    .check { width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0; background: linear-gradient(135deg,#7c3aed,#22d3ee); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 900; }
+
+    /* TESTIMONIALS */
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+    .stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .stars span { color: #fbbf24; font-size: 14px; filter: drop-shadow(0 0 6px rgba(251,191,36,.5)); }
+    .testimonial-card blockquote { font: 400 15.5px/1.65 Inter, sans-serif; color: rgba(255,255,255,.85); margin: 0 0 22px; }
+    .t-author { display: flex; gap: 12px; align-items: center; }
+    .t-avatar { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font: 800 15px Sora, sans-serif; color: #fff; box-shadow: 0 0 0 1px rgba(167,139,250,.3); }
+    .t-name { font: 700 14px Inter, sans-serif; color: #fff; }
+    .t-role { font: 500 12px Inter, sans-serif; color: rgba(255,255,255,.55); }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,.25) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 100%, rgba(34,211,238,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 100%, rgba(236,72,153,.15) 0%, transparent 70%),
+        rgba(255,255,255,.03);
+      border: 1px solid rgba(167,139,250,.25); border-radius: 28px; padding: 72px 48px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-banner-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(167,139,250,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 40%, transparent 85%);
+      mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 40%, transparent 85%);
+    }
+    .cta-banner .eyebrow { justify-content: center; margin-bottom: 14px; }
+    .cta-banner h2 { font: 900 clamp(2rem,4.5vw,3rem)/1.05 Sora, sans-serif; letter-spacing: -0.03em; color: #fff; margin: 0 0 18px; position: relative; }
+    .cta-banner > p { font: 400 18px/1.5 Inter, sans-serif; color: rgba(255,255,255,.8); max-width: 540px; margin: 0 auto 34px; position: relative; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* NEWSLETTER */
+    .newsletter { background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(124,58,237,.15), transparent 70%); padding: 96px 24px; text-align: center; }
+    .newsletter h2 { font: 800 clamp(1.75rem,3.5vw,2.25rem)/1.1 Sora, sans-serif; color: #fff; margin: 0 0 14px; letter-spacing: -0.02em; }
+    .newsletter > p { font: 400 17px/1.6 Inter, sans-serif; color: rgba(255,255,255,.7); max-width: 500px; margin: 0 auto 32px; }
+    .nl-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+    .nl-form input { flex: 1; padding: 14px 18px; font: 500 15px Inter, sans-serif; background: rgba(255,255,255,.06); color: #fff; border: 2px solid rgba(255,255,255,.08); border-radius: 12px; outline: none; transition: border-color 0.2s; }
+    .nl-form input:focus { border-color: var(--purple-600); }
+    .nl-fine { font: 400 13px Inter, sans-serif; color: rgba(255,255,255,.45); margin-top: 14px; }
+
+    /* ABOUT */
+    .about-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .about-inner h2 { font: 900 clamp(2.5rem,5vw,4rem)/1.05 Sora, sans-serif; letter-spacing: -0.03em; color: #fff; margin: 14px 0 18px; }
+    .about-inner p { font: 400 18px/1.7 Inter, sans-serif; color: rgba(255,255,255,.78); }
+
+    /* CONTACT */
+    .contact-form {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px; padding: 40px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 14px 18px; font: 500 15px Inter, sans-serif;
+      background: rgba(255,255,255,.06); color: #fff; border: 2px solid rgba(255,255,255,.08);
+      border-radius: 12px; outline: none; transition: border-color 0.2s; font-family: Inter, sans-serif;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--purple-600); }
+    .contact-form textarea { resize: vertical; }
+    .contact-success { padding: 28px 20px; background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.35); border-radius: 14px; color: #86efac; text-align: center; font: 700 16px Inter, sans-serif; display: none; }
+
+    /* FOOTER */
+    .footer { background: #050814; border-top: 1px solid rgba(255,255,255,.08); padding: 72px 24px 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand p { font: 400 14px/1.65 Inter, sans-serif; color: rgba(255,255,255,.7); margin: 18px 0 24px; max-width: 320px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: var(--purple-400); text-decoration: none; font: 600 14px Inter, sans-serif; transition: border-color 0.2s; }
+    .footer-social:hover { border-color: rgba(167,139,250,.4); }
+    .footer-col-heading { font: 700 11px 'Space Grotesk', sans-serif; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,.75); font: 500 14px Inter, sans-serif; text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: #fff; }
+    .footer-bottom { margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font: 500 12.5px Inter, sans-serif; color: rgba(255,255,255,.45); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .service-grid, .testimonial-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .feature-row, .feature-row.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .feature-visual { aspect-ratio: 1.5; }
+      .hero-stats { grid-template-columns: 1fr; max-width: 280px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nl-form { flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .service-grid, .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { padding: 80px 20px 60px; }
+      .section, .section-deep { padding: 64px 0; }
+      .cta-banner { padding: 48px 24px; }
+    }
+
+    /* SCROLL-TO-TOP FAB */
+    .scroll-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: rgba(15,15,38,0.9);
+      border: 1px solid rgba(167,139,250,0.35);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; padding: 0;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.2s, border-color 0.2s;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 28px rgba(124,58,237,.3);
+    }
+    .scroll-top.visible { opacity: 1; visibility: visible; }
+    .scroll-top:hover { transform: translateY(-3px); border-color: rgba(167,139,250,.65); }
   </style>
 </head>
 <body>
 
-  <!-- JF:NAV:START v1 -->
-  <nav class="jf-shell-nav">
-    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
-    <div class="jf-shell-nav-links">
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <svg width="40" height="40" viewBox="0 0 96 96" aria-hidden="true" style="filter:drop-shadow(0 6px 18px rgba(124,58,237,.45))">
+        <defs>
+          <linearGradient id="nav-g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#a78bfa"/>
+            <stop offset="55%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#nav-g)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="10" cy="48" r="3.5" fill="#a78bfa"/>
+        <circle cx="86" cy="48" r="3.5" fill="#22d3ee"/>
+      </svg>
+      <span class="nav-logo-text">Jedaiflow</span>
+    </a>
+    <div class="nav-links">
       <a href="/articles/">Articles</a>
-      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
-      <a href="/voice-agent-kit.html" class="jf-shell-nav-hide-sm">Products</a>
-      <a href="/shipclean/" class="jf-shell-nav-hide-sm">ShipClean</a>
-      <a href="/dispatchanchor.html" class="jf-shell-nav-hide-sm">Home Services</a>
-      <a href="#newsletter" class="jf-shell-nav-cta">Subscribe →</a>
+      <a href="/guides/">Guides</a>
+      <a href="/voice-agent-kit.html">Products</a>
+      <a href="/dispatchanchor.html">Home Services</a>
+      <a href="#contact" class="nav-cta">Get Started</a>
     </div>
   </nav>
-  <div class="jf-shell-nav-spacer"></div>
-  <!-- JF:NAV:END -->
 
   <!-- HERO -->
-  <header class="hero">
-    <div class="eyebrow"><span class="dot"></span>Practical AI hub</div>
-    <h1>Learn AI. <span class="accent">Ship real things.</span></h1>
-    <p class="hero-sub">
-      Practical workflows, tools, and case studies for builders and operators who'd rather ship than speculate. Whether you're learning AI, picking up a new skill, or shipping your next product — the goal is the same: make something real.
-    </p>
-    <div class="hero-actions">
-      <a href="/articles/" class="btn-primary">Read the articles →</a>
-      <a href="#newsletter" class="btn-secondary">Get the newsletter</a>
-    </div>
-  </header>
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="hero-inner">
 
-  <!-- TOPICS STRIP -->
-  <div class="topics-strip">
-    <a class="topic-chip" href="/articles/">AI workflows</a>
-    <a class="topic-chip" href="/articles/">Case studies</a>
-    <a class="topic-chip" href="/articles/">Tools</a>
-    <a class="topic-chip" href="/guides/">Guides</a>
-    <a class="topic-chip" href="/blog/">Ship logs</a>
-    <a class="topic-chip" href="/dispatchanchor.html">Home services</a>
-  </div>
-
-  <!-- FEATURED ARTICLE -->
-  <section class="section wrap">
-    <div class="section-head">
-      <h2>Featured</h2>
-      <a class="see-all" href="/articles/">See all articles →</a>
-    </div>
-
-    <a class="featured" href="/articles/ai-workflows-for-home-services.html">
-      <div>
-        <div class="featured-meta">Case study · 12 min read</div>
-        <h3>AI workflows for home services — what actually works</h3>
-        <p>Seven practical AI workflows for plumbers, HVAC, and electricians — from lead response to after-hours call handling. Written by a former dispatcher who watched the calls get missed in real time.</p>
-        <div class="byline">John Jedlowski · April 17, 2026</div>
+      <div class="hero-logo-tile">
+        <svg width="96" height="96" viewBox="0 0 96 96" aria-label="Jedaiflow logo">
+          <defs>
+            <linearGradient id="hero-g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="55%" stop-color="#7c3aed"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+            <filter id="hero-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#hero-g)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#hero-glow)"/>
+          <circle cx="10" cy="48" r="3.5" fill="#a78bfa"/>
+          <circle cx="86" cy="48" r="3.5" fill="#22d3ee"/>
+        </svg>
       </div>
-      <div class="featured-visual">⚡</div>
-    </a>
-  </section>
 
-  <!-- LATEST ARTICLES -->
-  <section class="section wrap">
-    <div class="section-head">
-      <h2>Latest</h2>
-      <a class="see-all" href="/articles/">See all articles →</a>
-    </div>
+      <div class="badge"><span class="badge-dot"></span>Automation &amp; AI Studio</div>
 
-    <div class="articles-grid">
-      <a href="/articles/ai-workflows-for-home-services.html" class="article-card">
-        <div class="cat">Case study</div>
-        <h3>AI workflows for home services — what actually works</h3>
-        <p>Seven practical AI workflows for plumbers, HVAC, and electricians — from lead response to after-hours call handling. Written by a former dispatcher.</p>
-        <div class="byline">April 17, 2026 · 12 min read</div>
-      </a>
+      <h1>Work Smarter With<br><span class="grad-text">AI &amp; Automation</span></h1>
 
-      <a href="/articles/daily-ai-content-workflow.html" class="article-card">
-        <div class="cat">Workflow</div>
-        <h3>The daily AI content workflow I use for blog, LinkedIn, and X</h3>
-        <p>One practical workflow for turning an AI insight into a website article, a LinkedIn post, and an X post — with internal links and a daily rhythm.</p>
-        <div class="byline">April 19, 2026 · 8 min read</div>
-      </a>
+      <p class="hero-sub">
+        Jedaiflow delivers expert automation strategies, AI workflows, and step-by-step guides
+        that help solopreneurs and businesses reclaim their time and scale without limits.
+      </p>
 
-      <a href="/articles/openclaw-claude-mac-workaround.html" class="article-card">
-        <div class="cat">Tools</div>
-        <h3>Your Claude Mac subscription still works with OpenClaw</h3>
-        <p>Anthropic blocked OpenClaw's direct subscription connection. Your subscription is fine. Here's the Cowork bridge workaround that still works.</p>
-        <div class="byline">April 13, 2026 · 10 min read</div>
-      </a>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Services &#8594;</a>
+        <a href="/guides/" class="btn-secondary">Browse Guides</a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Automations Built</div>
+        </div>
+        <div>
+          <div class="stat-num">1,200+</div>
+          <div class="stat-label">Hours Saved</div>
+        </div>
+        <div>
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- PRODUCT FEATURE -->
-  <section class="wrap">
-    <div class="product-feature">
-      <div>
-        <div class="eyebrow"><span class="dot"></span>Something I built</div>
-        <h3>DispatchAnchor — AI phone answering for home services</h3>
-        <p>A practical example of shipping with AI. Built for plumbers, HVAC, and electricians in Houston who lose 30–40% of their calls to voicemail. The AI answers every call, qualifies the lead, books the job. Live, working, paying for itself.</p>
-        <a href="/dispatchanchor.html" class="btn-primary">See how it works →</a>
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What We Do</div>
+        <h2>Everything You Need to <span class="grad-text">Automate &amp; Scale</span></h2>
+        <p>From hands-on automation builds to premium guides and AI strategy — we give you the tools and knowledge to grow.</p>
       </div>
-      <div class="featured-visual" style="min-height:200px;font-size:56px;">📞</div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">&#9881;&#65039;</div>
+          <h3>Automation Builds</h3>
+          <p>Custom no-code and low-code automation workflows built in Make.com, n8n, and Zapier — tailored to your exact business processes.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#129302;</div>
+          <h3>AI Integration</h3>
+          <p>Connect powerful AI models like GPT-4 and Claude to your existing tools. Automate content, data analysis, and customer support.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128218;</div>
+          <h3>Guides &amp; Playbooks</h3>
+          <p>Step-by-step digital guides, templates, and playbooks so you can implement proven automation strategies at your own pace.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128202;</div>
+          <h3>Workflow Audits</h3>
+          <p>We review your current processes and identify automation opportunities that will save the most time and money immediately.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#127891;</div>
+          <h3>1-on-1 Coaching</h3>
+          <p>Live strategy sessions where we walk through your setup, answer questions, and build automations together in real time.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128640;</div>
+          <h3>AI Content Strategy</h3>
+          <p>Build a content machine powered by AI. Systems for writing, publishing, repurposing, and distributing content at scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE ROWS -->
+  <section class="section-deep">
+    <div class="wrap">
+      <div class="feature-rows">
+        <div class="feature-row">
+          <div class="feature-visual">
+            <div class="feature-visual-grid"></div>
+            <span class="feature-icon">&#9889;</span>
+          </div>
+          <div class="feature-text">
+            <div class="eyebrow">Automation First</div>
+            <h2>Stop Doing Tasks <span class="grad-text">Machines Can Do</span></h2>
+            <p>The average business owner spends 30% of their time on repetitive tasks. We build the systems that eliminate that entirely &#8212; freeing you for high-value work.</p>
+            <ul class="feature-list">
+              <li><span class="check">&#10003;</span>Lead capture &amp; CRM automation</li>
+              <li><span class="check">&#10003;</span>Automated invoicing &amp; follow-ups</li>
+              <li><span class="check">&#10003;</span>Social media scheduling</li>
+              <li><span class="check">&#10003;</span>Email sequences &amp; nurture flows</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Work With Us &#8594;</a>
+          </div>
+        </div>
+        <div class="feature-row reverse">
+          <div class="feature-visual">
+            <div class="feature-visual-grid"></div>
+            <span class="feature-icon">&#129504;</span>
+          </div>
+          <div class="feature-text">
+            <div class="eyebrow">AI-Powered Content</div>
+            <h2>Create Content at <span class="grad-text">Superhuman Speed</span></h2>
+            <p>Build AI content pipelines that produce blog posts, social content, email newsletters, and video scripts in a fraction of the time &#8212; without losing your voice.</p>
+            <ul class="feature-list">
+              <li><span class="check">&#10003;</span>AI content generation workflows</li>
+              <li><span class="check">&#10003;</span>Brand voice training &amp; prompting</li>
+              <li><span class="check">&#10003;</span>Multi-platform repurposing</li>
+              <li><span class="check">&#10003;</span>Automated content calendars</li>
+            </ul>
+            <a href="/guides/" class="btn-primary">Browse Guides &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Results</div>
+        <h2>What Our Clients <span class="grad-text">Are Saying</span></h2>
+        <p>Real results from real people who automated their way to a better business.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <blockquote>&#8220;Jedaiflow built a lead intake system that saves my team 15 hours a week. The ROI in the first month alone was insane. Best investment I&#8217;ve made this year.&#8221;</blockquote>
+          <div class="t-author">
+            <div class="t-avatar" style="background:linear-gradient(135deg,#7c3aed,#9333ea)">SR</div>
+            <div><div class="t-name">Sarah R.</div><div class="t-role">Digital Marketing Agency Owner</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <blockquote>&#8220;The AI content guide was a game changer. I went from 6 hours on a blog post to a full pipeline that drafts, edits, and publishes in under an hour.&#8221;</blockquote>
+          <div class="t-author">
+            <div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#9333ea)">MK</div>
+            <div><div class="t-name">Marcus K.</div><div class="t-role">SaaS Founder</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <blockquote>&#8220;I had zero automation knowledge. The Make.com starter guide walked me through everything step by step. Now I run my entire e-commerce store with it.&#8221;</blockquote>
+          <div class="t-author">
+            <div class="t-avatar" style="background:linear-gradient(135deg,#22d3ee,#06b6d4)">TA</div>
+            <div><div class="t-name">Tanya A.</div><div class="t-role">E-Commerce Entrepreneur</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-banner">
+        <div class="cta-banner-grid"></div>
+        <div class="eyebrow">Ready to Start?</div>
+        <h2>Let&#8217;s Build Your <span class="grad-text">Automation Engine</span></h2>
+        <p>Whether you need a custom build or just the right guide to get started, Jedaiflow has you covered.</p>
+        <div class="cta-btns">
+          <a href="#contact" class="btn-primary">Work With Us &#8594;</a>
+          <a href="/guides/" class="btn-secondary">Browse Guides</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- NEWSLETTER -->
   <section id="newsletter" class="newsletter">
     <h2>One email. Practical AI you can actually use.</h2>
-    <p>Weekly: a new workflow, tool, or case study. No hype cycle. No fluff. Just things that shipped.</p>
-
-    <form class="newsletter-form" id="newsletter-form" novalidate>
+    <p>Weekly: a new workflow, tool, or case study. No hype. No fluff. Just things that shipped.</p>
+    <form class="nl-form" id="newsletter-form" novalidate>
       <input type="email" id="newsletter-email" placeholder="your@email.com" required autocomplete="email">
-      <button type="submit" class="btn-primary" id="newsletter-submit">Subscribe →</button>
+      <button type="submit" class="btn-primary" id="newsletter-submit">Subscribe &#8594;</button>
     </form>
-    <p style="font-size:13px;color:var(--text-muted);opacity:0.75;margin-top:14px;">No spam. Unsubscribe anytime.</p>
-    <p id="newsletter-msg" style="display:none;margin-top:16px;font-size:14px;font-weight:600;"></p>
+    <p class="nl-fine">No spam. Unsubscribe anytime.</p>
+    <p id="newsletter-msg" style="display:none;margin-top:16px;font-size:14px;font-weight:600"></p>
   </section>
 
-  <!-- JF:FOOTER:START v1 -->
-  <footer class="jf-shell-footer">
-    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
-    <p class="jf-shell-footer-tagline">
-      Practical AI for builders and operators. Learn AI. Ship real things.
-    </p>
-    <div class="jf-shell-footer-links">
-      <a href="/articles/">Articles</a>
-      <a href="/guides/">Guides</a>
-      <a href="/blog/">Blog</a>
-      <a href="/dispatchanchor.html">Home Services</a>
-      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+  <!-- ABOUT -->
+  <section id="about" class="section-deep">
+    <div class="wrap">
+      <div class="about-inner">
+        <div class="eyebrow" style="justify-content:center">About</div>
+        <h2>Built for <span class="grad-text">automation</span>. Powered by flow.</h2>
+        <p>
+          Jedaiflow is a one-studio shop shipping automation, AI workflows, and straight-talking guides
+          for small teams and solo operators. Based in Houston, TX &#8212; built for people who&#8217;d rather ship than speculate.
+        </p>
+      </div>
     </div>
-    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap" style="max-width:780px;margin:0 auto">
+      <div class="section-head">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>Let&#8217;s Build Your <span class="grad-text">Engine</span></h2>
+        <p>Reply time under 24 hours. No sales scripts.</p>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div id="contact-success" class="contact-success">&#10003; Sent! We&#8217;ll be in touch within 24 hours.</div>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <input type="text" name="company" placeholder="Company (optional)">
+        <textarea name="message" rows="5" placeholder="What do you want to automate?" required></textarea>
+        <button type="submit" class="btn-primary">Send it &#8594;</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none">
+            <svg width="40" height="40" viewBox="0 0 96 96" aria-hidden="true">
+              <defs>
+                <linearGradient id="ft-g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#a78bfa"/>
+                  <stop offset="55%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+              <path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#ft-g)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="48" r="3.5" fill="#a78bfa"/>
+              <circle cx="86" cy="48" r="3.5" fill="#22d3ee"/>
+            </svg>
+            <span style="font:800 18px Sora,sans-serif;color:#fff">Jedai <em style="font-style:normal;color:#a78bfa">Flow</em></span>
+          </a>
+          <p>Automation &amp; AI content strategies for solopreneurs and growing businesses who want to scale smarter.</p>
+          <div class="footer-socials">
+            <a href="https://x.com/jedaiflow" class="footer-social" aria-label="X">&#120143;</a>
+            <a href="https://youtube.com/@jedaiflow" class="footer-social" aria-label="YouTube">&#9654;</a>
+            <a href="https://linkedin.com/in/johnjedlowski" class="footer-social" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-heading">Navigation</div>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="/guides/">Guides Store</a></li>
+            <li></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-heading">Services</div>
+          <ul>
+            <li><a href="#services">Automation Builds</a></li>
+            <li><a href="#services">AI Integration</a></li>
+            <li><a href="#services">Workflow Audits</a></li>
+            <li><a href="#services">1-on-1 Coaching</a></li>
+            <li><a href="#services">AI Content Strategy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-heading">Resources</div>
+          <ul>
+            <li><a href="/guides/">All Guides</a></li>
+            <li></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/dispatchanchor.html">Home Services</a></li>
+            <li><a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&#169; 2026 Jedaiflow. All rights reserved.</span>
+        <span>Built for automation. Powered by flow.</span>
+      </div>
+    </div>
   </footer>
-  <!-- JF:FOOTER:END -->
 
   <script>
-    // Newsletter form → MailerLite (same endpoint as /guides/)
     document.getElementById('newsletter-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var email = document.getElementById('newsletter-email').value.trim();
       var btn = document.getElementById('newsletter-submit');
       var msg = document.getElementById('newsletter-msg');
-
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        msg.style.display = 'block';
-        msg.style.color = '#f87171';
-        msg.textContent = 'Please enter a valid email address.';
-        return;
+        msg.style.display = 'block'; msg.style.color = '#f87171';
+        msg.textContent = 'Please enter a valid email address.'; return;
       }
-
-      btn.disabled = true;
-      btn.textContent = 'Subscribing...';
-
-      var formData = new FormData();
-      formData.append('fields[email]', email);
-      formData.append('ml_submit', '1');
-      formData.append('anticsrf', 'true');
-
-      fetch('https://assets.mailerlite.com/jsonp/2266464/forms/185101564947465342/subscribe', {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-      }).then(function() {
-        window.location.href = '/guides/thank-you.html';
-      }).catch(function() {
-        window.location.href = '/guides/thank-you.html';
-      });
+      btn.disabled = true; btn.textContent = 'Subscribing...';
+      var fd = new FormData();
+      fd.append('fields[email]', email); fd.append('ml_submit', '1'); fd.append('anticsrf', 'true');
+      fetch('https://assets.mailerlite.com/jsonp/2266464/forms/185101564947465342/subscribe', { method: 'POST', body: fd, mode: 'no-cors' })
+        .then(function() { window.location.href = '/guides/thank-you.html'; })
+        .catch(function() { window.location.href = '/guides/thank-you.html'; });
     });
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('contact-success').style.display = 'block';
+      this.querySelectorAll('input,textarea,button').forEach(function(el) { el.style.display = 'none'; });
+    });
+
+    var fab = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) fab.classList.add('visible');
+      else fab.classList.remove('visible');
+    }, { passive: true });
+    fab.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   </script>
 
+  <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+    <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true" style="filter:drop-shadow(0 0 6px rgba(124,58,237,.7))"><defs><linearGradient id="fab-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="55%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs><path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#fab-g)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="48" r="3.5" fill="#a78bfa"/><circle cx="86" cy="48" r="3.5" fill="#22d3ee"/></svg>
+  </button>
 </body>
 </html>

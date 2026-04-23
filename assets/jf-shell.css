@@ -32,10 +32,13 @@
 .jf-shell-nav * { box-sizing: border-box; }
 
 .jf-shell-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  background: linear-gradient(135deg, var(--jf-accent), var(--jf-accent-green));
+  background: linear-gradient(135deg, #a78bfa, #7c3aed 55%, #22d3ee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
