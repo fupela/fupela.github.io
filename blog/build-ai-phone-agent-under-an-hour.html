@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Build a Custom AI Phone Agent for Your Business in Under an Hour</title>
+  <meta name="description" content="A practical, step-by-step guide to building your own AI phone agent — the tools, the stack, and the exact order to set it up." />
+  <link rel="canonical" href="https://jedaiflow.com/blog/build-ai-phone-agent-under-an-hour" />
+  <meta property="og:title" content="How to Build a Custom AI Phone Agent for Your Business in Under an Hour" />
+  <meta property="og:description" content="The exact stack and steps to build an AI phone agent that answers missed calls, qualifies leads, and books appointments — in under an hour." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jedaiflow.com/blog/build-ai-phone-agent-under-an-hour" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      padding: 96px 24px 54px;
+      background: radial-gradient(circle at top, rgba(0,201,255,0.14), transparent 35%), #0a0a12;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    h1 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+      margin-bottom: 18px;
+      font-weight: 900;
+      max-width: 16ch;
+    }
+    .subtitle {
+      max-width: 680px;
+      font-size: 18px;
+      color: #a4a4c2;
+      margin-bottom: 28px;
+    }
+    .meta {
+      font-size: 13px;
+      color: #70708a;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 84px;
+    }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-top: 48px;
+    }
+    article h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 44px 0 14px;
+      color: #ffffff;
+      letter-spacing: -0.4px;
+    }
+    article h3 {
+      font-size: 20px;
+      line-height: 1.25;
+      margin: 32px 0 10px;
+      color: #eaeaf6;
+      letter-spacing: -0.3px;
+    }
+    article p {
+      font-size: 17px;
+      margin-bottom: 18px;
+      color: #d7d7e9;
+    }
+    article ul, article ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    article li {
+      margin-bottom: 12px;
+      color: #d7d7e9;
+    }
+    article strong { color: #ffffff; }
+    article a { color: #00c9ff; text-decoration: underline; }
+    .callout {
+      margin: 28px 0;
+      padding: 22px 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,201,255,0.22);
+      background: rgba(15,15,26,0.85);
+    }
+    .callout .label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #00c9ff;
+      margin-bottom: 8px;
+    }
+    .cta {
+      margin-top: 38px;
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(0,201,255,0.18), rgba(0,229,160,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cta h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .cta p {
+      margin-bottom: 16px;
+      color: #c9c9df;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #0a0a12;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .cta a:hover { opacity: 0.92; }
+    .code-block {
+      background: #13131f;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      color: #d7d7e9;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 14px;
+    }
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: #00e5a0;
+      font-weight: 800;
+      font-size: 16px;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Build a Custom AI Phone Agent for Your Business in Under an Hour",
+    "description": "A practical, step-by-step guide to building your own AI phone agent — the tools, the stack, and the exact order to set it up.",
+    "author": { "@type": "Organization", "name": "Jedaiflow" },
+    "publisher": { "@type": "Organization", "name": "Jedaiflow", "url": "https://jedaiflow.com" },
+    "datePublished": "2026-04-23",
+    "dateModified": "2026-04-23"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- JF:NAV:START v1 -->
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo"><svg width="28" height="28" viewBox="0 0 96 96" aria-hidden="true" style="filter:drop-shadow(0 0 8px rgba(124,58,237,.5));flex-shrink:0"><defs><linearGradient id="jf-pulse-nav" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="55%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs><path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#jf-pulse-nav)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="48" r="3.5" fill="#a78bfa"/><circle cx="86" cy="48" r="3.5" fill="#22d3ee"/></svg>Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/articles/" class="jf-shell-nav-hide-sm">Articles</a>
+      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/voice-agent-kit.html" class="jf-shell-nav-hide-sm">Products</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="/dispatchanchor.html" class="jf-shell-nav-cta">Home Services →</a>
+    </div>
+  </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <!-- JF:NAV:END -->
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Product Guide · AI / Voice</div>
+      <h1>How to build a custom AI phone agent for your business in under an hour</h1>
+      <p class="subtitle">
+        The exact stack and setup order — voice, number, prompt, and integration — so your AI answers missed calls, qualifies leads, and books appointments without a $3,000/month contract.
+      </p>
+      <div class="meta">April 23, 2026 · By Jedaiflow · 7 min read</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article>
+      <p>
+        Most businesses lose calls in two places: after-hours, and during the day when the owner is on a job and the line is busy. Call centers are expensive, inflexible, and still miss nuance. What actually works is a <strong>custom AI phone agent</strong> — one that knows your services, speaks in your tone, and passes qualified leads straight to your calendar.
+      </p>
+      <p>
+        The good news: you can build a working version in under an hour. Here is the stack and the exact order to set it up.
+      </p>
+
+      <h2>The stack</h2>
+      <p>
+        You need three things:
+      </p>
+      <ul>
+        <li><strong>Twilio</strong> — for the phone number, call routing, and webhook infrastructure.</li>
+        <li><strong>ElevenLabs</strong> — for the AI voice. This is what makes the agent sound human instead of robotic.</li>
+        <li><strong>A small bridge server</strong> — to connect Twilio's voice stream to the AI, handle your custom prompt, and manage tool calls (like sending a summary or creating a calendar event).</li>
+      </ul>
+      <p>
+        Total running cost for a small business: roughly <strong>$30–70/month</strong>, depending on call volume. Compare that to $500–1,500/month for a traditional answering service.
+      </p>
+
+      <h2>Step 1: Buy a Twilio number</h2>
+      <p>
+        Sign up for Twilio, buy a local phone number in your area code, and enable voice on it. If you want to keep your existing business number, you can forward calls to the Twilio number when you are busy or after-hours.
+      </p>
+      <div class="callout">
+        <div class="label">Tip</div>
+        Test with a new number first. Once the agent works, port or forward your main line. This avoids breaking your existing flow during setup.
+      </div>
+
+      <h2>Step 2: Create an ElevenLabs agent</h2>
+      <p>
+        In ElevenLabs, create a conversational agent. Choose a voice that matches your brand — calm and professional for HVAC, warm and reassuring for pest control. The voice matters more than most people think.
+      </p>
+      <p>
+        Write a <strong>system prompt</strong> that tells the agent exactly how to behave. Include:
+      </p>
+      <ul>
+        <li>Your business name and services</li>
+        <li>How to greet the caller</li>
+        <li>What questions to ask to qualify the lead</li>
+        <li>Operating hours and location</li>
+        <li>When to offer a callback vs. booking directly</li>
+      </ul>
+
+      <h2>Step 3: Build the bridge server</h2>
+      <p>
+        The bridge is a lightweight server that sits between Twilio and ElevenLabs. It streams audio from the caller, sends it to ElevenLabs for processing, and streams the AI voice back in real time.
+      </p>
+      <p>
+        It also handles the "brain" — custom logic beyond the prompt. For example:
+      </p>
+      <ul>
+        <li>Sending a call summary to your email or Slack</li>
+        <li>Creating a calendar hold after booking</li>
+        <li>Writing the lead details to a simple database or spreadsheet</li>
+      </ul>
+      <p>
+        This does not need to be complex. A Node.js or Python server with WebSocket support is enough.
+      </p>
+
+      <h2>Step 4: Connect Twilio to your bridge</h2>
+      <p>
+        In Twilio, configure the incoming webhook for your number to point to your bridge server's URL. When a call comes in, Twilio forwards the audio stream to your server. Your server forwards it to ElevenLabs, gets the AI response, and sends audio back.
+      </p>
+
+      <h2>Step 5: Add tool calls</h2>
+      <p>
+        This is where the agent becomes useful instead of just conversational. Set up "tools" the agent can invoke during a call:
+      </p>
+      <ul>
+        <li><strong>Send summary</strong> — after the call ends, email or text you the caller's name, issue, and availability.</li>
+        <li><strong>Calendar check</strong> — if you use Google Calendar or Cal.com, the agent can ask what time works and create a hold.</li>
+        <li><strong>CRM write</strong> — add the lead to a simple Airtable or Notion database.</li>
+      </ul>
+
+      <h2>Step 6: Test, iterate, deploy</h2>
+      <p>
+        Call your own number. See how the agent sounds. Check if it asks the right questions. Fix the prompt where it gets confused. Most improvements come from prompt edits, not engineering changes.
+      </p>
+      <p>
+        When you are happy with it, flip your business line to forward to the AI number during off-hours or when you are busy.
+      </p>
+
+      <h2>What this replaces</h2>
+      <ul class="checklist">
+        <li>Voicemail that never gets checked</li>
+        <li>Expensive answering services that still miss context</li>
+        <li>Lost leads because nobody picked up at 6:17 PM</li>
+        <li>Scattered notes from callback requests</li>
+      </ul>
+
+      <h2>Common mistakes to avoid</h2>
+      <p>
+        <strong>Over-scripting the prompt.</strong> Give the agent boundaries, not a word-for-word script. A rigid script breaks the moment the caller asks something unexpected.
+      </p>
+      <p>
+        <strong>Skipping the follow-up automation.</strong> The call is only half the job. If the summary does not reach you in a format you actually check, the agent is just a fancy voicemail.
+      </p>
+      <p>
+        <strong>Ignoring voice quality.</strong> A slightly unnatural voice ruins trust. Test multiple ElevenLabs voices and pick the one that fits your business.
+      </p>
+
+      <div class="cta">
+        <h3>Want the complete kit?</h3>
+        <p>
+          The <a href="/voice-agent-kit.html">AI Voice Agent Builder's Kit</a> includes the full bridge server code, prompt templates, tool-call examples, and a step-by-step video — everything you need to go from zero to live AI answering in one afternoon.
+        </p>
+        <p>
+          If you would rather we build and manage it for you, <a href="/shipclean/">ShipClean</a> handles the entire stack — number, voice, prompt tuning, and follow-up — for home-service businesses. No code required.
+        </p>
+        <a href="/voice-agent-kit.html">Browse the kit →</a>
+      </div>
+
+      <p>
+        Building your own agent is simpler than it sounds. The hard part is not the technology — it is knowing the right order to set it up, and what to say in the prompt. Once you get those two things right, the rest is wiring.
+      </p>
+
+      <p>
+        For more on how we use AI to keep home-service businesses from losing leads, see <a href="/blog/ai-workflows-for-home-services.html">7 AI workflows for home services</a> and <a href="/blog/ai-lead-response-system.html">the exact AI lead response system</a> we ship with ShipClean.
+      </p>
+    </article>
+  </main>
+
+  <!-- JF:FOOTER:START v1 -->
+  <footer class="jf-shell-footer">
+    <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
+    <p class="jf-shell-footer-tagline">
+      24/7 AI phone answering for home service businesses in Houston, TX.
+    </p>
+    <div class="jf-shell-footer-links">
+      <a href="/articles/">Articles</a>
+      <a href="/dispatchanchor.html">Home Services</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipclean/">ShipClean</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
+    </div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
+  </footer>
+  <!-- JF:FOOTER:END -->
+
+</body>
+</html>
