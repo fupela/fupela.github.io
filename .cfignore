@@ -1,0 +1,4 @@
+# Ignore large video files
+products/**/*.mp4
+products/**/*.mov
+products/**/*.avi
