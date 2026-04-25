@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekend Call Triage: The AI Workflow That Stops Home-Service Leads From Going Cold — Jedaiflow</title>
+  <meta name="description" content="A practical weekend call triage workflow for home-service teams: answer fast, classify urgency, book the simple jobs, and escalate true emergencies without waking up for every call." />
+  <link rel="canonical" href="https://jedaiflow.com/blog/weekend-call-triage-ai-home-services.html" />
+  <meta property="og:title" content="Weekend Call Triage: The AI Workflow That Stops Home-Service Leads From Going Cold" />
+  <meta property="og:description" content="A practical weekend call triage workflow for home-service teams: answer fast, classify urgency, book the simple jobs, and escalate true emergencies without waking up for every call." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://jedaiflow.com/blog/weekend-call-triage-ai-home-services.html" />
+  <meta property="article:published_time" content="2026-04-25" />
+  <meta property="article:author" content="John Jedlowski" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png" />
+  <link rel="apple-touch-icon" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background:#0a0a12; color:#f0f0f8; line-height:1.7; -webkit-font-smoothing: antialiased; }
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 88px; }
+    .back { display:inline-flex; color:#00c9ff; text-decoration:none; font-weight:700; font-size:14px; margin-bottom:28px; }
+    .eyebrow { color:#00e5a0; font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin-bottom:14px; }
+    h1 { font-size: clamp(34px, 5vw, 56px); line-height:1.04; letter-spacing:-1.6px; font-weight:900; margin-bottom:18px; }
+    .dek { color:#aaaac4; font-size:18px; line-height:1.65; margin-bottom:16px; }
+    .meta { color:#6666aa; font-size:13px; font-weight:700; margin-bottom:42px; }
+    article p { color:#c7c7d8; margin: 0 0 20px; }
+    article .lead { font-size:19px; color:#f0f0f8; }
+    h2 { font-size:26px; line-height:1.2; letter-spacing:-.5px; margin:42px 0 14px; color:#fff; }
+    h3 { font-size:19px; margin:28px 0 10px; color:#f4f4ff; }
+    ul, ol { margin: 0 0 24px 22px; color:#c7c7d8; }
+    li { margin-bottom:10px; }
+    strong { color:#fff; }
+    a { color:#00c9ff; }
+    .note { background:#0f0f1a; border:1px solid rgba(0,201,255,.18); border-radius:14px; padding:22px; margin:30px 0; }
+    .checklist { background:linear-gradient(135deg, rgba(0,201,255,.07), rgba(0,229,160,.06)); border:1px solid rgba(0,201,255,.18); border-radius:14px; padding:24px; margin:30px 0; }
+    .cta-box { margin-top:44px; padding:28px; border-radius:16px; background:linear-gradient(135deg, rgba(0,201,255,.10), rgba(0,229,160,.08)); border:1px solid rgba(0,201,255,.25); }
+    .cta-box h2 { margin-top:0; }
+    .cta-button { display:inline-flex; margin-top:8px; padding:13px 18px; border-radius:10px; background:linear-gradient(135deg,#00c9ff,#00e5a0); color:#0a0a12; font-weight:900; text-decoration:none; }
+    footer.article-footer { margin-top:48px; padding-top:28px; border-top:1px solid rgba(255,255,255,.08); color:#8888aa; font-size:14px; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Weekend Call Triage: The AI Workflow That Stops Home-Service Leads From Going Cold",
+    "description": "A practical weekend call triage workflow for home-service teams: answer fast, classify urgency, book the simple jobs, and escalate true emergencies without waking up for every call.",
+    "author": { "@type": "Person", "name": "John Jedlowski" },
+    "publisher": { "@type": "Organization", "name": "Jedaiflow", "url": "https://jedaiflow.com" },
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "mainEntityOfPage": "https://jedaiflow.com/blog/weekend-call-triage-ai-home-services.html"
+  }
+  </script>
+</head>
+<body>
+  <nav class="jf-shell-nav">
+    <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
+    <div class="jf-shell-nav-links">
+      <a href="/articles/">Articles</a>
+      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+      <a href="/blog/" class="jf-shell-nav-hide-sm">Blog</a>
+      <a href="/shipclean/" class="jf-shell-nav-hide-sm">ShipClean</a>
+      <a href="/#newsletter" class="jf-shell-nav-cta">Subscribe →</a>
+    </div>
+  </nav>
+  <div class="jf-shell-nav-spacer"></div>
+  <main class="article-wrap">
+    <a class="back" href="/blog/">← All field notes</a>
+    <article>
+      <header>
+        <div class="eyebrow">Home Services Workflow</div>
+        <h1>Weekend Call Triage: The AI Workflow That Stops Home-Service Leads From Going Cold</h1>
+        <p class="dek">Weekends expose the weakest part of most home-service operations: every caller sounds urgent, but only a few calls truly need the owner immediately. AI call triage gives you a clean middle layer.</p>
+        <div class="meta">John Jedlowski · 7 min read · April 25, 2026</div>
+      </header>
+
+      <p class="lead">A Saturday call should not have only two outcomes: wake up the owner or dump the customer into voicemail. The better workflow is simple: answer every call, classify the job, book what can be booked, and escalate only the calls that are actually worth interrupting someone for.</p>
+
+      <p>That matters for plumbers, HVAC shops, electricians, garage door companies, restoration teams, pest control companies, and any business where the weekend phone is both an opportunity and a distraction. If you miss the call, the lead calls the next company. If you answer every call yourself, you never get a weekend.</p>
+
+      <h2>The weekend call problem is not just “missed calls”</h2>
+      <p>Most owners think the problem is that calls go unanswered. That is true, but incomplete. The real problem is that every inbound call hits the same channel with the same priority.</p>
+      <ul>
+        <li>A leaking water heater needs fast escalation.</li>
+        <li>A request for a Tuesday estimate can be booked normally.</li>
+        <li>A price shopper can get basic qualifying questions before a human spends time.</li>
+        <li>An existing customer with a non-emergency update can be logged and routed for Monday.</li>
+      </ul>
+      <p>Voicemail treats all four of those calls the same. A human answering service often does, too. The useful move is triage.</p>
+
+      <h2>The 4-bucket triage workflow</h2>
+      <p>For most home-service businesses, the weekend phone workflow can be reduced to four buckets.</p>
+
+      <h3>1. True emergency</h3>
+      <p>Examples: active leak, no cooling during extreme heat, electrical hazard, flooded room, trapped garage door, or anything involving safety or property damage. The AI should collect the address, issue, callback number, and photos if possible, then escalate by text or live transfer.</p>
+
+      <h3>2. Bookable service call</h3>
+      <p>Examples: repair request, inspection, estimate, recurring service, seasonal tune-up, pest treatment, or garage door repair that can wait until the next available slot. The AI should offer the next appointment windows and create a calendar hold.</p>
+
+      <h3>3. Existing customer update</h3>
+      <p>Examples: “the tech was just here,” “I need to reschedule,” “I have a warranty question,” or “I want to add something to tomorrow’s job.” The AI should attach the note to the customer record or send a clean summary to the team inbox.</p>
+
+      <h3>4. Low-intent inquiry</h3>
+      <p>Examples: generic price questions with no address, vendors, job applicants, or callers outside the service area. The AI should answer basic questions, capture contact info when appropriate, and avoid waking anyone up.</p>
+
+      <div class="note">
+        <strong>Important:</strong> the AI is not making hard business decisions. It is asking a short set of scripted questions and routing the call based on rules you define ahead of time.
+      </div>
+
+      <h2>The questions your AI agent should ask</h2>
+      <p>Keep the call short. Weekend callers are usually stressed, driving, or standing next to the problem. A good triage prompt asks only what the team needs to act.</p>
+      <ol>
+        <li><strong>What service do you need?</strong> Plumbing, HVAC, electrical, pest, garage door, restoration, or other.</li>
+        <li><strong>What is happening right now?</strong> One-sentence description in the customer’s words.</li>
+        <li><strong>Is there active damage or a safety issue?</strong> This separates emergency from normal booking.</li>
+        <li><strong>What is the service address?</strong> Confirms service area and dispatch details.</li>
+        <li><strong>What is the best callback number?</strong> Read it back before ending the call.</li>
+        <li><strong>Do you want the next available appointment?</strong> If yes, offer times and book the slot.</li>
+      </ol>
+
+      <h2>Escalation rules beat “AI vibes”</h2>
+      <p>The mistake is telling an AI phone agent to “use judgment.” That creates inconsistent calls. Instead, use explicit escalation rules.</p>
+      <div class="checklist">
+        <p><strong>Example weekend escalation rules:</strong></p>
+        <ul>
+          <li>If the caller mentions active water, fire, electrical hazard, lock-in, no cooling with elderly/infant present, flooding, or property damage, mark urgent.</li>
+          <li>If the caller is in the service area and wants a normal repair or estimate, book the next available slot.</li>
+          <li>If the caller asks only for pricing, answer the approved range or explain that pricing depends on diagnosis, then offer an appointment.</li>
+          <li>If the caller is outside the service area, collect info only if the team wants to review it later.</li>
+          <li>If the caller is angry, confused, or asks for a human twice, escalate or create a high-priority callback.</li>
+        </ul>
+      </div>
+
+      <h2>Where this fits in the bigger lead system</h2>
+      <p>This is the weekend version of the broader lead response system I wrote about in <a href="/blog/ai-lead-response-system.html">From Missed Call to Booked Job</a>. The same pattern works during the week, but weekend calls need stricter routing because the cost of a false alarm is higher.</p>
+      <p>If you are new to the stack, start with <a href="/blog/ai-workflows-for-home-services.html">these seven AI workflows for home services</a>. If your AI phone agent already exists but sounds stiff, fix the prompt first with the rules in <a href="/blog/fix-ai-phone-agent-prompts">this prompt guide</a>.</p>
+
+      <h2>The simplest implementation</h2>
+      <p>You do not need a full call center setup to test this. Start with one forwarded number and one weekend rule set.</p>
+      <ol>
+        <li>Forward after-hours and weekend calls to the AI agent.</li>
+        <li>Train it on your service area, emergency definitions, appointment windows, and price disclaimers.</li>
+        <li>Connect calendar booking for normal jobs.</li>
+        <li>Send urgent summaries to the owner or on-call tech by SMS.</li>
+        <li>Review the first 20 calls and tighten the rules.</li>
+      </ol>
+      <p>This is also a good workflow to document inside your own AI operating system. If you are building one, the <a href="/blog/openclaw-claude-mac-workaround.html">OpenClaw + Claude Mac workaround</a> is the kind of low-cost setup that can hold call transcripts, SOPs, and improvement notes without needing a heavyweight platform.</p>
+
+      <h2>What to measure after the first weekend</h2>
+      <p>Do not judge the system by whether it “felt smart.” Judge it by whether it created booked jobs and reduced bad interruptions.</p>
+      <ul>
+        <li>How many calls were answered that would have gone to voicemail?</li>
+        <li>How many appointments were booked?</li>
+        <li>How many calls were escalated as urgent?</li>
+        <li>How many escalations were false alarms?</li>
+        <li>How many missed callers responded to follow-up texts?</li>
+      </ul>
+      <p>After two weekends, you should know exactly which rules are too broad, which services need better scripts, and whether the AI is creating real revenue.</p>
+
+      <div class="cta-box">
+        <h2>Want this running for your weekend calls?</h2>
+        <p>Jedaiflow builds practical AI phone agents for home-service teams. We can set up call triage, booking, escalation texts, and weekly reporting so the phone gets answered without turning every weekend into an on-call shift.</p>
+        <a class="cta-button" href="/shipclean/">See the ShipClean workflow →</a>
+      </div>
+
+      <footer class="article-footer">
+        <p>Related reading: <a href="/blog/daily-ai-content-workflow.html">daily AI content workflow</a>, <a href="/guides/">free AI guides</a>, and <a href="/blog/ai-workflows-for-home-services.html">AI workflows for home services</a>.</p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
