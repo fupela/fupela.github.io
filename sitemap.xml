@@ -1,69 +1,188 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jedaiflow.com/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jedaiflow.com/blog.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://jedaiflow.com/blog/</loc>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jedaiflow.com/free.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://jedaiflow.com/blog/ai-lead-response-system.html</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jedaiflow.com/offer.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://jedaiflow.com/blog/ai-phone-agent-roi.html</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/ai-workflows-for-home-services</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/build-ai-phone-agent-under-an-hour</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/daily-ai-content-workflow.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/electrician-after-hours-calls</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/electrician-missed-calls</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/fix-ai-phone-agent-prompts</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/garage-door-missed-calls</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/hermes-vs-openclaw-agent-comparison.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/how-to-use-gpt-55-like-an-agent.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/hvac-missed-calls</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/landscaper-missed-calls</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/openclaw-claude-mac-workaround</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/pest-control-ai-answering.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/plumber-missed-calls</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/blog/restoration-missed-calls</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/free/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/free/25-ai-business-prompts.html</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/guides/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/products/ai-money-machine.html</loc>
+    <lastmod>2026-04-24</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jedaiflow.com/products/automation-guide.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jedaiflow.com/products/blueprint-pack.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jedaiflow.com/products/side-hustle-guide.html</loc>
-    <lastmod>2026-04-12</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jedaiflow.com/products/mastery-guide.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://jedaiflow.com/products/cheat-sheet-gumroad.html</loc>
+    <lastmod>2026-04-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jedaiflow.com/products/cheat-sheet.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jedaiflow.com/blog/openclaw-claude-mac-workaround</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://jedaiflow.com/products/gpt-55-playbook.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/products/mastery-guide.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/products/side-hustle-guide.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/products/voice-agent-guide.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/purchase.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/shipclean/</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://jedaiflow.com/voice-agent-kit.html</loc>
-    <priority>0.8</priority>
-    <lastmod>2026-04-22</lastmod>
+    <loc>https://jedaiflow.com/shipclean/thanks.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/vibeship.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jedaiflow.com/voice-agent-checklist.html</loc>
-    <priority>0.9</priority>
     <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jedaiflow.com/guides</loc>
+    <loc>https://jedaiflow.com/voice-agent-kit.html</loc>
+    <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>
-    <lastmod>2026-04-22</lastmod>
   </url>
 </urlset>
