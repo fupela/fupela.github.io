@@ -1,5 +1,6 @@
 # Exclude large video files — exceed Cloudflare Pages 25 MiB file limit
 # These are Gumroad digital product files served via Gumroad, not Cloudflare Pages
 products/d-934797adeea6/*.mp4
+scripts/
 .wrangler/
 archive/
