@@ -160,6 +160,19 @@ a { color: inherit; text-decoration: none; }
   opacity: 0.96;
 }
 
+.da-nav-email {
+  padding: 9px 15px;
+  border: 1px solid var(--da-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.035);
+  color: var(--da-text) !important;
+  font-weight: 800 !important;
+}
+.da-nav-email:hover {
+  border-color: var(--da-border-bright);
+  background: rgba(255,138,60,0.07);
+}
+
 /* ============================================================
    HERO — animated
    ============================================================ */
@@ -324,6 +337,27 @@ a { color: inherit; text-decoration: none; }
 .da-btn-secondary:hover {
   border-color: var(--da-border-bright);
   background: rgba(255,138,60,0.06);
+}
+
+.da-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  color: var(--da-text-muted);
+  font-size: 15px;
+  font-weight: 700;
+  transition: color 0.15s ease;
+}
+.da-btn-ghost:hover { color: var(--da-text); }
+
+.da-inline-actions,
+.da-final-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .da-hero-stats {
@@ -1069,7 +1103,8 @@ a { color: inherit; text-decoration: none; }
   .da-back,
   .da-nav-links a[href="#how"],
   .da-nav-links a[href="#pricing"],
-  .da-nav-links a[href="#faq"] {
+  .da-nav-links a[href="#faq"],
+  .da-nav-email {
     display: none !important;
   }
   .da-nav-mobile,
@@ -1087,6 +1122,16 @@ a { color: inherit; text-decoration: none; }
   }
   .da-hero { padding: 108px 20px 56px; }
   .da-hero h1 { letter-spacing: -1.4px; }
+  .da-hero-actions,
+  .da-inline-actions,
+  .da-final-actions { flex-direction: column; align-items: stretch; }
+  .da-hero-actions .da-btn-primary,
+  .da-hero-actions .da-btn-secondary,
+  .da-hero-actions .da-btn-ghost,
+  .da-inline-actions .da-btn-primary,
+  .da-inline-actions .da-btn-secondary,
+  .da-final-actions .da-btn-primary,
+  .da-final-actions .da-btn-secondary { width: 100%; justify-content: center; }
   .da-section { padding: 72px 0; }
   .da-pricing { padding: 40px 24px; }
   .da-story { padding: 32px 24px; }
