@@ -1042,56 +1042,50 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 640px) {
+  body { overflow-x: hidden; }
   .da-nav {
-    padding: 12px 14px 10px;
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px;
     gap: 10px;
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
   }
-  .da-nav.scrolled { padding: 10px 14px 9px; }
+  .da-nav.scrolled { padding: calc(env(safe-area-inset-top, 0px) + 8px) 14px 8px; }
   .da-brand {
     gap: 8px;
     font-size: 15px;
     min-width: 0;
+    max-width: calc(100vw - 128px);
+    overflow: hidden;
+    white-space: nowrap;
   }
   .da-brand img {
     width: 26px;
     height: 26px;
   }
-  .da-nav-desktop { display: none; }
-  .da-nav-mobile {
-    display: contents;
+  .da-nav-desktop,
+  .da-nav-links,
+  .da-back,
+  .da-nav-links a[href="#how"],
+  .da-nav-links a[href="#pricing"],
+  .da-nav-links a[href="#faq"] {
+    display: none !important;
+  }
+  .da-nav-mobile,
+  .da-mobile-links {
+    display: none !important;
   }
   .da-mobile-call {
-    grid-column: 2;
-    grid-row: 1;
+    display: inline-flex !important;
+    flex-shrink: 0;
     padding: 9px 14px;
     border-radius: 999px;
     font-size: 13px;
+    line-height: 1;
     box-shadow: 0 3px 14px var(--da-amber-glow);
   }
-  .da-mobile-links {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding-top: 2px;
-  }
-  .da-mobile-links a {
-    color: var(--da-text-muted);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    padding: 8px 11px;
-    border: 1px solid var(--da-border);
-    border-radius: 999px;
-    background: rgba(255,255,255,0.035);
-    white-space: nowrap;
-  }
-  .da-mobile-links a:hover { color: var(--da-text); }
-  .da-hero { padding: 138px 20px 56px; }
+  .da-hero { padding: 108px 20px 56px; }
   .da-hero h1 { letter-spacing: -1.4px; }
   .da-section { padding: 72px 0; }
   .da-pricing { padding: 40px 24px; }
@@ -1103,7 +1097,6 @@ a { color: inherit; text-decoration: none; }
   .da-checkout { padding: 28px 20px; }
   .da-demo { padding: 32px 20px; }
 }
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
