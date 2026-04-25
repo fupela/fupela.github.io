@@ -12,9 +12,10 @@ Those MP4 files exceed Cloudflare Pages upload limits and are intentionally
 excluded by `.pagesignore`. Gumroad should remain the delivery path for paid
 video/product assets.
 
-## Remaining Real Findings
+## Resolved Real Findings
 
 - `dispatchanchor.html -> /assets/dispatchanchor/sample-call.mp3`
 
-This is a real missing asset reference. Fix by adding the sample call audio or
-removing/replacing the audio player after confirming the current demo strategy.
+Resolved 2026-04-25 by replacing the dead audio player with a live-demo CTA.
+When a real sample call asset exists, reintroduce the audio player with the
+actual checked-in file path.
