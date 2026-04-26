@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="DispatchAnchor Portal — manage your AI dispatcher setup, phone service, calls, and subscription." />
+  <title>DispatchAnchor Portal</title>
+  <link rel="manifest" href="/portal/manifest.webmanifest" />
+  <link rel="stylesheet" href="/portal/portal.css?v=1" />
+  <link rel="icon" href="/assets/dispatchanchor/icon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/dispatchanchor/icon-180.png" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Portal navigation">
+      <a class="brand" href="/" aria-label="DispatchAnchor home">
+        <span class="brand-mark">DA</span>
+        <span><strong>DispatchAnchor</strong><small>Customer Portal</small></span>
+      </a>
+      <nav class="nav-list">
+        <a href="#dashboard" class="active">Dashboard</a>
+        <a href="#setup">Setup</a>
+        <a href="#settings">Agent Settings</a>
+        <a href="#phone">Phone Setup</a>
+        <a href="#calls">Call Inbox</a>
+        <a href="#billing">Subscription</a>
+      </nav>
+      <div class="support-card">
+        <span class="eyebrow">Need help?</span>
+        <p>Send your setup notes and we’ll configure the agent behind the scenes.</p>
+        <a href="mailto:hello@jedaiflow.com?subject=DispatchAnchor Portal Help">Email support</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Simple v1 portal</span>
+          <h1>Manage your AI dispatcher in one place.</h1>
+        </div>
+        <div class="account-pill">
+          <span class="status-dot"></span>
+          <span>Demo account</span>
+        </div>
+      </header>
+
+      <section id="dashboard" class="hero-grid">
+        <article class="panel primary-panel">
+          <span class="eyebrow">Agent Status</span>
+          <h2>Alex is in setup mode</h2>
+          <p>Complete the checklist, test the call flow, then go live with a DispatchAnchor number or call forwarding.</p>
+          <div class="action-row">
+            <a class="button primary" href="#setup">Continue setup</a>
+            <a class="button ghost" href="#calls">View Call Inbox</a>
+          </div>
+        </article>
+        <article class="stat-card">
+          <span>Calls answered</span>
+          <strong>12</strong>
+          <small>This week</small>
+        </article>
+        <article class="stat-card">
+          <span>Urgent leads</span>
+          <strong>3</strong>
+          <small>Flagged for owner</small>
+        </article>
+        <article class="stat-card">
+          <span>Subscription</span>
+          <strong>Trial</strong>
+          <small>Setup pending</small>
+        </article>
+      </section>
+
+      <section id="setup" class="panel">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Baseline collection</span>
+            <h2>Setup Checklist</h2>
+          </div>
+          <span class="progress-label"><span id="progressCount">0</span>/7 complete</span>
+        </div>
+        <div class="checklist" id="setupChecklist">
+          <label><input type="checkbox" data-check="business" /> Business Profile complete</label>
+          <label><input type="checkbox" data-check="services" /> Services and trade selected</label>
+          <label><input type="checkbox" data-check="rules" /> Emergency rules configured</label>
+          <label><input type="checkbox" data-check="alerts" /> Alert phone/email added</label>
+          <label><input type="checkbox" data-check="phone" /> Phone setup selected</label>
+          <label><input type="checkbox" data-check="test" /> Test call completed</label>
+          <label><input type="checkbox" data-check="billing" /> Subscription confirmed</label>
+        </div>
+      </section>
+
+      <section id="settings" class="grid two-col">
+        <form class="panel form-card" id="businessForm">
+          <div class="section-head compact">
+            <div>
+              <span class="eyebrow">Customer info</span>
+              <h2>Business Profile</h2>
+            </div>
+            <button class="button small" type="submit">Save</button>
+          </div>
+          <label>Company name<input name="company" placeholder="Anchor Plumbing Co." /></label>
+          <label>Trade<select name="trade"><option>Plumbing</option><option>HVAC</option><option>Electrical</option><option>Roofing</option><option>Restoration</option><option>Other home service</option></select></label>
+          <label>Service area<input name="serviceArea" placeholder="Houston, Katy, Sugar Land" /></label>
+          <label>Business hours<input name="hours" placeholder="Mon-Fri 8am-5pm; emergency after-hours" /></label>
+          <label>Primary alert phone<input name="alertPhone" placeholder="Owner or office cell" /></label>
+          <label>Alert email<input name="alertEmail" placeholder="office@example.com" /></label>
+        </form>
+
+        <form class="panel form-card" id="rulesForm">
+          <div class="section-head compact">
+            <div>
+              <span class="eyebrow">Agent behavior</span>
+              <h2>Agent Settings</h2>
+            </div>
+            <button class="button small" type="submit">Save</button>
+          </div>
+          <label>Agent goal<select name="agentGoal"><option>Qualify and take message</option><option>Request preferred appointment times</option><option>Book directly later</option><option>Emergency triage only</option></select></label>
+          <label>Emergency rules<textarea name="emergencyRules" rows="4" placeholder="Active leak, sewer backup, no AC in extreme heat, electrical smell..."></textarea></label>
+          <label>Pricing policy<select name="pricingPolicy"><option>Do not quote prices</option><option>Mention diagnostic fee only</option><option>Use approved price sheet later</option><option>Owner confirms all pricing</option></select></label>
+          <label>Services offered<textarea name="services" rows="4" placeholder="Water heaters, drain cleaning, leak repair, emergency plumbing..."></textarea></label>
+        </form>
+      </section>
+
+      <section id="phone" class="panel">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Telephony</span>
+            <h2>Phone Setup</h2>
+          </div>
+          <span class="badge">Manual activation in v1</span>
+        </div>
+        <div class="option-grid">
+          <label class="option-card"><input type="radio" name="phoneMode" checked /> <strong>Use a new DispatchAnchor number</strong><span>Fastest path. We assign a number and connect Alex.</span></label>
+          <label class="option-card"><input type="radio" name="phoneMode" /> <strong>Forward missed calls</strong><span>Keep your main number. Forward no-answer calls to Alex.</span></label>
+          <label class="option-card"><input type="radio" name="phoneMode" /> <strong>Forward after-hours calls</strong><span>Only send calls to Alex when your office is closed.</span></label>
+        </div>
+      </section>
+
+      <section id="calls" class="panel">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Lead database</span>
+            <h2>Call Inbox</h2>
+          </div>
+          <button class="button small" id="addDemoCall" type="button">Add demo call</button>
+        </div>
+        <div class="database-strip" aria-label="Database Preview">
+          <span>Database Preview</span>
+          <span>calls</span>
+          <span>leads</span>
+          <span>statuses</span>
+          <span>subscription</span>
+        </div>
+        <div class="call-list" id="callList"></div>
+      </section>
+
+      <section id="billing" class="grid two-col">
+        <article class="panel">
+          <span class="eyebrow">Subscription</span>
+          <h2>Plan status</h2>
+          <div class="billing-card">
+            <strong>Trial / Setup</strong>
+            <p>Billing is not connected in this static v1 shell. This area will later show plan, payment status, usage minutes, and invoices.</p>
+          </div>
+        </article>
+        <article class="panel">
+          <span class="eyebrow">Next integration</span>
+          <h2>Admin handoff</h2>
+          <p>The portal collects the data we need to generate a tailored agent prompt and build the customer’s dispatcher from a repeatable checklist.</p>
+          <a class="button ghost" href="/docs/dispatchanchor-simple-customer-intake-and-agent-prompt-system.md">View intake plan</a>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="/portal/portal.js?v=1" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/portal/service-worker.js'));
+    }
+  </script>
+</body>
+</html>
