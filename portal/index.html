@@ -3,148 +3,179 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#07111f" />
-  <meta name="description" content="DispatchAnchor Portal — manage your AI dispatcher setup, phone service, calls, and subscription." />
+  <meta name="theme-color" content="#0c1424" />
+  <meta name="description" content="DispatchAnchor Portal — create your business setup profile for Alex, review pricing, and manage AI dispatcher onboarding." />
   <title>DispatchAnchor Portal</title>
   <link rel="manifest" href="/portal/manifest.webmanifest" />
-  <link rel="stylesheet" href="/portal/portal.css?v=1" />
+  <link rel="stylesheet" href="/portal/portal.css?v=2" />
   <link rel="icon" href="/assets/dispatchanchor/icon-32.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="/assets/dispatchanchor/icon-180.png" />
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" aria-label="Portal navigation">
-      <a class="brand" href="/" aria-label="DispatchAnchor home">
-        <span class="brand-mark">DA</span>
-        <span><strong>DispatchAnchor</strong><small>Customer Portal</small></span>
+  <div class="portal-shell">
+    <header class="portal-nav" aria-label="DispatchAnchor portal header">
+      <a class="portal-brand" href="/" aria-label="DispatchAnchor home">
+        <img src="/assets/dispatchanchor/icon-32.png" width="32" height="32" alt="DispatchAnchor" />
+        <span>DispatchAnchor</span>
       </a>
-      <nav class="nav-list">
-        <a href="#dashboard" class="active">Dashboard</a>
-        <a href="#setup">Setup</a>
-        <a href="#settings">Agent Settings</a>
-        <a href="#phone">Phone Setup</a>
-        <a href="#calls">Call Inbox</a>
-        <a href="#billing">Subscription</a>
+      <nav class="portal-nav-links" aria-label="Portal navigation">
+        <a href="#profile">Profile</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#phone">Phone</a>
+        <a href="#calls">Calls</a>
       </nav>
-      <div class="support-card">
-        <span class="eyebrow">Need help?</span>
-        <p>Send your setup notes and we’ll configure the agent behind the scenes.</p>
-        <a href="mailto:hello@jedaiflow.com?subject=DispatchAnchor Portal Help">Email support</a>
-      </div>
-    </aside>
+      <a class="portal-call" href="tel:+17623353110">Call Alex</a>
+    </header>
 
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <span class="eyebrow">Simple v1 portal</span>
-          <h1>Manage your AI dispatcher in one place.</h1>
-        </div>
-        <div class="account-pill">
-          <span class="status-dot"></span>
-          <span>Demo account</span>
-        </div>
-      </header>
-
-      <section id="dashboard" class="hero-grid">
-        <article class="panel primary-panel">
-          <span class="eyebrow">Agent Status</span>
-          <h2>Alex is in setup mode</h2>
-          <p>Complete the checklist, test the call flow, then go live with a DispatchAnchor number or call forwarding.</p>
-          <div class="action-row">
-            <a class="button primary" href="#setup">Continue setup</a>
-            <a class="button ghost" href="#calls">View Call Inbox</a>
+    <main class="portal-main">
+      <section id="dashboard" class="portal-hero">
+        <div class="portal-hero-copy">
+          <div class="portal-eyebrow"><span></span> Customer setup portal</div>
+          <h1>Create your portal profile</h1>
+          <p>
+            Alex can send this link during booking so your business profile is started before onboarding.
+            Fill out the form once, and DispatchAnchor uses it to shape your AI dispatcher rules, text/email confirmations, and setup call.
+          </p>
+          <div class="portal-actions">
+            <a class="portal-button primary" href="#profile">Start your setup profile</a>
+            <a class="portal-button secondary" href="mailto:hello@jedaiflow.com?subject=DispatchAnchor Portal Profile">Email setup notes</a>
           </div>
-        </article>
-        <article class="stat-card">
-          <span>Calls answered</span>
-          <strong>12</strong>
-          <small>This week</small>
-        </article>
-        <article class="stat-card">
-          <span>Urgent leads</span>
-          <strong>3</strong>
-          <small>Flagged for owner</small>
-        </article>
-        <article class="stat-card">
-          <span>Subscription</span>
-          <strong>Trial</strong>
-          <small>Setup pending</small>
-        </article>
+        </div>
+        <aside class="portal-summary-card" aria-label="Setup summary">
+          <span class="portal-badge">Simple v1</span>
+          <h2>What this captures</h2>
+          <ul>
+            <li>Business backstory and service area</li>
+            <li>Services, hours, emergency rules</li>
+            <li>Owner alerts and call-handling preferences</li>
+            <li>Pricing policy and phone setup details</li>
+          </ul>
+        </aside>
       </section>
 
-      <section id="setup" class="panel">
+      <section id="profile" class="portal-card form-section">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Baseline collection</span>
-            <h2>Setup Checklist</h2>
+            <span class="portal-eyebrow">Business Setup Form</span>
+            <h2>Business Profile</h2>
           </div>
-          <span class="progress-label"><span id="progressCount">0</span>/7 complete</span>
+          <span class="save-state" id="profileSaveState">Not saved yet</span>
         </div>
-        <div class="checklist" id="setupChecklist">
-          <label><input type="checkbox" data-check="business" /> Business Profile complete</label>
-          <label><input type="checkbox" data-check="services" /> Services and trade selected</label>
-          <label><input type="checkbox" data-check="rules" /> Emergency rules configured</label>
-          <label><input type="checkbox" data-check="alerts" /> Alert phone/email added</label>
-          <label><input type="checkbox" data-check="phone" /> Phone setup selected</label>
-          <label><input type="checkbox" data-check="test" /> Test call completed</label>
-          <label><input type="checkbox" data-check="billing" /> Subscription confirmed</label>
-        </div>
-      </section>
 
-      <section id="settings" class="grid two-col">
-        <form class="panel form-card" id="businessForm">
-          <div class="section-head compact">
-            <div>
-              <span class="eyebrow">Customer info</span>
-              <h2>Business Profile</h2>
-            </div>
-            <button class="button small" type="submit">Save</button>
+        <form id="profileForm" class="portal-form-grid">
+          <label>Owner / contact name
+            <input name="ownerName" autocomplete="name" placeholder="John Smith" />
+          </label>
+          <label>Company name
+            <input name="company" autocomplete="organization" placeholder="Anchor Plumbing Co." />
+          </label>
+          <label>Best phone
+            <input name="phone" autocomplete="tel" placeholder="Owner or office cell" />
+          </label>
+          <label>Business email
+            <input name="email" autocomplete="email" placeholder="office@example.com" />
+          </label>
+          <label>Website
+            <input name="website" autocomplete="url" placeholder="https://example.com" />
+          </label>
+          <label>Trade
+            <select name="trade">
+              <option>Plumbing</option>
+              <option>HVAC</option>
+              <option>Electrical</option>
+              <option>Roofing</option>
+              <option>Restoration</option>
+              <option>Other home service</option>
+            </select>
+          </label>
+          <label>Service area
+            <input name="serviceArea" placeholder="Houston, Katy, Sugar Land" />
+          </label>
+          <label>Business hours
+            <input name="hours" placeholder="Mon-Fri 8am-5pm; emergency after-hours" />
+          </label>
+          <label>Primary alert phone
+            <input name="alertPhone" placeholder="Where Alex should text urgent leads" />
+          </label>
+          <label>Alert email
+            <input name="alertEmail" placeholder="Where summaries should be emailed" />
+          </label>
+          <label class="wide">Business backstory / context
+            <textarea name="backstory" rows="4" placeholder="Tell us how the business started, your ideal customer, what makes you different, and anything Alex should know."></textarea>
+          </label>
+          <label class="wide">Services offered
+            <textarea name="services" rows="4" placeholder="Water heaters, drain cleaning, leak repair, emergency plumbing..."></textarea>
+          </label>
+          <label class="wide">Emergency rules
+            <textarea name="emergencyRules" rows="4" placeholder="Active leak, sewer backup, no AC in extreme heat, electrical smell, after-hours policy..."></textarea>
+          </label>
+          <label>Pricing policy
+            <select name="pricingPolicy">
+              <option>Do not quote prices</option>
+              <option>Mention diagnostic fee only</option>
+              <option>Use approved price sheet later</option>
+              <option>Owner confirms all pricing</option>
+            </select>
+          </label>
+          <label>Preferred setup call time
+            <input name="setupTime" placeholder="Tomorrow afternoon, weekday mornings, etc." />
+          </label>
+          <label class="wide">Biggest call-handling issue
+            <textarea name="callIssue" rows="3" placeholder="Missed calls, after-hours emergencies, spam calls, slow callbacks, booking confusion..."></textarea>
+          </label>
+          <div class="form-actions wide">
+            <button class="portal-button primary" type="submit">Save profile locally</button>
+            <a class="portal-button secondary" href="#pricing">Review pricing</a>
           </div>
-          <label>Company name<input name="company" placeholder="Anchor Plumbing Co." /></label>
-          <label>Trade<select name="trade"><option>Plumbing</option><option>HVAC</option><option>Electrical</option><option>Roofing</option><option>Restoration</option><option>Other home service</option></select></label>
-          <label>Service area<input name="serviceArea" placeholder="Houston, Katy, Sugar Land" /></label>
-          <label>Business hours<input name="hours" placeholder="Mon-Fri 8am-5pm; emergency after-hours" /></label>
-          <label>Primary alert phone<input name="alertPhone" placeholder="Owner or office cell" /></label>
-          <label>Alert email<input name="alertEmail" placeholder="office@example.com" /></label>
         </form>
-
-        <form class="panel form-card" id="rulesForm">
-          <div class="section-head compact">
-            <div>
-              <span class="eyebrow">Agent behavior</span>
-              <h2>Agent Settings</h2>
-            </div>
-            <button class="button small" type="submit">Save</button>
-          </div>
-          <label>Agent goal<select name="agentGoal"><option>Qualify and take message</option><option>Request preferred appointment times</option><option>Book directly later</option><option>Emergency triage only</option></select></label>
-          <label>Emergency rules<textarea name="emergencyRules" rows="4" placeholder="Active leak, sewer backup, no AC in extreme heat, electrical smell..."></textarea></label>
-          <label>Pricing policy<select name="pricingPolicy"><option>Do not quote prices</option><option>Mention diagnostic fee only</option><option>Use approved price sheet later</option><option>Owner confirms all pricing</option></select></label>
-          <label>Services offered<textarea name="services" rows="4" placeholder="Water heaters, drain cleaning, leak repair, emergency plumbing..."></textarea></label>
-        </form>
       </section>
 
-      <section id="phone" class="panel">
+      <section id="settings" class="portal-grid two-col">
+        <article class="portal-card">
+          <span class="portal-eyebrow">Agent Settings</span>
+          <h2>How Alex should handle calls</h2>
+          <p>Default v1 flow: qualify the lead, collect service details, ask preferred appointment times, send confirmation, and alert the owner. Direct booking can come later once calendar rules are stable.</p>
+          <div class="pill-row">
+            <span>Qualify lead</span><span>Collect details</span><span>Text summary</span><span>Portal link</span>
+          </div>
+        </article>
+        <article id="phone" class="portal-card">
+          <span class="portal-eyebrow">Phone Setup</span>
+          <h2>Direct SMS while toll-free verifies</h2>
+          <p>Alex can use the wired DispatchAnchor Twilio number for direct SMS confirmations while toll-free SMS verification is pending.</p>
+          <div class="phone-number">(762) 335-3110</div>
+        </article>
+      </section>
+
+      <section id="pricing" class="portal-card">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Telephony</span>
-            <h2>Phone Setup</h2>
+            <span class="portal-eyebrow">Pricing</span>
+            <h2>Starter DispatchAnchor setup</h2>
           </div>
-          <span class="badge">Manual activation in v1</span>
+          <span class="portal-badge">Visible in portal</span>
         </div>
-        <div class="option-grid">
-          <label class="option-card"><input type="radio" name="phoneMode" checked /> <strong>Use a new DispatchAnchor number</strong><span>Fastest path. We assign a number and connect Alex.</span></label>
-          <label class="option-card"><input type="radio" name="phoneMode" /> <strong>Forward missed calls</strong><span>Keep your main number. Forward no-answer calls to Alex.</span></label>
-          <label class="option-card"><input type="radio" name="phoneMode" /> <strong>Forward after-hours calls</strong><span>Only send calls to Alex when your office is closed.</span></label>
+        <div class="pricing-grid">
+          <article class="price-card featured">
+            <span>Setup package</span>
+            <strong>$499</strong>
+            <p>Business intake, Alex prompt build, phone/SMS setup guidance, confirmation templates, and test calls.</p>
+          </article>
+          <article class="price-card">
+            <span>Monthly dispatcher plan</span>
+            <strong>$199/mo</strong>
+            <p>AI dispatcher access, call summaries, customer setup portal, updates, and support as the workflow improves.</p>
+          </article>
         </div>
       </section>
 
-      <section id="calls" class="panel">
+      <section id="calls" class="portal-card">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Lead database</span>
+            <span class="portal-eyebrow">Lead database</span>
             <h2>Call Inbox</h2>
           </div>
-          <button class="button small" id="addDemoCall" type="button">Add demo call</button>
+          <button class="portal-button small" id="addDemoCall" type="button">Add demo call</button>
         </div>
         <div class="database-strip" aria-label="Database Preview">
           <span>Database Preview</span>
@@ -156,26 +187,23 @@
         <div class="call-list" id="callList"></div>
       </section>
 
-      <section id="billing" class="grid two-col">
-        <article class="panel">
-          <span class="eyebrow">Subscription</span>
+      <section id="billing" class="portal-grid two-col">
+        <article class="portal-card">
+          <span class="portal-eyebrow">Subscription</span>
           <h2>Plan status</h2>
-          <div class="billing-card">
-            <strong>Trial / Setup</strong>
-            <p>Billing is not connected in this static v1 shell. This area will later show plan, payment status, usage minutes, and invoices.</p>
-          </div>
+          <p>Trial / setup mode. Billing automation is not connected in this static v1 portal yet.</p>
         </article>
-        <article class="panel">
-          <span class="eyebrow">Next integration</span>
-          <h2>Admin handoff</h2>
-          <p>The portal collects the data we need to generate a tailored agent prompt and build the customer’s dispatcher from a repeatable checklist.</p>
-          <a class="button ghost" href="/docs/dispatchanchor-simple-customer-intake-and-agent-prompt-system.md">View intake plan</a>
+        <article class="portal-card">
+          <span class="portal-eyebrow">Next step</span>
+          <h2>Send this link after booking</h2>
+          <p>Text and email confirmations should include this portal link so the business can register before the setup call.</p>
+          <code>https://dispatchanchor.com/portal/</code>
         </article>
       </section>
     </main>
   </div>
 
-  <script src="/portal/portal.js?v=1" defer></script>
+  <script src="/portal/portal.js?v=2" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/portal/service-worker.js'));

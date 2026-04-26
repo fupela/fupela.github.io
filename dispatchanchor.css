@@ -294,7 +294,20 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  margin-bottom: 18px;
+}
+
+.da-portal-note {
+  margin: 0 0 42px;
+  color: var(--da-text-muted);
+  font-size: 15px;
+}
+.da-portal-note a {
+  color: var(--da-amber-soft);
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,138,60,0.35);
+  text-underline-offset: 4px;
 }
 
 .da-btn-primary {

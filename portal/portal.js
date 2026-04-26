@@ -6,7 +6,7 @@ const DEFAULT_CALLS = [
     urgency: 'Urgent',
     address: 'Katy, TX',
     status: 'New',
-    summary: 'Caller reported water collecting near the garage water heater and requested same-day help.'
+    summary: 'Alex collected the caller details, urgency, location, and preferred callback window.'
   },
   {
     name: 'James T.',
@@ -15,15 +15,13 @@ const DEFAULT_CALLS = [
     urgency: 'Normal',
     address: 'Houston, TX',
     status: 'Contacted',
-    summary: 'Caller wants availability for tomorrow morning and asked whether diagnostic fees apply.'
+    summary: 'Caller wants tomorrow morning availability and asked whether diagnostic fees apply.'
   }
 ];
 
 const STORAGE_KEYS = {
-  business: 'dispatchanchor.portal.businessProfile.v1',
-  rules: 'dispatchanchor.portal.agentRules.v1',
-  checklist: 'dispatchanchor.portal.checklist.v1',
-  calls: 'dispatchanchor.portal.calls.v1'
+  profile: 'dispatchanchor.portal.profileForm.v2',
+  calls: 'dispatchanchor.portal.calls.v2'
 };
 
 function loadJson(key, fallback) {
@@ -53,52 +51,32 @@ function hydrateForm(form, data) {
 function toast(message) {
   const el = document.createElement('div');
   el.textContent = message;
-  el.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:20;background:#0f172a;border:1px solid rgba(56,189,248,.35);color:#edf6ff;padding:12px 14px;border-radius:999px;box-shadow:0 18px 60px rgba(0,0,0,.35);font-weight:800;';
+  el.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:20;background:#101c33;border:1px solid rgba(255,138,60,.35);color:#f5f2ec;padding:12px 14px;border-radius:999px;box-shadow:0 18px 60px rgba(0,0,0,.35);font-weight:900;max-width:calc(100% - 28px);text-align:center;';
   document.body.appendChild(el);
-  setTimeout(() => el.remove(), 1900);
+  setTimeout(() => el.remove(), 2200);
 }
 
-function initForms() {
-  const businessForm = document.querySelector('#businessForm');
-  const rulesForm = document.querySelector('#rulesForm');
-  hydrateForm(businessForm, loadJson(STORAGE_KEYS.business, {}));
-  hydrateForm(rulesForm, loadJson(STORAGE_KEYS.rules, {}));
+function initProfileForm() {
+  const profileForm = document.querySelector('#profileForm');
+  const saveState = document.querySelector('#profileSaveState');
+  if (!profileForm) return;
 
-  businessForm.addEventListener('submit', (event) => {
+  const saved = loadJson(STORAGE_KEYS.profile, {});
+  hydrateForm(profileForm, saved);
+  if (Object.keys(saved).length && saveState) saveState.textContent = 'Saved on this device';
+
+  profileForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    saveJson(STORAGE_KEYS.business, formToObject(businessForm));
-    toast('Business profile saved locally.');
+    saveJson(STORAGE_KEYS.profile, formToObject(profileForm));
+    if (saveState) saveState.textContent = 'Saved locally';
+    toast('Business setup profile saved locally.');
   });
-
-  rulesForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    saveJson(STORAGE_KEYS.rules, formToObject(rulesForm));
-    toast('Agent settings saved locally.');
-  });
-}
-
-function initChecklist() {
-  const saved = loadJson(STORAGE_KEYS.checklist, {});
-  const boxes = [...document.querySelectorAll('[data-check]')];
-  const progress = document.querySelector('#progressCount');
-  boxes.forEach((box) => {
-    box.checked = Boolean(saved[box.dataset.check]);
-    box.addEventListener('change', () => {
-      const next = Object.fromEntries(boxes.map((item) => [item.dataset.check, item.checked]));
-      saveJson(STORAGE_KEYS.checklist, next);
-      updateProgress();
-    });
-  });
-
-  function updateProgress() {
-    progress.textContent = String(boxes.filter((box) => box.checked).length);
-  }
-  updateProgress();
 }
 
 function renderCalls() {
   const calls = loadJson(STORAGE_KEYS.calls, DEFAULT_CALLS);
   const list = document.querySelector('#callList');
+  if (!list) return;
   list.innerHTML = calls.map((call) => {
     const urgentClass = call.urgency === 'Urgent' ? ' urgent' : '';
     return `
@@ -123,7 +101,9 @@ function initCalls() {
     saveJson(STORAGE_KEYS.calls, DEFAULT_CALLS);
   }
   renderCalls();
-  document.querySelector('#addDemoCall').addEventListener('click', () => {
+  const button = document.querySelector('#addDemoCall');
+  if (!button) return;
+  button.addEventListener('click', () => {
     const calls = loadJson(STORAGE_KEYS.calls, DEFAULT_CALLS);
     calls.unshift({
       name: 'Demo Caller',
@@ -132,7 +112,7 @@ function initCalls() {
       urgency: calls.length % 2 ? 'Urgent' : 'Normal',
       address: 'Houston area',
       status: 'New',
-      summary: 'Alex collected the caller details, service issue, urgency, and preferred callback time.'
+      summary: 'Alex collected service issue, urgency, preferred appointment time, and sent the portal profile link.'
     });
     saveJson(STORAGE_KEYS.calls, calls.slice(0, 8));
     renderCalls();
@@ -140,17 +120,5 @@ function initCalls() {
   });
 }
 
-function initNavState() {
-  const links = [...document.querySelectorAll('.nav-list a')];
-  links.forEach((link) => {
-    link.addEventListener('click', () => {
-      links.forEach((item) => item.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-}
-
-initForms();
-initChecklist();
+initProfileForm();
 initCalls();
-initNavState();

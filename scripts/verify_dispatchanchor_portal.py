@@ -44,17 +44,29 @@ def main() -> None:
     assert manifest["display"] in {"standalone", "fullscreen"}
     assert manifest["start_url"].startswith("/portal/")
 
-    # Product scope basics
+    # Product scope basics — form-first customer intake, not a checklist-led dashboard
     for section in [
-        "Setup Checklist",
+        "Create your portal profile",
+        "Business Setup Form",
         "Business Profile",
         "Agent Settings",
         "Phone Setup",
         "Call Inbox",
         "Subscription",
+        "Pricing",
         "Database Preview",
     ]:
         assert_contains(html, section, section)
+
+    # Pricing, registration/onboarding, and DispatchAnchor brand consistency basics
+    for pricing_item in ["$499", "$199/mo", "Setup package", "Monthly dispatcher plan"]:
+        assert_contains(html, pricing_item, pricing_item)
+    assert_contains(html, "profileForm", "profile onboarding form")
+    assert_contains(html, "Start your setup profile", "portal profile CTA")
+    assert_contains(html, "/assets/dispatchanchor/icon-32.png", "DispatchAnchor logo asset")
+    assert_contains(css, "#ff8a3c", "DispatchAnchor amber brand color")
+    assert_contains(css, "#0c1424", "DispatchAnchor navy brand color")
+    assert_contains(css, ".portal-form-grid", "mobile-friendly form grid")
 
     # Customer-control fields
     for field in [

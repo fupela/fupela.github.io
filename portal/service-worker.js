@@ -1,9 +1,9 @@
-const CACHE_NAME = 'dispatchanchor-portal-v1';
+const CACHE_NAME = 'dispatchanchor-portal-v2';
 const ASSETS = [
   '/portal/',
   '/portal/index.html',
-  '/portal/portal.css?v=1',
-  '/portal/portal.js?v=1',
+  '/portal/portal.css?v=2',
+  '/portal/portal.js?v=2',
   '/portal/manifest.webmanifest',
   '/assets/dispatchanchor/icon-32.png',
   '/assets/dispatchanchor/icon-180.png'
