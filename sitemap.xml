@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://jedaiflow.com/start/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://jedaiflow.com/blog/</loc>
     <lastmod>2026-04-25</lastmod>
     <priority>0.9</priority>
@@ -27,7 +32,7 @@
   </url>
   <url>
     <loc>https://jedaiflow.com/blog/build-ai-phone-agent-under-an-hour</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -77,7 +82,7 @@
   </url>
   <url>
     <loc>https://jedaiflow.com/blog/openclaw-claude-mac-workaround</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -107,7 +112,7 @@
   </url>
   <url>
     <loc>https://jedaiflow.com/free/25-ai-business-prompts.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -117,7 +122,7 @@
   </url>
   <url>
     <loc>https://jedaiflow.com/products/ai-money-machine.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -132,7 +137,7 @@
   </url>
   <url>
     <loc>https://jedaiflow.com/products/cheat-sheet-gumroad.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -187,7 +192,7 @@
   </url>
   <url>
     <loc>https://jedaiflow.com/voice-agent-kit.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
