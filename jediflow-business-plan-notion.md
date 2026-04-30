@@ -145,6 +145,98 @@ Pricing should track clear business value, not just tool access.
 ## Final Recommendation
 Build JediFlow as a lead capture and follow-up automation business first. Use the service to generate cash, proof, and customer insight. Then convert the best-performing pieces into a scalable software platform.
 
+## DispatchAnchor Houston Local SEO & AI-Search Plan
+
+DispatchAnchor is the focused home-services product inside the broader JediFlow strategy. JediFlow can teach, audit, and automate workflows broadly; DispatchAnchor should own one clear local category: **AI phone answering and missed-call recovery for Houston home-service businesses**.
+
+### Local SEO objective
+Make DispatchAnchor easier to find when Houston contractors or AI-search tools look for:
+- `DispatchAnchor Houston`
+- `AI phone answering Houston`
+- `AI receptionist for plumbers Houston`
+- `24/7 dispatch answering Houston`
+- `missed call recovery for home services Houston`
+- `HVAC answering service Houston`
+- `plumbing answering service Houston`
+
+### Website fixes to keep in the plan
+1. **Homepage clarity** — title tag, meta description, H1, first paragraph, and CTA should clearly say DispatchAnchor serves Houston home-service businesses.
+2. **Houston landing page** — maintain a dedicated page for Houston AI phone answering that explains service area, industries served, benefits, FAQs, and booking/demo CTA.
+3. **Internal links** — link from homepage to the Houston page using descriptive anchor text such as `AI phone answering in Houston` and `Houston home-service call answering`.
+4. **Service descriptions** — describe the offer in plain contractor language: answer calls, collect job details, identify urgency, send lead details, and support after-hours follow-up.
+5. **Schema** — keep LocalBusiness, Service, and FAQ schema current so Google and AI answer engines can identify the brand, location, services, phone number, and service area.
+
+### Google Business Profile and citation plan
+DispatchAnchor should be managed as a **service-area business** with the public business number and hidden street address.
+
+**GBP fields:**
+- Business name: `DispatchAnchor`
+- Primary category: `Telephone answering service`
+- Public phone: `(762) 335-3110`
+- Website: `https://dispatchanchor.com/`
+- Houston landing page: `https://dispatchanchor.com/houston-ai-phone-answering.html`
+- Service area: Houston, Sugar Land, Katy, Cypress, The Woodlands, Spring, Pearland, Pasadena, Humble, Kingwood, Missouri City
+
+**Directory consistency:** every citation should use the same name, phone, website, business description, category, and service-area framing. Do not publish John's personal address or phone.
+
+### Recommended business description
+DispatchAnchor helps Houston-area home-service businesses answer more calls, recover missed leads, and follow up faster. We provide AI phone answering, AI receptionist support, after-hours dispatch answering, missed-call recovery, and lead capture workflows for plumbers, HVAC companies, electricians, roofers, garage door companies, pest control businesses, and other service contractors.
+
+### Houston content priorities
+Create or improve pages/posts around these topics:
+1. AI phone answering for Houston home-service businesses
+2. AI receptionist for plumbers in Houston
+3. HVAC answering service in Houston
+4. After-hours dispatch answering for contractors
+5. Missed-call recovery for home-service companies
+6. AI receptionist vs. live answering service for contractors
+7. How much revenue Houston contractors lose from missed calls
+
+### FAQ topics to include
+- What does an AI receptionist do for a home-service business?
+- Can DispatchAnchor answer after-hours calls?
+- Does DispatchAnchor replace my office staff?
+- Which Houston-area cities do you serve?
+- Can it help plumbers, HVAC companies, electricians, roofers, and garage door companies?
+- What happens when a call is urgent?
+- How fast can DispatchAnchor be set up?
+- How is missed-call recovery different from lead generation?
+
+### 30-day local SEO action plan
+
+**Week 1 — Quick visibility foundation**
+- Verify Google Business Profile.
+- Confirm name, category, phone, website, service areas, logo, and description.
+- Publish the first GBP post linking to the Houston landing page.
+- Submit/claim top citations with consistent NAP/service-area data.
+
+**Week 2 — Website expansion**
+- Add or strengthen the Houston landing page sections: industries served, service-area list, after-hours dispatch, missed-call recovery, FAQs, and booking CTA.
+- Add two internal links from homepage/service sections to the Houston page.
+- Validate schema after edits.
+
+**Week 3 — Niche service pages**
+- Publish one vertical page: `AI receptionist for plumbers Houston`.
+- Draft the second vertical page: `HVAC answering service Houston`.
+- Add FAQs and local examples to both.
+
+**Week 4 — Authority and proof**
+- Add a short demo video or screenshots to GBP and the site.
+- Ask early testers/customers for testimonials or feedback.
+- Publish one practical blog post about missed-call revenue loss for Houston contractors.
+- Review Search Console/GBP insights and adjust keywords based on real impressions.
+
+### Ranking blockers to watch
+- Unverified or incomplete Google Business Profile.
+- Inconsistent phone/name/category across directories.
+- Too little Houston-specific copy on service pages.
+- Weak proof: no reviews, testimonials, demos, or local examples.
+- Vague `AI automation` language instead of specific contractor outcomes.
+- Expecting SEO to produce instant leads; local SEO compounds over 3–6 months and must be paired with direct outreach.
+
+### Positioning rule
+Use **lead recovery** and **missed-call recovery**, not generic `lead generation`, when selling to contractors. Contractors are skeptical of lead-gen companies; they understand the pain of paying for calls and missing them.
+
 ---
 
 ## Notion Setup Suggestion
