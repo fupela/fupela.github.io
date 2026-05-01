@@ -584,7 +584,7 @@
         <input type="email" name="email" placeholder="Email address" required>
         <input type="text" name="company" placeholder="Company (optional)">
         <textarea name="message" rows="5" placeholder="What do you want to automate?" required></textarea>
-        <button type="submit" class="btn-primary">Send it &#8594;</button>
+        <button type="submit" class="btn-primary" id="contact-submit">Send it &#8594;</button>
       </form>
     </div>
   </section>
@@ -673,10 +673,37 @@
         .catch(function() { window.location.href = '/guides/thank-you.html'; });
     });
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      document.getElementById('contact-success').style.display = 'block';
-      this.querySelectorAll('input,textarea,button').forEach(function(el) { el.style.display = 'none'; });
+      var form = this;
+      var btn = document.getElementById('contact-submit');
+      var formData = new FormData(form);
+      var payload = {
+        name: (formData.get('name') || '').toString().trim(),
+        email: (formData.get('email') || '').toString().trim(),
+        company: (formData.get('company') || '').toString().trim(),
+        message: (formData.get('message') || '').toString().trim(),
+        source: 'homepage-contact',
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString()
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        await fetch('https://hook.us2.make.com/2qi68q1xvuz1gguvb3bo1l1iebqxdl6j', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        document.getElementById('contact-success').style.display = 'block';
+        form.querySelectorAll('input,textarea,button').forEach(function(el) { el.style.display = 'none'; });
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Send it \u2192';
+        alert('Something went wrong. Please email hello@jedaiflow.com directly.');
+      }
     });
 
     var fab = document.getElementById('scroll-top');
