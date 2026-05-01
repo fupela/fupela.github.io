@@ -56,17 +56,31 @@ git push origin main
 
 | Item | Workspace | GitHub | Live (jedaiflow.com) |
 |------|-----------|--------|----------------------|
-| Homepage contact form | Wired to Make webhook in `index.html` | Pushed to `main` | Pending Cloudflare direct upload |
-| DispatchAnchor homepage handoff | Added hero CTA and homepage section | Pushed to `main` | Pending Cloudflare direct upload |
+| Homepage contact form | Wired to Make webhook in `index.html` | Pushed to `main` | Deployed to Cloudflare |
+| DispatchAnchor homepage handoff | Added hero CTA and homepage section | Pushed to `main` | Deployed to Cloudflare |
+| Houston audit funnel | `/guides/`, short links, text CTA, call packet | Pushed to `main` | Deployed to Cloudflare |
 | GitHub Pages build | Cleaned broken gitlink entries and added `.nojekyll` | Latest build succeeded | Not the live deploy trigger |
 
-The GitHub repo is clean and current, but `jedaiflow.com` still requires:
+`jedaiflow.com` still uses Cloudflare Pages direct upload. After new changes, run:
 
 ```bash
 npx wrangler pages deploy . --project-name jedaiflow
 ```
 
-On 2026-05-01, `npx --yes wrangler@4.86.0 whoami` reported that this machine was not authenticated. Run `npx wrangler login` or set a `CLOUDFLARE_API_TOKEN` with Pages deploy permission before deploying.
+On 2026-05-01, Wrangler was authenticated as `jpjedai@outlook.com` and `npx --yes wrangler@4.86.0 pages deploy . --project-name jedaiflow` deployed commit `62bfe4f` to Cloudflare Pages deployment:
+
+```text
+https://71d8500c.jedaiflow.pages.dev
+```
+
+Verified live on the custom domain:
+
+```text
+https://jedaiflow.com/guides/
+https://jedaiflow.com/audit
+https://jedaiflow.com/missed-calls
+https://jedaiflow.com/call-packet/
+```
 
 ---
 
