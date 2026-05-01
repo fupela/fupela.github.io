@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jedaiflow.com/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -133,7 +133,12 @@
   <url>
     <loc>https://jedaiflow.com/guides/</loc>
     <lastmod>2026-05-01</lastmod>
-    <priority>0.8</priority>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://jedaiflow.com/free/missed-call-recovery/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://jedaiflow.com/products/ai-money-machine.html</loc>

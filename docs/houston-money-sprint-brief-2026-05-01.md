@@ -14,6 +14,16 @@ Primary URL:
 https://jedaiflow.com/guides/
 ```
 
+Short URLs for calls, contact forms, and social:
+
+```text
+https://jedaiflow.com/audit
+https://jedaiflow.com/houston-audit
+https://jedaiflow.com/missed-calls
+https://jedaiflow.com/missed-call-audit
+https://jedaiflow.com/houston-missed-calls
+```
+
 Primary Stripe checkout:
 
 ```text
