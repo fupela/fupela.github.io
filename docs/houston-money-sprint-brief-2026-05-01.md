@@ -315,9 +315,9 @@ https://jedaiflow.com/guides/?utm_source=email&utm_medium=outreach&utm_campaign=
 (762) 335-3110
 ```
 
-## Follow-up after a live call or voicemail
+## SMS and follow-up after a live call or voicemail
 
-SMS is not live yet. Until the DispatchAnchor number is SMS-ready, use email or a direct call follow-up after a legitimate call/contact path.
+Inbound SMS intake is live on `(762) 335-3110` and routes to Make. Outbound SMS automation still needs A2P 10DLC approval, so use email or a direct call for manual follow-up until compliance is complete.
 
 ```text
 John with DispatchAnchor here in Houston. Good talking with you. Here is the $200 missed-call revenue audit page: https://jedaiflow.com/guides/?utm_source=email&utm_medium=followup&utm_campaign=houston_audit
@@ -380,7 +380,7 @@ The audit can still check whether the handoff captures service, urgency, address
 
 **"I do not want AI talking to customers."**
 
-Start with callback workflow, approved SMS follow-up, and intake summaries. Full AI answering is optional.
+Start with SMS intake, callback workflow, and intake summaries. Full AI answering is optional.
 
 **"How much is setup?"**
 

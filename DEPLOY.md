@@ -58,7 +58,7 @@ git push origin main
 |------|-----------|--------|----------------------|
 | Homepage contact form | Wired to Make webhook in `index.html` | Pushed to `main` | Deployed to Cloudflare |
 | DispatchAnchor homepage handoff | Added hero CTA and homepage section | Pushed to `main` | Deployed to Cloudflare |
-| Houston audit funnel | `/guides/`, short links, email/callback CTA, call packet | Pushed to `main` | Deployed to Cloudflare |
+| Houston audit funnel | `/guides/`, short links, call/text/callback CTA, call packet | Pushed to `main` | Deployed to Cloudflare |
 | GitHub Pages build | Cleaned broken gitlink entries and added `.nojekyll` | Latest build succeeded | Not the live deploy trigger |
 
 `jedaiflow.com` still uses Cloudflare Pages direct upload. After new changes, run:
@@ -82,7 +82,7 @@ https://jedaiflow.com/missed-calls
 https://jedaiflow.com/call-packet/
 ```
 
-The public audit flow does not use `sms:` links while the DispatchAnchor number is not SMS-ready. Use call, callback form, and `audit@dispatchanchor.com` until the SMS number is approved and tested.
+The public audit flow uses `sms:+17623353110` for inbound `Text AUDIT` capture. Twilio routes incoming messages on `(762) 335-3110` to the Make webhook; outbound automated SMS still needs A2P approval.
 
 ---
 
