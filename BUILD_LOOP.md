@@ -33,6 +33,36 @@
 - [ ] File comparison — output matches request
 - [ ] Deploy test — load URL / run test request if applicable
 
+---
+
+## BATCH 12 — DispatchAnchor Houston Money Sprint
+
+Goal: Turn the Houston home-services niche into paid audit conversations as fast as possible.
+
+Read first:
+
+```text
+docs/houston-money-sprint-brief-2026-05-01.md
+```
+
+Context:
+
+- `/guides/` is now the Houston Missed-Call Revenue Audit page.
+- `/guides/thank-you.html` now pushes the $200 audit immediately after callback requests.
+- The page posts callback leads to Make with `source=houston-guides-money-page`.
+- Primary checkout: `https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j`.
+- Primary phone: `(762) 335-3110`.
+- Live deploy still requires Cloudflare Pages direct upload.
+
+- [ ] [AGENT:FUPIE] Deploy the current repo to Cloudflare Pages once Wrangler auth is available: `npx wrangler pages deploy . --project-name jedaiflow`. Verify `/guides/` contains `Houston Missed-Call Revenue Audit`, `Buy the $200 audit`, and `houston-guides-money-page`.
+- [ ] [AGENT:FUPIE] Confirm the Make scenario is ON and receives the `/guides/` audit form payload. Route every `source=houston-guides-money-page` lead to John immediately by email/HubSpot/bridge alert.
+- [ ] [AGENT:FUPIE] Confirm the $200 Stripe audit checkout is active and document whether Stripe purchase events notify John or create a lead record.
+- [ ] [AGENT:SCOUT] Build a fresh 25-lead Houston home-services list. Prioritize plumbing, HVAC, electrical, restoration, garage door, locksmith, appliance repair, pest control, pool service, handyman, and pressure washing. Score HOT/WARM/COOL using the brief.
+- [ ] [AGENT:JOLIE] Draft or post 3 Houston contractor pain posts that point to `/guides/?utm_source=x&utm_medium=social&utm_campaign=houston_audit` or `/guides/?utm_source=linkedin&utm_medium=social&utm_campaign=houston_audit`.
+- [ ] [AGENT:JOLIE] Prepare 5 contact-form submissions for HOT leads using the contact-form script in the sprint brief. Do not submit externally if John has paused outreach or if a site has anti-spam/terms concerns; stage for review instead.
+- [ ] [CLAUDE] Pela final-polish pass on the top 10 outreach scripts once Scout returns HOT leads. Keep each script under 90 words and focused on missed-call recovery, not generic AI.
+- [ ] [AGENT:FUPIE] Report today metrics: page deploy status, webhook status, paid audits, callback requests, leads selected, outreach prepared, objections heard.
+
 ## Escalation Rules
 - Loop stalled 30+ min → alert John via Telegram
 - Task failed 3x → skip, log, move on, notify John
