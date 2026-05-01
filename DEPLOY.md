@@ -52,17 +52,21 @@ git push origin main
 
 ---
 
-## Current State (as of 2026-04-23)
+## Current State (as of 2026-05-01)
 
 | Item | Workspace | GitHub | Live (jedaiflow.com) |
-|------|-----------|--------|---------------------|
-| MailerLite form | ✅ Wired (JS fetch) | ✅ Modified | ❌ Still mailto fallback |
-| pest-control blog | ✅ Exists | ✅ Tracked | ❓ Unknown (direct upload gap) |
-| articles/index.html | ✅ Has pest-control card | ✅ Tracked | ❓ Unknown |
-| Title / branding | ✅ DispatchAnchor | ✅ Committed | ❌ Old "Jedaiflow — Automation" title |
-| nav/footer (JF:NAV) | ✅ Updated | ✅ Modified | ❌ Missing JF:NAV marker |
+|------|-----------|--------|----------------------|
+| Homepage contact form | Wired to Make webhook in `index.html` | Pushed to `main` | Pending Cloudflare direct upload |
+| DispatchAnchor homepage handoff | Added hero CTA and homepage section | Pushed to `main` | Pending Cloudflare direct upload |
+| GitHub Pages build | Cleaned broken gitlink entries and added `.nojekyll` | Latest build succeeded | Not the live deploy trigger |
 
-**21 files modified in workspace, uncommitted to git. All need `git add -A && git commit && git push`, followed by `wrangler pages deploy`.**
+The GitHub repo is clean and current, but `jedaiflow.com` still requires:
+
+```bash
+npx wrangler pages deploy . --project-name jedaiflow
+```
+
+On 2026-05-01, `npx --yes wrangler@4.86.0 whoami` reported that this machine was not authenticated. Run `npx wrangler login` or set a `CLOUDFLARE_API_TOKEN` with Pages deploy permission before deploying.
 
 ---
 
