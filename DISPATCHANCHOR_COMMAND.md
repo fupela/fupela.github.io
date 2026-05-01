@@ -157,7 +157,7 @@ Post 2:
 The fix for missed calls is not "more marketing."
 
 It is faster intake:
-- answer or text back fast
+- answer or call back fast
 - capture service + urgency + address
 - alert the owner/dispatcher
 - follow up before the customer calls the next company
@@ -272,6 +272,7 @@ Rafael, storm calls come in waves, and the first roofer to respond often wins th
 - Do not claim a specific missed-call rate for a prospect unless we have their data.
 - Do not say "AI will replace your staff."
 - Say "missed-call recovery" and "after-hours lead handling," not "lead generation."
+- Do not ask prospects to text DispatchAnchor until the SMS number is live.
 - Do not submit contact forms that ban solicitation.
 - Do not invent customer testimonials.
 - Do not quote setup price unless John approves the scope.

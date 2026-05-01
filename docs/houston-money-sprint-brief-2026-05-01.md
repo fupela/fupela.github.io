@@ -266,7 +266,7 @@ Got it. I am offering a $200 missed-call revenue audit for Houston contractors t
 Close:
 
 ```text
-Would it be useful if I sent the audit link, or would you rather I take a quick look at your site first and text you what I see?
+Would it be useful if I sent the audit link, or would you rather I take a quick look at your site first and email you what I see?
 ```
 
 ## Contact form message
@@ -274,7 +274,7 @@ Would it be useful if I sent the audit link, or would you rather I take a quick 
 ```text
 Hi [Business Name] team - I am John with DispatchAnchor here in Houston.
 
-I help home-service businesses recover missed calls and after-hours leads with AI phone answering, missed-call text-back, and cleaner intake notes.
+I help home-service businesses recover missed calls and after-hours leads with AI phone answering, approved follow-up workflows, and cleaner intake notes.
 
 I am offering a $200 missed-call revenue audit this week. I review the phone path, website form, after-hours handoff, and follow-up timing, then send the 2-3 fixes most likely to recover booked jobs. If you move forward with setup, the audit is credited toward setup.
 
@@ -315,12 +315,12 @@ https://jedaiflow.com/guides/?utm_source=email&utm_medium=outreach&utm_campaign=
 (762) 335-3110
 ```
 
-## SMS after a live call or voicemail
+## Follow-up after a live call or voicemail
 
-Only use SMS after a legitimate call/contact path.
+SMS is not live yet. Until the DispatchAnchor number is SMS-ready, use email or a direct call follow-up after a legitimate call/contact path.
 
 ```text
-John with DispatchAnchor here in Houston. Good talking with you. Here is the $200 missed-call revenue audit page: https://jedaiflow.com/guides/?utm_source=sms&utm_medium=followup&utm_campaign=houston_audit
+John with DispatchAnchor here in Houston. Good talking with you. Here is the $200 missed-call revenue audit page: https://jedaiflow.com/guides/?utm_source=email&utm_medium=followup&utm_campaign=houston_audit
 
 I will check your call/form path and send the fastest fixes I see.
 ```
@@ -380,7 +380,7 @@ The audit can still check whether the handoff captures service, urgency, address
 
 **"I do not want AI talking to customers."**
 
-Start with missed-call text-back and intake summaries. Full AI answering is optional.
+Start with callback workflow, approved SMS follow-up, and intake summaries. Full AI answering is optional.
 
 **"How much is setup?"**
 
