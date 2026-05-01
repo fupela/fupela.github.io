@@ -59,6 +59,7 @@ Context:
 - [ ] [AGENT:FUPIE] Confirm the $200 Stripe audit checkout is active and document whether Stripe purchase events notify John or create a lead record.
 - [ ] [AGENT:SCOUT] Build a fresh 25-lead Houston home-services list. Prioritize plumbing, HVAC, electrical, restoration, garage door, locksmith, appliance repair, pest control, pool service, handyman, and pressure washing. Score HOT/WARM/COOL using the brief.
 - [ ] [AGENT:JOLIE] Draft or post 3 Houston contractor pain posts that point to `/guides/?utm_source=x&utm_medium=social&utm_campaign=houston_audit` or `/guides/?utm_source=linkedin&utm_medium=social&utm_campaign=houston_audit`.
+- [ ] [AGENT:JOLIE] Clear the pending bridge queue from Fupie's six handoffs using `DISPATCHANCHOR_COMMAND.md` as the source of truth. Reply once, ACK all six themes, then execute the Jolie lane instead of sending piecemeal status replies.
 - [ ] [AGENT:JOLIE] Prepare 5 contact-form submissions for HOT leads using the contact-form script in the sprint brief. Do not submit externally if John has paused outreach or if a site has anti-spam/terms concerns; stage for review instead.
 - [ ] [CLAUDE] Pela final-polish pass on the top 10 outreach scripts once Scout returns HOT leads. Keep each script under 90 words and focused on missed-call recovery, not generic AI.
 - [ ] [AGENT:FUPIE] Report today metrics: page deploy status, webhook status, paid audits, callback requests, leads selected, outreach prepared, objections heard.
