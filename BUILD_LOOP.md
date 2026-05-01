@@ -49,6 +49,7 @@ Context:
 
 - `/guides/` is now the Houston Missed-Call Revenue Audit page.
 - `/guides/thank-you.html` now pushes the $200 audit immediately after callback requests.
+- `/call-packet/` is now the noindex sales packet for calls, DMs, and prospect hooks.
 - The page posts callback leads to Make with `source=houston-guides-money-page`.
 - Primary checkout: `https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j`.
 - Primary phone: `(762) 335-3110`.

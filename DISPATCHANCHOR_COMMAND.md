@@ -16,6 +16,12 @@ Primary page:
 https://jedaiflow.com/guides/
 ```
 
+Call packet:
+
+```text
+https://jedaiflow.com/call-packet/
+```
+
 Short links:
 
 ```text
@@ -79,6 +85,7 @@ Report back with:
 - page deploy status
 - Make webhook status
 - Stripe audit checkout status
+- call packet status
 - top 5 prospects
 - social posts drafted/posted
 - contact-form drafts staged/submitted
@@ -106,6 +113,7 @@ curl -L -s https://jedaiflow.com/guides/ --max-time 20 | rg -n "Houston Missed-C
 ```bash
 curl -sI https://jedaiflow.com/audit | head
 curl -sI https://jedaiflow.com/missed-calls | head
+curl -sI https://jedaiflow.com/call-packet/ | head
 ```
 
 4. Confirm Make scenario is ON and receives:

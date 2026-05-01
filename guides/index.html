@@ -475,6 +475,35 @@
       color: #dfe6ef;
     }
 
+    .demo-call {
+      display: grid;
+      gap: 12px;
+      max-width: 820px;
+    }
+
+    .call-line {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .call-line strong {
+      color: var(--amber-2);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .call-line span {
+      color: #dfe6ef;
+      font-size: 15px;
+    }
+
     .final-cta {
       padding: 58px 0 72px;
       text-align: center;
@@ -530,6 +559,9 @@
         align-items: flex-start;
         flex-direction: column;
       }
+      .call-line {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 
@@ -581,6 +613,7 @@
           <a class="btn btn-primary" href="https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j">Buy the $200 audit &rarr;</a>
           <a class="btn btn-secondary" href="#audit-request">Request a callback</a>
           <a class="btn btn-secondary" href="tel:+17623353110">Call (762) 335-3110</a>
+          <a class="btn btn-secondary" href="sms:+17623353110?&body=AUDIT">Text AUDIT</a>
         </div>
         <div class="trust-row" aria-label="Offer highlights">
           <span class="trust-pill">Built in Houston</span>
@@ -604,7 +637,7 @@
           <li><span class="check">✓</span><span>Simple next-step quote if the fit is good</span></li>
         </ul>
         <a class="btn btn-primary" href="https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j" style="width:100%">Buy audit now &rarr;</a>
-        <div class="phone-line"><span>Want the fastest route?</span><a href="tel:+17623353110">Call Alex</a></div>
+        <div class="phone-line"><span>Want the fastest route?</span><a href="sms:+17623353110?&body=AUDIT">Text AUDIT</a></div>
       </aside>
     </div>
 
@@ -628,6 +661,35 @@
         </div>
       </div>
     </div>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What the call should sound like.</h2>
+          <p>
+            The audit is not a theory document. It maps the intake flow your customer should experience when nobody on the crew can pick up.
+          </p>
+        </div>
+        <div class="demo-call" aria-label="Sample DispatchAnchor call flow">
+          <div class="call-line">
+            <strong>Caller</strong>
+            <span>Hi, my AC went out and the house is already getting hot. Are you available today?</span>
+          </div>
+          <div class="call-line">
+            <strong>Agent</strong>
+            <span>Thanks for calling. I can help get the details over. What is your name, service address, and the best number for the technician to call back?</span>
+          </div>
+          <div class="call-line">
+            <strong>Caller</strong>
+            <span>It is Maria on Cullen Boulevard. The system stopped cooling about an hour ago.</span>
+          </div>
+          <div class="call-line">
+            <strong>Agent</strong>
+            <span>Got it. I am marking this as urgent AC service. I will send the summary to the team now: no cooling, today request, Cullen Boulevard, callback needed.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section>
       <div class="wrap">
@@ -792,6 +854,7 @@
       <div class="hero-actions" style="justify-content:center">
         <a class="btn btn-primary" href="https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j">Buy the $200 audit &rarr;</a>
         <a class="btn btn-secondary" href="tel:+17623353110">Call (762) 335-3110</a>
+        <a class="btn btn-secondary" href="sms:+17623353110?&body=AUDIT">Text AUDIT</a>
         <a class="btn btn-secondary" href="mailto:audit@dispatchanchor.com?subject=Houston%20Missed-Call%20Revenue%20Audit">Email audit@dispatchanchor.com</a>
       </div>
     </div>

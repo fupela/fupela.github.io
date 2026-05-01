@@ -18,6 +18,7 @@ Drop notes here after a Claude Code session. Fupie reads this on every heartbeat
 ## 2026-05-01 - DispatchAnchor Houston money sprint
 - Rebuilt `/guides/` into the Houston Missed-Call Revenue Audit funnel.
 - Rebuilt `/guides/thank-you.html` to push the $200 audit immediately after callback requests.
+- Added `/call-packet/` as a noindex printable sales packet for John/Fupie/Jolie.
 - Full execution brief for Fupie/Fupela/Jolie: `docs/houston-money-sprint-brief-2026-05-01.md`.
 - Command packet for Jolie/Fupie bridge backlog: `DISPATCHANCHOR_COMMAND.md`.
 - Primary offer: $200 Houston Missed-Call Revenue Audit, credited toward DispatchAnchor setup.
