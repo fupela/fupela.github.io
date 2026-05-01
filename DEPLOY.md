@@ -58,7 +58,7 @@ git push origin main
 |------|-----------|--------|----------------------|
 | Homepage contact form | Wired to Make webhook in `index.html` | Pushed to `main` | Deployed to Cloudflare |
 | DispatchAnchor homepage handoff | Added hero CTA and homepage section | Pushed to `main` | Deployed to Cloudflare |
-| Houston audit funnel | `/guides/`, short links, text CTA, call packet | Pushed to `main` | Deployed to Cloudflare |
+| Houston audit funnel | `/guides/`, short links, email/callback CTA, call packet | Pushed to `main` | Deployed to Cloudflare |
 | GitHub Pages build | Cleaned broken gitlink entries and added `.nojekyll` | Latest build succeeded | Not the live deploy trigger |
 
 `jedaiflow.com` still uses Cloudflare Pages direct upload. After new changes, run:
@@ -67,10 +67,10 @@ git push origin main
 npx wrangler pages deploy . --project-name jedaiflow
 ```
 
-On 2026-05-01, Wrangler was authenticated as `jpjedai@outlook.com` and `npx --yes wrangler@4.86.0 pages deploy . --project-name jedaiflow` deployed commit `62bfe4f` to Cloudflare Pages deployment:
+On 2026-05-01, Wrangler was authenticated as `jpjedai@outlook.com` and `npx --yes wrangler@4.86.0 pages deploy . --project-name jedaiflow` deployed commit `46ea29d` to Cloudflare Pages deployment:
 
 ```text
-https://71d8500c.jedaiflow.pages.dev
+https://01080f46.jedaiflow.pages.dev
 ```
 
 Verified live on the custom domain:
@@ -81,6 +81,8 @@ https://jedaiflow.com/audit
 https://jedaiflow.com/missed-calls
 https://jedaiflow.com/call-packet/
 ```
+
+The public audit flow does not use `sms:` links while the DispatchAnchor number is not SMS-ready. Use call, callback form, and `audit@dispatchanchor.com` until the SMS number is approved and tested.
 
 ---
 
