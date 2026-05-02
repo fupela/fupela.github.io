@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Houston Missed-Call Revenue Audit | DispatchAnchor by Jedaiflow</title>
-  <meta name="description" content="A fast missed-call revenue audit for Houston plumbers, HVAC teams, electricians, roofers, garage door companies, appliance repair, pest control, and home-service operators." />
+  <title>Free Guides — Jedaiflow</title>
+  <meta name="description" content="Free practical guides on AI workflows, lead response, and automation for home-service businesses. Subscribe to download." />
   <link rel="canonical" href="https://jedaiflow.com/guides/" />
-  <meta property="og:title" content="Houston Missed-Call Revenue Audit" />
-  <meta property="og:description" content="Find the calls, forms, and after-hours handoffs costing your Houston home-service business booked jobs." />
+  <meta property="og:title" content="Free Guides — Jedaiflow" />
+  <meta property="og:description" content="Subscribe to download free AI guides for home-service businesses." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jedaiflow.com/guides/" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -22,571 +22,331 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #080b12;
-      --surface: #101622;
-      --surface-2: #151d2c;
-      --line: rgba(255,255,255,0.08);
-      --line-strong: rgba(255,182,88,0.32);
-      --text: #f6f1e8;
-      --muted: #a7afc0;
-      --dim: #737d91;
-      --amber: #ff9d42;
-      --amber-2: #ffd27a;
-      --cyan: #31d7e9;
-      --green: #57e08a;
-      --red: #ff7a7a;
-      --radius: 8px;
-    }
-
-    html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; }
-
-    .wrap {
-      width: min(1160px, calc(100% - 40px));
+    /* HERO */
+    .hub-hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      max-width: 760px;
       margin: 0 auto;
     }
 
-    .hero {
-      padding: 74px 0 44px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.82fr);
-      gap: 34px;
-      align-items: start;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--amber-2);
+    .page-label {
       font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      color: #a78bfa;
+      margin-bottom: 14px;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 99px;
-      background: var(--green);
-      box-shadow: 0 0 20px rgba(87,224,138,0.55);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Sora', 'Inter', sans-serif;
-      letter-spacing: 0;
-      line-height: 1.05;
-    }
-
-    h1 {
-      max-width: 780px;
-      font-size: clamp(40px, 6.4vw, 74px);
+    .hub-hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
       font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .lead {
-      max-width: 690px;
-      color: #d7deea;
-      font-size: clamp(18px, 2.2vw, 23px);
-      line-height: 1.45;
-      margin-bottom: 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 28px 0 20px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 13px 18px;
-      border-radius: var(--radius);
-      border: 1px solid transparent;
-      font-weight: 900;
-      font-size: 15px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease, opacity 0.16s ease;
-      white-space: nowrap;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--amber), var(--amber-2));
-      color: #11131a;
-      box-shadow: 0 12px 34px rgba(255,157,66,0.26);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.05);
-      border-color: var(--line);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover { border-color: var(--line-strong); }
-
-    .trust-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 7px 11px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.035);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .quick-panel,
-    .form-panel {
-      background: var(--surface);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius);
-      box-shadow: 0 22px 70px rgba(0,0,0,0.34);
-    }
-
-    .quick-panel {
-      padding: 22px;
-      position: sticky;
-      top: 88px;
-    }
-
-    .panel-label {
-      color: var(--cyan);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .quick-panel h2 {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin: 18px 0 12px;
-    }
-
-    .price strong {
-      font-size: 46px;
-      line-height: 1;
-      color: var(--amber-2);
-    }
-
-    .price span { color: var(--muted); font-weight: 800; }
-
-    .panel-copy {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
-
-    .panel-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin: 18px 0 22px;
-    }
-
-    .panel-list li {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 8px;
-      color: #dbe2ec;
-      font-size: 14px;
-    }
-
-    .check {
-      color: var(--green);
-      font-weight: 900;
-    }
-
-    .phone-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .phone-line a {
-      color: var(--amber-2);
-      font-weight: 900;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .market-strip {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: #0d1320;
-    }
-
-    .strip-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .strip-item {
-      padding: 22px 18px;
-      border-right: 1px solid var(--line);
-    }
-
-    .strip-item:last-child { border-right: 0; }
-
-    .strip-item strong {
-      display: block;
-      color: var(--text);
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    .strip-item span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    section {
-      padding: 60px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-head {
-      max-width: 740px;
-      margin-bottom: 28px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      margin-bottom: 12px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
-
-    .card h3 {
-      font-size: 19px;
-      margin-bottom: 9px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .trade-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .trade {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 14px;
-      background: #101725;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      color: #dfe6ef;
-      font-weight: 900;
-      font-size: 14px;
-    }
-
-    .money-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .script-box {
-      background: #0f1725;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
-
-    .script-box p {
-      color: var(--muted);
+      letter-spacing: -1.5px;
+      line-height: 1.08;
       margin-bottom: 16px;
     }
 
-    .script-box ol {
-      padding-left: 20px;
-      color: #dfe6ef;
+    .hub-hero h1 span {
+      background: linear-gradient(135deg, #7c3aed, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .script-box li { margin-bottom: 10px; }
-
-    .form-panel {
-      padding: 24px;
+    .hub-hero p {
+      font-size: 18px;
+      color: #8888aa;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    .form-panel h2 {
-      font-size: 28px;
+    /* GUIDES GRID */
+    .guides-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 24px 48px;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
       margin-bottom: 8px;
     }
 
-    .form-panel p {
-      color: var(--muted);
-      font-size: 15px;
+    .section-header p {
+      font-size: 16px;
+      color: #8888aa;
+    }
+
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .guide-card {
+      display: block;
+      padding: 28px;
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .guide-card:hover {
+      border-color: rgba(167,139,250,0.3);
+      transform: translateY(-2px);
+      background: #14141f;
+    }
+
+    .guide-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(167,139,250,0.08);
+      border: 1px solid rgba(167,139,250,0.18);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #a78bfa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .guide-tag.green {
+      background: rgba(34,211,238,0.08);
+      border-color: rgba(34,211,238,0.18);
+      color: #22d3ee;
+    }
+
+    .guide-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 8px;
+      color: #f0f0f8;
+      line-height: 1.35;
+    }
+
+    .guide-card p {
+      font-size: 14px;
+      color: #8888aa;
+      line-height: 1.55;
       margin-bottom: 18px;
     }
 
-    .audit-form {
-      display: grid;
-      gap: 12px;
-    }
-
-    .field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    label {
-      display: grid;
-      gap: 6px;
-      color: #dfe6ef;
+    .guide-cta {
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 700;
+      color: #a78bfa;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      min-height: 46px;
-      padding: 12px 13px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #0b111c;
-      color: var(--text);
-      font: 600 15px 'Inter', sans-serif;
-      outline: none;
+    .guide-lock {
+      font-size: 13px;
+      color: #8888aa;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    textarea {
-      min-height: 102px;
-      resize: vertical;
+    /* NEWSLETTER / SIGNUP */
+    .newsletter-section {
+      background: #0f0f1a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 24px;
+      text-align: center;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--amber);
-      box-shadow: 0 0 0 3px rgba(255,157,66,0.12);
+    .newsletter-inner {
+      max-width: 520px;
+      margin: 0 auto;
     }
 
-    .form-note {
-      color: var(--dim);
+    .newsletter-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.2);
+      border-radius: 100px;
       font-size: 12px;
-      line-height: 1.5;
+      font-weight: 700;
+      color: #22d3ee;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .newsletter-section h2 {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-section .sub {
+      font-size: 16px;
+      color: #8888aa;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1;
+      min-width: 240px;
+      padding: 14px 18px;
+      background: #14141f;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px;
+      color: #f0f0f8;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input[type="email"]:focus { border-color: rgba(167,139,250,0.4); }
+    .signup-form input::placeholder { color: #8888aa; }
+
+    .signup-form button {
+      padding: 14px 26px;
+      background: linear-gradient(135deg, #7c3aed, #22d3ee);
+      color: #0a0a12;
+      font-weight: 800;
+      font-size: 15px;
+      font-family: inherit;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .signup-form button:hover { opacity: 0.9; transform: translateY(-1px); }
+    .signup-form button:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+    .signup-note {
+      font-size: 12px;
+      color: #8888aa;
+      opacity: 0.7;
     }
 
     .form-msg {
       display: none;
-      padding: 13px 14px;
-      border-radius: var(--radius);
+      padding: 14px 20px;
+      border-radius: 9px;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 600;
+      margin-bottom: 12px;
     }
-
     .form-msg.success {
-      display: block;
-      background: rgba(87,224,138,0.1);
-      border: 1px solid rgba(87,224,138,0.26);
-      color: var(--green);
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.2);
+      color: #22d3ee;
     }
-
     .form-msg.error {
-      display: block;
-      background: rgba(255,122,122,0.1);
-      border: 1px solid rgba(255,122,122,0.24);
-      color: var(--red);
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.15);
+      color: #f87171;
     }
 
-    .proof-list {
-      display: grid;
-      gap: 12px;
+    /* BLOG SECTION */
+    .blog-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .blog-section .section-header {
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .post-list {
       list-style: none;
-    }
-
-    .proof-list li {
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.03);
-      color: #dfe6ef;
-    }
-
-    .demo-call {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
-      max-width: 820px;
     }
 
-    .call-line {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.03);
+    .post {
+      display: block;
+      padding: 24px 28px;
+      background: #0f0f1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
     }
+    .post:hover { border-color: rgba(167,139,250,0.3); transform: translateY(-2px); }
 
-    .call-line strong {
-      color: var(--amber-2);
-      font-size: 13px;
-      text-transform: uppercase;
+    .post-meta {
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 6px;
     }
 
-    .call-line span {
-      color: #dfe6ef;
-      font-size: 15px;
+    .post-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 5px;
+      color: #f0f0f8;
     }
 
-    .final-cta {
-      padding: 58px 0 72px;
-      text-align: center;
+    .post-excerpt { font-size: 13px; color: #8888aa; line-height: 1.5; }
+
+    .view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #a78bfa;
+      text-decoration: none;
     }
+    .view-all:hover { opacity: 0.8; }
 
-    .final-cta h2 {
-      font-size: clamp(31px, 4.2vw, 48px);
-      max-width: 820px;
-      margin: 0 auto 14px;
-    }
+    hr.divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
 
-    .final-cta p {
-      color: var(--muted);
-      max-width: 640px;
-      margin: 0 auto 24px;
-      font-size: 17px;
-    }
-
-    @media (max-width: 920px) {
-      .hero,
-      .money-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .quick-panel {
-        position: relative;
-        top: 0;
-      }
-
-      .strip-grid,
-      .cards,
-      .trade-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap { width: min(100% - 32px, 1160px); }
-      .hero { padding-top: 48px; }
-      .hero-actions, .btn { width: 100%; }
-      .strip-grid,
-      .cards,
-      .trade-grid,
-      .field-row {
-        grid-template-columns: 1fr;
-      }
-      .strip-item {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-      .strip-item:last-child { border-bottom: 0; }
-      .phone-line {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-      .call-line {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 600px) {
+      .hub-hero { padding: 48px 20px 40px; }
+      .guides-section, .blog-section { padding-left: 20px; padding-right: 20px; }
+      .newsletter-section { padding: 48px 20px; }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Houston Missed-Call Revenue Audit",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "DispatchAnchor",
-      "telephone": "+17623353110",
-      "areaServed": "Houston, TX",
-      "url": "https://dispatchanchor.com/"
-    },
-    "serviceType": "Missed-call recovery audit and AI phone answering setup",
-    "areaServed": ["Houston", "Pearland", "Sugar Land", "Katy", "Cypress", "The Woodlands", "Spring", "Missouri City"],
-    "offers": {
-      "@type": "Offer",
-      "price": "200",
-      "priceCurrency": "USD",
-      "url": "https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j"
-    }
-  }
-  </script>
 </head>
 <body>
 
@@ -594,388 +354,338 @@
     <a href="/" class="jf-shell-nav-logo"><svg width="28" height="28" viewBox="0 0 96 96" aria-hidden="true" style="filter:drop-shadow(0 0 8px rgba(124,58,237,.5));flex-shrink:0"><defs><linearGradient id="jf-pulse-nav" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="55%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs><path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#jf-pulse-nav)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="48" r="3.5" fill="#a78bfa"/><circle cx="86" cy="48" r="3.5" fill="#22d3ee"/></svg>Jedaiflow</a>
     <div class="jf-shell-nav-links">
       <a href="/articles/">Articles</a>
-      <a href="/guides/" class="jf-shell-nav-hide-sm">Houston Audit</a>
-      <a href="https://dispatchanchor.com/" class="jf-shell-nav-hide-sm">DispatchAnchor</a>
-      <a href="#audit-request" class="jf-shell-nav-cta">Request audit &rarr;</a>
+      <a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a>
+      <a href="/voice-agent-kit.html" class="jf-shell-nav-hide-sm">Products</a>
+      <a href="https://dispatchanchor.com/" class="jf-shell-nav-hide-sm">Home Services</a>
+      <a href="https://dispatchanchor.com/" class="jf-shell-nav-cta">Get Started →</a>
     </div>
   </nav>
   <div class="jf-shell-nav-spacer"></div>
 
-  <main>
-    <div class="wrap hero">
-      <div>
-        <div class="eyebrow">Houston home services</div>
-        <h1>Recover missed calls before they become someone else's booked jobs.</h1>
-        <p class="lead">
-          A fast, practical missed-call revenue audit for Houston plumbers, HVAC teams, electricians, roofers, garage door companies, appliance repair, pest control, and high-ticket home-service operators.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j">Buy the $200 audit &rarr;</a>
-          <a class="btn btn-secondary" href="#audit-request">Request a callback</a>
-          <a class="btn btn-secondary" href="tel:+17623353110">Call (762) 335-3110</a>
-          <a class="btn btn-secondary" href="sms:+17623353110?&body=AUDIT">Text AUDIT</a>
-        </div>
-        <div class="trust-row" aria-label="Offer highlights">
-          <span class="trust-pill">Built in Houston</span>
-          <span class="trust-pill">48-hour setup path</span>
-          <span class="trust-pill">Audit credited toward setup</span>
-          <span class="trust-pill">AI answering + missed-call recovery</span>
-        </div>
-      </div>
+  <!-- HERO -->
+  <div class="hub-hero">
+    <div class="page-label">Free Guides</div>
+    <h1>Practical guides.<br><span>Free to download.</span></h1>
+    <p>
+      AI workflows, lead response tactics, and automation playbooks for home-service businesses. Subscribe to the newsletter and get instant access to all guides.
+    </p>
+  </div>
 
-      <aside class="quick-panel" aria-label="Fast audit offer">
-        <div class="panel-label">Fastest money path</div>
-        <h2>Start with the $200 Missed-Call Revenue Audit.</h2>
-        <div class="price"><strong>$200</strong><span>credited toward setup</span></div>
-        <p class="panel-copy">
-          We review your phone intake, website lead path, after-hours coverage, and follow-up flow, then send the 3 fixes most likely to recover booked jobs quickly.
-        </p>
-        <ul class="panel-list">
-          <li><span class="check">✓</span><span>Call and form leak review</span></li>
-          <li><span class="check">✓</span><span>After-hours and weekend handoff plan</span></li>
-          <li><span class="check">✓</span><span>AI answering setup recommendation</span></li>
-          <li><span class="check">✓</span><span>Simple next-step quote if the fit is good</span></li>
-        </ul>
-        <a class="btn btn-primary" href="https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j" style="width:100%">Buy audit now &rarr;</a>
-        <div class="phone-line"><span>Want the fastest route?</span><a href="sms:+17623353110?&body=AUDIT">Text AUDIT</a></div>
-      </aside>
+  <!-- GUIDE CARDS (email-gated) -->
+  <div class="guides-section">
+    <div class="section-header">
+      <h2>What you get access to</h2>
+      <p>Subscribe below — one email unlocks everything.</p>
     </div>
 
-    <div class="market-strip">
-      <div class="wrap strip-grid">
-        <div class="strip-item">
-          <strong>Customers call first</strong>
-          <span>Emergency and high-intent work still starts on the phone.</span>
-        </div>
-        <div class="strip-item">
-          <strong>Speed wins</strong>
-          <span>The first useful response often gets the appointment.</span>
-        </div>
-        <div class="strip-item">
-          <strong>No big rebuild</strong>
-          <span>Forward calls or add missed-call recovery around your current line.</span>
-        </div>
-        <div class="strip-item">
-          <strong>Houston specific</strong>
-          <span>Built around Houston service areas, urgent calls, and local crews.</span>
-        </div>
-      </div>
+    <div class="guides-grid">
+
+      <a class="guide-card" href="/free/obsidian-ai-vault/" style="border-color:rgba(34,211,238,0.42);position:relative;">
+        <div style="position:absolute;top:10px;right:14px;font-size:11px;font-weight:700;background:linear-gradient(135deg,#22d3ee,#a78bfa);color:#0a0a12;padding:3px 10px;border-radius:6px;">Free PDF</div>
+        <div class="guide-tag green">AI Vault</div>
+        <h3>Obsidian AI Vault Starter Guide</h3>
+        <p>Build a clean command center for prompts, projects, content, and AI tool handoffs without turning your vault into a junk drawer.</p>
+        <div class="guide-cta" style="color:#22d3ee">Get the free guide →</div>
+      </a>
+
+      <!-- Paid product — featured badge -->
+      <a class="guide-card" href="/products/ai-money-machine.html" style="border-color:rgba(34,211,238,0.45);position:relative;">
+        <div style="position:absolute;top:10px;right:14px;font-size:11px;font-weight:700;background:linear-gradient(135deg,#22d3ee,#a78bfa);color:#0a0a12;padding:3px 10px;border-radius:6px;">$9 • Instant</div>
+        <div class="guide-tag green">Prompt Pack</div>
+        <h3>The AI Money Machine: 200+ Business Prompts</h3>
+        <p>Plug-and-play prompts for content, sales, SOPs, proposals, strategy, customer service, and freelancer workflows.</p>
+        <div class="guide-cta" style="color:#22d3ee">Preview the prompt pack →</div>
+      </a>
+
+      <a class="guide-card" href="/products/gpt-55-playbook.html" style="border-color:rgba(167,139,250,0.48);position:relative;">
+        <div style="position:absolute;top:10px;right:14px;font-size:11px;font-weight:700;background:linear-gradient(135deg,#a78bfa,#22d3ee);color:#0a0a12;padding:3px 10px;border-radius:6px;">$7 • Instant</div>
+        <div class="guide-tag">GPT-5.5 Playbook</div>
+        <h3>The GPT-5.5 Playbook</h3>
+        <p>Use GPT-5.5 like an agent: delegate complex work, build Codex-style workflows, analyze large context, and verify outputs.</p>
+        <div class="guide-cta" style="color:#a78bfa">Preview the playbook →</div>
+      </a>
+
+      <a class="guide-card" href="/voice-agent-kit.html" style="border-color:rgba(167,139,250,0.4);position:relative;">
+        <div style="position:absolute;top:10px;right:14px;font-size:11px;font-weight:700;background:linear-gradient(135deg,#7c3aed,#22d3ee);color:#0a0a12;padding:3px 10px;border-radius:6px;">$15 • Instant</div>
+        <div class="guide-tag">Product</div>
+        <h3>AI Voice Agent Builder's Kit</h3>
+        <p>Build your own AI phone assistant in under an hour. Twilio, ElevenLabs, bridge server, custom tools, and Obsidian brain — step-by-step.</p>
+        <div class="guide-cta" style="color:var(--accent)">Browse the kit →</div>
+      </a>
+
+      <a class="guide-card" href="/free/25-ai-business-prompts.html">
+        <div class="guide-tag">Free Sample</div>
+        <h3>25 Free AI Business Prompts</h3>
+        <p>Preview the prompt style with free examples for content, sales, SOPs, strategy, proposals, and customer service.</p>
+        <div class="guide-cta">Open the free sample →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag green">Lead Response</div>
+        <h3>Home Services Lead Response Guide</h3>
+        <p>Scripts and timing for turning missed calls into booked jobs — built for plumbers, HVAC, and electricians.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag">AI Workflows</div>
+        <h3>The AI Automation Guide</h3>
+        <p>Step-by-step playbook for setting up AI workflows that handle lead intake, follow-up, and booking.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag green">Blueprint</div>
+        <h3>The AI Automation Blueprint Pack</h3>
+        <p>Copy-paste automation blueprints for the most common home-service scenarios — HVAC, plumbing, electrical.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag">Advanced</div>
+        <h3>Jedaiflow Mastery Guide</h3>
+        <p>Full playbook — from first AI call to full automation stack. Every tool, every workflow, every integration.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
+      <a class="guide-card" href="#newsletter">
+        <div class="guide-tag">Business</div>
+        <h3>The AI Side Hustle Guide</h3>
+        <p>How to build and sell AI automation services to local businesses — positioning, pricing, outreach.</p>
+        <div class="guide-cta">🔓 Subscribe to download →</div>
+      </a>
+
     </div>
+  </div>
 
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <h2>What the call should sound like.</h2>
-          <p>
-            The audit is not a theory document. It maps the intake flow your customer should experience when nobody on the crew can pick up.
-          </p>
-        </div>
-        <div class="demo-call" aria-label="Sample DispatchAnchor call flow">
-          <div class="call-line">
-            <strong>Caller</strong>
-            <span>Hi, my AC went out and the house is already getting hot. Are you available today?</span>
-          </div>
-          <div class="call-line">
-            <strong>Agent</strong>
-            <span>Thanks for calling. I can help get the details over. What is your name, service address, and the best number for the technician to call back?</span>
-          </div>
-          <div class="call-line">
-            <strong>Caller</strong>
-            <span>It is Maria on Cullen Boulevard. The system stopped cooling about an hour ago.</span>
-          </div>
-          <div class="call-line">
-            <strong>Agent</strong>
-            <span>Got it. I am marking this as urgent AC service. I will send the summary to the team now: no cooling, today request, Cullen Boulevard, callback needed.</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <hr class="divider">
 
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Sell the leak they already feel.</h2>
-          <p>
-            Contractors do not need another vague AI pitch. They need fewer missed calls, faster follow-up, cleaner intake notes, and less lost revenue when the team is on a job.
-          </p>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <h3>Missed-call recovery</h3>
-            <p>When a call is missed, the system can trigger the right follow-up path, ask what service is needed, capture urgency, and alert the right person.</p>
-          </article>
-          <article class="card">
-            <h3>24/7 call answering</h3>
-            <p>An AI dispatcher can answer after-hours calls, collect job details, and flag emergencies instead of sending every caller to voicemail.</p>
-          </article>
-          <article class="card">
-            <h3>Booking-ready summaries</h3>
-            <p>Every lead can arrive with name, number, service, address, urgency, preferred time, and a short call summary.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Best-fit Houston trades.</h2>
-          <p>
-            Prioritize phone-heavy businesses where one booked job can pay for the audit or the monthly coverage.
-          </p>
-        </div>
-        <div class="trade-grid" aria-label="Target Houston trades">
-          <div class="trade">Plumbing</div>
-          <div class="trade">HVAC</div>
-          <div class="trade">Electrical</div>
-          <div class="trade">Roofing</div>
-          <div class="trade">Garage Door</div>
-          <div class="trade">Appliance Repair</div>
-          <div class="trade">Pest Control</div>
-          <div class="trade">Locksmith</div>
-          <div class="trade">Restoration</div>
-          <div class="trade">Pool Service</div>
-          <div class="trade">Handyman</div>
-          <div class="trade">Pressure Washing</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="audit-request">
-      <div class="wrap money-layout">
-        <div>
-          <div class="section-head">
-            <h2>Request the Houston audit.</h2>
-            <p>
-              The best prospect is a local operator who answers the phone personally, advertises emergency or after-hours work, or has a website that pushes people to call but no backup when nobody answers.
-            </p>
-          </div>
-          <div class="script-box">
-            <p><strong>What happens next:</strong></p>
-            <ol>
-              <li>We check the site and intake path for obvious lead leaks.</li>
-              <li>We map the fastest fix: SMS intake, callback workflow, approved follow-up, AI answering, after-hours triage, or call summary workflow.</li>
-              <li>You get a short action plan and a setup quote if DispatchAnchor is a fit.</li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="form-panel">
-          <h2>Get a callback</h2>
-          <p>Use this if you want the audit but would rather talk first. Phone is required because this is a phone-revenue problem.</p>
-          <div class="form-msg" id="audit-form-msg"></div>
-          <form class="audit-form" id="audit-form" novalidate>
-            <div class="field-row">
-              <label>
-                Your name
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-              <label>
-                Company
-                <input type="text" name="company" autocomplete="organization" required />
-              </label>
-            </div>
-            <div class="field-row">
-              <label>
-                Phone
-                <input type="tel" name="phone" autocomplete="tel" required />
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" autocomplete="email" />
-              </label>
-            </div>
-            <div class="field-row">
-              <label>
-                Trade
-                <select name="trade" required>
-                  <option value="">Choose one</option>
-                  <option>Plumbing</option>
-                  <option>HVAC</option>
-                  <option>Electrical</option>
-                  <option>Roofing</option>
-                  <option>Garage door</option>
-                  <option>Appliance repair</option>
-                  <option>Pest control</option>
-                  <option>Locksmith</option>
-                  <option>Restoration</option>
-                  <option>Pool service</option>
-                  <option>Handyman</option>
-                  <option>Pressure washing</option>
-                  <option>Other home service</option>
-                </select>
-              </label>
-              <label>
-                Website
-                <input type="url" name="website" placeholder="https://example.com" />
-              </label>
-            </div>
-            <label>
-              What is leaking right now?
-              <textarea name="message" placeholder="Example: We miss calls when techs are on jobs, after-hours calls go to voicemail, or leads sit too long before callback."></textarea>
-            </label>
-            <input type="hidden" name="source" value="houston-guides-money-page" />
-            <button class="btn btn-primary" id="audit-submit" type="submit">Request callback &rarr;</button>
-            <p class="form-note">
-              Prefer to skip the callback? Buy the $200 audit now and we will prioritize the review. If you move forward with setup, the audit is credited toward setup.
-            </p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap money-layout">
-        <div>
-          <div class="section-head">
-            <h2>Use the free checklist for DIY triage.</h2>
-            <p>
-              If a contractor is not ready to buy, give them the missed-call checklist and follow up with the audit after they see the leak.
-            </p>
-          </div>
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="/assets/missed-call-recovery-checklist.html">Open the checklist</a>
-            <a class="btn btn-secondary" href="/blog/five-minute-missed-call-follow-up-workflow.html">Read the 5-minute workflow</a>
-          </div>
-        </div>
-        <ul class="proof-list">
-          <li><strong>Manual first:</strong> start with text/callback scripts, lead logs, and call review.</li>
-          <li><strong>Automate second:</strong> use AI answering after the lead path is obvious.</li>
-          <li><strong>Sell the outcome:</strong> fewer missed calls, better notes, faster follow-up, more booked jobs.</li>
-        </ul>
-      </div>
-    </section>
-
-    <div class="wrap final-cta">
-      <h2>Houston contractors do not need a prettier voicemail. They need the call handled.</h2>
-      <p>
-        Buy the $200 audit, call Alex, or send the callback request. The goal is simple: identify the money leak and install the fastest recovery path.
+  <!-- NEWSLETTER SIGNUP (paywall) -->
+  <div class="newsletter-section" id="newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-badge">Free Access</div>
+      <h2>Subscribe. Download everything.</h2>
+      <p class="sub">
+        One email gets you instant access to all guides — plus a new guide every week, tips on AI phone answering, and what's actually working in home services right now.
       </p>
-      <div class="hero-actions" style="justify-content:center">
-        <a class="btn btn-primary" href="https://buy.stripe.com/8x2bJ39f83TV6CC5Zt0RG0j">Buy the $200 audit &rarr;</a>
-        <a class="btn btn-secondary" href="tel:+17623353110">Call (762) 335-3110</a>
-        <a class="btn btn-secondary" href="sms:+17623353110?&body=AUDIT">Text AUDIT</a>
-        <a class="btn btn-secondary" href="mailto:audit@dispatchanchor.com?subject=Houston%20Missed-Call%20Revenue%20Audit">Email audit@dispatchanchor.com</a>
-      </div>
-    </div>
-  </main>
 
+      <div class="form-msg" id="form-msg"></div>
+
+      <form class="signup-form" id="signup-form" novalidate data-guide="all-guides">
+        <input type="email" id="email-input" placeholder="your@email.com" required autocomplete="email" />
+        <button type="submit" id="submit-btn">Get free guides →</button>
+      </form>
+      <p class="signup-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- BLOG -->
+  <div class="blog-section">
+    <div class="section-header">
+      <h2>From the articles</h2>
+      <p>Field notes — no signup required.</p>
+    </div>
+
+    <ul class="post-list">
+      <li>
+        <a class="post" href="/blog/same-day-estimate-follow-up-workflow.html">
+          <div class="post-meta">May 2, 2026 · 7 min read · New</div>
+          <div class="post-title">The Same-Day Estimate Follow-Up Workflow: How AI Keeps Home-Service Leads Warm</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/obsidian-vault-ai-business-brain.html">
+          <div class="post-meta">May 1, 2026 · 8 min read · New</div>
+          <div class="post-title">How to Build an Obsidian Vault Your AI Tools Can Actually Use</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/ai-intake-scorecard-home-services.html">
+          <div class="post-meta">May 1, 2026 · 7 min read · New</div>
+          <div class="post-title">The AI Intake Scorecard: 6 Questions That Turn Calls Into Booked Jobs</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/ai-lead-review-workflow-home-services.html">
+          <div class="post-meta">April 30, 2026 · 7 min read · New</div>
+          <div class="post-title">The 15-Minute AI Lead Review That Shows Where Home-Service Revenue Is Leaking</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/five-minute-missed-call-follow-up-workflow.html">
+          <div class="post-meta">April 29, 2026 · 7 min read · New</div>
+          <div class="post-title">The 5-Minute Missed-Call Follow-Up Workflow for Home-Service Leads</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/weekend-call-triage-ai-home-services.html">
+          <div class="post-meta">April 25, 2026 · 7 min read · New</div>
+          <div class="post-title">Weekend Call Triage: The AI Workflow That Stops Home-Service Leads From Going Cold</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/how-to-use-gpt-55-like-an-agent.html">
+          <div class="post-meta">April 24, 2026 · 6 min read · New</div>
+          <div class="post-title">How to Use GPT-5.5 Like an Agent, Not a Search Box</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/fix-ai-phone-agent-prompts">
+          <div class="post-meta">April 24, 2026 · 5 min read · New</div>
+          <div class="post-title">Your AI Phone Agent Sounds Robotic Because of One Prompt Mistake — Here Is the Fix</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/build-ai-phone-agent-under-an-hour">
+          <div class="post-meta">April 23, 2026 · 7 min read · New</div>
+          <div class="post-title">How to Build a Custom AI Phone Agent for Your Business in Under an Hour</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/ai-lead-response-system.html">
+          <div class="post-meta">April 22, 2026 · 7 min read</div>
+          <div class="post-title">From Missed Call to Booked Job: The Exact AI Lead Response System for Home Services</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/electrician-after-hours-calls">
+          <div class="post-meta">April 22, 2026 · 4 min read</div>
+          <div class="post-title">Houston Electricians: 60% of After-Hours Emergency Calls Go to Voicemail — Here Is What They Cost</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/daily-ai-content-workflow.html">
+          <div class="post-meta">April 19, 2026 · 6 min read</div>
+          <div class="post-title">The Daily AI Content Workflow I Use for Blog, LinkedIn, and X</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/ai-workflows-for-home-services.html">
+          <div class="post-meta">April 18, 2026 · 7 min read</div>
+          <div class="post-title">7 AI Workflows I'm Using to Help Home-Service Businesses Answer Leads Faster</div>
+        </a>
+      </li>
+      <li>
+        <a class="post" href="/blog/openclaw-claude-mac-workaround">
+          <div class="post-meta">April 13, 2026 · 6 min read</div>
+          <div class="post-title">Claude Mac + OpenClaw: The Free Workaround After Anthropic's Subscription Changes</div>
+        </a>
+      </li>
+    </ul>
+
+    <a class="view-all" href="/articles/">View all articles →</a>
+  </div>
+
+  <!-- JF:FOOTER:START v1 -->
   <footer class="jf-shell-footer">
     <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
     <p class="jf-shell-footer-tagline">
-      Practical AI systems for Houston operators. DispatchAnchor is the phone-answering and missed-call recovery offer for home services.
+      Practical AI for builders and operators. Learn AI. Ship real things.
     </p>
     <div class="jf-shell-footer-links">
       <a href="/articles/">Articles</a>
-      <a href="/guides/">Houston Audit</a>
-      <a href="https://dispatchanchor.com/">DispatchAnchor</a>
-      <a href="tel:+17623353110">(762) 335-3110</a>
-      <a href="mailto:audit@dispatchanchor.com">audit@dispatchanchor.com</a>
+      <a href="/guides/">Guides</a>
+      <a href="/voice-agent-kit.html">Products</a>
+      <a href="https://dispatchanchor.com/">Home Services</a>
+      <a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a>
     </div>
-    <div class="jf-shell-footer-legal">&copy; 2026 Jedaiflow. All rights reserved.</div>
+    <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
   </footer>
+  <!-- JF:FOOTER:END -->
 
   <script>
-    var AUDIT_WEBHOOK = 'https://hook.us2.make.com/2qi68q1xvuz1gguvb3bo1l1iebqxdl6j';
-    var MAILERLITE_FORM = 'https://assets.mailerlite.com/jsonp/2266464/forms/185101564947465342/subscribe';
-
-    document.querySelectorAll('a[href="#audit-request"]').forEach(function(anchor) {
-      anchor.addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('audit-request').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Smooth scroll for guide card clicks
+    document.querySelectorAll('a[href="#newsletter"]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('newsletter').scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(function() {
-          var nameInput = document.querySelector('#audit-form input[name="name"]');
-          if (nameInput) nameInput.focus();
-        }, 500);
+          document.getElementById('email-input').focus();
+        }, 600);
       });
     });
 
-    function validEmail(value) {
-      return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    }
+    // Form submission → Dual approach: MailerLite + Google Sheets backup
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('email-input').value.trim();
+      var btn = document.getElementById('submit-btn');
+      var msg = document.getElementById('form-msg');
 
-    function showMessage(type, text) {
-      var msg = document.getElementById('audit-form-msg');
-      msg.className = 'form-msg ' + type;
-      msg.textContent = text;
-      msg.style.display = 'block';
-    }
-
-    document.getElementById('audit-form').addEventListener('submit', async function(event) {
-      event.preventDefault();
-
-      var form = event.currentTarget;
-      var button = document.getElementById('audit-submit');
-      var data = new FormData(form);
-      var email = (data.get('email') || '').toString().trim();
-      var phone = (data.get('phone') || '').toString().trim();
-      var name = (data.get('name') || '').toString().trim();
-      var company = (data.get('company') || '').toString().trim();
-      var trade = (data.get('trade') || '').toString().trim();
-
-      if (!name || !company || !phone || !trade) {
-        showMessage('error', 'Please add your name, company, phone, and trade so we can route the callback.');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.className = 'form-msg error';
+        msg.textContent = 'Please enter a valid email address.';
+        msg.style.display = 'block';
         return;
       }
 
-      if (!validEmail(email)) {
-        showMessage('error', 'Please enter a valid email address or leave it blank.');
-        return;
-      }
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+      msg.style.display = 'none';
 
-      button.disabled = true;
-      button.textContent = 'Sending...';
+      var guide = document.getElementById('signup-form').dataset.guide || 'newsletter';
 
-      var params = new URLSearchParams(window.location.search);
-      var payload = {
-        name: name,
-        company: company,
-        phone: phone,
-        email: email,
-        trade: trade,
-        website: (data.get('website') || '').toString().trim(),
-        message: (data.get('message') || '').toString().trim(),
-        source: 'houston-guides-money-page',
-        offer: 'Houston Missed-Call Revenue Audit',
-        page_url: window.location.href,
-        utm_source: params.get('utm_source') || '',
-        utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        submitted_at: new Date().toISOString()
-      };
+      // 1. Send to MailerLite (primary)
+      var mlFormData = new FormData();
+      mlFormData.append('fields[email]', email);
+      mlFormData.append('ml_submit', '1');
+      mlFormData.append('anticsrf', 'true');
 
-      var mlPromise = Promise.resolve();
-      if (email) {
-        var mlData = new FormData();
-        mlData.append('fields[email]', email);
-        mlData.append('fields[name]', name);
-        mlData.append('ml_submit', '1');
-        mlData.append('anticsrf', 'true');
-        mlPromise = fetch(MAILERLITE_FORM, { method: 'POST', body: mlData, mode: 'no-cors' }).catch(function() {});
-      }
+      var mlPromise = fetch('https://assets.mailerlite.com/jsonp/2266464/forms/185101564947465342/subscribe', {
+        method: 'POST',
+        body: mlFormData,
+        mode: 'no-cors'
+      });
 
-      try {
-        await Promise.all([
-          mlPromise,
-          fetch(AUDIT_WEBHOOK, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-        ]);
+      // 2. Send to Google Sheets backup (for confirmations + notifications)
+      var backupPromise = fetch('{{GOOGLE_SCRIPT_URL}}', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          guide: guide,
+          source: window.location.href
+        })
+      });
 
-        showMessage('success', 'Got it. We will follow up. For the fastest path, buy the $200 audit on the next page.');
-        form.reset();
-        setTimeout(function() {
-          window.location.href = '/guides/thank-you.html?offer=houston-audit';
-        }, 700);
-      } catch (error) {
-        showMessage('error', 'The form had trouble sending. Please call (762) 335-3110 or email audit@dispatchanchor.com.');
-      } finally {
-        button.disabled = false;
-        button.textContent = 'Request callback \u2192';
-      }
+      // Wait for backup (MailerLite is fire-and-forget with no-cors)
+      Promise.race([backupPromise, new Promise(r => setTimeout(r, 3000))])
+        .then(function(response) {
+          if (response && response.ok) {
+            return response.json();
+          }
+          return { success: true }; // Fallback if backup fails
+        })
+        .then(function(data) {
+          // Success - redirect to thank you
+          var redirectUrl = '/guides/thank-you.html';
+          if (guide && guide !== 'newsletter') {
+            redirectUrl += '?guide=' + encodeURIComponent(guide) + '&email=' + encodeURIComponent(email);
+          }
+          window.location.href = redirectUrl;
+        })
+        .catch(function() {
+          // Even if backup fails, MailerLite probably worked
+          window.location.href = '/guides/thank-you.html';
+        });
     });
+  </script>
+
+  <!-- Scroll-to-top: company logo mark -->
+  <style>
+    .scroll-top{position:fixed;bottom:28px;right:28px;z-index:200;width:50px;height:50px;border-radius:50%;background:rgba(15,15,38,0.9);border:1px solid rgba(167,139,250,0.35);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,transform .2s,border-color .2s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 28px rgba(124,58,237,.3);}
+    .scroll-top.visible{opacity:1;visibility:visible;}
+    .scroll-top:hover{transform:translateY(-3px);border-color:rgba(167,139,250,.65);}
+  </style>
+  <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+    <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true" style="filter:drop-shadow(0 0 6px rgba(124,58,237,.7))"><defs><linearGradient id="fab-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="55%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs><path d="M10 48 L34 48 L42 30 L54 66 L62 48 L86 48" fill="none" stroke="url(#fab-g)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="48" r="3.5" fill="#a78bfa"/><circle cx="86" cy="48" r="3.5" fill="#22d3ee"/></svg>
+  </button>
+  <script>
+    var fab=document.getElementById('scroll-top');
+    window.addEventListener('scroll',function(){if(window.scrollY>300)fab.classList.add('visible');else fab.classList.remove('visible');},{passive:true});
+    fab.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
   </script>
 
 </body>
