@@ -1,7 +1,7 @@
 # Graph Report - fupela.github.io  (2026-05-12)
 
 ## Corpus Check
-- 39 files · ~294,121 words
+- 39 files · ~294,456 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
