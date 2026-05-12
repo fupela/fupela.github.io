@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Start Here | Jedaiflow</title>
-  <meta name="description" content="Start with Jedaiflow: free AI workflows, missed-call recovery checklist, practical automation guides, and a soft handoff to DispatchAnchor for home-service implementation." />
+  <meta name="description" content="New to Jedaiflow? Start with the free Obsidian AI Vault guide, prompt packs, GPT/Claude/Codex operator workflows, or DispatchAnchor for home-service lead response." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://jedaiflow.com/start/" />
+  <meta property="og:title" content="Start Here | Jedaiflow" />
+  <meta property="og:description" content="Choose your next step: organize your AI workflow, improve your prompts, learn operator-style AI, or fix missed calls for a home-service business." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jedaiflow.com/start/" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png">
   <link rel="apple-touch-icon" href="/favicon-180.png">
@@ -14,59 +19,124 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/jf-shell.css?v=1" />
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,system-ui,sans-serif;background:#070711;color:#f7f7ff;line-height:1.65}.wrap{max-width:1120px;margin:0 auto;padding:74px 24px}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#22d3ee;margin-bottom:14px}h1{font-family:Sora,Inter,sans-serif;font-size:clamp(42px,7vw,78px);line-height:1.02;letter-spacing:-2.5px;margin-bottom:18px}h1 span{background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.lead{font-size:20px;color:#c9c9dd;max-width:760px;margin-bottom:24px}.card{background:linear-gradient(180deg,rgba(17,17,31,.97),rgba(10,10,18,.97));border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:26px;box-shadow:0 24px 70px rgba(0,0,0,.35)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 20px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#22d3ee);color:#05050a;text-decoration:none;font-weight:900;border:0;cursor:pointer}.ghost{background:#151526;color:#fff;border:1px solid rgba(255,255,255,.12)}.row{display:flex;gap:12px;flex-wrap:wrap}.section{margin-top:64px}.section h2{font-family:Sora;font-size:34px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.item{background:#10101d;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px}.item h3{font-size:18px;color:#fff;margin-bottom:8px}.item p,.muted{color:#bdbdd2}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field label{font-size:13px;font-weight:900;color:#e8e8ff}.field input,.field select{border:1px solid rgba(255,255,255,.12);background:#0c0c17;color:#fff;border-radius:12px;padding:13px 14px;font:inherit}.form-card .btn{width:100%;margin-top:6px}.small{font-size:13px;color:#9292aa;margin-top:10px}.steps{counter-reset:s;display:grid;gap:12px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}.step:before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#22d3ee);display:grid;place-items:center;color:#05050a;font-weight:900}.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:860px){.hero,.grid,.split{grid-template-columns:1fr}h1{font-size:42px}}
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#070711;--panel:#10101d;--panel2:#151526;--text:#f7f7ff;--muted:#bdbdd2;--line:rgba(255,255,255,.09);--purple:#a78bfa;--cyan:#22d3ee;--green:#34d399;--pink:#f472b6;--grad:linear-gradient(135deg,#7c3aed,#22d3ee)}
+    body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 20% 0%,rgba(124,58,237,.28),transparent 34%),radial-gradient(circle at 88% 18%,rgba(34,211,238,.18),transparent 30%),var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+    a{color:inherit}.wrap{max-width:1160px;margin:0 auto;padding:72px 22px}.hero{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(320px,.96fr);gap:34px;align-items:center;padding-top:54px}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}h1{font-family:Sora,Inter,sans-serif;font-size:clamp(42px,7vw,82px);line-height:1.01;letter-spacing:-2.7px;margin-bottom:18px}h1 span,.grad{background:linear-gradient(135deg,#c4b5fd,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.lead{font-size:20px;color:#d6d6e8;max-width:760px;margin-bottom:24px}.row{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 20px;border-radius:15px;background:var(--grad);color:#05050a;text-decoration:none;font-weight:900;border:0;box-shadow:0 18px 55px rgba(34,211,238,.13),0 12px 44px rgba(124,58,237,.24)}.btn.secondary{background:#151526;color:#fff;border:1px solid var(--line);box-shadow:none}.card{background:linear-gradient(180deg,rgba(17,17,31,.97),rgba(10,10,18,.97));border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.32)}.hero-card h2{font-family:Sora;font-size:28px;line-height:1.12;margin-bottom:10px}.hero-card p{color:var(--muted);margin-bottom:16px}.mini-list{display:grid;gap:10px;margin:18px 0}.mini-list li{list-style:none;display:flex;gap:10px;color:#e8e8ff}.mini-list li::before{content:"✓";color:var(--green);font-weight:900}.section{margin-top:70px}.section-head{max-width:760px;margin-bottom:22px}.section h2{font-family:Sora;font-size:clamp(30px,4vw,46px);line-height:1.08;margin-bottom:12px}.section-head p{color:var(--muted);font-size:18px}.path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.path-card{position:relative;min-height:300px;display:flex;flex-direction:column;gap:13px;background:linear-gradient(180deg,rgba(16,16,29,.98),rgba(12,12,22,.98));border:1px solid var(--line);border-radius:24px;padding:22px;text-decoration:none;transition:transform .18s ease,border-color .18s ease}.path-card:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.45)}.tag{display:inline-flex;width:max-content;border-radius:999px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.22);color:#ddd6fe;font-weight:900;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px}.path-card:nth-child(1) .tag{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.24);color:#a5f3fc}.path-card:nth-child(2) .tag{background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.24);color:#bbf7d0}.path-card:nth-child(4) .tag{background:rgba(244,114,182,.12);border-color:rgba(244,114,182,.24);color:#fbcfe8}.path-card h3{font-size:22px;line-height:1.16}.path-card p{color:var(--muted)}.path-card strong{margin-top:auto;color:#fff}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.callout{border-color:rgba(34,211,238,.22);background:linear-gradient(135deg,rgba(34,211,238,.08),rgba(124,58,237,.08)),rgba(16,16,29,.92)}.tool-list{display:grid;gap:12px;margin-top:16px}.tool{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:12px}.tool b{color:#fff}.tool span{color:var(--muted)}.soft{color:#9ca3af;font-size:13px;margin-top:12px}.story p{color:var(--muted);margin-bottom:12px}.footer-cta{text-align:center;border-radius:30px;background:linear-gradient(135deg,rgba(124,58,237,.20),rgba(34,211,238,.12));border:1px solid rgba(255,255,255,.10);padding:42px 24px}.footer-cta p{color:#d6d6e8;max-width:720px;margin:0 auto 20px}@media(max-width:980px){.hero,.split{grid-template-columns:1fr}.path-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.wrap{padding:44px 18px}.hero{padding-top:32px}h1{font-size:42px;letter-spacing:-1.7px}.lead{font-size:18px}.path-grid{grid-template-columns:1fr}.card{padding:22px}.tool{display:block}.tool span{display:block;margin-top:4px}.jf-shell-nav-links .jf-shell-nav-hide-sm{display:none!important}}
   </style>
 </head>
 <body>
   <nav class="jf-shell-nav">
     <a href="/" class="jf-shell-nav-logo">Jedaiflow</a>
-    <div class="jf-shell-nav-links"><a href="/articles/">Articles</a><a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a><a href="/free/" class="jf-shell-nav-hide-sm">Free</a><a href="/start/" class="jf-shell-nav-cta">Start Here →</a></div>
+    <div class="jf-shell-nav-links"><a href="/articles/">Articles</a><a href="/guides/" class="jf-shell-nav-hide-sm">Guides</a><a href="/free/obsidian-ai-vault/" class="jf-shell-nav-hide-sm">Free Vault Guide</a><a href="/start/" class="jf-shell-nav-cta">Start Here →</a></div>
   </nav>
   <div class="jf-shell-nav-spacer"></div>
 
   <main class="wrap">
     <section class="hero">
       <div>
-        <div class="eyebrow">Practical AI systems for operators</div>
-        <h1>Start building an <span>AI operating system</span> for real work.</h1>
-        <p class="lead">Jedaiflow teaches the workflows: lead capture, missed-call recovery, inbox routing, AI agents, and practical automation. If you want the home-service version done for you, DispatchAnchor implements it.</p>
-        <div class="row"><a class="btn" href="/free/missed-call-recovery/">Get the free checklist</a><a class="btn ghost" href="/products/ai-business-automation-starter-kit.html">See the starter kit</a></div>
+        <div class="eyebrow">New here? Start with the right path</div>
+        <h1>Turn AI chaos into a <span>working system</span>.</h1>
+        <p class="lead">If you found Jedaiflow from TikTok, X, LinkedIn, or a blog post, this is the fastest way to pick your next step: organize your AI workflow, get better prompts, learn operator-style AI, or fix missed calls in a home-service business.</p>
+        <div class="row"><a class="btn" href="/free/obsidian-ai-vault/">Start free: AI Vault Guide →</a><a class="btn secondary" href="#paths">Choose your path</a></div>
       </div>
-      <div class="card form-card">
-        <div class="eyebrow">Get the free system</div>
-        <h2>The Missed-Call Recovery Checklist</h2>
-        <p class="muted">A short checklist for capturing leads faster, following up cleanly, and knowing when automation makes sense.</p>
-        <form action="https://maya.jedaiflow.com/jedaiflow/lead" method="post">
-          <div class="field"><label for="name">First name</label><input id="name" name="name" autocomplete="given-name" placeholder="John" /></div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" /></div>
-          <div class="field"><label for="interest">What are you building?</label><select id="interest" name="interest"><option value="missed-call-recovery">Missed-call / lead follow-up system</option><option value="ai-agent-workflow">AI agent workflow</option><option value="business-automation">Business automation</option><option value="dispatchanchor-implementation">Done-for-you home-service implementation</option></select></div>
-          <input type="hidden" name="source" value="jedaiflow-start-page" />
-          <input type="hidden" name="redirect" value="https://jedaiflow.com/free/missed-call-recovery/thanks.html" />
-          <button class="btn" type="submit">Send me the checklist</button>
-        </form>
-        <div class="small">No spam. Jedaiflow sends practical workflow resources and product updates.</div>
-      </div>
+      <aside class="card hero-card">
+        <div class="eyebrow">Main free resource</div>
+        <h2>Obsidian AI Vault Starter Guide</h2>
+        <p>Build a simple command center your AI tools can actually use instead of re-explaining your business every time.</p>
+        <ul class="mini-list">
+          <li>Starter vault structure</li>
+          <li>Daily command center template</li>
+          <li>AI handoff notes for Codex/Claude-style work</li>
+          <li>Content funnel from idea to article to paid guide</li>
+        </ul>
+        <a class="btn" href="/free/obsidian-ai-vault/">Get the free guide</a>
+        <div class="soft">No hard pitch. Practical templates first.</div>
+      </aside>
     </section>
 
-    <section class="section">
-      <h2>Choose your path</h2>
-      <div class="grid">
-        <div class="item"><h3>Learn the system</h3><p>Start with free checklists and articles on missed calls, AI inbox routing, follow-up, and agent workflows.</p><p><a href="/free/missed-call-recovery/">Free checklist →</a></p></div>
-        <div class="item"><h3>Build it yourself</h3><p>Use Jedaiflow guides and starter kits to assemble your own practical AI operating workflows.</p><p><a href="/products/ai-business-automation-starter-kit.html">Starter kit →</a></p></div>
-        <div class="item"><h3>Have it implemented</h3><p>For home-service companies, DispatchAnchor can set up the AI phone/dispatch workflow directly.</p><p><a href="https://dispatchanchor.com">DispatchAnchor →</a></p></div>
+    <section class="section" id="paths">
+      <div class="section-head">
+        <div class="eyebrow">Pick the outcome you want</div>
+        <h2>Four ways to use Jedaiflow</h2>
+        <p>Jedaiflow is the education and workflow brand. DispatchAnchor is the done-for-you home-service implementation path.</p>
+      </div>
+      <div class="path-grid">
+        <a class="path-card" href="/free/obsidian-ai-vault/">
+          <span class="tag">Free guide</span>
+          <h3>I want to organize my AI workflow.</h3>
+          <p>Turn scattered prompts, notes, projects, and agent work into one clean operating vault.</p>
+          <strong>Obsidian AI Vault Starter Guide →</strong>
+        </a>
+        <a class="path-card" href="/products/ai-money-machine.html">
+          <span class="tag">Prompt pack</span>
+          <h3>I want better prompts.</h3>
+          <p>Use practical prompts for content, sales, offers, SOPs, service delivery, and everyday business output.</p>
+          <strong>AI Money Machine prompt pack →</strong>
+        </a>
+        <a class="path-card" href="/products/gpt-55-playbook.html">
+          <span class="tag">Playbook</span>
+          <h3>I want to use GPT, Claude, and Codex like an operator.</h3>
+          <p>Move beyond chat. Learn how to give AI outcomes, context, constraints, tools, and verification loops.</p>
+          <strong>GPT-5.5 Playbook →</strong>
+        </a>
+        <a class="path-card" href="https://dispatchanchor.com/">
+          <span class="tag">Done-for-you</span>
+          <h3>I run a home-service business and miss calls or leads.</h3>
+          <p>See the DispatchAnchor path for AI phone answering, lead capture, and missed-call recovery.</p>
+          <strong>DispatchAnchor →</strong>
+        </a>
       </div>
     </section>
 
     <section class="section split">
-      <div class="card"><div class="eyebrow">Workflow</div><h2>The Jedaiflow loop</h2><div class="steps"><div class="step"><div><strong>Teach one practical workflow.</strong><p class="muted">Article, checklist, or short guide.</p></div></div><div class="step"><div><strong>Capture the interested reader.</strong><p class="muted">Route forms into the local Jedaiflow CRM.</p></div></div><div class="step"><div><strong>Nurture with proof.</strong><p class="muted">Show the operating system being built in public.</p></div></div><div class="step"><div><strong>Offer the right next step.</strong><p class="muted">Guide, starter kit, or DispatchAnchor implementation.</p></div></div></div></div>
-      <div class="card"><div class="eyebrow">Current offers</div><h2>What to do next</h2><p class="muted">If you run a home-service business, start with the missed-call checklist. If you are a builder/operator, start with the automation starter kit. If you want the home-service workflow done for you, go to DispatchAnchor.</p><div class="row" style="margin-top:18px"><a class="btn" href="/free/missed-call-recovery/">Free checklist</a><a class="btn ghost" href="/articles/">Read articles</a></div></div>
+      <div class="card story">
+        <div class="eyebrow">Backstory</div>
+        <h2>Why this exists</h2>
+        <p>Most people do not have an AI problem. They have a context problem. Their notes live in one app, prompts in another, website tasks in another, and every AI conversation starts from zero.</p>
+        <p>Jedaiflow is where I document the practical systems: the prompts, vault structure, lead magnets, agent handoffs, and business workflows that turn AI from random experiments into repeatable output.</p>
+        <p>Use the free resources first. If a paid guide fits your situation, grab it. If you run a home-service company and want the lead-response side implemented, DispatchAnchor is the service path.</p>
+      </div>
+      <div class="card callout">
+        <div class="eyebrow">Start free → then go deeper</div>
+        <h2>Recommended order</h2>
+        <div class="tool-list">
+          <div class="tool"><b>1. Rank</b><span><a href="/articles/best-free-ai-learning-resources.html">Use the ranked free AI resource list.</a></span></div>
+          <div class="tool"><b>2. Free</b><span>Download the Obsidian AI Vault guide.</span></div>
+          <div class="tool"><b>3. Learn</b><span>Read the AI workflow articles and field notes.</span></div>
+          <div class="tool"><b>4. Build</b><span>Use the prompt pack or GPT-5.5 Playbook.</span></div>
+          <div class="tool"><b>5. Implement</b><span>For home-service missed calls, review DispatchAnchor.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div class="card">
+        <div class="eyebrow">Paid tools</div>
+        <h2>When you want the templates</h2>
+        <p class="muted">If the free guide helps, the next step is a reusable prompt system or a deeper operator playbook.</p>
+        <div class="row" style="margin-top:18px"><a class="btn" href="/products/ai-money-machine.html">Prompt Pack</a><a class="btn secondary" href="/products/gpt-55-playbook.html">GPT-5.5 Playbook</a></div>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Done-for-you help</div>
+        <h2>For home-service lead response</h2>
+        <p class="muted">Jedaiflow teaches the workflow. DispatchAnchor can implement the missed-call and AI answering workflow for contractors and service businesses.</p>
+        <div class="row" style="margin-top:18px"><a class="btn" href="https://dispatchanchor.com/">See DispatchAnchor</a><a class="btn secondary" href="/free/missed-call-recovery/">Missed-call checklist</a></div>
+      </div>
+    </section>
+
+    <section class="section footer-cta">
+      <div class="eyebrow">Best first click</div>
+      <h2>Start with the free AI Vault guide.</h2>
+      <p>It gives you the structure that makes every other AI tool easier to use: Codex, Claude, ChatGPT, Obsidian, content systems, and business workflows.</p>
+      <a class="btn" href="/free/obsidian-ai-vault/">Get the Obsidian AI Vault Starter Guide →</a>
     </section>
   </main>
 
   <footer class="jf-shell-footer">
     <a href="/" class="jf-shell-footer-logo">Jedaiflow</a>
     <p class="jf-shell-footer-tagline">Practical AI for builders and operators. Learn AI. Ship real things.</p>
-    <div class="jf-shell-footer-links"><a href="/start/">Start</a><a href="/articles/">Articles</a><a href="/guides/">Guides</a><a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a></div>
+    <div class="jf-shell-footer-links"><a href="/start/">Start</a><a href="/articles/">Articles</a><a href="/guides/">Guides</a><a href="/free/obsidian-ai-vault/">Free Vault Guide</a><a href="mailto:hello@jedaiflow.com">hello@jedaiflow.com</a></div>
     <div class="jf-shell-footer-legal">© 2026 Jedaiflow. All rights reserved.</div>
   </footer>
 </body>
