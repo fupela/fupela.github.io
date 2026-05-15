@@ -1,1 +1,5 @@
 docs/cloudflare-deploy-retry-*.log
+
+# Local Telegram bot configs - never commit secrets
+projects/agent-hq/scripts/telegram_config.json
+projects/agent-hq/scripts/telegram_config*.json
